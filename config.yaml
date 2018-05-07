@@ -1,0 +1,42 @@
+baseURL: https://nt.web.ve/
+title: NtWeb
+copyright: Copyright © 2018 Miguel Angel Rivera Notararigo
+params:
+  author: Miguel Angel Rivera Notararigo
+  social:
+    - name: Telegram
+      weight: 1
+      url: https://t.me/ntrrg
+    - name: GitHub
+      weight: 2
+      url: https://github.com/ntrrg
+    - name: LinkedIn
+      weight: 3
+      url: https://www.linkedin.com/in/ntrrg
+permalinks:
+  blog: /:sections/:slug/
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+languages:
+  en:
+    languageName: English
+    params:
+      description: A small site with great intentions.
+      keywords: personal-site,portfolio,blog,developer,backend,devops
+    menu:
+      main:
+        - name: Blog
+          weight: 1
+          url: /en/blog/
+  es:
+    languageName: Español
+    params:
+      description: Un pequeño sitio web con grandes intenciones.
+      keywords: pagina-personal,portafolio,blog,desarrollador,backend,devops
+    menu:
+      main:
+        - name: Blog
+          weight: 1
+          url: /es/blog/
+
