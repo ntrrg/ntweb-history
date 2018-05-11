@@ -4,6 +4,34 @@ This site was migrated to Hugo and is hosted now by Netlify.
 
 ## Usage
 
+If you want to have a local copy of my site, there are two methods:
+
+1. Using Docker
+
+    ```sh
+    docker run -p 1234:80 ntrrg/site
+    ```
+
+    Open http://localhost:1234 with a browser.
+
+2. Using Hugo
+
+    **Note:** Git and Hugo v0.40.3 should be installed.
+
+    ```sh
+    git clone https://github.com/ntrrg/ntrrg.github.io.git
+    ```
+
+    ```sh
+    cd ntrrg.github.io/
+    ```
+
+    ```sh
+    hugo server
+    ```
+
+    Open http://localhost:1313 with a browser.
+
 ## Acknowledgment
 
 Working on this site I use/used:
