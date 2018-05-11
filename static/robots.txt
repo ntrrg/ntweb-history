@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://nt.web.ve/sitemap.xml

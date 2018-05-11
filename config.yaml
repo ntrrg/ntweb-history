@@ -1,6 +1,7 @@
 baseURL: https://nt.web.ve/
 title: NtWeb
 copyright: Copyright © 2018 Miguel Angel Rivera Notararigo
+enableRobotsTXT: true
 params:
   author: Miguel Angel Rivera Notararigo
   social:
