@@ -12,7 +12,7 @@ If you want to have a local copy of my site, there are two methods:
     docker run -p 1234:80 ntrrg/site
     ```
 
-    Open http://localhost:1234 with a browser.
+    Open http://localhost:1234/en/ with a browser.
 
 2. Using Hugo
 
@@ -30,7 +30,7 @@ If you want to have a local copy of my site, there are two methods:
     hugo server
     ```
 
-    Open http://localhost:1313 with a browser.
+    Open http://localhost:1313/en/ with a browser.
 
 ## Acknowledgment
 
