@@ -1,6 +1,9 @@
+[![Build Status](https://travis-ci.com/ntrrg/ntrrg.github.io.svg?branch=master)](https://travis-ci.com/ntrrg/ntrrg.github.io)
+![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)
+
 This site was migrated to Hugo and is hosted now by Netlify.
 
-[https://nt.web.ve](https://nt.web.ve)
+<https://nt.web.ve>
 
 ## Usage
 
@@ -12,7 +15,7 @@ If you want to have a local copy of my site, there are two methods:
     docker run -p 1234:80 ntrrg/site
     ```
 
-    Open http://localhost:1234/en/ with a browser.
+    Open <http://localhost:1234/en/> with a browser.
 
 2. Using Hugo
 
@@ -30,7 +33,7 @@ If you want to have a local copy of my site, there are two methods:
     hugo server
     ```
 
-    Open http://localhost:1313/en/ with a browser.
+    Open <http://localhost:1313/en/> with a browser.
 
 ## Acknowledgment
 
@@ -62,5 +65,5 @@ Working on this site I use/used:
 
 * [Docker](https://docker.com)
 
-**Sindre Sorhus.** *github-markdown-css.* https://github.com/sindresorhus/github-markdown-css
+**Sindre Sorhus.** *github-markdown-css.* <https://github.com/sindresorhus/github-markdown-css>
 

@@ -2,4 +2,11 @@
 *.swp
 Session.vim
 /public/
+nogit-*
+/.vendor/node-v*
+/.vendor/hugo
+.DS_Store
+node_modules/
+package-lock.json
+/.nyc_output/
 
