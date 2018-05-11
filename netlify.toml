@@ -14,3 +14,25 @@
   X-Content-Type-Options = "nosniff"
   Referrer-Policy = "origin-when-cross-origin"
 
+[[redirects]]
+  from = "https://blog.nt.web.ve/*"
+  to = "https://nt.web.ve/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://ntweb.netlify.com/*"
+  to = "https://nt.web.ve/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/404.html"
+  status = 404
+
