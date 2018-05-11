@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/ntrrg/ntrrg.github.io.svg?branch=master)](https://travis-ci.com/ntrrg/ntrrg.github.io)
-![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://hub.docker.com/r/ntrrg/site/)
 
 This site was migrated to Hugo and is hosted now by Netlify.
 
