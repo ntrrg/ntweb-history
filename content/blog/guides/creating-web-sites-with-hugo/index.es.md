@@ -16,8 +16,8 @@ así porque una vez que se crean sus archivos, al acceder a ellos, el contenido
 que se obtiene siempre será el mismo.
 
 > El contenido estático es aquél que permanece invariable desde el momento en
-  que su autor lo crea. Es decir, no depende de quién lo visualice ni en que
-  momento lo haga.
+> que su autor lo crea. Es decir, no depende de quién lo visualice ni en que
+> momento lo haga.
 >
 > \- Según [este artículo][Contenido dinámico] de Wikipedia.
 
