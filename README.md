@@ -1,6 +1,8 @@
+This site was migrated to Hugo and is hosted now by Netlify.
+
+[https://nt.web.ve](https://nt.web.ve)
+
 ## Usage
-
-
 
 ## Acknowledgment
 
