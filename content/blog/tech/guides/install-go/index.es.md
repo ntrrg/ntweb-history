@@ -16,43 +16,43 @@ que explico aquí, si lo quieren compilar desde el código fuente, en
 [esta sección](#desde-el-código-fuente) explico el procedimiento para
 hacerlo.
 
-1. Descargar el paquete con los binarios
+1\. Descargar el paquete con los binarios
 
-    ```shell-session
-    $ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
-    ```
+```shell-session
+$ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
+```
 
-2. Verificar que se haya descargado correctamente
+2\. Verificar que se haya descargado correctamente
 
-    ```shell-session
-    $ md5sum go1.10.2.linux-amd64.tar.gz
-    7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
-    ```
+```shell-session
+$ md5sum go1.10.2.linux-amd64.tar.gz
+7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
+```
 
-3. Descomprimirlo en `/usr/local`
+3\. Descomprimirlo en `/usr/local`
 
-    ```shell-session
-    # tar -xvf go1.10.2.linux-amd64.tar.gz -C /usr/local
-    ```
+```shell-session
+# tar -xvf go1.10.2.linux-amd64.tar.gz -C /usr/local
+```
 
-4. Agregar los binarios a la lista de comandos del sistema
+4\. Agregar los binarios a la lista de comandos del sistema
 
-    ```shell-session
-    # ln -s /usr/local/go/bin/* /usr/bin/
-    ```
+```shell-session
+# ln -s /usr/local/go/bin/* /usr/bin/
+```
 
-5. Verificar que se haya instalado correctamente
+5\. Verificar que se haya instalado correctamente
 
-    ```shell-session
-    $ go version
-    go version go1.10.2 linux/amd64
-    ```
+```shell-session
+$ go version
+go version go1.10.2 linux/amd64
+```
 
-6. Eliminar los archivos necesarios para la instalación
+6\. Eliminar los archivos necesarios para la instalación
 
-    ```shell-session
-    $ rm go1.10.2.linux-amd64.tar.gz
-    ```
+```shell-session
+$ rm go1.10.2.linux-amd64.tar.gz
+```
 
 {{% note %}}
 
@@ -93,95 +93,94 @@ fuente.
 **Nota:** puede que se necesite [Git](https://git-scm.com/) en algunas
 ocasiones, depende de como se realice la instalación.
 
-1. Descargar el paquete con los binarios
+1\. Descargar el paquete con los binarios
 
-    ```shell-session
-    $ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
-    ```
+```shell-session
+$ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
+```
 
-2. Verificar que se haya descargado correctamente
+2\. Verificar que se haya descargado correctamente
 
-    ```shell-session
-    $ md5sum go1.10.2.linux-amd64.tar.gz
-    7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
-    ```
+```shell-session
+$ md5sum go1.10.2.linux-amd64.tar.gz
+7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
+```
 
+3\. Descomprimirlo
 
-3. Descomprimirlo
+```shell-session
+$ tar -xvf go1.10.2.linux-amd64.tar.gz
+```
 
-    ```shell-session
-    $ tar -xvf go1.10.2.linux-amd64.tar.gz
-    ```
+4\. Renombrar la carpeta de Go (para evitar cualquier conflicto)
 
-4. Renombrar la carpeta de Go (para evitar cualquier conflicto)
+```shell-session
+$ mv go toolchain
+```
 
-    ```shell-session
-    $ mv go toolchain
-    ```
-
-5. Establecer la variable de entorno `GOROOT_BOOTSTRAP`, que determina donde
+5\. Establecer la variable de entorno `GOROOT_BOOTSTRAP`, que determina donde
    buscar el compilador
 
-    ```shell-session
-    $ export GOROOT_BOOTSTRAP="${PWD}/toolchain"
-    ```
+```shell-session
+$ export GOROOT_BOOTSTRAP="${PWD}/toolchain"
+```
 
-6. Obtener el código fuente
+6\. Obtener el código fuente
 
-    **Paquete:**
+**Paquete:**
 
-    ```shell-session
-    $ wget https://dl.google.com/go/go1.10.2.src.tar.gz
-    $ md5sum go1.10.2.src.tar.gz
-    c63b35075bed693bbfc84d4a6262948a  go1.10.2.src.tar.gz
-    $ tar -xvf go1.10.2.src.tar.gz
-    ```
+```shell-session
+$ wget https://dl.google.com/go/go1.10.2.src.tar.gz
+$ md5sum go1.10.2.src.tar.gz
+c63b35075bed693bbfc84d4a6262948a  go1.10.2.src.tar.gz
+$ tar -xvf go1.10.2.src.tar.gz
+```
 
-    **Git:**
+**Git:**
 
-    ```shell-session
-    $ git clone -b go1.10.2 --depth 1 https://go.googlesource.com/go
-    ```
+```shell-session
+$ git clone -b go1.10.2 --depth 1 https://go.googlesource.com/go
+```
 
-7. Compilar!
+7\. Compilar!
 
-    ```shell-session
-    $ cd go/src
-    $ ./all.bash
-    ```
+```shell-session
+$ cd go/src
+$ ./all.bash
+```
 
-    **Nota:** el script `all.bash` también ejecuta todas las pruebas (que es
-    recomendable hacerlo), para saltarse las pruebas y solo compilar, se debe
-    usar el script `make.bash`.
+**Nota:** el script `all.bash` también ejecuta todas las pruebas (que es
+recomendable hacerlo), para saltarse las pruebas y solo compilar, se debe usar
+el script `make.bash`.
 
-    Al terminar, deberían existir nuevos recursos (entre esos, los binarios)
-    en la carpeta del código fuente.
+Al terminar, deberían existir nuevos recursos (entre esos, los binarios) en la
+carpeta del código fuente.
 
-8. Mover a `/usr/local`
+8\. Mover a `/usr/local`
 
-    ```shell-session
-    $ cd ../../
-    # mv go /usr/local/
-    ```
+```shell-session
+$ cd ../../
+# mv go /usr/local/
+```
 
-9. Agregar los binarios a la lista de comandos del sistema
+9\. Agregar los binarios a la lista de comandos del sistema
 
-    ```shell-session
-    # ln -s /usr/local/go/bin/* /usr/bin/
-    ```
+```shell-session
+# ln -s /usr/local/go/bin/* /usr/bin/
+```
 
-10. Verificar que se haya instalado correctamente
+10\. Verificar que se haya instalado correctamente
 
-    ```shell-session
-    $ go version
-    go version go1.10.2 linux/amd64
-    ```
+```shell-session
+$ go version
+go version go1.10.2 linux/amd64
+```
 
-11. Eliminar los archivos necesarios para la instalación
+11\. Eliminar los archivos necesarios para la instalación
 
-    ```shell-session
-    $ rm -r go1.10.2.linux-amd64.tar.gz go1.10.2.src.tar.gz toolchain
-    ```
+```shell-session
+$ rm -r go1.10.2.linux-amd64.tar.gz go1.10.2.src.tar.gz toolchain
+```
 
 Para instalar algunas utilidades más (como **godoc**, que permite generar la
 documentación de paquetes) se debe usar el comando:
