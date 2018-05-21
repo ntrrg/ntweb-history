@@ -57,19 +57,14 @@ Para empezar a programar solo hacen falta dos cosas:
 <!--lint disable-->
 
 [Instalar Go]: {{< relref "blog/tech/guides/install-go-1.10/index.es.md" >}}
-
-<!--lint enable-->
-
 [Install Go]: https://golang.org/doc/install
-
-<!--lint disable no-undefined-references-->
 
 * El compilador (las instrucciones para instalarlo pueden verlas
   [aquí][Instalar Go] o en la [documentación oficial][Install Go]).
 
 * Un editor de texto.
 
-<!--lint enable no-undefined-references-->
+<!--lint enable-->
 
 Aunque yo no soy muy fanático de usar muchos plugins, extensiones y cosas así
 porque con esto es más que suficiente para desarrollar tranquilamente, existen
@@ -236,6 +231,35 @@ false
 false
 ```
 
+## Cadenas
+
+### Representación sintáctica
+
+```go
+string
+```
+
+### Ejemplos
+
+```go
+"C"
+"Cadena de caracteres"
+
+`Cadena
+de
+caracteres
+multilineal`
+
+"Cadena con\nsalto de línea"
+`Cadena sin\nsecuencias de escape`
+```
+
+### Valor cero
+
+```go
+""
+```
+
 ## Numéricos
 
 Existen tres grupos de datos numéricos:
@@ -252,13 +276,18 @@ espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser `8`, `16`, `32` o `64` (**TODO:** ¿por qué estos números?).
 
+<!--lint disable-->
+
+[Complemento a dos]: {{< relref "blog/math/cs/twos-complement.es.md" >}}
+
 Existen dos tipos de números enteros, o mejor dicho, dos métodos de
 representación: el primero es la conversión binaria tradicional, pero solo
 puede ser usado para procesar números positivos; el segundo es llamado
-*Complemento a dos* y consiste en verificar el primer bit del número para
-determinar si es negativo, bastante ingenioso, solo que se pierde una cantidad
-considerable de números positivos, aunque es compensada como números
-negativos.
+[Complemento a dos][] y permite representar tanto números positivos como
+negativos de una manera bastante ingeniosa, solo que se pierde una cantidad
+considerable de números positivos.
+
+<!--lint enable-->
 
 Además de números decimales, es posible usar octales y hexadecimales.
 
@@ -293,6 +322,13 @@ int  // Equivale a int32 o int64
 5   // Decimal
 05  // Octal (tienen el prefijo `0`)
 0x5 // Hexadecimal (tienen el prefijo `0x`)
+
+10
+012
+0xA
+
+'a'  // 97, caracter ASCII
+'😂' // 128514, caracter UTF-8
 ```
 
 #### Valor cero
@@ -303,10 +339,45 @@ int  // Equivale a int32 o int64
 
 ### Punto flotante
 
+Representan al conjunto matemático de los números fraccionarios, aunque
+claro, con una cantidad finita de elementos, que puede ser controlada por el
+espacio de memoria que se reserve, es decir, el programador tiene la capacidad
+de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
+`N` puede ser `32` o `64` (**TODO:** ¿por qué estos números?).
+
+Para su representación siguen el estándar técnico IEEE-754.
+
+#### Representación sintáctica
+
+```go
+float32 // 0 - 4294967295
+float64 // 0 - 18446744073709551615
+```
+
+#### Ejemplos
+
+```go
+5   // Decimal
+05  // Octal (tienen el prefijo `0`)
+0x5 // Hexadecimal (tienen el prefijo `0x`)
+
+10
+012
+0xA
+
+'a'  // 97, caracter ASCII
+'😂' // 128514, caracter UTF-8
+```
+
+#### Valor cero
+
+```go
+0
+```
+
 ### Complejos
 
 .. Numerics
-.. Strings
 .. Casting
 
 ..     .3. Tipos de variable
