@@ -1,6 +1,7 @@
 ---
 title: Instalar Go 1.10
 date: 2018-05-16T14:14:22-04:00
+description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/gopher.png
 categories:
   - instalaciones
@@ -83,7 +84,7 @@ $ echo "export GOROOT=\"${GOROOT}\"" >> ~/.profile
 
 {{% /note %}}
 
-## Desde el código fuente
+# Desde el código fuente
 
 Para este método también es necesario tener los binarios, pues desde la
 versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo

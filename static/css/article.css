@@ -5,6 +5,10 @@
   }
 }
 
+.article-title {
+  font-size: 2.5em !important;
+}
+
 .article-image {
   max-height: 80vh;
 
