@@ -17,8 +17,8 @@
     "test": "test"
   },
   "scripts": {
-    "clean": "rm -r .nyc_output/ .vendor/node-v* .vendor/hugo node_modules/",
-    "ci": "npm run lint && npm test",
+    "clean": "rm -rf .nyc_output/ .vendor/node .vendor/hugo node_modules/",
+    "ci": "npm run lint && npm test && .vendor/hugo",
     "dev": "npm run nodemon -- -x 'npm run lint:js && npm test'",
     "edition": "npm run nodemon -- -e md -x 'npm run lint:md'",
     "lint": "npm run lint:js && npm run lint:md",
@@ -47,7 +47,7 @@
   "nodemonConfig": {
     "ignore": [
       "/.vendor/",
-      "/static/"
+      "/public/"
     ]
   },
   "remarkConfig": {
@@ -69,7 +69,8 @@
     "exclude": [
       ".vendor/",
       "node_modules/",
-      "test/"
+      "test/",
+      "public/"
     ]
   }
 }

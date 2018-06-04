@@ -3,10 +3,10 @@
   command = "hugo"
 
 [build.environment]
-  HUGO_VERSION = "0.40.3"
+  HUGO_VERSION = "0.41"
 
 [context.deploy-preview]
-  command = "hugo --baseURL=/"
+  command = "hugo -DEF --baseURL=/"
 
 [[headers]]
   for = "/*"

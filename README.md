@@ -19,7 +19,7 @@ If you want to have a local copy of my site, there are two methods:
 
 2. Using Hugo
 
-    **Note:** Git and Hugo v0.40.3 should be installed.
+    **Note:** Git and Hugo v0.41 should be installed.
 
     ```sh
     git clone https://github.com/ntrrg/ntrrg.github.io.git

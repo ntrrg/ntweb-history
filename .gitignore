@@ -3,7 +3,7 @@
 Session.vim
 /public/
 nogit-*
-/.vendor/node-v*
+/.vendor/node/
 /.vendor/hugo
 .DS_Store
 node_modules/
