@@ -54,17 +54,21 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 
 Para empezar a programar solo hacen falta dos cosas:
 
-<!--lint disable-->
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
 
 [Instalar Go]: {{< relref "blog/tech/guides/install-go-1.10/index.es.md" >}}
 [Install Go]: https://golang.org/doc/install
 
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+
+<!--lint disable no-undefined-references-->
+
 * El compilador (las instrucciones para instalarlo pueden verlas
   [aquí][Instalar Go] o en la [documentación oficial][Install Go]).
 
-* Un editor de texto.
+<!--lint enable no-undefined-references-->
 
-<!--lint enable-->
+* Un editor de texto.
 
 Aunque yo no soy muy fanático de usar muchos plugins, extensiones y cosas así
 porque con esto es más que suficiente para desarrollar tranquilamente, existen
@@ -391,43 +395,43 @@ float64 // 0 - 18446744073709551615
 ..             .5. Diccionarios
 ..     .4. Cambio de tipo
 
-https://tour.golang.org/basics/11
-https://tour.golang.org/basics/13
+<https://tour.golang.org/basics/11>
+<https://tour.golang.org/basics/13>
 
 Estructuras:
 
-https://tour.golang.org/moretypes/2
-https://tour.golang.org/moretypes/3
+<https://tour.golang.org/moretypes/2>
+<https://tour.golang.org/moretypes/3>
 
 Arreglos:
 
-https://tour.golang.org/moretypes/6
+<https://tour.golang.org/moretypes/6>
 
 Porciones:
 
-https://tour.golang.org/moretypes/7
-https://tour.golang.org/moretypes/8
-https://tour.golang.org/moretypes/9
-https://tour.golang.org/moretypes/10
-https://tour.golang.org/moretypes/11
-https://tour.golang.org/moretypes/12
-https://tour.golang.org/moretypes/13
-https://tour.golang.org/moretypes/14
-https://tour.golang.org/moretypes/15
-https://blog.golang.org/go-slices-usage-and-internals
+<https://tour.golang.org/moretypes/7>
+<https://tour.golang.org/moretypes/8>
+<https://tour.golang.org/moretypes/9>
+<https://tour.golang.org/moretypes/10>
+<https://tour.golang.org/moretypes/11>
+<https://tour.golang.org/moretypes/12>
+<https://tour.golang.org/moretypes/13>
+<https://tour.golang.org/moretypes/14>
+<https://tour.golang.org/moretypes/15>
+<https://blog.golang.org/go-slices-usage-and-internals>
 
 Mapas:
 
-https://tour.golang.org/moretypes/19
-https://tour.golang.org/moretypes/20
-https://tour.golang.org/moretypes/21
-https://tour.golang.org/moretypes/22
+<https://tour.golang.org/moretypes/19>
+<https://tour.golang.org/moretypes/20>
+<https://tour.golang.org/moretypes/21>
+<https://tour.golang.org/moretypes/22>
 
 Punteros:
 
-https://tour.golang.org/moretypes/1
-https://tour.golang.org/moretypes/4
-https://tour.golang.org/moretypes/5
+<https://tour.golang.org/moretypes/1>
+<https://tour.golang.org/moretypes/4>
+<https://tour.golang.org/moretypes/5>
 
 # Buenas prácticas
 
@@ -437,5 +441,5 @@ https://tour.golang.org/moretypes/5
 
 **Ariel Mashraki.** *An overview of Go syntax and features.* <https://github.com/a8m/go-lang-cheat-sheet>
 
-**Thomas Finley.** *Two's Complement.* https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html
+**Thomas Finley.** *Two's Complement.* <https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html>
 
