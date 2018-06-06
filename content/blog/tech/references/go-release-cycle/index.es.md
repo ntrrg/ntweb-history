@@ -1,12 +1,15 @@
 ---
 title: Ciclo de desarrollo de Go
 date: 2018-06-06T02:22:35-04:00
-description: Short description.
-image: images/image.png
+description: Cada seis meses una nueva versión de Go es liberada, este esquema tiene ciertas reglas que explico aquí.
+image: images/gopher.png
 categories:
-  - category1
+  - programación
 tags:
-  - tag1
-draft: true
+  - referencias
+  - backend
+  - lenguajes-de-programación
+  - go
+  - ciclo-de-desarrollo
 ---
 

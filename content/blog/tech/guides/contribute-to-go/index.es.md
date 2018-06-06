@@ -10,6 +10,7 @@ tags:
   - backend
   - lenguajes-de-programación
   - go
+  - contribuir-a-un-proyecto
 ---
 
 Además de intimidante, hacer una contribución por primera vez en cualquier
