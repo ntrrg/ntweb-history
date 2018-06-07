@@ -30,11 +30,11 @@ collections:
         required: false
       - label: Categories
         name: categories
-        widget: text
+        widget: string
         default: "[]"
       - label: Tags
         name: tags
-        widget: text
+        widget: string
         default: "[]"
       - label: Body
         name: body
