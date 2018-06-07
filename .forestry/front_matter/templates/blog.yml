@@ -2,31 +2,38 @@
 hide_body: false
 is_partial: false
 fields:
+- name: draft
+  label: Draft
+  type: boolean
+  hidden: false
+  default: true
 - name: title
   label: Title
   type: text
   hidden: false
-  default: 
-- name: type
-  label: Type
-  type: text
-  hidden: false
   default: ''
+  config:
+    required: true
 - name: date
   label: Date
   type: datetime
   hidden: false
-  default: 
-- name: description
+  default: ''
+  config:
+    date_format: YYYY/MM/DD
+    required: true
+    time_format: HH:MM:SS ZZ
+- type: text
+  name: description
   label: Description
-  type: textarea
-  hidden: false
-  default: Short description.
+  description: Short description of the article.
+  config:
+    required: true
 - name: image
   label: Image
   type: file
   hidden: false
-  default: "/uploads/image.png"
+  default: ''
 - name: categories
   label: Categories
   type: tag_list
@@ -39,8 +46,3 @@ fields:
   hidden: false
   default:
   - tag1
-- name: draft
-  label: Draft
-  type: boolean
-  hidden: false
-  default: true
