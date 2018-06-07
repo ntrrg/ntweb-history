@@ -6,11 +6,15 @@ media_folder: static/uploads
 public_folder: /uploads
 collections:
   - name: blog
-    label: Blog articles
+    label: Articles
     folder: content/blog
     create: true
     slug: {{slug}}
     fields:
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: true
       - label: Title
         name: title
         widget: string
@@ -23,12 +27,17 @@ collections:
       - label: Image
         name: image
         widget: image
+        required: false
       - label: Categories
         name: categories
         widget: list
+        field:
+          - widget: text
       - label: Tags
         name: tags
         widget: list
+        field:
+          - widget: text
       - label: Body
         name: body
         widget: markdown
