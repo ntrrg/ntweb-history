@@ -2,39 +2,35 @@
 hide_body: false
 is_partial: false
 fields:
-- name: title
-  label: Title
-  type: text
-  hidden: false
-  default: 
-- name: type
-  label: Type
-  type: text
-  hidden: false
-  default: ''
-- name: website
-  label: Website
-  type: text
-  hidden: false
-  default: https://site.com
-- name: description
-  label: Description
-  type: text
-  hidden: false
-  default: Short description.
-- name: image
-  label: Image
-  type: text
-  hidden: false
-  default: "/uploads/image.png"
-- name: techs
-  label: Techs
-  type: list
-  hidden: false
-  default:
-  - tech-1
 - name: draft
   label: Draft
   type: boolean
   hidden: false
   default: true
+- name: title
+  label: Title
+  type: text
+  hidden: false
+  default: ''
+  config:
+    required: true
+- name: website
+  label: Website
+  type: text
+  hidden: false
+  default: ''
+  description: https://site.com
+- name: description
+  label: Description
+  type: text
+  hidden: false
+  default: ''
+  description: Short description.
+  config:
+    required: true
+- type: file
+  name: image
+  label: Image
+- type: tag_list
+  name: techs
+  label: Technologies used
