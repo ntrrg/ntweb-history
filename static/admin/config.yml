@@ -28,14 +28,6 @@ collections:
         name: image
         widget: image
         required: false
-      - label: Categories
-        name: categories
-        widget: string
-        default: "[]"
-      - label: Tags
-        name: tags
-        widget: string
-        default: "[]"
       - label: Body
         name: body
         widget: markdown
