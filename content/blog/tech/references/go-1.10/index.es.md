@@ -59,14 +59,10 @@ Para empezar a programar solo hacen falta dos cosas:
 [Instalar Go]: {{< relref "blog/tech/guides/install-go-1.10/index.es.md" >}}
 [Install Go]: https://golang.org/doc/install
 
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
-<!--lint disable no-undefined-references-->
-
 * El compilador (las instrucciones para instalarlo pueden verlas
   [aquí][Instalar Go] o en la [documentación oficial][Install Go]).
 
-<!--lint enable no-undefined-references-->
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
 
 * Un editor de texto.
 
@@ -280,7 +276,7 @@ espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser `8`, `16`, `32` o `64` (**TODO:** ¿por qué estos números?).
 
-<!--lint disable-->
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
 
 [Complemento a dos]: {{< relref "blog/math/cs/twos-complement.es.md" >}}
 
@@ -291,7 +287,7 @@ puede ser usado para procesar números positivos; el segundo es llamado
 negativos de una manera bastante ingeniosa, solo que se pierde una cantidad
 considerable de números positivos.
 
-<!--lint enable-->
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
 
 Además de números decimales, es posible usar octales y hexadecimales.
 

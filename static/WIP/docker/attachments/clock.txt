@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"/>
+
+  <style>
+    #clock {
+      width: 100vw;
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: fixed;
+      top: 0em;
+      left: 0em;
+    }
+
+    #time {
+      width: 7em;
+      height: 7em;
+
+      background: #333;
+      border: 0.4em solid #ddd;
+      border-radius: 50%;
+      box-shadow: 0em 0em 0.3em #000000aa;
+      color: #fff;
+      font-size: 3em;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock">
+    <div id="time">00:00:00</div>
+  </div>
+
+  <script>
+    setInterval(() => {
+      'use strict'
+
+      const time = new Date().toLocaleTimeString()
+      document.querySelector('#time').textContent = time
+    }, 1000);
+  </script>
+</body>
+</html>

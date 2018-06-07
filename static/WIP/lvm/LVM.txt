@@ -1,0 +1,253 @@
+Instalación:
+	Si se usa LVM desde la instalación del sistema (Debian) no será necesario instalarlo, si se utilizará en un sistema ya configurado, se debe ejecutar el comando:
+
+		# apt-get install lvm2
+
+Uso:
+	Para ver las unidades con las que puede trabajar LVM se usa el comando `lvmdiskscan` y se puede agregar la opción `lvmdiskscan -l` para ver solo las que ya está usando.
+
+	Volúmenes físicos (PV):
+		Son unidades de almacenamiento (dispositivos o particiones) que serán usadas por LVM. Contienen extensiones físicas (PE), pequeñas secciones de 4 MB que son el espacio utilizabe del disco (en uso o libre).
+
+		· Crear:
+			pvcreate <unidad>
+
+			Nota: cuando `<unidad>` es una unidad completa (`/dev/sda`), es posible que sea necesario borrar los primeros bytes de la unidad (la tabla de particiones) agregando la opción `pvcreate -Z y <unidad>` o con el comando `dd if=/dev/zero of=<unidad> bs=512 count=1`.
+
+		· Eliminar:
+			pvremove [-ff] <PV>[ <otro PV>[ ...]]
+
+			Parámetros:
+				· `ff`: elimina el PV aunque tenga VGs activos.
+
+		· Expandir/Reducir:
+			Si el PV se creó sobre una partición y esta en algún momento debe cambiar su tamaño, es posible adaptar el PV a este cambio.
+
+				pvresize <PV>[ <otro PV>[ ...]]  # Expansión al tamaño de la partición
+				pvresize --setphysicalvolumesize <tamaño> <PV>[ <otro PV>[ ...]]  # Tamaño específico
+
+			Nota: usar el comando sin el parámetro `setphysicalvolumesize` no reducirá el PV.
+
+		· Listar:
+			pvs
+
+			pvdisplay [-m]
+
+			Parámetros:
+				· `m`: muestra el mapa de PE.
+
+			pvscan [-s] [-e] [-n]
+
+			Parámetros:
+				· `s`: muestra una versión más compacta de la salida.
+				· `e`: muestra solo PVs de VGs exportados.
+				· `n`: muestra solo PVs que no compongan a algún VG.
+
+		. Mover PE:
+			pvmove [--atomic] [--alloc anywhere] [-i <segundos>] [-n <LV>] [-b] <PV origen>[:<PE inicial>[-<PE final> | +<cantidad de PE>]] [<PV destino>[:<PE inicial>[-<PE final> | +<cantidad de PE>]]]
+
+			Parámetros:
+				· `atomic`: en caso de que el proceso se cancele, las PE de <PV Origen> quedarán intactas y las PE que habían sido transferidas a <PV destino> regresarán a su estado anterior.
+				· `alloc anywhere`: solo es necesario si <PV destino> es igual que <PV origen>.
+				· `i <segundos>`: muestra el progreso cada <segundos> segundos.
+				· `n <LV>`: mueve solo las PEs que ocupe el LV.
+				· `b`: ejecuta el proceso en segundo plano.
+
+			Notas:
+				· Si no se especifica `<PV destino>`, LVM buscará automáticamente un PV dentro del VG para mover las PEs.
+				· Despues de ejecutar el comando, si se cancela con el teclado (`Ctrl` + `C`), el proceso solo será enviado a segundo plano. Para cancelar una transferencia, se debe agergar la opción `--abort`:
+
+					pvmove --abort
+
+				· Para ver el progreso de la transferencia se puede usar el comando `pvmove <PV>`.
+				· Si el sistema sufre un reinicio y existía una transferencia activa, puede reanudarse ejecutando el comando `pvmove` sin ninguna opción adicional.
+
+		· Verificar:
+			pvck <PV>[ <otro PV>[ ...]]
+
+	Grupos de volúmenes (VG):
+		Son unidades de almacenamiento virtuales compuestos por uno o más PVs, representan unidades físicas (discos duros, unidades de estado sólido, etc). Accesibles desde `/dev/<VG>`.
+
+		· Crear:
+			vgcreate <nombre> <PV>[ <otro PV>[ ...]]
+
+			Nota: si se especifica la ruta a una unidad que no sea PV, se configurará automáticamente como tal.
+
+		· Eliminar:
+			vgremove <VG>[ <otro VG>[ ...]]
+
+		· Expandir/Reducir:
+			vgextend <VG> <PV>[ <otro PV>[ ...]]
+
+			vgreduce [--removemissing] <VG> {<PV>[ <otro PV>[ ...]] | [-a]}
+
+			Parámetros:
+				· `a`: desvincula los PVs sin usar.
+				· `removemissing`: desvicula los PVs que ya no existan.
+
+		· Exportar/Importar:
+			Es posible exportar VGs inactivos para usarlos en otro equipo o simplemente hacerlos invisibles al sistema actual.
+
+				vgexport [-a] <VG>[ <otro VG>[ ...]]
+
+				Parámetros:
+					· `a`: exporta todos los VG incativos.
+
+			Si después se quiere activar nuevamente algún VG, se debe importar.
+
+				vgimport [-a] <VG>[ <otro VG>[ ...]]
+
+				Parámetros:
+					· `a`: importa todos los VGs exportados.
+
+		· Listar:
+			vgs
+
+			vgdisplay [-v]
+
+			Parámetros:
+				· `v`: muestra información sobre todos los componentes del VG.
+
+			vgscan [--mknodes] [--cache]
+
+			Parámetros:
+				· `mknodes`: aplica el comando `vgmknodes`.
+				· `cache`: actualiza la información sobre los PVs y los VGs en el sistema.
+
+		· Mezclar:
+			vgmerge <VG destino> <VG origen>
+
+		· Mover PV:
+			vgsplit <VG> <otro VG> [<PV>[ <otro PV>[ ...]]]
+
+			Nota: si `<otro VG>` no existe, se creará.
+
+		· Renombrar:
+			vgrename <VG> <nuevo nombre>
+
+		· Verificar:
+			Comprueba que los archivos de control de LVM estén bien y borra los que ya no se necesiten.
+
+				vgmknodes [<VG>[ <otro VG>[ ...]]]
+
+	Volúmenes lógicos (LV):
+		Es el espacio donde pueden montarse los sistemas de archivos, representan particiones comunes. Accesibles desde `/dev/<VG>/<LV>` o `/dev/mapper/<VG>-<LV>`.
+
+		· Crear:
+			LV común:
+				lvcreate {-L <tamaño>[<medida>] | -l <porcentaje>%{VG|PVS|FREE}} -n <nombre> <VG>
+
+				Unidades de medida:
+					· Byte (b | B)
+					· Sector (s | S) - 512 bytes
+					· Kilobyte (k | K)
+					· Megabyte (m | M) - Predeterminado
+					· Gigabyte (g | G)
+					· Terabyte (t | T)
+					· Petabyte (p | P)
+					· Exabyte (e | E)
+
+			LV snapshot:
+				lvcreate [-L <tamaño>[<medida>] | -l <porcentaje>%{ORIGIN|VG|PVS|FREE}] [-p r] -n <nombre> -s <LV original> [VG]
+
+				Parámetros:
+					· `p r`: el LV será de solo lectura.
+
+				Notas:
+					· Si no se especifica un tamaño, el LV creado será del mismo tamaño que el original aunque normalmente no necesitará más del 20%.
+					· Es posible respaldar un LV snapshot con los siguientes pasos:
+
+						# lvcreate -l 20%ORIGIN -p r -n osSnapshot -s /dev/Server/os
+						# mount /dev/Server/osSnapshot /mnt
+						$ cd /mnt
+						$ tar cpzvf /media/usuario/usb/osSnapshot.tar.gz *
+						$ cd /media/usuario/usb
+						# umount /mnt
+						# lvremove osSnapshot
+
+						--- Para restaurar el LV snapshot ---
+
+						# lvcreate -l 20%ORIGIN -n osSnapshot -s /dev/Server/os
+						# mount /dev/Server/osSnapshot /mnt
+						$ cd /mnt
+						$ rm -rf *
+						$ tar xpvf /media/usuario/usb/osSnapshot.tar.gz
+						# lvconvert --merge Server/osSnapshot
+
+			LV mirror:
+				lvcreate {-L <tamaño>[<medida>] | -l <porcentaje>%{VG|PVS|FREE}} --type raid1 -m<cantidad> [--nosync] -n <nombre> <VG> [<PV>[:<PE inicial>[-<PE final> | +<cantidad de PE>]][ <otro PV>[:<PE inicial>[-<PE final> | +<cantidad de PE>]][ ...]]]
+
+				Parámetros:
+					· `m<cantidad>`: indica la cantidad de espejos a crearse.
+					· `nosync`: evita el proceso de sincronización al momento de la creación del LV.
+
+				Notas:
+					· El VG contenedor debe estar compuesto por `<cantidad>` de PVs.
+					· Para cambiar un espejo de PV se usa el comando `lvconvert --replace <PV antiguo> <LV mirror> <nuevo PV>`.
+					· En caso de que ocurrar un fallo de disco se puede reparar con `lvconvert --repair <LV mirror>`.
+
+			LV cache:
+				lvcreate {-L <tamaño>[<medida>] | -l <porcentaje>%{VG|PVS|FREE}} -n <nombre de LV para metadatos de cache> <VG> <PV>
+
+				lvcreate {-L <tamaño>[<medida>] | -l <porcentaje>%{VG|PVS|FREE}} -n <nombre de LV para cache> <VG> <PV>
+
+				lvconvert --cachepool <LV para cache> --poolmetadata <LV para metadatos de cache>
+
+				lvconvert --type cache --cachepool <LV para cache> <LV original>
+
+				Notas:
+
+					* Los LV de cache deben estar en el mismo VG que el LV original.
+					* El tamaño del LV de metadata debe ser 1000 veces menor que el LV para cache, pero no menor de 8mb
+					* Se puede usar mirroring con LV de cache.
+
+		· Convertir:
+			LV -> LV mirror:
+				lvconvert --type raid1 -m<cantidad> <LV> [<PV>[:<PE inicial>[-<PE final> | +<cantidad de PE>]][ <otro PV>[:<PE inicial>[-<PE final> | +<cantidad de PE>]][ ...]]]
+
+			LV mirror -> LV:
+				lvconvert -m0 <LV>
+
+			LV -> LV snapshot:
+				lvconvert -s <LV original> <LV>
+
+		· Eliminar:
+			lvremove [-f] <LV>[ <otro LV>[ ...]]
+
+			Parámetros:
+				`f`: Elimina sin confirmación.
+
+			Nota: si un LV tiene snapshots y es eliminado, todas sus snapshots también serán eliminadas.
+
+		· Expandir/Reducir:
+			lvresize [-L [+ | -]<tamaño>[<medida>] | -l [+ | -]<porcentaje>%{LV|ORIGIN|VG|PVS|FREE}] -r <LV> [PV[:<PE inicial>[-<PE final> | +<cantidad de PE>]]]
+
+			Parámetros:
+				· `r`: Redimensiona automáticamente el sistema de archivos del LV.
+
+			Notas:
+				· `l <pocentaje>%ORIGIN` aplica solo para LVs snapshot.
+				· Si se especifica un PV, el espacio se redimencionará en él.
+
+			lvextend [-L [+]<tamaño>[<medida>] | -l [+]<porcentaje>%{LV|ORIGIN|VG|PVS|FREE}] -r <LV> [PV[:<PE inicial>[-<PE final> | +<cantidad de PE>]]]
+
+			Notas: si no se especifica ningún tamaño, se expandirá al 100% del VG o del PV si se especificó.
+
+			lvreduce {-L [-]<tamaño>[<medida>] | -l [-]<porcentaje>%{LV|ORIGIN|VG|FREE}} -r <LV>
+
+		· Listar:
+			lvs
+
+			lvdisplay [-m]
+
+			Parámetros:
+				· `m`: muestra el mapa de LV.
+
+			lvscan
+
+		· Renombrar:
+			lvrename <LV> <nuevo nombre>
+
+Referencias:
+	Manual oficial (man lvm)
+	https://wiki.archlinux.org/index.php/LVM_(Espa%C3%B1ol)

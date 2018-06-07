@@ -1,6 +1,9 @@
 {{ $author := $.Param "author" }}
 {{ $description := $.Param "description" }}
 {{ $image := (printf "%v%v" .Permalink ($.Param "image")) }}
+{{ $date := .Date.Format "2006-01-02T15:04:05-0700" }}
+
+<!-- 2018-06-05 21:39:06 -0400 -04 -->
 
 <link rel="canonical" href="{{ .Permalink }}"/>
 <meta name="robots" content="index, follow"/>
@@ -19,6 +22,10 @@
       content="{{ if eq .Kind "page" }}article{{ else }}website{{ end }}"/>
 
 {{ if eq .Kind "page" }}
+  <meta property="article:published_time" content="{{ $date }}" />
+{{ end }}
+
+{{ if eq .Kind "page" }}
   <meta property="og:image" content="{{ $image }}"/>
 
   <!-- Rich Snippets -->
@@ -28,6 +35,7 @@
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       "headline": "{{ $description }}",
+		  "datePublished": "{{ $date }}",
 
       {{ with .Params.image }}
         "image": "{{ $image }}",
