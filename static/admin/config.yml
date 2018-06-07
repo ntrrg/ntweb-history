@@ -16,7 +16,7 @@ collections:
         widget: string
       - label: Date
         name: date
-        widget: string
+        widget: datetime
       - label: Description
         name: description
         widget: text
