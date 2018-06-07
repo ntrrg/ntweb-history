@@ -30,18 +30,12 @@ collections:
         required: false
       - label: Categories
         name: categories
-        widget: list
-        field:
-          - label: Category
-            name: category
-            widget: text
+        widget: text
+        default: []
       - label: Tags
         name: tags
-        widget: list
-        field:
-          - label: Tag
-            name: tag
-            widget: text
+        widget: text
+        default: []
       - label: Body
         name: body
         widget: markdown
