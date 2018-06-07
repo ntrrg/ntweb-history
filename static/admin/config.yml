@@ -31,11 +31,11 @@ collections:
       - label: Categories
         name: categories
         widget: text
-        default: []
+        default: "[]"
       - label: Tags
         name: tags
         widget: text
-        default: []
+        default: "[]"
       - label: Body
         name: body
         widget: markdown
