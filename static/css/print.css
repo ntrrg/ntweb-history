@@ -1,0 +1,13 @@
+#body > header,
+#body > footer {
+  display: none;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body pre > code,
+.markdown-body pre code {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+}
+

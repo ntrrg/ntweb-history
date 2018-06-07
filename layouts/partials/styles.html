@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="{{ relURL "vendor/normalize.css" }}"/>
 <link rel="stylesheet" href="{{ relURL "css/main.css" }}"/>
 
-{{ if eq .Kind "page" }}
+{{ if .IsHome }}
+  <link rel="stylesheet" href="{{ relURL "css/home.css" }}"/>
+{{ else if eq .Kind "page" }}
   <link rel="stylesheet" href="{{ relURL "vendor/github-markdown.css" }}"/>
   <link rel="stylesheet" href="{{ relURL "css/article.css" }}"/>
+  <link rel="stylesheet" href="{{ relURL "css/print.css" }}" media="print"/>
 {{ end }}
 

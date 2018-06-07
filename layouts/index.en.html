@@ -1,11 +1,29 @@
 {{ define "main" }}
-  <h1 class="title">{{ .Title }}</h1>
+  <img src="{{ relURL .Site.Params.image }}" alt="NtWeb" class="site-img"/>
 
   <p>
     Hi! I am Miguel Angel, just another developer working hard to don't be just
     another developer.
   </p>
 
-  <p>See the <a href="blog/">blog</a>.</p>
+  {{ if gt (len .Sections) 0 }}
+    <ul>
+      {{ range .Sections }}
+        <li>
+          <a href="{{ .URL }}">{{ .Title }}</a>
 
+          {{ with .Pages }}({{ len . }}){{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <h2>Social networks</h2>
+
+  <ul>
+    {{ range .Site.Params.social }}
+      <li><a href="{{ .url }}">{{ .name }}</a></li>
+    {{ end }}
+  </ul>
 {{ end }}
+

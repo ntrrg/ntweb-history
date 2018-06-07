@@ -1,12 +1,10 @@
 ---
 title: {{ replace .Name "-" " " | title }}
-date: {{ .Date }}
+website: https://site.com
 description: Short description.
 image: /uploads/image.png
-categories:
-  - category1
-tags:
-  - tag1
+techs:
+  - tech-1
 draft: true
 ---
 

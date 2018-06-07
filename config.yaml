@@ -9,15 +9,14 @@ params:
     email: ntrrgx@gmail.com
   image: images/logo.png
   social:
-    - name: Telegram
-      weight: 1
-      url: https://t.me/ntrrg
-    - name: GitHub
-      weight: 2
+    - name: GitHub (@ntrrg)
       url: https://github.com/ntrrg
-    - name: LinkedIn
-      weight: 3
+    - name: Gmail (ntrrgx@gmail.com)
+      url: mailto://ntrrgx@gmail.com
+    - name: LinkedIn (ntrrg)
       url: https://www.linkedin.com/in/ntrrg
+    - name: Telegram (@ntrrg)
+      url: https://t.me/ntrrg
 permalinks:
   blog: /:sections/:slug/
 

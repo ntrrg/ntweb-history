@@ -24,3 +24,11 @@
   text-align: center;
 }
 
+ul.pagination {
+  list-style: none;
+}
+
+ul.pagination li {
+  display: inline;
+}
+

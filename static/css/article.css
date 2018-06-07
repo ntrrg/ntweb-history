@@ -1,8 +1,4 @@
 @media print {
-  #body > header,
-  #body > footer {
-    display: none;
-  }
 }
 
 .article-title {
@@ -10,20 +6,26 @@
 }
 
 .article-image {
-  max-height: 80vh;
+  max-width: 40% !important;
+  max-height: 50vh;
 
-  display: block;
-  margin: 2em auto;
+  float: right;
+  margin: 2em;
 }
 
-@media screen and (min-width: 768px), print {
+@media screen and (max-width: 768px) {
   .article-image {
-    max-width: 40% !important;
-    max-height: 50vh;
+    max-width: 100% !important;
+    max-height: 80vh;
 
-    float: right;
-    margin: 2em;
+    display: block;
+    float: none;
+    margin: 2em auto;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
 }
 
 .note {
