@@ -1,6 +1,6 @@
 ---
 title: Instalar Go 1.10
-date: 2018-05-16T14:14:22-04:00
+date: 2018-06-08T06:30:00-04:00
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: /uploads/gopher.png
 categories:
@@ -20,20 +20,20 @@ hacerlo.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ md5sum go1.10.2.linux-amd64.tar.gz
-7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
+$ md5sum go1.10.3.linux-amd64.tar.gz
+c8c9dfc93ace6ac151709ce24100d8c0  go1.10.3.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo en `/usr/local`
 
 ```shell-session
-# tar -xvf go1.10.2.linux-amd64.tar.gz -C /usr/local
+# tar -xvf go1.10.3.linux-amd64.tar.gz -C /usr/local
 ```
 
 4\. Agregar los binarios a la lista de comandos del sistema
@@ -46,13 +46,13 @@ $ md5sum go1.10.2.linux-amd64.tar.gz
 
 ```shell-session
 $ go version
-go version go1.10.2 linux/amd64
+go version go1.10.3 linux/amd64
 ```
 
 6\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm go1.10.2.linux-amd64.tar.gz
+$ rm go1.10.3.linux-amd64.tar.gz
 ```
 
 {{% note %}}
@@ -103,20 +103,20 @@ ocasiones, depende de como se realice la instalación.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ md5sum go1.10.2.linux-amd64.tar.gz
-7d0d7e2b183b408d2d1ab703b2fe0430  go1.10.2.linux-amd64.tar.gz
+$ md5sum go1.10.3.linux-amd64.tar.gz
+c8c9dfc93ace6ac151709ce24100d8c0  go1.10.3.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo
 
 ```shell-session
-$ tar -xvf go1.10.2.linux-amd64.tar.gz
+$ tar -xvf go1.10.3.linux-amd64.tar.gz
 ```
 
 4\. Renombrar la carpeta de Go (para evitar cualquier conflicto)
@@ -137,16 +137,16 @@ $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
 **Paquete:**
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.10.2.src.tar.gz
-$ md5sum go1.10.2.src.tar.gz
-c63b35075bed693bbfc84d4a6262948a  go1.10.2.src.tar.gz
-$ tar -xvf go1.10.2.src.tar.gz
+$ wget https://dl.google.com/go/go1.10.3.src.tar.gz
+$ md5sum go1.10.3.src.tar.gz
+d15dfb264105c5e84fbe33f4a4aa5021  go1.10.3.src.tar.gz
+$ tar -xvf go1.10.3.src.tar.gz
 ```
 
 **Git:**
 
 ```shell-session
-$ git clone -b go1.10.2 --depth 1 https://go.googlesource.com/go
+$ git clone -b go1.10.3 --depth 1 https://go.googlesource.com/go
 ```
 
 7\. Compilar!
@@ -180,13 +180,13 @@ $ cd ../../
 
 ```shell-session
 $ go version
-go version go1.10.2 linux/amd64
+go version go1.10.3 linux/amd64
 ```
 
 11\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm -r go1.10.2.linux-amd64.tar.gz go1.10.2.src.tar.gz toolchain
+$ rm -r go1.10.3.linux-amd64.tar.gz go1.10.3.src.tar.gz toolchain
 ```
 
 Para instalar algunas utilidades más (como **godoc**, que permite generar la

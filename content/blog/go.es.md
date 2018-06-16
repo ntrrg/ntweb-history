@@ -1,6 +1,6 @@
 ---
-title: Go (Golang) 1.10
-date: 2018-05-16T12:23:25-04:00
+title: Go (Golang)
+date: 2018-06-16T00:48:00-04:00
 image: /uploads/gopher.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.
 categories:
@@ -13,12 +13,7 @@ tags:
   - programación-de-sistemas
   - programación-web
   - backend
-draft: true
 ---
-
-**Tabla de contenido:**
-
-{{< toc >}}
 
 [Go license]: https://golang.org/LICENSE
 
@@ -52,6 +47,10 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 
 * Minimalista. La mayoría de las utilidades que faltan en el lenguaje, fueron
   [excluidas intencionalmente](#).
+
+**Tabla de contenido:**
+
+{{< toc >}}
 
 # Herramientas necesarias
 
@@ -90,9 +89,9 @@ conozco son:
   navegador y [Better Go Playground][], que es una extensión de Chrome que lo
   hace más amigable.
 
-* [Extensiones para editores de texto][]
+* [Extensiones para editores de texto][].
 
-* [Herramientas para mejorar el código][]
+* [Herramientas para mejorar el código][].
 
 # Archivos Go
 
@@ -120,7 +119,7 @@ import "fmt" // -> Paquetes importados
 
 Luego se escriben todas las instrucciones que el programador quiera darle a la
 computadora, en el caso de usar `main` como nombre del paquete, se debe crear
-un bloque de código identificado con el mismo nombre para comunicarle al
+una [función](#funciones) identificada con el mismo nombre para comunicarle al
 compilador cuál es el código que debe ser invocado al usar el ejecutable.
 
 ```go
@@ -129,25 +128,13 @@ func main() {                 // ┐
 }                             // ┘
 ```
 
-A estos bloques se les llaman funciones (por eso el `func` al inicio, que viene
-de *«function»*) y su principal utilidad es modularizar y reutilizar el
-código, muy parecidas a los paquetes, solo que a una escala menor; tienen
-cierta sintaxis específica, pero por ahora basta con saber que:
-
-* Se usa la palabra reservada `func` para iniciar la declaración.
-
-* Separado por un espacio en blanco se escribe el nombre de la función
-  (`main` en este caso) y unos paréntesis (`()`).
-
-* Se escribe el código a ejecutar dentro de llaves (`{}`).
-
 [hello, world]: https://es.wikipedia.org/wiki/Hola_mundo
 
 En resumen, todo archivo escrito en Go tendrá la siguiente estructura:
 
 1. Nombre del paquete.
 2. Llamados a paquetes externos (opcional).
-3. Cuerpo del programa.
+3. Cuerpo del paquete.
 
 Siguiendo estas reglas, el programa más famoso ([hello, world][]) escrito en
 Go se vería algo así:
@@ -163,6 +150,31 @@ func main() {
   fmt.Println("hola, mundo")
 }
 ```
+
+El compilador ofrece dos métodos para ejecutarlo, el primero y más sencillo es
+usando el comando `go run`:
+
+```go
+$ go run hola_mundo.go
+hola, mundo
+```
+
+El segundo, es generar un archivo ejecutable a partir del archivo fuente y
+después ejecutarlo (obvio no? 😅), el comando anterior hace esto mismo, solo
+que crea un archivo temporal y lo ejecuta automáticamente
+
+```go
+$ go build hola_mundo.go
+$ ./hola_mundo
+hola, mundo
+```
+
+Aunque en algunos casos baste con un archivo para crear un paquete útil, en
+otras ocasiones la cantidad de código tiende a expandirse y tener muchas
+líneas en un solo lugar puede generar algunos problemas, por lo que es
+recomendable que lean la sección sobre [modularización](#paquetes). Para
+obtener más información sobre el comando `go` y como usarlo con múltiples
+archivos, pueden ir a la sección del [compilador](#compilador).
 
 # Comentarios
 
@@ -194,6 +206,248 @@ Este programa no hace nada..
 ```
 
 ## Documentación
+
+[GoDoc]: https://godoc.org
+[Docutils]: http://docutils.sourceforge.net/
+
+[GoDoc][] es una herramienta que permite usar los comentarios para generar
+documentación, algo parecida a [Docutils][] en Python, solo que un poco más
+sencilla, pues no requiere de un lenguaje de marcas para generar buena
+documentación, sino que usa texto plano.
+
+El objetivo principal de la documentación son las definiciones (`package`,
+`const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
+aquellas precedidas directamente por una o más líneas de comentarios.
+
+```go
+// Package arithmetic provides arithmetics operations for any type.
+package arithmetic
+
+// Identity constants
+const (
+  AdditiveIdentity       = 0
+  MultiplicativeIdentity = 1
+)
+
+// Operander is the interface that wraps the arithmetic representation methods.
+//
+// Val returns the variable's arithmetic representation (float64).
+type Operander interface {
+  Val() float64
+}
+
+// Add gets any number of Operander and returns their addition.
+func Add(operands ...Operander) float64 {
+  result := float64(0)
+
+  for _, v := range operands {
+    if v.Val() == AdditiveIdentity {
+      continue
+    }
+
+    result += v.Val()
+  }
+
+  return result
+}
+```
+
+Es común (y una buena práctica) que cada comentario inicie con el
+identificador del elemento que se quiere documentar, con la excepción de: el
+nombre del paquete, que debería iniciar con la palabra `Package` y luego sí
+el nombre del paquete; y también las constantes y variables agrupadas, que
+suele ser suficiente con documentar el grupo y no cada una de ellas.
+
+Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
+si:
+
+* Tiene el formato de un URL, será convertido a un enlace HTML.
+
+* Tiene una indentación, será convertido a un bloque de código.
+
+* Tiene el formato `BUG(USUARIO): DESCRIPCIÓN.`, será agregado a la lista de
+  bugs conocidos del paquete.
+
+Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
+sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
+el comentario del paquete en cada archivo, en realidad basta con que uno de los
+archivos lo tenga, por esto, si la documentación es algo extensa, se
+recomienda crear un archivo `doc.go` que contenga solo en nombre del paquete y
+su comentario de documentación.
+
+```go
+/*
+Package arithmetic provides arithmetics operations for any type.
+
+This is a long description of the Arithmetic package.
+
+	type Operand string
+
+	func (o Operand) Val() float64 {
+		return float64(len(o))
+	}
+
+	func main() {
+		var x, y Operand = "a", "b"
+
+		r := Add(x, y)
+		fmt.Println(r)
+	}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod egestas
+elit sed viverra. Nunc tincidunt lacinia orci in mattis. Praesent cursus neque
+et dapibus faucibus. Maecenas at sem ut arcu ornare commodo. Morbi laoreet
+diam sit amet est ultricies imperdiet. Proin ullamcorper ac massa a accumsan.
+Praesent quis bibendum tellus. Sed id velit libero. Fusce dapibus purus neque,
+sit amet sollicitudin odio porttitor posuere. Mauris eu dui elementum,
+fermentum ante vitae, porttitor nunc. Duis mi elit, viverra at turpis vitae,
+sollicitudin aliquet velit. Pellentesque nisl turpis, pulvinar et consectetur
+et, iaculis vel leo. Suspendisse euismod sem at vehicula fermentum. Duis
+viverra eget ante a accumsan.
+
+Aenean dui lectus, ultrices at elit id, pellentesque faucibus dolor. Duis
+blandit vulputate est, eget sollicitudin ipsum pellentesque quis. Cras sed nibh
+sed sapien suscipit tincidunt venenatis id eros. Praesent laoreet, erat quis
+hendrerit dignissim, justo diam semper elit, sit amet commodo lacus ipsum eget
+nisl. In a mi tellus. In hac habitasse platea dictumst. Aliquam et neque a quam
+mollis molestie. Etiam tempor arcu quis justo molestie congue.
+*/
+package arithmetic
+```
+
+### Ejemplos
+
+Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
+ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
+interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
+en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
+si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
+`ExampleIDENTIFICADOR[_MÉTODO]` para tener como objetivo solo un elemento.
+
+`arithmetic.go`:
+
+```go
+package arithmetic
+
+func Add(operands ...int) (result int) {
+  for _, v := range operands {
+    result += v
+  }
+
+  return result
+}
+
+func Sub(operands ...int) (result int) {
+  for _, v := range operands {
+    result -= v
+  }
+
+  return result
+}
+```
+
+`example_test.go`:
+
+```go
+package arithmetic_test
+
+import "fmt"
+
+func Example {
+  r := Add(1, 2) - Sub(3, 4)
+  fmt.Println(r)
+  // Output: 4
+}
+
+func ExampleAdd { 
+  r := Add(1, 2, 3, 4)
+  fmt.Println(r)
+  // Output: 10
+}
+
+func ExampleSub { 
+  r := Sub(5, 3, 1)
+  fmt.Println(r)
+  // Output: 1
+}
+```
+
+Cada función de ejemplo deberá mostrar por la salida estándar los
+resultados, y por cada salida que se realice, deberá existir un comentario
+especial `// Output: VALOR` que indica el valor esperado. Estas funciones son
+ejecutadas por `go test`, por lo que no solo tienen un uso informativo, sino
+que también ayudan a probar el código; si no se encuentra algún comentario
+especial, las funciones serán compiladas, pero no ejecutadas.
+
+Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
+objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
+letra.
+
+`example_test.go`:
+
+```go
+package arithmetic_test
+
+import "fmt"
+
+func ExampleAdd_two { 
+  r := Add(1, 2)
+  fmt.Println(r)
+  // Output: 3
+}
+
+func ExampleAdd_five { 
+  r := Add(1, 2, 3, 4, 5)
+  fmt.Println(r)
+  // Output: 15
+}
+```
+
+Como un ejemplo es representado por una función, no es posible demostrar
+algunas funcionalidades como la implementación de interfaces, por esta razón
+existen los ejemplos de archivos, estos consisten en un archivo que contiene
+exclusivamente una función de ejemplo y todas las definiciones a nivel de
+paquete que sean necesarias.
+
+`arithmetic.go`:
+
+```go
+package arithmetic
+
+type Operander interface {
+  Val() float64
+}
+
+func Add(operands ...Operander) float64 {
+  result := float64(0)
+
+  for _, v := range operands {
+    result += v.Val()
+  }
+
+  return result
+}
+```
+
+`whole_file_example_test.go`:
+
+```go
+package arithmetic_test
+
+type Operand string
+
+func (o Operand) Val() float64 {
+  return float64(len(o))
+}
+
+func ExampleAdd() {
+  var x, y Operand = "a", "b"
+
+  r := Add(x, y)
+  fmt.Println(r)
+  // Output: 2
+}
+```
 
 # Tipos de datos
 
@@ -432,6 +686,14 @@ Punteros:
 <https://tour.golang.org/moretypes/4>
 <https://tour.golang.org/moretypes/5>
 
+# Compilador
+
+GOPATH
+
+GOROOT
+
+GOTPMDIR
+
 # Buenas prácticas
 
 # Atribuciones
@@ -442,3 +704,6 @@ Punteros:
 
 **Thomas Finley.** *Two's Complement.* <https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html>
 
+**Andrew Gerrand.** *Godoc: documenting Go code.* <https://blog.golang.org/godoc-documenting-go-code>
+
+**Andrew Gerrand.** *Testable Examples in Go.* <https://blog.golang.org/examples>

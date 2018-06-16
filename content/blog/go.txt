@@ -1,293 +1,3 @@
-.. site-description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.
-
-.. role:: emoji
-
-.. role:: go(code)
-    :language: go
-
-=================
-[WIP] Golang (Go)
-=================
-
--------
-v1.10.1
--------
-
-:Author: Miguel Angel Rivera Notararigo
-:Contact: `@ntrrg </es/autores/ntrrg/>`_
-:Date: 2018-04-01T22:48:00-04:00
-:Category: tecnologia
-:Tags: backend; desarrollo; golang;
-
-.. image:: images/index.png
-    :class: article-image
-    :alt: Golang gopher
-
-__ https://golang.org/LICENSE
-
-Fue diseñado en el año 2007 por Ken Thompson, Rob Pike y Robert Griesemer en
-Google. Es de código abierto y es ditribuido bajo una licencia `BSD-style`__.
-Algunas de sus características son:
-
-__ https://es.wikipedia.org/wiki/Recolector_de_basura
-__ `Utilidades excluidas`_
-
-* Imperativo, los programas se escriben como una serie de instrucciones que la
-  computadora debe seguir para resolver un problema (si leyendo esto piensan
-  «*¿Y no es así como se escriben todos los programas?* :emoji:`😒`», la
-  respuesta es no, existen otros paradigmas de programación que trabajan con
-  enfoques muy diferentes a este).
-
-* Compilado, todo el código escrito es traducido a lenguaje máquina antes de
-  poder ejecutarse.
-
-* Tipado estático, una vez que se define el tipo de una variable, este no puede
-  ser modificado.
-
-* Fuertemente tipado, no permite realizar operaciones entre datos de diferente
-  tipo, deben hacerse cambios de tipo explícitamente.
-
-* No es necesario liberar manualmente la memoria asignada, usa un GC__ que se
-  encarga de esto, lo que da facilidades en el manejo de memoria.
-
-* Concurrencia y paralelismo de manera nativa (por medio de palabras reservadas
-  y operadores, también tiene algunas bibliotecas que permiten aplicar técnicas
-  de más bajo nivel).
-
-* Minimalista. La mayoría de las utilidades que faltan en el lenguaje, fueron
-  `excluidas intencionalmente`__.
-
-.. contents:: Tabla de contenido
-
-Instalación
-===========
-
-__ `Desde el código fuente`_
-
-La forma más rápida de instalar (si se tiene buena conexión a internet
-:emoji:`😅`) es descargando la versión binaria, que es la que explico aquí, si
-lo quieren compilar desde el código fuente, en `esta sección`__ explico el
-procedimiento para hacerlo.
-
-#. Descargar el paquete con los binarios
-
-   .. code:: shell-session
-
-       $ wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
-
-#. Verificar que se haya descargado correctamente (la salida del comando
-   ``md5sum`` debe ser igual en cualquier computadora)
-
-   .. code:: shell-session
-
-       $ md5sum go1.10.1.linux-amd64.tar.gz
-
-   .. code:: shell-session
-
-       ad5d557f69f8cb6a6a7773eb374a24c9  go1.10.1.linux-amd64.tar.gz
-
-#. Descomprimirlo en ``/usr/local``
-
-   .. code:: shell-session
-
-       # tar -xvf go1.10.1.linux-amd64.tar.gz -C /usr/local
-
-#. Agregar los binarios a la lista de comandos del sistema
-
-   .. code:: shell-session
-
-       # ln -s /usr/local/go/bin/* /usr/bin/
-
-#. Verificar que se haya instalado correctamente
-
-   .. code:: shell-session
-
-       $ go version
-
-   .. code:: shell-session
-
-       go version go1.10.1 linux/amd64
-
-.. admonition:: Nota
-
-    Es posible instalar Go en una ruta personalizada e incluso sin permisos de
-    super usuario, los pasos serían muy parecidos a los anteriores, solo que
-    hay que cambiar las rutas y opcionalmente, si se quieren usar algunas
-    utilidades, como ver la documentación de los paquetes, se debe definir la
-    variable de entorno ``GOROOT``, que le dice al sistema donde está
-    instalado Go.
-
-    .. code:: shell-session
-
-        $ export GOROOT="${HOME}/.local/go"
-
-    **Zsh:**
-
-    .. code:: shell-session
-
-        $ echo "export GOROOT=\"${GOROOT}\"" >> ~/.zshenv
-
-    **Bash:**
-
-    .. code:: shell-session
-
-        $ echo "export GOROOT=\"${GOROOT}\"" >> ~/.profile
-
-Desde el código fuente
-----------------------
-
-#. Descargar el código fuente
-
-   .. code:: shell-session
-
-       $ wget https://dl.google.com/go/go1.10.1.src.tar.gz
-
-#. Verificar que se haya descargado correctamente (la salida del comando
-   ``md5sum`` debe ser igual en cualquier computadora)
-
-   .. code:: shell-session
-
-       $ md5sum go1.10.1.src.tar.gz
-       d55e8b2c6272ab1abf5e4e6cdaaca680  go1.10.1.src.tar.gz
-
-#. Todavía no se hacer el resto :emoji:`😅` por ahora usen los binarios
-
-Herramientas
-============
-
-Para empezar a programar solo hacen falta dos cosas:
-
-__ Instalación_
-
-* El compilador (las instrucciones para instalarlo están arriba__).
-* Un editor de texto.
-
-Aunque ya con esto es más que suficiente para desarrollar tranquilamente,
-existen muchas herramientas que ayudan a mejorar la velocidad de trabajo e
-integran bastantes utilidades en el flujo de trabajo sin mucha fricción. Las
-que yo uso son:
-
-__ https://play.golang.org/
-__ https://chrome.google.com/webstore/detail/odfhkelcmblecfdnboahphiafolojmpl
-
-* Gophertool, que es una extensión muy sencilla de Chrome y viene con la
-  instalación de Go, específicamente en la carpeta ``misc/chrome/gophertool``.
-  Fue creada para ayudar a los programadores del lenguaje con algunos accesos
-  rápidos, pero para simple mortales como yo, sirve para buscar en la
-  documentación de la biblioteca estándar.
-
-* El `Playground oficial`__ que permite probar código directamente en el
-  navegador y `Better Go Playground`__, que es una extensión de Chrome que lo
-  hace más amigable.
-
-Archivos Go
-===========
-
-Todos los archivos escritos en Go forman parte de un paquete, que es la unidad
-de distribución de código en este lenguaje, por esto, todos los archivos deben
-iniciar con una línea que contenga :go:`package NOMBRE`, donde ``NOMBRE`` es un
-valor asignado por el desarrollador y es el identificador con el que otros
-podrán utilizarlo dentro de sus programas (por ahora se ve como una cosa rara,
-pero en la sección de Modularización_ se puede ver lo útil que es crear
-bibliotecas). Cuando se pretende desarrollar algún comando o alguna aplicación
-se usa :go:`package main`, ``main`` es un nombre especial que le dice al
-compilador que la intención del archivo no es servir como biblioteca, sino como
-un ejecutable.
-
-.. code:: go
-    :number-lines:
-
-    package main -> Nombre del paquete
-    ...
-
-Después de una línea en blanco, se hace el llamado a los paquetes que se usarán
-en el programa (si hace falta ¿no?, no es que sea obligatorio usar al menos un
-paquete :emoji:`😂`), por ejemplo, si se quiere escribir algo en pantalla se
-debe importar el paquete ``fmt``.
-
-.. code:: go
-    :number-lines: 2
-
-    ...
-    import "fmt" -> Paquetes importados
-    ...
-
-Luego se escriben todas las instrucciones que el programador quiera darle a la
-computadora, en el caso de usar ``main``, se debe crear un bloque de código
-identificado con el mismo nombre para comunicarle al compilador cuál es el
-código que debe ser invocado al usar el ejecutable.
-
-.. code:: go
-    :number-lines: 4
-
-    ...
-    func main() { ┐
-      ...         │-> Bloque de código
-    }             ┘
-
-A estos bloques se les llaman funciones_ (por eso el :go:`func` al inicio, que
-viene de «*function*») y su principal utilidad es modularizar y reutilizar el
-código, muy parecidas a los paquetes, solo que a una escala menor; tienen
-cierta sintaxis específica, pero por ahora basta con saber que:
-
-#. Se usa la palabra reservada :go:`func` para iniciar la declaración.
-
-#. Separado por un espacio en blanco se escribe el nombre de la función
-   (``main`` en este caso) y unos paréntesis (``()``).
-
-#. Se escribe el código a ejecutar dentro de llaves (``{}``).
-
-__ https://es.wikipedia.org/wiki/Hola_mundo
-
-----
-
-En resumen, todo archivo escrito en Go tendrá la siguiente estructura:
-
-#. Nombre del paquete.
-#. Llamados a paquetes externos (opcional).
-#. Cuerpo del programa.
-
-Siguiendo estas reglas, el programa más famoso (`hello, world`__) escrito en Go
-se vería algo así:
-
-``hola_mundo.go``:
-
-.. include:: go-learning/1-archivos-go/hola_mundo.go
-    :code: go
-    :number-lines:
-    :tab-width: 2
-
-Comentarios
-===========
-
-Los comentarios son texto ignorado por el compilador, su función principal es
-documentar ciertas secciones de código que sean un poco difíciles de entender a
-simple vista, pero en muchas ocasiones también son usados para ocultar código
-de los ojos del compilador y ver como se comporta el programa. Existen dos
-tipos de comentarios:
-
-* De línea
-
-.. code:: go
-    :number-lines:
-
-    fmt.Println("hola, mundo") // Así se escribe un comentario de línea
-    // Las sentencias comentadas no son procesadas por el compilador
-    // fmt.Println("chao, mundo")
-
-* Generales
-
-.. code:: go
-    :number-lines:
-
-    /* Así se escribe un comentario general
-    func main() {
-        fmt.Println("hola, mundo")
-    }
-
-    Este programa no hace nada..
-    */
-
 Tipos de datos
 ==============
 
@@ -410,6 +120,20 @@ https://tour.golang.org/flowcontrol/4
 
 Funciones
 =========
+
+A estos bloques se les llaman funciones (por eso el `func` al inicio, que viene
+de *«function»*) y su principal utilidad es modularizar y reutilizar el
+código, muy parecidas a los paquetes, solo que a una escala menor; tienen
+cierta sintaxis específica, pero por ahora basta con saber que:
+
+* Se usa la palabra reservada `func` para iniciar la declaración.
+
+* Separado por un espacio en blanco se escribe el nombre de la función
+  (`main` en este caso) y unos paréntesis (`()`).
+
+* Se escribe el código a ejecutar dentro de llaves (`{}`).
+
+Funciones main() e init()
 
 .. Functions
 .. Recursion
@@ -543,6 +267,8 @@ https://youtu.be/f6kdp27TYZs?t=18m28s
 
 Modularización
 ==============
+
+Función init()
 
 .. Printf
 .. File I/O

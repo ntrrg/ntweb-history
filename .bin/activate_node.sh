@@ -1,7 +1,7 @@
 #!/bin/sh
 
 main() {
-  local release="10.3.0"
+  local release="10.4.1"
   local name="node-v$release-linux-x64"
   local env="$PWD/.vendor/node"
 
