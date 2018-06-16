@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DEST="$OLDPWD/.vendor/hugo"
-RELEASE="0.41"
+RELEASE="0.42.1"
 PACKAGE="hugo_${RELEASE}_Linux-64bit.tar.gz"
 
 cd /tmp || exit 1
