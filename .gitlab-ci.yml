@@ -1,0 +1,10 @@
+image: node:10.4.1-alpine
+cache:
+  paths:
+    - .vendor
+    - node_modules
+test:
+  script:
+    - .bin/install-hugo.sh
+    - npm install
+    - npm run ci
