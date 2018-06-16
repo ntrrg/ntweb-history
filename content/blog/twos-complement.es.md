@@ -8,6 +8,5 @@ tags:
   - algebra
   - computación
   - números-binarios
-draft: true
 ---
 
