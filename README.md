@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/ntrrg/ntrrg.github.io.svg?branch=master)](https://travis-ci.com/ntrrg/ntrrg.github.io)
 [![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://hub.docker.com/r/ntrrg/site/)
-[![coverage report](https://gitlab.com/ntrrg/ntrrg.github.io/badges/master/coverage.svg)](https://gitlab.com/ntrrg/ntrrg.github.io/commits/master)
+[![pipeline status](https://gitlab.com/ntrrg/ntrrg.github.io/badges/master/pipeline.svg)](https://gitlab.com/ntrrg/ntrrg.github.io/commits/master)
 
 This site was migrated to Hugo and is hosted now by Netlify.
 

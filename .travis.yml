@@ -6,10 +6,8 @@ git:
 language: node_js
 node_js:
   - "10.4.1"
-before_install: .bin/install_hugo.sh
-script: npm run ci
+script: .bin/install_hugo.sh && npm run ci
 cache:
   directories:
-    - .vendor
     - node_modules
 
