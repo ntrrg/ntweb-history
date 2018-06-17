@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean": "rm -rf .nyc_output/ .vendor/node .vendor/hugo node_modules/",
-    "ci": "npm run lint && npm test && .vendor/hugo",
+    "ci": "npm run lint && npm test",
     "dev": "npm run nodemon -- -x 'npm run lint:js && npm test'",
     "edition": "npm run nodemon -- -e md -x 'npm run lint:md'",
     "lint": "npm run lint:js && npm run lint:md",
