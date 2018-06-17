@@ -1,0 +1,6 @@
+pipeline:
+  test:
+    image: node:10.4.1-alpine
+    commands:
+      - npm install
+      - npm run ci
