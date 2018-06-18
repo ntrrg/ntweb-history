@@ -199,3 +199,9 @@ $ go get -v golang.org/x/tools/cmd/...
 Estos paquetes deberían instalarse en la carpeta a la que esté apuntando la
 variable de entorno `$GOPATH` (que por defecto es `~/go`).
 
+# Atribuciones
+
+**Go Team.** *Getting Started.* <https://golang.org/doc/install>
+
+**Go Team.** *Installing Go from source.* <https://golang.org/doc/install/source>
+

@@ -27,8 +27,6 @@ hacer de este trabajo una tarea más amigable, por lo que gran parte de las
 instrucciones que se encuentran aquí son extraídas o están inspiradas en
 ella.
 
-**Tabla de contenido:**
-
 {{< toc >}}
 
 # Requisitos
@@ -241,4 +239,8 @@ Si hay cambios es recomendable ejecutar nuevamente las pruebas.
 ```shell-session
 $ git codereview mail
 ```
+
+# Atribuciones
+
+**Go Team.** *Contributing Guide.* <https://golang.org/doc/contribute.html>
 

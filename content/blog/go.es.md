@@ -48,8 +48,6 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 * Minimalista. La mayoría de las utilidades que faltan en el lenguaje, fueron
   [excluidas intencionalmente](#).
 
-**Tabla de contenido:**
-
 {{< toc >}}
 
 # Herramientas necesarias

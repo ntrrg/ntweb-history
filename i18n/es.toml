@@ -1,6 +1,9 @@
 [DARK_THEME]
 other = "Tema oscuro"
 
+[TOC_TITLE]
+other = "Tabla de Contenido"
+
 [DEFAULT_NOTE_TITLE]
 other = "Nota"
 
