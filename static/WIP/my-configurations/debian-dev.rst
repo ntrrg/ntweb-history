@@ -137,33 +137,21 @@ Zsh
 Syncs
 =====
 
-``NtFlash`` -> ``NtLaptop``:
+``NtLaptop`` -> ``NtFlash``:
 
 .. code:: sh
 
     rsync -uaHXh --delay-updates --delete-delay --progress \
       --exclude="/Server/" \
-    /media/ntrrg/NtFlash/ \
-    /media/ntrrg/NtLaptop/
+    /media/ntrrg/NtLaptop/ /media/ntrrg/NtFlash/
 
-``NtFlash`` -> ``NtDisk``:
+``NtFlash`` -> ``NtServer``:
 
 .. code:: sh
 
     rsync -uaHXh --delay-updates --delete-delay --progress \
       --exclude="/Server/" \
-    /media/ntrrg/NtFlash/ \
-    /media/ntrrg/NtDisk/srv/storage/data/ntrrg/
-
-----
-
-``NtDisk`` -> ``NtServer``:
-
-.. code:: sh
-
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-    /media/ntrrg/NtDisk/srv/storage/data/ntrrg/ \
-    /media/ntrrg/NtServer/srv/storage/data/ntrrg/
+    /media/ntrrg/NtFlash/ /media/ntrrg/NtDisk/srv/storage/data/ntrrg/
 
 ----
 
@@ -172,55 +160,61 @@ Syncs
 .. code:: sh
 
     rsync -uaHXh --delay-updates --delete-delay --progress \
-      --exclude="/srv/storage/data/ntrrg/" \
       --exclude="/var/lib/docker" --exclude="/var/lib/rkt" \
-    /media/ntrrg/NtServer/ \
-    /media/ntrrg/NtDisk/
+    /media/ntrrg/NtServer/ /media/ntrrg/NtDisk/
 
 ----
 
-``NtDisk`` -> ``NtFlash``:
+``NtServer`` -> ``NtFlash``:
 
 .. code:: sh
 
     rsync -uaHXh --delay-updates --delete-delay --progress \
       --exclude="/debian/"
-    /media/ntrrg/NtDisk/srv/mirrors/ \
+    /media/ntrrg/NtServer/srv/mirrors/ \
     /media/ntrrg/NtFlash/Server/srv/mirrors/
 
-----
-
-``NtFlash`` -> Dropbox:
+``NtFlash`` -> ``NtLaptop``:
 
 .. code:: sh
 
-    cd /media/ntrrg/NtFlash/
-
-.. code:: sh
-
-    rsync -uazh --delay-updates --delete-delay --progress \
-      --exclude=".dropbox.cache/" --exclude=".dropbox" \
-      --exclude="node-modules/" --exclude="package-lock.json" \
-      --exclude="__pycache__/" \
-    Backups Development Documents Pictures Ringtones Templates \
-    rsync://nt.web.ve/cloud/dropbox/
+    rsync -uaHXh --delay-updates --delete-delay --progress \
+    /media/ntrrg/NtFlash/Server/srv/mirrors/ \
+    /media/ntrrg/NtLaptop/Server/srv/mirrors/
 
 ----
 
-``NtFlash`` -> MEGA:
+``NtServer`` -> Dropbox:
 
 .. code:: sh
 
-    cd /media/ntrrg/NtFlash/
+    cd /media/ntrrg/NtServer/srv/storage/data/ntrrg/
 
-.. code:: sh
-
-    rsync -uazh --delay-updates --delete-delay --progress \
-      --exclude=".debris/" \
-      --exclude="node-modules/" --exclude="package-lock.json" \
-      --exclude="__pycache__/" \
+    cp -rf --reflink \
     Backups Development Documents Pictures Ringtones Templates Work \
-    rsync://nt.web.ve/cloud/mega/
+    /media/ntrrg/NtServer/srv/sync/data/ntrrg/Dropbox
+
+    rsync --ignore-existing -ah --delete --progress \
+      --exclude=".dropbox.cache/" --exclude=".dropbox" \
+    Backups Development Documents Pictures Ringtones Templates Work \
+    /media/ntrrg/NtServer/srv/sync/data/ntrrg/Dropbox/
+
+----
+
+``NtServer`` -> MEGA:
+
+.. code:: sh
+
+    cd /media/ntrrg/NtServer/srv/storage/data/ntrrg/
+
+    cp -rf --reflink \
+    Backups Development Documents Pictures Ringtones Templates Work \
+    /media/ntrrg/NtServer/srv/sync/data/ntrrg/mega
+
+    rsync --ignore-existing -ah --delete --progress \
+      --exclude=".debris/" \
+    Backups Development Documents Pictures Ringtones Templates Work \
+    /media/ntrrg/NtServer/srv/sync/data/ntrmega/
 
 Mirrors
 -------
