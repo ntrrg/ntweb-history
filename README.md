@@ -63,9 +63,21 @@ Working on this site I use/used:
 
 * [GitHub](https://github.com)
 
+* [Gitlab](https://gitlab.com/)
+
+* [Gogs](https://gogs.io/)
+
 * [Travis CI](https://travis-ci.org)
+
+* [Drone](https://drone.io/)
 
 * [Docker](https://docker.com)
 
-**Sindre Sorhus.** *github-markdown-css.* <https://github.com/sindresorhus/github-markdown-css>
+* [Netlify](https://www.netlify.com/)
+
+* [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
+
+* [Normalize.css](https://necolas.github.io/normalize.css/)
+
+* [Google Tag Manager](https://www.google.com/analytics/tag-manager/)
 
