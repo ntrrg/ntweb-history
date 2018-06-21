@@ -46,9 +46,11 @@ Google. Es de código abierto y es ditribuido bajo una licencia
   de más bajo nivel).
 
 * Minimalista. La mayoría de las utilidades que faltan en el lenguaje, fueron
-  [excluidas intencionalmente](#).
+  [excluidas intencionalmente](#funcionalidades-excluidas).
 
 {{< toc >}}
+
+# Funcionalidades excluidas
 
 # Herramientas necesarias
 
@@ -59,8 +61,9 @@ Para empezar a programar solo hacen falta dos cosas:
 [Instalar Go]: {{< relref "blog/install-go-1.10.es.md" >}}
 [Install Go]: https://golang.org/doc/install
 
-* El compilador (las instrucciones para instalarlo pueden verlas
-  [aquí][Instalar Go] o en la [documentación oficial][Install Go]).
+* El compilador (pueden ver las instrucciones para instalarlo en la
+  [documentación oficial][Install Go] o en este [artículo][Instalar Go]
+  sobre como instalar Go).
 
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 
@@ -90,6 +93,9 @@ conozco son:
 * [Extensiones para editores de texto][].
 
 * [Herramientas para mejorar el código][].
+
+* [GoDoc](https://godoc.org/golang.org/x/tools/cmd/godoc) para generar la
+  [documentación](#documentación) de los paquetes.
 
 # Archivos Go
 
@@ -149,8 +155,8 @@ func main() {
 }
 ```
 
-El compilador ofrece dos métodos para ejecutarlo, el primero y más sencillo es
-usando el comando `go run`:
+El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
+usando el comando `go run`.
 
 ```go
 $ go run hola_mundo.go
@@ -159,7 +165,7 @@ hola, mundo
 
 El segundo, es generar un archivo ejecutable a partir del archivo fuente y
 después ejecutarlo (obvio no? 😅), el comando anterior hace esto mismo, solo
-que crea un archivo temporal y lo ejecuta automáticamente
+que crea un archivo temporal y lo ejecuta automáticamente.
 
 ```go
 $ go build hola_mundo.go
@@ -175,6 +181,8 @@ obtener más información sobre el comando `go` y como usarlo con múltiples
 archivos, pueden ir a la sección del [compilador](#compilador).
 
 # Comentarios
+
+* <https://golang.org/ref/spec#Comments>
 
 Los comentarios son texto ignorado por el compilador, su función principal es
 documentar ciertas secciones de código que sean un poco difíciles de entender
@@ -204,6 +212,8 @@ Este programa no hace nada..
 ```
 
 ## Documentación
+
+* <https://blog.golang.org/godoc-documenting-go-code>
 
 [GoDoc]: https://godoc.org
 [Docutils]: http://docutils.sourceforge.net/
@@ -315,6 +325,8 @@ package arithmetic
 
 ### Ejemplos
 
+* <https://blog.golang.org/examples>
+
 Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
 ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
 interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
@@ -357,13 +369,13 @@ func Example {
   // Output: 4
 }
 
-func ExampleAdd { 
+func ExampleAdd {
   r := Add(1, 2, 3, 4)
   fmt.Println(r)
   // Output: 10
 }
 
-func ExampleSub { 
+func ExampleSub {
   r := Sub(5, 3, 1)
   fmt.Println(r)
   // Output: 1
@@ -388,13 +400,13 @@ package arithmetic_test
 
 import "fmt"
 
-func ExampleAdd_two { 
+func ExampleAdd_two {
   r := Add(1, 2)
   fmt.Println(r)
   // Output: 3
 }
 
-func ExampleAdd_five { 
+func ExampleAdd_five {
   r := Add(1, 2, 3, 4, 5)
   fmt.Println(r)
   // Output: 15
@@ -463,9 +475,13 @@ son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
 
 ## Booleanos
 
-Nombrados así en honor a George Boole, también son conocidos como lógicos,
-representan valores de verdad (verdadero o falso) que normalmente son usados
-para controlar el flujo de los programas.
+* <https://golang.org/ref/spec#Boolean_types>
+
+[George Boole]: https://es.wikipedia.org/wiki/George_Boole
+
+Nombrados así en honor a [George Boole][], también son conocidos como
+lógicos, representan valores de verdad (verdadero o falso) que normalmente son
+usados para controlar el flujo de los programas.
 
 ### Representación sintáctica
 
@@ -484,35 +500,6 @@ false
 
 ```go
 false
-```
-
-## Cadenas
-
-### Representación sintáctica
-
-```go
-string
-```
-
-### Ejemplos
-
-```go
-"C"
-"Cadena de caracteres"
-
-`Cadena
-de
-caracteres
-multilineal`
-
-"Cadena con\nsalto de línea"
-`Cadena sin\nsecuencias de escape`
-```
-
-### Valor cero
-
-```go
-""
 ```
 
 ## Numéricos
@@ -563,8 +550,8 @@ int64 // -9223372036854775808 - 9223372036854775807
 
 uintptr // Permite almacenar direcciones de memoria
 
-byte // Equivale a uint8, puede almacenar un caracter ASCII
-rune // Equivale a uint32, puede almacenar un caracter UTF-8
+byte // Equivale a uint8
+rune // Equivale a uint32, ver sección Cadenas
 
 // Dependiendo de la arquitectura del procesador
 uint // Equivale a uint32 o uint64
@@ -581,9 +568,6 @@ int  // Equivale a int32 o int64
 10
 012
 0xA
-
-'a'  // 97, caracter ASCII
-'😂' // 128514, caracter UTF-8
 ```
 
 #### Valor cero
@@ -612,16 +596,6 @@ float64 // 0 - 18446744073709551615
 #### Ejemplos
 
 ```go
-5   // Decimal
-05  // Octal (tienen el prefijo `0`)
-0x5 // Hexadecimal (tienen el prefijo `0x`)
-
-10
-012
-0xA
-
-'a'  // 97, caracter ASCII
-'😂' // 128514, caracter UTF-8
 ```
 
 #### Valor cero
@@ -632,33 +606,17 @@ float64 // 0 - 18446744073709551615
 
 ### Complejos
 
-.. Numerics
-.. Casting
-
-..     .3. Tipos de variable
-..         .1. Simples
-..             .1. Numéricos
-..         .2. Compuestos
-..             .1. Cadenas
-..             .2. Listas
-..             .3. Tuplas
-..             .4. Conjuntos
-..             .5. Diccionarios
-..     .4. Cambio de tipo
-
-<https://tour.golang.org/basics/11>
-<https://tour.golang.org/basics/13>
-
-Estructuras:
+## Estructuras
 
 <https://tour.golang.org/moretypes/2>
 <https://tour.golang.org/moretypes/3>
 
-Arreglos:
+## Arreglos
 
 <https://tour.golang.org/moretypes/6>
+<https://blog.golang.org/slices>
 
-Porciones:
+## Porciones
 
 <https://tour.golang.org/moretypes/7>
 <https://tour.golang.org/moretypes/8>
@@ -670,19 +628,268 @@ Porciones:
 <https://tour.golang.org/moretypes/14>
 <https://tour.golang.org/moretypes/15>
 <https://blog.golang.org/go-slices-usage-and-internals>
+<https://github.com/golang/go/wiki/SliceTricks>
+<https://blog.golang.org/slices>
+<https://research.swtch.com/godata>
 
-Mapas:
+## Cadenas
+
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
+
+* [Codificación de texto]({{< relref "blog/text-encoding.es.md" >}})
+
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+
+* <https://golang.org/ref/spec#String_types>
+
+* <https://golang.org/ref/spec#String_literals>
+
+* <https://golang.org/ref/spec#Rune_literals>
+
+* <https://blog.golang.org/slices>
+
+* <https://blog.golang.org/strings>
+
+* <https://research.swtch.com/godata>
+
+
+Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
+de una runa (un punto de código Unicode codificado en UTF-8), que no es más
+que un caracter dentro de la cadena; aunque los bytes y las runas sean datos
+numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos como
+texto, es decir, si se intenta convertir el número `77` en una cadena
+(`string(77)`), Go seleccionará el punto de código Unicode `U+004d` (`77` es
+`4d` en números hexadecimales) y obtendrá la letra `M`.
+
+Se usan las comillas (`"`) y los acentos graves (<code>\`</code>) para la
+definición de cadenas literales, y a diferencia de otros lenguajes, el
+apóstrofo (`'`) se usa para representar runas literales, no cadenas.
+
+```go
+"Yo soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
+// Yo soy una cadena interpretada
+// y puedo procesar secuencias de escape 😎
+```
+
+```go
+`Yo soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔`
+// Yo soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+
+`Pero puedo tener varias líneas,
+quien es mejor ahora 😒`
+// Pero puedo tener varias líneas,
+// quien es mejor ahora 😒
+```
+
+Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y `😂` tengan la misma longitud.
+
+```go
+len("Hola") // 4
+// "Hola" es una cadena compuesta por cuatro bytes, cada uno
+// representa una runa.
+// 'H' ->  72 -> U+0048 -> 1001000
+// 'o' -> 111 -> U+006f -> 1101111
+// 'l' -> 108 -> U+006c -> 1101100
+// 'a' ->  92 -> U+0061 -> 1100001
+
+len("😂") // 4
+// "😂" es una cadena compuesta por cuatro bytes, todos
+// representan una runa
+// '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
+```
+
+Y ya que son un tipo de dato compuesto (técnicamente `[]byte`), soportan
+operaciones de porciones para acceder a sus elementos.
+
+```go
+"Hola"[0]   // 72, primer elemento (0)
+"Hola"[1:3] // "ol", elementos del 1 (inclusivo) al 3 (exclusivo)
+"Hola"[:2]  // "Ho", elementos del 0 (inclusivo) al 2 (exclusivo)
+"Hola"[2:]  // "la", elementos del 2 (inclusivo) al último elemento (len("Hola"))
+"Hola"[3]   // 97, último elemento (len("Hola") - 1)
+"Hola"[:]   // "Hola", todos los elementos
+
+"😂"[1] // 159, extrae uno de los bytes que componen la runa
+```
+
+Pero son inmutables.
+
+```go
+"Hola"[2] = 'L' // cannot assign to "Hola"[2]
+```
+
+También si no se tiene en cuenta el hecho de que algunos caracteres están
+compuestos por más de un byte, iterar sobre ellos resultaría diferente a lo
+esperado.
+
+```go
+x := "😂"
+
+for i := 0; i < len(x); i++ {
+  fmt.Println(x[i])
+}
+```
+
+```shell-session
+240
+159
+152
+130
+```
+
+Por esto se recomienda usar `range`, que extrae runa a runa.
+
+```go
+for _,  v := range "😂" {
+  fmt.Println(v)
+}
+```
+
+```shell-session
+128514
+```
+
+O para los casos en los que `range` tampoco cumpla con las expectativas (no se
+quiera iterar sobre la cadena), se puede usar [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString).
+
+```go
+package main
+
+import (
+  "fmt"
+  "unicode/utf8"
+)
+
+func main() {
+  x := "😂"
+
+  // Sin iteración, extrae solo la primera runa
+  fmt.Println(utf8.DecodeRuneInString(x))
+
+  // Equivale a usar range
+  for i := 0; i < len(x); {
+    v, w := utf8.DecodeRuneInString(x[i:])
+    fmt.Println(v)
+    i += w
+  }
+}
+```
+
+```shell-session
+128514 4
+128514
+```
+
+### Representación sintáctica
+
+```go
+string
+```
+
+### Ejemplos
+
+```go
+'M'  //     74 -> U+004d  -> 1001101 (7 bits)
+'😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
+
+"C"
+"Cadena de caracteres"
+
+`Cadena
+de
+caracteres
+multilineal`
+```
+
+#### Secuencias de escape
+
+```go
+"\a" // Bell character
+"\b" // Backspace
+"\t" // Horizontal tab
+"\n" // Line feed
+"\v" // Vertical tab
+"\f" // Form feed
+"\r" // Carriage return
+"\"" // Quotation mark
+"\\" // Backslash
+
+'\a' // 7
+'\b' // 8
+'\t' // 9
+'\n' // 10
+'\v' // 11
+'\f' // 12
+'\r' // 13
+'\'' // 39
+'\\' // 92
+```
+
+También es posible escribir puntos de código Unicode o su representación en
+bytes.
+
+```go
+// Unicode
+
+  // Versión corta (u y 4 dígitos)
+
+'\u004d' // 77
+"\u004d" // "M"
+
+  // Versión larga (U y 8 dígitos)
+
+'\U0000004d' // 77
+"\U0000004d" // "M"
+'\U00f1f064' // 128516
+"\U00f1f064" // "😄"
+
+// Bytes (UTF-8)
+
+  // Octales (3 dígitos)
+
+'\115'                // 77
+"\115"                // "M"
+// '\360\237\230\204' // No soporta más de un byte escapado
+"\360\237\230\204"    // "😄"
+
+  // Hexadecimales (x y 2 dígitos)
+
+'\x4d'                // 77
+"\x4d"                // "M"
+// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
+"\xf0\x9f\x98\x84"    // "😄"
+```
+
+### Valor cero
+
+```go
+""
+```
+
+## Mapas
 
 <https://tour.golang.org/moretypes/19>
 <https://tour.golang.org/moretypes/20>
 <https://tour.golang.org/moretypes/21>
 <https://tour.golang.org/moretypes/22>
 
-Punteros:
+## Punteros
 
 <https://tour.golang.org/moretypes/1>
 <https://tour.golang.org/moretypes/4>
 <https://tour.golang.org/moretypes/5>
+
+## Cambios de tipos
+
+<https://tour.golang.org/basics/13>
+
+# Constantes
+
+<https://blog.golang.org/constants>
+
+# Estructuras de repetición
+
+## `for`
 
 # Compilador
 
@@ -696,12 +903,11 @@ GOTPMDIR
 
 # Atribuciones
 
-**Go Team.** *The Go Programming Language.* <https://golang.org/>
+**Go Team.** *Documentation* <https://golang.org/doc/>
 
 **Ariel Mashraki.** *An overview of Go syntax and features.* <https://github.com/a8m/go-lang-cheat-sheet>
 
 **Thomas Finley.** *Two's Complement.* <https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html>
 
-**Andrew Gerrand.** *Godoc: documenting Go code.* <https://blog.golang.org/godoc-documenting-go-code>
+**Autores de Wikipedia.** *List of Unicode characters.* <https://en.wikipedia.org/wiki/List_of_Unicode_characters>
 
-**Andrew Gerrand.** *Testable Examples in Go.* <https://blog.golang.org/examples>

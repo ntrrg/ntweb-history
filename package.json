@@ -25,7 +25,8 @@
     "lint:js": "echo standart src/",
     "lint:md": "remark .",
     "nodemon": "NODE_ENV=development nodemon -V",
-    "start": ".vendor/hugo -DEF server",
+    "start": ".vendor/hugo server -DEF",
+    "start-lan": ".vendor/hugo server -DEF --bind=0.0.0.0 --port=${PORT:-1313} --baseUrl=/ --appendPort=false",
     "test": "echo NODE_ENV=test nyc mocha --recursive"
   },
   "dependencies": {},

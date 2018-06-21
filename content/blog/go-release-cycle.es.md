@@ -12,3 +12,9 @@ tags:
   - ciclo-de-desarrollo
 ---
 
+# Atribuciones
+
+**Go Team.** *Contributing Guide.* <https://golang.org/doc/contribute.html>
+
+**Go Team.** *Go Release Cycle.* <https://github.com/golang/go/wiki/Go-Release-Cycle>
+

@@ -1,7 +1,7 @@
 [![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://hub.docker.com/r/ntrrg/site/)
 [![Build Status](https://travis-ci.com/ntrrg/ntrrg.github.io.svg?branch=master)](https://travis-ci.com/ntrrg/ntrrg.github.io)
 [![pipeline status](https://gitlab.com/ntrrg/ntrrg.github.io/badges/master/pipeline.svg)](https://gitlab.com/ntrrg/ntrrg.github.io/commits/master)
-[![Build status](https://ci.nt.web.ve/api/badges/ntrrg/ntrrg.github.io/status.svg)](https://ci.nt.web.ve/ntrrg/ntrrg.github.io)
+[![Build status](https://ci.nt.web.ve/api/badges/ntrrg/site/status.svg)](https://ci.nt.web.ve/ntrrg/site)
 
 This site was migrated to Hugo and is hosted now by Netlify.
 
@@ -21,8 +21,6 @@ If you want to have a local copy of my site, there are two methods:
 
 2. Using Hugo
 
-    **Note:** Git and Hugo v0.42.1 should be installed.
-
     ```sh
     git clone https://github.com/ntrrg/ntrrg.github.io.git
     ```
@@ -32,7 +30,11 @@ If you want to have a local copy of my site, there are two methods:
     ```
 
     ```sh
-    hugo server
+    .bin/install_hugo.sh
+    ```
+
+    ```sh
+    .vendor/hugo server
     ```
 
     Open <http://localhost:1313/en/> with a browser.

@@ -6,7 +6,7 @@ categories:
   - matemáticas
 tags:
   - algebra
-  - computación
+  - ciencia-de-la-computación
   - números-binarios
 ---
 

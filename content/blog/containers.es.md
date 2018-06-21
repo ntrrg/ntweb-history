@@ -20,7 +20,7 @@ contenedores, haré un ejemplo de como se implementaría una aplicación web (no
 es que los contenedores solo sirvan para aplicaciones web, es un ejemplo) con
 otros métodos:
 
-#### Con servidores físicos (bare-metal)
+# Con servidores físicos (bare-metal)
 
 1\. El programador escribe la aplicación en su computadora.
 
@@ -108,7 +108,7 @@ El resultado, una estructura parecida a:
     src="/uploads/containers/architectures-bare-metal-es.svg"/>
 </p>
 
-#### Con máquinas virtuales
+# Con máquinas virtuales
 
 1. El administrador de sistemas le asigna una imagen base de una máquina
    virtual al programador para que la replique en su computadora o en el peor
@@ -166,7 +166,7 @@ en la computadora de cada programador:
     src="/uploads/containers/architectures-vm-es.svg"/>
 </p>
 
-#### Con contenedores (¡¡POR FIN!!)
+# Con contenedores (¡¡POR FIN!!)
 
 {{% note %}}
 
