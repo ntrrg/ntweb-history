@@ -35,6 +35,10 @@ h6::before {
   content: "###### ";
 }
 
+a {
+  word-break: break-all;
+}
+
 @media screen {
   .article {
     max-width: 80ex;
@@ -73,14 +77,14 @@ h6::before {
 .note {
   border: 0.1em solid;
   margin: 2em 0em;
-  padding: 1em 2em;
+  padding: 1em 2em 0.5em 2em;
 }
 
 .note header {
   border-bottom: 0.1em solid;
   font-weight: bold;
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   padding-bottom: 0.5em;
 }
 

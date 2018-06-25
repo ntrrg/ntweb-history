@@ -7,3 +7,6 @@ other = "Table of Contents"
 [DEFAULT_NOTE_TITLE]
 other = "Note"
 
+[DEFAULT_LOI_TITLE]
+other = "Links of interest"
+

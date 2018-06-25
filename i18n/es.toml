@@ -7,3 +7,6 @@ other = "Tabla de Contenido"
 [DEFAULT_NOTE_TITLE]
 other = "Nota"
 
+[DEFAULT_LOI_TITLE]
+other = "Enlaces de interés"
+

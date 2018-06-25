@@ -1,0 +1,9 @@
+{{ $id := (.Get 0) }}
+
+{{ .Inner }}
+
+<p class="go-playground">
+  Go Playground:
+  <a href="{{ $.Page.Site.Params.goPlayground }}/p/{{ $id }}">{{ $id }}</a>
+</p>
+

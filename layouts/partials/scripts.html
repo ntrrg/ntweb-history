@@ -4,6 +4,10 @@
   </script>
 {{ end }}
 
+{{ if eq .Kind "page" }}
+<script async src="/js/article.js"></script>
+{{ end }}
+
 <script>
   window.addEventListener('load', () => {
     const body = document.querySelector('#body')

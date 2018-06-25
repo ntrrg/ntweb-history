@@ -25,15 +25,15 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 
 * Imperativo, los programas se escriben como una serie de instrucciones que la
   computadora debe seguir para resolver un problema (si leyendo esto piensan
-  *«¿Y no es así como se escriben todos los programas? 😒»*, la respuesta
-  es no, existen otros paradigmas de programación que trabajan con enfoques
-  muy diferentes a este).
+  *«¿Y no es así como se escriben todos los programas? 😒»*, la respuesta es
+  no, existen otros paradigmas de programación que trabajan con enfoques muy
+  diferentes a este).
 
 * Compilado, todo el código escrito es traducido a lenguaje máquina antes de
   poder ejecutarse.
 
-* Tipado estático, una vez que se define el tipo de una variable, este no
-  puede ser modificado.
+* Tipado estático, una vez que se define el tipo de una variable, este no puede
+  ser modificado.
 
 * Fuertemente tipado, no permite realizar operaciones entre datos de diferente
   tipo, deben hacerse cambios de tipo explícitamente.
@@ -51,6 +51,112 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 {{< toc >}}
 
 # Funcionalidades excluidas
+
+{{% loi %}}
+* <https://golang.org/doc/faq#Design>
+* <https://www.youtube.com/watch?v=k9Zbuuo51go>
+{{% /loi %}}
+
+* Genéricos, aunque es posible que en alguna futura versión se agregue, por
+  ahora no se ha logrado obtener una solución que compense su complejidad con
+  su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
+  ofrecen abstracción de una manera muy elegante.
+
+* Conjuntos, por la falta de tipos genéricos en el lenguaje, representan
+  agregar un nuevo tipo de dato al código base Go y debido a que es bastante
+  sencillo implementarlos en la mayoría de los casos, no es muy relevante su
+  existencia.
+
+{{% go-playground "oZR8BSYAUVB" %}}
+```go
+x := make(map[int]struct{})
+
+x[1] = struct{}{}
+x[2] = struct{}{}
+x[1] = struct{}{}
+
+fmt.Println(len(x)) // 2
+```
+{{% /go-playground %}}
+
+* `while` y `do-while`, solo hay una estructura de repetición (`for`) y aunque
+  parezca limitado, es una ventaja para los programadores no tener que pensar
+  en cuál estructura usar, tal vez suene a exagerar, pero en internet es muy
+  fácil encontrar discusiones largas y repetitivas de varios lenguajes sobre
+  cuál de todas las estructuras de repetición es la más rápida.
+
+* `map`, `filter` y la familia de funciones favoritas de los programadores
+  funcionales, por la falta de tipos genéricos sería necesario definir
+  muchísimas funciones para cada tipo, pero además, ¿por qué llamar 100
+  funciones para sumar los elementos de un arreglo si puede usarse una
+  estructura de repetición muy sencilla?, si la reacción a esto es *«No me
+  importa el rendimiento, quiero mis funciones 😒»* no hay problema, es muy
+  fácil implementarlas, pero en este caso les recomendaría usar otro lenguaje.
+
+{{% go-playground "oNGlnMctzXv" %}}
+```go
+func ForEach(s []int, f func(int, int, []int)) {
+  for i, v := range s {
+    f(v, i, s)
+  }
+}
+
+func Map(s []int, f func(int) int) (ns []int) {
+  for _, v := range s {
+    ns = append(ns, f(v))
+  }
+
+  return ns
+}
+
+func Filter(s []int, f func(int) bool) (ns []int) {
+  for _, v := range s {
+    if f(v) {
+      ns = append(ns, v)
+    }
+  }
+
+  return ns
+}
+
+func Reduce(s []int, f func(int, int) int, a int) int {
+  for _, v := range s {
+    a = f(a, v)
+  }
+
+  return a
+}
+```
+{{% /go-playground %}}
+
+* Excepciones, usar estructuras de control (como `try {} catch {}`) para
+  manejar los errores puede resultar en flujos complejos que dificultan a los
+  programadores el proceso de identificación y solución de errores (debugging).
+  En su lugar los errores se manejan por medio del mecanismo de retorno
+  múltiple en las funciones y por otras funciones predefinidas en Go.
+
+* Afirmaciones (asserts), en la mayoría de las ocasiones, los programadores
+  usan las afirmaciones para generar errores en tiempo de ejecución y así, no
+  tener que implementar de mejor manera el flujo del programa. Al igual que con
+  las excepciones, existen otros métodos para manejar las afirmaciones en Go.
+
+* Aritmética de punteros, no está permitida, ya que Go usa un GC.
+
+* Hilos de procesos (threads), una de las tareas que suele agregar muchísima
+  complejidad al código fuente es la programación multithreading, aunque claro,
+  si se pretende programar una aplicación que se usará en servidores o en
+  computadores personales con procesadores de múltiples núcleos y hacer toda la
+  computación en un solo hilo, sería un descaro decir que Go es un lenguaje de
+  alto rendimiento, pero la verdad es que no hacen falta, ya se que suena loco
+  y probablemente piensen *«Claaaro, un programa con gran demanda de computo
+  que corre en un hilo puede ser tan rápido como uno que corre en múltiples
+  hilos.. 😒»*, pensamiento sarcástico que sería muy merecido, pero el hecho es
+  que Go cuenta con gorutinas, que son funciones que se ejecutan
+  independientemente del hilo principal y son automáticamente distribuidas
+  entre más hilos para evitar el bloqueo de las operaciones, esto genera una
+  abstracción de más alto nivel para este tipo de operaciones, por lo que el
+  programador no debe lidear directamente con hilos (vean la sección de
+  [gorutinas](#gorutinas)).
 
 # Herramientas necesarias
 
@@ -145,6 +251,7 @@ Go se vería algo así:
 
 `hola_mundo.go`:
 
+{{% go-playground "hR9ZBMz-Pst" %}}
 ```go
 package main
 
@@ -154,6 +261,7 @@ func main() {
   fmt.Println("hola, mundo")
 }
 ```
+{{% /go-playground %}}
 
 El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
 usando el comando `go run`.
@@ -182,7 +290,9 @@ archivos, pueden ir a la sección del [compilador](#compilador).
 
 # Comentarios
 
+{{% loi %}}
 * <https://golang.org/ref/spec#Comments>
+{{% /loi %}}
 
 Los comentarios son texto ignorado por el compilador, su función principal es
 documentar ciertas secciones de código que sean un poco difíciles de entender
@@ -192,28 +302,35 @@ dos tipos de comentarios:
 
 * De línea
 
+{{% go-playground "4g5BEqD0RGU" %}}
 ```go
-fmt.Println("hola, mundo") // Esto muestra `hola, mundo`
+fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
 
 // Las sentencias comentadas no son procesadas por el compilador
 // fmt.Println("chao, mundo")
 ```
+{{% /go-playground %}}
 
 * Generales
 
+{{% go-playground "4HyigTWqiZ8" %}}
 ```go
-/* Así se escribe un comentario general
+/*
+  Así se escribe un comentario general
 
-fmt.Println("hola, mundo")
-fmt.Println("chao, mundo")
+  fmt.Println("hola, mundo")
+  fmt.Println("chao, mundo")
 
-Este programa no hace nada..
+  Este programa no hace nada..
 */
 ```
+{{% /go-playground %}}
 
 ## Documentación
 
+{{% loi %}}
 * <https://blog.golang.org/godoc-documenting-go-code>
+{{% /loi %}}
 
 [GoDoc]: https://godoc.org
 [Docutils]: http://docutils.sourceforge.net/
@@ -226,6 +343,8 @@ documentación, sino que usa texto plano.
 El objetivo principal de la documentación son las definiciones (`package`,
 `const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
 aquellas precedidas directamente por una o más líneas de comentarios.
+
+`$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
 // Package arithmetic provides arithmetics operations for any type.
@@ -246,9 +365,9 @@ type Operander interface {
 
 // Add gets any number of Operander and returns their addition.
 func Add(operands ...Operander) float64 {
-  result := float64(0)
+  result := operands[0]
 
-  for _, v := range operands {
+  for _, v := range operands[1:] {
     if v.Val() == AdditiveIdentity {
       continue
     }
@@ -258,6 +377,53 @@ func Add(operands ...Operander) float64 {
 
   return result
 }
+```
+
+Y para ver el resultado, se debe ejecutar el comando `godoc` con la ruta de
+importación del paquete
+
+```shell-session
+$ godoc local/arithmetic
+use 'godoc cmd/local/arithmetic' for documentation on the arithmetic command 
+
+PACKAGE DOCUMENTATION
+
+package arithmetic
+    import "local/arithmetic"
+
+    Package arithmetic provides arithmetics operations for any type.
+
+CONSTANTS
+
+const (
+    AdditiveIdentity       = 0
+    MultiplicativeIdentity = 1
+)
+    Identity constants
+
+FUNCTIONS
+
+func Add(operands ...Operander) float64
+    Add gets any number of Operander and returns their addition.
+
+TYPES
+
+type Operander interface {
+    Val() float64
+}
+    Operander is the interface that wraps the arithmetic representation
+    methods.
+
+    Val returns the variable's arithmetic representation (float64).
+
+
+```
+
+O iniciar el servidor HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
+con un navegador si se quiere ver la versión HTML
+
+```shell-session
+$ godoc -http :6060
 ```
 
 Es común (y una buena práctica) que cada comentario inicie con el
@@ -325,7 +491,9 @@ package arithmetic
 
 ### Ejemplos
 
+{{% loi %}}
 * <https://blog.golang.org/examples>
+{{% /loi %}}
 
 Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
 ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
@@ -334,21 +502,25 @@ en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
 si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
 `ExampleIDENTIFICADOR[_MÉTODO]` para tener como objetivo solo un elemento.
 
-`arithmetic.go`:
+`$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
 package arithmetic
 
-func Add(operands ...int) (result int) {
-  for _, v := range operands {
+func Add(operands ...int) int {
+  result := operands[0]
+
+  for _, v := range operands[1:] {
     result += v
   }
 
   return result
 }
 
-func Sub(operands ...int) (result int) {
-  for _, v := range operands {
+func Sub(operands ...int) int {
+  result := operands[0]
+
+  for _, v := range operands[1:] {
     result -= v
   }
 
@@ -356,30 +528,41 @@ func Sub(operands ...int) (result int) {
 }
 ```
 
-`example_test.go`:
+`$GOPATH/src/local/arithmetic/example_test.go`:
 
 ```go
 package arithmetic_test
 
-import "fmt"
+import (
+  "fmt"
 
-func Example {
-  r := Add(1, 2) - Sub(3, 4)
+  a "local/arithmetic"
+)
+
+func Example() {
+  r := a.Add(1, 2) - a.Sub(3, 4)
   fmt.Println(r)
   // Output: 4
 }
 
-func ExampleAdd {
-  r := Add(1, 2, 3, 4)
+func ExampleAdd() {
+  r := a.Add(1, 2, 3, 4)
   fmt.Println(r)
   // Output: 10
 }
 
-func ExampleSub {
-  r := Sub(5, 3, 1)
+func ExampleSub() {
+  r := a.Sub(5, 3, 1)
   fmt.Println(r)
   // Output: 1
 }
+```
+
+Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
+<http://localhost:6060/pkg/local/arithmetic> con un navegador
+
+```shell-session
+$ godoc -http :6060
 ```
 
 Cada función de ejemplo deberá mostrar por la salida estándar los
@@ -389,28 +572,60 @@ ejecutadas por `go test`, por lo que no solo tienen un uso informativo, sino
 que también ayudan a probar el código; si no se encuentra algún comentario
 especial, las funciones serán compiladas, pero no ejecutadas.
 
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   Example
+--- PASS: Example (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSub
+--- PASS: ExampleSub (0.00s)
+PASS
+ok  	local/arithmetic
+```
+
 Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
 objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
 letra.
 
-`example_test.go`:
+`$GOPATH/src/local/arithmetic/multiexample_test.go`:
 
 ```go
 package arithmetic_test
 
-import "fmt"
+import (
+  "fmt"
 
-func ExampleAdd_two {
-  r := Add(1, 2)
+  a "local/arithmetic"
+)
+
+func ExampleAdd_two() {
+  r := a.Add(1, 2)
   fmt.Println(r)
   // Output: 3
 }
 
-func ExampleAdd_five {
-  r := Add(1, 2, 3, 4, 5)
+func ExampleAdd_five() {
+  r := a.Add(1, 2, 3, 4, 5)
   fmt.Println(r)
   // Output: 15
 }
+```
+
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   Example
+--- PASS: Example (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSub
+--- PASS: ExampleSub (0.00s)
+=== RUN   ExampleAdd_two
+--- PASS: ExampleAdd_two (0.00s)
+=== RUN   ExampleAdd_five
+--- PASS: ExampleAdd_five (0.00s)
+PASS
+ok  	local/arithmetic
 ```
 
 Como un ejemplo es representado por una función, no es posible demostrar
@@ -419,7 +634,11 @@ existen los ejemplos de archivos, estos consisten en un archivo que contiene
 exclusivamente una función de ejemplo y todas las definiciones a nivel de
 paquete que sean necesarias.
 
-`arithmetic.go`:
+```shell-session
+$ rm -rf $GOPATH/src/local/arithmetic
+```
+
+`$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
 package arithmetic
@@ -429,9 +648,9 @@ type Operander interface {
 }
 
 func Add(operands ...Operander) float64 {
-  result := float64(0)
+  result := operands[0].Val()
 
-  for _, v := range operands {
+  for _, v := range operands[1:] {
     result += v.Val()
   }
 
@@ -439,10 +658,16 @@ func Add(operands ...Operander) float64 {
 }
 ```
 
-`whole_file_example_test.go`:
+`$GOPATH/src/local/arithmetic/whole_file_example_test.go`:
 
 ```go
 package arithmetic_test
+
+import (
+  "fmt"
+
+  a "local/arithmetic"
+)
 
 type Operand string
 
@@ -453,10 +678,18 @@ func (o Operand) Val() float64 {
 func ExampleAdd() {
   var x, y Operand = "a", "b"
 
-  r := Add(x, y)
+  r := a.Add(x, y)
   fmt.Println(r)
   // Output: 2
 }
+```
+
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+PASS
+ok  	local/arithmetic
 ```
 
 # Tipos de datos
@@ -891,13 +1124,33 @@ bytes.
 
 ## `for`
 
+# Manejo de errores
+
+<https://blog.golang.org/error-handling-and-go>
+
 # Compilador
+
+{{% loi %}}
+* <https://golang.org/pkg/go/build/>
+{{% /loi %}}
 
 GOPATH
 
 GOROOT
 
 GOTPMDIR
+
+## Condiciones de compilación
+
+{{% loi %}}
+* <https://golang.org/pkg/go/build/#hdr-Build_Constraints>
+
+* <https://www.youtube.com/watch?v=COCUqAwAbD0&t=0s&index=31&list=PL5MnW0XCND7IjWv810mg4H81BxYN8BPQh>
+{{% /loi %}}
+
+Permiten establecer condiciones para el compilador, como usar el archivo para
+ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Pasa usarlas, solo hace falta un comentario
+como este `// +build CONDICION [...]`
 
 # Buenas prácticas
 

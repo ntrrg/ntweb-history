@@ -68,10 +68,10 @@
     "functions": 80,
     "branches": 80,
     "exclude": [
-      ".vendor/",
-      "node_modules/",
-      "test/",
-      "public/"
+      "/.vendor/",
+      "/node_modules/",
+      "/test/",
+      "/public/"
     ]
   }
 }

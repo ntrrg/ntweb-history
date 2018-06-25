@@ -17,6 +17,7 @@ params:
       url: https://www.linkedin.com/in/ntrrg
     - name: Telegram (@ntrrg)
       url: https://t.me/ntrrg
+  goPlayground: https://play.golang.org
 permalinks:
   blog: /:sections/:slug/
 
