@@ -708,7 +708,9 @@ son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
 
 ## Booleanos
 
+{{% loi %}}
 * <https://golang.org/ref/spec#Boolean_types>
+{{% /loi %}}
 
 [George Boole]: https://es.wikipedia.org/wiki/George_Boole
 
