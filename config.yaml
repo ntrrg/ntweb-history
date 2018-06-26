@@ -7,6 +7,9 @@ params:
     id: ntrrg
     name: Miguel Angel Rivera Notararigo
     email: ntrrgx@gmail.com
+  org:
+    name: NtWeb
+    image: images/isologo.png
   image: images/logo.png
   social:
     - name: GitHub (@ntrrg)

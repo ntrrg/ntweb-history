@@ -6,7 +6,6 @@ image: /uploads/gopher.png
 categories:
   - tecnología
 tags:
-  - referencias
   - lenguajes-de-programación
   - go
   - ciclo-de-desarrollo

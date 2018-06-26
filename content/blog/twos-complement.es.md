@@ -5,7 +5,7 @@ description: Es una operación matemática sobre números binarios utilizada may
 categories:
   - matemáticas
 tags:
-  - algebra
+  - aritmética
   - ciencia-de-la-computación
   - números-binarios
 ---

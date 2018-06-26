@@ -1,6 +1,15 @@
 [DARK_THEME]
 other = "Tema oscuro"
 
+[DATE]
+other = "Fecha"
+
+[CATEGORIES]
+other = "Categorías"
+
+[TAGS]
+other = "Etiquetas"
+
 [TOC_TITLE]
 other = "Tabla de Contenido"
 

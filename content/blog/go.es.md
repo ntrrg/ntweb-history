@@ -380,7 +380,7 @@ func Add(operands ...Operander) float64 {
 ```
 
 Y para ver el resultado, se debe ejecutar el comando `godoc` con la ruta de
-importación del paquete
+importación del paquete.
 
 ```shell-session
 $ godoc local/arithmetic
@@ -420,7 +420,7 @@ type Operander interface {
 ```
 
 O iniciar el servidor HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
-con un navegador si se quiere ver la versión HTML
+con un navegador si se quiere ver la versión HTML.
 
 ```shell-session
 $ godoc -http :6060
@@ -559,18 +559,18 @@ func ExampleSub() {
 ```
 
 Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
-<http://localhost:6060/pkg/local/arithmetic> con un navegador
+<http://localhost:6060/pkg/local/arithmetic> con un navegador.
 
 ```shell-session
 $ godoc -http :6060
 ```
 
-Cada función de ejemplo deberá mostrar por la salida estándar los
-resultados, y por cada salida que se realice, deberá existir un comentario
-especial `// Output: VALOR` que indica el valor esperado. Estas funciones son
-ejecutadas por `go test`, por lo que no solo tienen un uso informativo, sino
-que también ayudan a probar el código; si no se encuentra algún comentario
-especial, las funciones serán compiladas, pero no ejecutadas.
+Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
+y por cada salida que se realice, deberá existir un comentario especial
+`// Output: VALOR` que indica el valor esperado. Estas funciones son ejecutadas
+por `go test`, por lo que no solo tienen un uso informativo, sino que también
+ayudan a probar el código; si no se encuentra algún comentario especial, las
+funciones serán compiladas, pero no ejecutadas.
 
 ```shell-session
 $ go test -v local/arithmetic
@@ -747,50 +747,78 @@ Existen tres grupos de datos numéricos:
 
 ### Enteros
 
+{{% loi %}}
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
+* <https://golang.org/ref/spec#Numeric_types>
+* <https://golang.org/ref/spec#Integer_literals>
+* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
+* [Números octales]({{< relref "blog/octal-numbers.es.md" >}})
+* [Números hexadecimales]({{< relref "blog/hex-numbers.es.md" >}})
+* [Complemento a dos]({{< relref "blog/twos-complement.es.md" >}})
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+{{% /loi %}}
+
 Representan los números del conjunto matemático con el mismo nombre, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
 espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
-`N` puede ser `8`, `16`, `32` o `64` (**TODO:** ¿por qué estos números?).
-
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
-
-[Complemento a dos]: {{< relref "blog/twos-complement.es.md" >}}
+`N` puede ser `8`, `16`, `32` o `64` debido a las especificaciones de los CPUs.
 
 Existen dos tipos de números enteros, o mejor dicho, dos métodos de
 representación: el primero es la conversión binaria tradicional, pero solo
 puede ser usado para procesar números positivos; el segundo es llamado
-[Complemento a dos][] y permite representar tanto números positivos como
+*Complemento a dos* y permite representar tanto números positivos como
 negativos de una manera bastante ingeniosa, solo que se pierde una cantidad
 considerable de números positivos.
 
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
-Además de números decimales, es posible usar octales y hexadecimales.
+Además de números decimales, es posible usar otras notaciones como  octales y
+hexadecimales.
 
 #### Representación sintáctica
 
 ```go
 // Enteros sin signo
-uint8  // 0 - 255
-uint16 // 0 - 65535
-uint32 // 0 - 4294967295
-uint64 // 0 - 18446744073709551615
+
+uint8  // 11111111
+       // ⬑ 8 bits  -> 0 - 255
+
+uint16 // 1111111111111111
+       // ⬑ 16 bits -> 0 - 65535
+
+uint32 // 11111111111111111111111111111111
+       // ⬑ 32 bits -> 0 - 4294967295
+
+uint64 // 1111111111111111111111111111111111111111111111111111111111111111
+       // ⬑ 64 bits -> 0 - 18446744073709551615
 
 // Enteros con signo
-int8  // -128 - 127
-int16 // -32768 - 32767
-int32 // -2147483648 - 2147483647
-int64 // -9223372036854775808 - 9223372036854775807
 
-uintptr // Permite almacenar direcciones de memoria
+      // ⬐ Signo
+int8  // 11111111
+      //  ⬑ Números, 7 bits -> -128 - 127
+
+      // ⬐ Signo
+int16 // 1111111111111111
+      //  ⬑ Números, 15 bits -> -32768 - 32767
+
+      // ⬐ Signo
+int32 // 11111111111111111111111111111111
+      //  ⬑ Números, 31 bits -> -2147483648 - 2147483647
+
+      // ⬐ Signo
+int64 // 1111111111111111111111111111111111111111111111111111111111111111
+      //  ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
+
+// Alias
 
 byte // Equivale a uint8
-rune // Equivale a uint32, ver sección Cadenas
+rune // Equivale a uint32
 
-// Dependiendo de la arquitectura del procesador
-uint // Equivale a uint32 o uint64
-int  // Equivale a int32 o int64
+// Según la arquitectura del sistema operativo
+
+uint    // Equivale a uint32 o uint64
+int     // Equivale a int32 o int64
+uintptr // Permite almacenar direcciones de memoria
 ```
 
 #### Ejemplos
@@ -802,7 +830,7 @@ int  // Equivale a int32 o int64
 
 10
 012
-0xA
+0xa
 ```
 
 #### Valor cero
@@ -813,19 +841,29 @@ int  // Equivale a int32 o int64
 
 ### Punto flotante
 
+{{% loi %}}
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
+* <https://golang.org/ref/spec#Numeric_types>
+* <https://golang.org/ref/spec#Floating-point_literals>
+* <http://www.oxfordmathcenter.com/drupal7/node/43>
+* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
+* [Complemento a dos]({{< relref "blog/twos-complement.es.md" >}})
+* [Representación de números de punto flotante]({{< relref "blog/ieee-754.es.md" >}})
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+{{% /loi %}}
+
 Representan al conjunto matemático de los números fraccionarios, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
 espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
-`N` puede ser `32` o `64` (**TODO:** ¿por qué estos números?).
-
-Para su representación siguen el estándar técnico IEEE-754.
+`N` puede ser `32` o `64` según el estándar IEEE 754, que también especifica su
+representación.
 
 #### Representación sintáctica
 
 ```go
-float32 // 0 - 4294967295
-float64 // 0 - 18446744073709551615
+float32
+float64
 ```
 
 #### Ejemplos
@@ -1151,7 +1189,7 @@ GOTPMDIR
 {{% /loi %}}
 
 Permiten establecer condiciones para el compilador, como usar el archivo para
-ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Pasa usarlas, solo hace falta un comentario
+ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Para usarlas, solo hace falta un comentario
 como este `// +build CONDICION [...]`
 
 # Buenas prácticas

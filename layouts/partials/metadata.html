@@ -1,4 +1,5 @@
 {{ $author := $.Param "author" }}
+{{ $org := .Site.Params.org }}
 {{ $description := $.Param "description" }}
 {{ $image := (absURL ($.Param "image")) }}
 {{ $date := .Date.Format "2006-01-02T15:04:05-0700" }}
@@ -27,13 +28,25 @@
     {
       "@context": "http://schema.org",
       "@type": "BlogPosting",
+      "mainEntityOfPage": "{{ .Permalink }}",
       "headline": "{{ $description }}",
 		  "datePublished": "{{ $date }}",
+		  "dateModified": "{{ $date }}",
       "image": "{{ $image }}",
       "author": {
         "@type": "Person",
         "name": "{{ $author.name }}",
         "email": "{{ $author.email }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ $org.name }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ absURL $org.image }}",
+          "width": 206,
+          "height": 60
+        }
       }
     }
   </script>
