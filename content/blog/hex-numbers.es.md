@@ -5,6 +5,7 @@ description: Los números hexadecimales son una notación muy usada en el área 
 categories:
   - matemáticas
 tags:
+  - aritmética
   - ciencia-de-la-computación
   - números-hexadecimales
 ---

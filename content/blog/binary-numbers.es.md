@@ -5,6 +5,7 @@ description: Los números binarios son una notación muy usada en el área de la
 categories:
   - matemáticas
 tags:
+  - aritmética
   - ciencia-de-la-computación
   - números-binarios
 ---

@@ -828,9 +828,15 @@ uintptr // Permite almacenar direcciones de memoria
 05  // Octal (tienen el prefijo `0`)
 0x5 // Hexadecimal (tienen el prefijo `0x`)
 
-10
-012
-0xa
+// Con signo
+
++10  // ┐
++012 // │-> Optimistas 😄
++0xa // ┘
+
+-10  // ┐
+-012 // │-> Pesimistas 😞
+-0xa // ┘
 ```
 
 #### Valor cero
@@ -847,7 +853,6 @@ uintptr // Permite almacenar direcciones de memoria
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <http://www.oxfordmathcenter.com/drupal7/node/43>
 * [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
-* [Complemento a dos]({{< relref "blog/twos-complement.es.md" >}})
 * [Representación de números de punto flotante]({{< relref "blog/ieee-754.es.md" >}})
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 {{% /loi %}}
@@ -859,16 +864,32 @@ de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser `32` o `64` según el estándar IEEE 754, que también especifica su
 representación.
 
+Un número de punto flotante literal está compuesto por dos enteros separados
+por un punto (`.`), una letra `e`/`E` y otro entero; todos los enteros deben
+escribirse en base 10 y pueden tener signo (exceptuando el segundo).
+
 #### Representación sintáctica
 
 ```go
-float32
-float64
+        // ⬐ Signo  ⬐ Fracción, 23 bits
+float32 // 11111111111111111111111111111111
+        //  ⬑ Exponente, 8 bits
+
+        // ⬐ Signo     ⬐ Fracción, 52 bits
+float64 // 1111111111111111111111111111111111111111111111111111111111111111
+        //  ⬑ Exponente, 11 bits
 ```
 
 #### Ejemplos
 
 ```go
+0.         // Nivel de bondad en nuestra raza
+3.14       // 14/03/1988
+-9.8       // El mundo al reves
+59724.e20  // Madre tierra
+59724e20   // Madre tierra sin punto
+.91093e-30 // http://bit.ly/2Iv08BI
+111.09+e87 // Straight flush
 ```
 
 #### Valor cero
@@ -879,10 +900,62 @@ float64
 
 ### Complejos
 
-## Estructuras
+{{% loi %}}
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
+* <https://golang.org/ref/spec#Numeric_types>
+* <https://golang.org/ref/spec#Imaginary_literals>
+* <https://golang.org/ref/spec#Constant_expressions>
+* <https://golang.org/ref/spec#Complex_numbers>
+* <http://www.oxfordmathcenter.com/drupal7/node/43>
+* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
+* [Representación de números de punto flotante]({{< relref "blog/ieee-754.es.md" >}})
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+{{% /loi %}}
 
-<https://tour.golang.org/moretypes/2>
-<https://tour.golang.org/moretypes/3>
+Representan los números del conjunto matemático con el mismo nombre, aunque
+claro, con una cantidad finita de elementos, que puede ser controlada por el
+espacio de memoria que se reserve, es decir, el programador tiene la capacidad
+de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
+`N` puede ser `64` o `128` pues están conformados por un par de números de
+punto flotante, representando la parte real y la imaginaria cada uno.
+
+Un número complejo literal está compuesto por dos números reales (enteros o de
+punto flotante) separados por una cruz (`+`) o un guión (`-`), y el último
+número debe tener la letra `i` al final. Dentro de Go existe una función,
+[`complex`](#complex), que permite crear números complejos usando variables (no
+solo constantes como en el caso de los literales); y otras dos, [`real`](#real)
+e [`imag`](#imag), que hacen lo opuesto, pues permiten extraer la parte real e
+imaginaria de un número complejo respectivamente (por si no es obvio el orden
+😂).
+
+**TODO:** ¿Cómo son implementados los números complejos en Go?.
+
+**TODO:** Agregar referencias de uso.
+
+#### Representación sintáctica
+
+```go
+complex32
+complex64
+```
+
+#### Ejemplos
+
+```go
+1 + 2i
+3 - 4.5i
+7e8 + 9e-10i
+
+1i      // ┐
+2.3i    // │-> Parte imaginaria, `0 + IMAGINARIO`
+45.6e7i // ┘
+```
+
+#### Valor cero
+
+```go
+0
+```
 
 ## Arreglos
 
@@ -924,7 +997,6 @@ float64
 * <https://blog.golang.org/strings>
 
 * <https://research.swtch.com/godata>
-
 
 Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
 de una runa (un punto de código Unicode codificado en UTF-8), que no es más
@@ -1146,6 +1218,11 @@ bytes.
 <https://tour.golang.org/moretypes/21>
 <https://tour.golang.org/moretypes/22>
 
+## Estructuras
+
+<https://tour.golang.org/moretypes/2>
+<https://tour.golang.org/moretypes/3>
+
 ## Punteros
 
 <https://tour.golang.org/moretypes/1>
@@ -1156,15 +1233,42 @@ bytes.
 
 <https://tour.golang.org/basics/13>
 
+<https://golang.org/ref/spec#Conversions>
+
 # Constantes
 
+* <https://golang.org/ref/spec#Constants>
+* <https://golang.org/ref/spec#Constant_expressions>
+* <https://golang.org/ref/spec#Complex_numbers>
+
 <https://blog.golang.org/constants>
+
+```go
+const (
+  x = 2
+  y = 3i
+)
+
+x + y // (2+3i)
+```
 
 # Estructuras de repetición
 
 ## `for`
 
+# Funciones
+
+## Predefinidas
+
+### `complex`
+
+### `real`
+
+### `imag`
+
 # Manejo de errores
+
+<https://golang.org/ref/spec#Handling_panics>
 
 <https://blog.golang.org/error-handling-and-go>
 
