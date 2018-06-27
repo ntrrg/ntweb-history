@@ -21,6 +21,7 @@ params:
     - name: Telegram (@ntrrg)
       url: https://t.me/ntrrg
   goPlayground: https://play.golang.org
+Paginate: 20
 permalinks:
   blog: /:sections/:slug/
 
