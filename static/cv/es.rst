@@ -30,23 +30,25 @@ Habilidades
 
 Programación avanzada con Go, JavaScript (Node.js) y Shell Scripting.
 
-Programación básica con C, C++ y Python.
+APIs, Microservicios y CLIs
 
-Control de versiones (Git).
-
-Bases de datos relacionales (MySQL, PostgreSQL y SQLite).
-
-Pruebas unitarias e integración continua (Travis, Gilab CI, Drone).
-
-Servicios web RESTful (HTTP y UDS) y Microservicios.
-
-Aplicaciones web (HTML5, CSS3 y ES6) y CLIs.
+REST (HTTP y UDS), RPC (gRPC), AMQP (RabitMQ).
 
 Contenedores (Docker y systemd-nspawn).
 
 Orquestación de contenedores (Docker Swarm).
 
 Computación en la nuve (GCP).
+
+Pruebas unitarias e integración continua (Travis, Gilab CI, Drone).
+
+Bases de datos relacionales (MySQL, PostgreSQL y SQLite).
+
+Sistemas de control de versiones (Git).
+
+Programación básica con C, C++ y Python.
+
+Aplicaciones web (HTML5, CSS3 y JavaScript ES6).
 
 Instalación y configuración de servidores (LVM, Debian, SSH, DNS, HTTP, rsync).
 
@@ -64,6 +66,14 @@ Proyectos
   https://github.com/ntrrg/ntdocutils
 
   Gestor de temas para Docutils.
+
+  Python.
+
+* **Tema MDL para NtDocutils**
+
+  https://github.com/ntrrg/ntdocutils-theme-mdl
+
+  Tema MDL para NtDocutils.
 
   Python, HTML5, CSS3, JavaScript (ES6), MDL.
 
@@ -116,6 +126,10 @@ Certificación y reconocimientos
 
   2013/05
 
+.. raw:: html
+
+    <h1 class="media-screen">Soportes</h1>
+
 |pb|
 
 .. image:: images/pytatuy.jpg
@@ -145,4 +159,31 @@ Certificación y reconocimientos
 .. |pb| raw:: html
 
     <div class="media-print" style="page-break-after: always"></div>
+
+.. raw:: html
+
+    <script>
+      ATTACHMENTS = [
+        {
+          url: 'es.rst',
+          name: 'Fuente.rst',
+          icon: 'code'
+        },
+        {
+          url: 'es.pdf',
+          name: 'CV.pdf'
+        }
+      ]
+    </script>
+
+.. raw:: html
+
+    <script>
+      LANGS = [
+        {
+          url: 'en.html',
+          name: 'English (Inglés)'
+        }
+      ]
+    </script>
 
