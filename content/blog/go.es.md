@@ -356,7 +356,8 @@ const (
   MultiplicativeIdentity = 1
 )
 
-// Operander is the interface that wraps the arithmetic representation methods.
+// Operander is the interface that wraps the arithmetic representation
+// methods.
 //
 // Val returns the variable's arithmetic representation (float64).
 type Operander interface {
@@ -468,23 +469,25 @@ This is a long description of the Arithmetic package.
 		fmt.Println(r)
 	}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod egestas
-elit sed viverra. Nunc tincidunt lacinia orci in mattis. Praesent cursus neque
-et dapibus faucibus. Maecenas at sem ut arcu ornare commodo. Morbi laoreet
-diam sit amet est ultricies imperdiet. Proin ullamcorper ac massa a accumsan.
-Praesent quis bibendum tellus. Sed id velit libero. Fusce dapibus purus neque,
-sit amet sollicitudin odio porttitor posuere. Mauris eu dui elementum,
-fermentum ante vitae, porttitor nunc. Duis mi elit, viverra at turpis vitae,
-sollicitudin aliquet velit. Pellentesque nisl turpis, pulvinar et consectetur
-et, iaculis vel leo. Suspendisse euismod sem at vehicula fermentum. Duis
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod
+egestas elit sed viverra. Nunc tincidunt lacinia orci in mattis.
+Praesent cursus neque et dapibus faucibus. Maecenas at sem ut arcu
+ornare commodo. Morbi laoreet diam sit amet est ultricies imperdiet.
+Proin ullamcorper ac massa a accumsan. Praesent quis bibendum tellus.
+Sed id velit libero. Fusce dapibus purus neque, sit amet sollicitudin
+odio porttitor posuere. Mauris eu dui elementum, fermentum ante vitae,
+porttitor nunc. Duis mi elit, viverra at turpis vitae, sollicitudin
+aliquet velit. Pellentesque nisl turpis, pulvinar et consectetur et,
+iaculis vel leo. Suspendisse euismod sem at vehicula fermentum. Duis
 viverra eget ante a accumsan.
 
-Aenean dui lectus, ultrices at elit id, pellentesque faucibus dolor. Duis
-blandit vulputate est, eget sollicitudin ipsum pellentesque quis. Cras sed nibh
-sed sapien suscipit tincidunt venenatis id eros. Praesent laoreet, erat quis
-hendrerit dignissim, justo diam semper elit, sit amet commodo lacus ipsum eget
-nisl. In a mi tellus. In hac habitasse platea dictumst. Aliquam et neque a quam
-mollis molestie. Etiam tempor arcu quis justo molestie congue.
+Aenean dui lectus, ultrices at elit id, pellentesque faucibus dolor.
+Duis blandit vulputate est, eget sollicitudin ipsum pellentesque quis.
+Cras sed nibh sed sapien suscipit tincidunt venenatis id eros.
+Praesent laoreet, erat quis hendrerit dignissim, justo diam semper
+elit, sit amet commodo lacus ipsum eget nisl. In a mi tellus. In hac
+habitasse platea dictumst. Aliquam et neque a quam mollis molestie.
+Etiam tempor arcu quis justo molestie congue.
 */
 package arithmetic
 ```
@@ -500,7 +503,8 @@ ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
 interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
 en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
 si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
-`ExampleIDENTIFICADOR[_MÉTODO]` para tener como objetivo solo un elemento.
+`ExampleIDENTIFICADOR`/`ExampleIDENTIFICADOR_MÉTODO` para tener como objetivo
+solo un elemento.
 
 `$GOPATH/src/local/arithmetic/aritmetic.go`:
 
@@ -530,6 +534,7 @@ func Sub(operands ...int) int {
 
 `$GOPATH/src/local/arithmetic/example_test.go`:
 
+{{% go-playground "F89MWsdAyLS" %}}
 ```go
 package arithmetic_test
 
@@ -557,6 +562,7 @@ func ExampleSub() {
   // Output: 1
 }
 ```
+{{% /go-playground %}}
 
 Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
 <http://localhost:6060/pkg/local/arithmetic> con un navegador.
@@ -590,6 +596,7 @@ letra.
 
 `$GOPATH/src/local/arithmetic/multiexample_test.go`:
 
+{{% go-playground "cKBokfh3L9v" %}}
 ```go
 package arithmetic_test
 
@@ -611,6 +618,7 @@ func ExampleAdd_five() {
   // Output: 15
 }
 ```
+{{% /go-playground %}}
 
 ```shell-session
 $ go test -v local/arithmetic
@@ -660,6 +668,7 @@ func Add(operands ...Operander) float64 {
 
 `$GOPATH/src/local/arithmetic/whole_file_example_test.go`:
 
+{{% go-playground "8D3QO97NKE-" %}}
 ```go
 package arithmetic_test
 
@@ -683,6 +692,7 @@ func ExampleAdd() {
   // Output: 2
 }
 ```
+{{% /go-playground %}}
 
 ```shell-session
 $ go test -v local/arithmetic
@@ -771,43 +781,57 @@ puede ser usado para procesar números positivos; el segundo es llamado
 negativos de una manera bastante ingeniosa, solo que se pierde una cantidad
 considerable de números positivos.
 
+```
+10101010 -> 170
+⬑ 8 bits -> 0 - 255
+
+1010101010101010 -> 43690
+⬑ 16 bits -> 0 - 65535
+
+10101010101010101010101010101010 -> 2863311530
+⬑ 32 bits -> 0 - 4294967295
+
+1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
+⬑ 64 bits -> 0 - 18446744073709551615
+```
+
+```
+⬐ Signo
+10101010 -> -86
+ ⬑ Números, 7 bits -> -128 - 127
+
+⬐ Signo
+0101010101010101 -> 21845
+ ⬑ Números, 15 bits -> -32768 - 32767
+
+⬐ Signo
+10101010101010101010101010101010 -> -1431655766
+ ⬑ Números, 31 bits -> -2147483648 - 2147483647
+
+⬐ Signo
+0101010101010101010101010101010101010101010101010101010101010101 -> 6148914691236517205
+ ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
+```
+
 Además de números decimales, es posible usar otras notaciones como  octales y
-hexadecimales.
+hexadecimales para expresar enteros literales.
 
 #### Representación sintáctica
 
 ```go
 // Enteros sin signo
 
-uint8  // 11111111
-       // ⬑ 8 bits  -> 0 - 255
-
-uint16 // 1111111111111111
-       // ⬑ 16 bits -> 0 - 65535
-
-uint32 // 11111111111111111111111111111111
-       // ⬑ 32 bits -> 0 - 4294967295
-
-uint64 // 1111111111111111111111111111111111111111111111111111111111111111
-       // ⬑ 64 bits -> 0 - 18446744073709551615
+uint8
+uint16
+uint32
+uint64
 
 // Enteros con signo
 
-      // ⬐ Signo
-int8  // 11111111
-      //  ⬑ Números, 7 bits -> -128 - 127
-
-      // ⬐ Signo
-int16 // 1111111111111111
-      //  ⬑ Números, 15 bits -> -32768 - 32767
-
-      // ⬐ Signo
-int32 // 11111111111111111111111111111111
-      //  ⬑ Números, 31 bits -> -2147483648 - 2147483647
-
-      // ⬐ Signo
-int64 // 1111111111111111111111111111111111111111111111111111111111111111
-      //  ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
+int8
+int16
+int32
+int64
 
 // Alias
 
@@ -864,20 +888,27 @@ de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser `32` o `64` según el estándar IEEE 754, que también especifica su
 representación.
 
+```
+⬐ Signo  ⬐ Fracción, 23 bits
+10101010101010101010101010101010
+ ⬑ Exponente, 8 bits
+
+⬐ Signo     ⬐ Fracción, 52 bits
+1010101010101010101010101010101010101010101010101010101010101010
+ ⬑ Exponente, 11 bits
+```
+
 Un número de punto flotante literal está compuesto por dos enteros separados
 por un punto (`.`), una letra `e`/`E` y otro entero; todos los enteros deben
 escribirse en base 10 y pueden tener signo (exceptuando el segundo).
 
+**TODO:** ¿Cómo son implementados los números de punto flotante en Go?
+
 #### Representación sintáctica
 
 ```go
-        // ⬐ Signo  ⬐ Fracción, 23 bits
-float32 // 11111111111111111111111111111111
-        //  ⬑ Exponente, 8 bits
-
-        // ⬐ Signo     ⬐ Fracción, 52 bits
-float64 // 1111111111111111111111111111111111111111111111111111111111111111
-        //  ⬑ Exponente, 11 bits
+float32
+float64
 ```
 
 #### Ejemplos
@@ -901,15 +932,11 @@ float64 // 1111111111111111111111111111111111111111111111111111111111111111
 ### Complejos
 
 {{% loi %}}
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Imaginary_literals>
 * <https://golang.org/ref/spec#Constant_expressions>
 * <https://golang.org/ref/spec#Complex_numbers>
-* <http://www.oxfordmathcenter.com/drupal7/node/43>
-* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
-* [Representación de números de punto flotante]({{< relref "blog/ieee-754.es.md" >}})
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
+* [Números de punto flotante](#punto-flotante)
 {{% /loi %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
@@ -918,6 +945,14 @@ espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser `64` o `128` pues están conformados por un par de números de
 punto flotante, representando la parte real y la imaginaria cada uno.
+
+```
+⬐ Parte real, 32 bits           ⬐ Parte imaginaria, 32 bits
+1010101010101010101010101010101010101010101010101010101010101010
+
+⬐ Parte real, 64 bits                                           ⬐ Parte imaginaria, 64 bits
+10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010
+```
 
 Un número complejo literal está compuesto por dos números reales (enteros o de
 punto flotante) separados por una cruz (`+`) o un guión (`-`), y el último
@@ -928,15 +963,13 @@ e [`imag`](#imag), que hacen lo opuesto, pues permiten extraer la parte real e
 imaginaria de un número complejo respectivamente (por si no es obvio el orden
 😂).
 
-**TODO:** ¿Cómo son implementados los números complejos en Go?.
-
-**TODO:** Agregar referencias de uso.
+**TODO:** Agregar referencias de uso
 
 #### Representación sintáctica
 
 ```go
-complex32
 complex64
+complex128
 ```
 
 #### Ejemplos
@@ -959,8 +992,123 @@ complex64
 
 ## Arreglos
 
-<https://tour.golang.org/moretypes/6>
-<https://blog.golang.org/slices>
+{{% loi %}}
+* <https://tour.golang.org/moretypes/6>
+* <https://golang.org/ref/spec#Array_types>
+* <https://golang.org/ref/spec#Composite_literals>
+* <https://blog.golang.org/slices>
+* <https://research.swtch.com/godata>
+{{% /loi %}}
+
+Son un conjunto de elementos de algún tipo de dato asignado arbitrariamente, la
+cantidad debe ser una constante y no puede cambiar después de su creación.
+
+Todos los elementos están enumerados e inician en la posición `0`, a estas
+posiciones se les llama *índices* y se usa la notación `x[i]` para acceder a
+sus elementos, donde `x` es un arreglo e `i` el índice. También soportan
+operaciones de porciones, que consisten en tomar un subconjunto de elementos
+del arreglo, para esto se usa una notación parecida, `x[i:j]`, donde `x` es un
+arreglo, `i` el índice inicial inclusivo y `j` el índice final exclusivo, pero
+en este caso el tipo de dato obtenido no es un arreglo, sino una porción.
+
+```
+┌─┬─┬─┬─┬─┐
+│1│3│5│7│9│
+└─┴─┴─┴─┴─┘
+ 0 1 2 3 4
+
+[0] -> 1
+[2] -> 5
+[4] -> 9
+[0:2] -> [1 3]
+[3:5] -> [7 9]
+[:3] -> [1 3 5]
+[2:] -> [5 7 9]
+[:] -> [1 3 5 7 9]
+```
+
+Internamente, no son más que un bloque de memoria reservado que tiene a todos
+sus elementos uno después de otro, es decir, si se crea un arreglo de bytes con
+los cuatro primeros números pares, el espacio de memoria ocupado por el arreglo
+sera 4 bytes (16 bits normalmente) y sus elementos se ubicarán en estos bytes
+según sus indices.
+
+```
+┌─┬─┬─┬─┐
+│2│4│6│8│ -> 1 byte x 4 elementos -> 4 bytes
+└─┴─┴─┴─┘
+ 0 1 2 3
+
+Ubicación en la memoria: 0x10313020
+
+[0] -> 0 * 1 byte -> 0x10313020 + 0 -> 0x10313020 -> 00000010 -> 2
+[1] -> 1 * 1 byte -> 0x10313020 + 1 -> 0x10313021 -> 00000100 -> 4
+[2] -> 2 * 1 byte -> 0x10313020 + 2 -> 0x10313022 -> 00000110 -> 6
+[3] -> 3 * 1 byte -> 0x10313020 + 3 -> 0x10313023 -> 00001000 -> 8
+```
+
+Del mismo modo pasa con los primeros cuatro números pares después del límite de
+un byte, la única diferencia es que ocuparán el doble de memoria.
+
+```
+┌───┬───┬───┬───┐
+│256│258│260│262│ -> 2 bytes (uint16) x 4 elementos -> 8 bytes
+└───┴───┴───┴───┘
+  0   1   2   3
+
+Ubicación en la memoria: 0x10313020
+
+[0] -> 0 * 2 bytes -> 0x10313020 + 0 -> 0x10313020 -> 0000000100000000 -> 256
+[1] -> 1 * 2 bytes -> 0x10313020 + 2 -> 0x10313022 -> 0000000100000010 -> 258
+[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 0000000100000100 -> 260
+[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
+```
+
+### Representación sintáctica
+
+No existe la palabra reservada `array`, en su lugar son representados por medio
+de una sintaxis especial.
+
+```
+[N]TIPO{0: VALOR_0, ..., N: VALOR_N}
+```
+
+### Ejemplos
+
+```go
+[5]byte{1, 2, 3, 4, 5}   // [1 2 3 4 5]
+[...]byte{1, 2, 3, 4, 5} // Igual que el de arriba, solo que obtiene
+                         // la cantidad de elementos automáticamente
+
+[3]bool{} // [false false false]
+          // Inicializa todos los elementos con su valor 0
+
+[3]bool{true} // [true false false]
+              // Se pueden indicar solo los primero valores y los
+              // demás serán inicializados con valor 0.
+
+[5]byte{2: 'M'} // [0 0 77 0 0]
+                // Se pueden asignar valores a índices específicos,
+                // los demás serán inicializados con su valor 0
+
+[...]byte{2: 'M', 'A', 4: 'R', 'N'} // [0 0 77 64 0 82 78]
+                                    // Si se especifíca un índice, los
+                                    // siguientes elementos sin índice
+                                    // sumarán uno al valor anterior
+
+[...]string{    // Se pueden usar varias líneas para mejorar la
+  "Miguel",     // legibilidad
+  "Angel",
+  "Rivera",
+  "Notararigo", // Pero incluso el último elemento deberá tener una
+}               // coma
+```
+
+### Valor cero
+
+```go
+nil
+```
 
 ## Porciones
 
