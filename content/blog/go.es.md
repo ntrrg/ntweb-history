@@ -75,7 +75,7 @@ x[1] = struct{}{}
 x[2] = struct{}{}
 x[1] = struct{}{}
 
-fmt.Println(len(x)) // 2
+len(x) // 2
 ```
 {{% /go-playground %}}
 
@@ -572,11 +572,12 @@ $ godoc -http :6060
 ```
 
 Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
-y por cada salida que se realice, deberá existir un comentario especial
-`// Output: VALOR` que indica el valor esperado. Estas funciones son ejecutadas
-por `go test`, por lo que no solo tienen un uso informativo, sino que también
-ayudan a probar el código; si no se encuentra algún comentario especial, las
-funciones serán compiladas, pero no ejecutadas.
+y al final de cada una deberá existir un comentario especial `// Output: VALOR`
+que indica los valores esperados, si se necesitan múltiples líneas, simplemente
+se agregan como comentarios justo después del comentario especial. Estas
+funciones son ejecutadas por `go test`, por lo que no solo tienen un uso
+informativo, sino que también ayudan a probar el código; si no se encuentra
+algún comentario especial, las funciones serán compiladas, pero no ejecutadas.
 
 ```shell-session
 $ go test -v local/arithmetic
@@ -996,6 +997,8 @@ complex128
 * <https://tour.golang.org/moretypes/6>
 * <https://golang.org/ref/spec#Array_types>
 * <https://golang.org/ref/spec#Composite_literals>
+* <https://golang.org/ref/spec#Length_and_capacity>
+* <https://blog.golang.org/go-slices-usage-and-internals>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
 {{% /loi %}}
@@ -1012,19 +1015,23 @@ arreglo, `i` el índice inicial inclusivo y `j` el índice final exclusivo, pero
 en este caso el tipo de dato obtenido no es un arreglo, sino una porción.
 
 ```
-┌─┬─┬─┬─┬─┐
-│1│3│5│7│9│
-└─┴─┴─┴─┴─┘
- 0 1 2 3 4
+    ┌─┬─┬─┬─┬─┐
+x = │1│3│5│7│9│
+    └─┴─┴─┴─┴─┘
+     0 1 2 3 4
 
-[0] -> 1
-[2] -> 5
-[4] -> 9
-[0:2] -> [1 3]
-[3:5] -> [7 9]
-[:3] -> [1 3 5]
-[2:] -> [5 7 9]
-[:] -> [1 3 5 7 9]
+x[0] -> 1
+x[2] -> 5
+x[4] -> 9
+x[0:2] -> [1 3]
+x[3:5] -> [7 9]
+x[:3] -> [1 3 5]
+x[2:] -> [5 7 9]
+x[:] -> [1 3 5 7 9]
+
+x[0] = 0
+x[4] = 0
+x[:] -> [0 3 5 7 0]
 ```
 
 Internamente, no son más que un bloque de memoria reservado que tiene a todos
@@ -1034,43 +1041,51 @@ sera 4 bytes (16 bits normalmente) y sus elementos se ubicarán en estos bytes
 según sus indices.
 
 ```
-┌─┬─┬─┬─┐
-│2│4│6│8│ -> 1 byte x 4 elementos -> 4 bytes
-└─┴─┴─┴─┘
- 0 1 2 3
+    ┌─┬─┬─┬─┐
+x = │2│4│6│8│ -> 1 byte x 4 elementos -> 4 bytes
+    └─┴─┴─┴─┘
+     0 1 2 3
 
 Ubicación en la memoria: 0x10313020
 
-[0] -> 0 * 1 byte -> 0x10313020 + 0 -> 0x10313020 -> 00000010 -> 2
-[1] -> 1 * 1 byte -> 0x10313020 + 1 -> 0x10313021 -> 00000100 -> 4
-[2] -> 2 * 1 byte -> 0x10313020 + 2 -> 0x10313022 -> 00000110 -> 6
-[3] -> 3 * 1 byte -> 0x10313020 + 3 -> 0x10313023 -> 00001000 -> 8
+x[0] -> 0 * 1 byte -> 0x10313020 + 0 -> 0x10313020 -> 00000010 -> 2
+x[1] -> 1 * 1 byte -> 0x10313020 + 1 -> 0x10313021 -> 00000100 -> 4
+x[2] -> 2 * 1 byte -> 0x10313020 + 2 -> 0x10313022 -> 00000110 -> 6
+x[3] -> 3 * 1 byte -> 0x10313020 + 3 -> 0x10313023 -> 00001000 -> 8
 ```
 
 Del mismo modo pasa con los primeros cuatro números pares después del límite de
 un byte, la única diferencia es que ocuparán el doble de memoria.
 
 ```
-┌───┬───┬───┬───┐
-│256│258│260│262│ -> 2 bytes (uint16) x 4 elementos -> 8 bytes
-└───┴───┴───┴───┘
-  0   1   2   3
+    ┌───┬───┬───┬───┐
+x = │256│258│260│262│ -> 2 bytes (uint16) x 4 elementos -> 8 bytes
+    └───┴───┴───┴───┘
+      0   1   2   3
 
 Ubicación en la memoria: 0x10313020
 
-[0] -> 0 * 2 bytes -> 0x10313020 + 0 -> 0x10313020 -> 0000000100000000 -> 256
-[1] -> 1 * 2 bytes -> 0x10313020 + 2 -> 0x10313022 -> 0000000100000010 -> 258
-[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 0000000100000100 -> 260
-[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
+x[0] -> 0 * 2 bytes -> 0x10313020 + 0 -> 0x10313020 -> 0000000100000000 -> 256
+x[1] -> 1 * 2 bytes -> 0x10313020 + 2 -> 0x10313022 -> 0000000100000010 -> 258
+x[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 0000000100000100 -> 260
+x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
 ```
+
+Para obtener la cantidad de elementos de un arreglo se debe usar la función
+`len(ARREGLO)` que retorna un número entero del tipo `int`.
+
+{{% go-playground "vpsI0bAQlYS" %}}
+```go
+x := [3]int{1, 2, 3}
+
+len(x)) // 3
+```
+{{% /go-playground %}}
 
 ### Representación sintáctica
 
-No existe la palabra reservada `array`, en su lugar son representados por medio
-de una sintaxis especial.
-
 ```
-[N]TIPO{0: VALOR_0, ..., N: VALOR_N}
+[CANTIDAD]TIPO
 ```
 
 ### Ejemplos
@@ -1107,75 +1122,392 @@ de una sintaxis especial.
 ### Valor cero
 
 ```go
-nil
+[VALOR_CERO_0 ... VALOR_CERO_N]
 ```
 
 ## Porciones
 
-<https://tour.golang.org/moretypes/7>
-<https://tour.golang.org/moretypes/8>
-<https://tour.golang.org/moretypes/9>
-<https://tour.golang.org/moretypes/10>
-<https://tour.golang.org/moretypes/11>
-<https://tour.golang.org/moretypes/12>
-<https://tour.golang.org/moretypes/13>
-<https://tour.golang.org/moretypes/14>
-<https://tour.golang.org/moretypes/15>
-<https://blog.golang.org/go-slices-usage-and-internals>
-<https://github.com/golang/go/wiki/SliceTricks>
-<https://blog.golang.org/slices>
-<https://research.swtch.com/godata>
+{{% loi %}}
+* <https://tour.golang.org/moretypes/7>
+* <https://tour.golang.org/moretypes/8>
+* <https://tour.golang.org/moretypes/9>
+* <https://tour.golang.org/moretypes/10>
+* <https://tour.golang.org/moretypes/11>
+* <https://tour.golang.org/moretypes/12>
+* <https://tour.golang.org/moretypes/13>
+* <https://tour.golang.org/moretypes/14>
+* <https://tour.golang.org/moretypes/15>
+* <https://golang.org/ref/spec#Slice_types>
+* <https://golang.org/ref/spec#Composite_literals>
+* <https://golang.org/ref/spec#Length_and_capacity>
+* <https://golang.org/ref/spec#Making_slices_maps_and_channels>
+* <https://golang.org/ref/spec#Appending_and_copying_slices>
+* <https://blog.golang.org/go-slices-usage-and-internals>
+* <https://blog.golang.org/slices>
+* <https://research.swtch.com/godata>
+* <https://github.com/golang/go/wiki/SliceTricks>
+{{% /loi %}}
+
+Al igual que los arreglos, son un conjunto de elementos de un tipo de dato
+asignado arbitrariamente, pero con algunas diferencias importantes, entre las
+cuales destaca la posibilidad de alterar su tamaño después de crearse, por lo
+que generalmente son más comunes en el código fuente. Sus elementos también
+están enumerados como los arreglos y también soportan operaciones de porciones.
+
+Otra diferencia con los arreglos, es la forma en la que son implementadas
+internamente por el lenguaje, pues en lugar de representar bloques de memoria,
+son estructuras de datos que contienen un puntero a un elemento de un arreglo;
+una longitud, que determina la cantidad de elementos que pertenecen a la
+porción después del referenciado por el puntero; y una capacidad, que es la
+máxima longitud que puede tener la porción, calculada por la cantidad de
+elementos desde el referenciado por el puntero hasta el final del arreglo.
+
+```
+    ┌─┬─┬─┬─┬─┐
+x = │1│3│5│7│9│
+    └─┴─┴─┴─┴─┘
+     0 1 2 3 4
+
+y = x[:2]
+
+     ┌─────┬───┬───┐    ┌─┬─┐ ┌─┬─┬─┐ 
+y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│ 
+     └─────┴───┴───┘    └─┴─┘ └─┴─┴─┘ 
+       ptr  lon cap      0 1   2 3 4
+
+y[:]  -> [1, 3]
+y[:2] -> [1, 3]
+y[:5] -> [1, 3, 5, 7, 9]
+y[:6] -> Error, sobrepasa la capacidad
+y[2]  -> Error, sobrepasa la longitud
+
+z = x[1:4]
+
+     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
+z -> │&x[1]│ 3 │ 4 │ -> │3│5│7│ │9│
+     └─────┴───┴───┘    └─┴─┴─┘ └─┘
+       ptr  lon cap      0 1 2   3
+
+z[:]  -> [3, 5, 7]
+z[:2] -> [3, 5]
+z[:4] -> [3, 5, 7, 9]
+z[:5] -> Error, sobrepasa la capacidad
+y[3]  -> Error, sobrepasa la longitud
+
+a = x[3:]
+
+     ┌─────┬───┬───┐    ┌─┬─┐
+a -> │&x[3]│ 2 │ 2 │ -> │7│9│
+     └─────┴───┴───┘    └─┴─┘
+       ptr  lon cap      0 1
+
+a[:]  -> [7, 9]
+a[:2] -> [7, 9]
+a[:3] -> Error, sobrepasa la capacidad
+a[2]  -> Error, sobrepasa la longitud
+```
+
+Ya que las porciones solo tienen una referencia a un arreglo, pasarlas como
+argumentos es una operación muy ligera, pero esto quiere decir que cualquier
+modificación que se haga a los valores de una porción, afectará a las demás con
+el mismo arreglo.
+
+```
+    ┌─┬─┬─┬─┐
+x = │2│4│6│8│
+    └─┴─┴─┴─┘
+     0 1 2 3
+
+y = [:3]
+z = [1:]
+
+x -> [2, 4, 6, 8]
+y -> [2, 4, 6]
+z -> [4, 6, 8]
+
+x[1] = 3
+
+x -> [2, 3, 6, 8]
+y -> [2, 3, 6]
+z -> [3, 6, 8]
+
+y[0] = 1
+
+x -> [1, 3, 6, 8]
+y -> [1, 3, 6]
+z -> [3, 6, 8]
+
+z[2] = 9
+
+x -> [1, 3, 6, 9]
+y -> [1, 3, 6]
+z -> [3, 6, 9]
+```
+
+Para obtener la longitud y la capacidad de una porción se deben usar las
+funciones `len(PORCIÓN)` y `cap(PORCIÓN)`, ambas retornan un número entero del
+tipo `int`.
+
+{{% go-playground "l9D0hIL8Mpl" %}}
+```go
+x := [5]int{1, 2, 3, 4, 5}
+y := x[1:4]
+
+len(y) // 3
+cap(y) // 4
+```
+{{% /go-playground %}}
+
+Es posible inicializar una porción sin valores literales se puede usar la
+función `make`, que recibe tres argumentos: el tipo de porción, la longitud y
+opcionalmente la capacidad.
+
+{{% go-playground "QqtBDs72WGQ" %}}
+```go
+x := make([]bool, 3)
+// [false false false]
+
+y := make([]byte, 3, 5)
+// [0 0 0]
+
+z := y[:cap(y)]
+// [0 0 0 0 0]
+```
+{{% /go-playground %}}
+
+Existen dos funciones que ayudan con el trabajo cotidiano de las porciones, la
+primera es `append`, que permite agregar elementos al final de una porción,
+recibe como argumentos una porción de un tipo específico y una lista de
+datos del mismo tipo, retorna una nueva porción que dependiendo de la
+capacidad, reutilizará el arreglo referenciado por la porción pasada como
+argumento o creará uno nuevo que pueda almacenar los nuevos elementos.
+
+{{% go-playground "gaW_r9YvadO" %}}
+```go
+a := []byte{1, 2, 3, 4, 5}
+b := a[:3]
+c := a[2:]
+
+// [1 2 3 4 5]
+// [1 2 3] 3 5
+// [3 4 5] 3 3
+
+x := append(b, 6)
+
+// La capacidad de b es 5 y su longitud 3, esto quiere decir que
+// todavía quedan 2 (5-3) índices reusables en el arreglo referenciado,
+// por lo que se agregará el nuevo valor en el índice después de la
+// porción (3)
+
+// [1 2 3 6 5]
+// [1 2 3] 3 5
+// [3 6 5] 3 3
+// [1 2 3 6] 4 5
+
+y := append(c, 7, 8)
+
+// La capacidad de c es 3 y su longitud 3, esto quiere decir que
+// no quedan índices reusables en el arreglo referenciado, por lo que
+// se creará uno nuevo que logre almacenar los valores, pero con una
+// capacidad un poco difícil de predecir pues por ahora no hay un
+// comportamiento definido en la especificación del lenguaje y puede
+// variar entre sus implementaciones
+
+// [1 2 3 6 5]
+// [1 2 3] 3 5
+// [3 6 5] 3 3
+// [1 2 3 6] 4 5
+// [3 6 5 7 8] 5
+```
+{{% /go-playground %}}
+
+La segunda función es `copy`, se encarga de copiar elementos de una porción a
+otra, recibe dos porciones del mismo tipo como argumento y la primera es a la
+que se copiarán los elementos, al finalizar retorna la cantidad de elementos
+copiados, que es determinada por la mínima longitud entre ambas porciones.
+
+{{% go-playground "zmWI34jS_Pv" %}}
+```go
+x := make([]int, 2)
+y := []int{1, 2, 3, 4}
+
+copy(x, y) // 2
+x          // [1 2]
+
+a := []byte{'a', 'b', 'c', 'o', 'u'}
+b := "aei"
+
+copy(a, b) // 3
+a          // "aeiou"
+
+n := []bool{true, true, false, false, true}
+m := []bool{false, true}
+
+copy(n[1:3], m) // 2
+n               // [true false true false true]
+```
+{{% /go-playground %}}
+
+Ya que las porciones hacen referencia a arreglos, aunque una porción solo tenga
+algunos elementos, mantendrá completo en memoria su arreglo referenciado, es
+decir, aunque exista una porción con solo dos elementos, si el arreglo
+referenciado tiene mil elementos, estos mil elementos se mantendrán en memoria
+hasta que todas sus porciones sean liberadas, por esto, cuando se pretende
+tener una porción que pase por gran parte del programa y no importe el
+contenido completo de su arreglo, es recomendable copiar los elementos de la
+porción a una nueva con un arreglo propio.
+
+### Representación sintáctica
+
+```
+[]TIPO
+```
+
+### Ejemplos
+
+```go
+[]byte{1, 2, 3, 4, 5} // [1 2 3 4 5]
+
+[]byte{2: 'M'} // [0 0 77]
+               // Se pueden asignar valores a índices específicos,
+               // los demás serán inicializados con su valor 0
+
+[]byte{2: 'M', 'A', 4: 'R', 'N'} // [0 0 77 64 0 82 78]
+                                 // Si se especifíca un índice, los
+                                 // siguientes elementos sin índice
+                                 // sumarán uno al valor anterior
+
+[]string{       // Se pueden usar varias líneas para mejorar la
+  "Miguel",     // legibilidad
+  "Angel",
+  "Rivera",
+  "Notararigo", // Pero incluso el último elemento deberá tener una
+}               // coma
+```
+
+### Valor cero
+
+```go
+nil
+```
 
 ## Cadenas
 
+{{% loi %}}
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
-
-* [Codificación de texto]({{< relref "blog/text-encoding.es.md" >}})
-
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
 * <https://golang.org/ref/spec#String_types>
-
 * <https://golang.org/ref/spec#String_literals>
-
 * <https://golang.org/ref/spec#Rune_literals>
-
 * <https://blog.golang.org/slices>
-
 * <https://blog.golang.org/strings>
-
 * <https://research.swtch.com/godata>
+* [Codificación de texto]({{< relref "blog/text-encoding.es.md" >}})
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+{{% /loi %}}
 
 Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
 de una runa (un punto de código Unicode codificado en UTF-8), que no es más
-que un caracter dentro de la cadena; aunque los bytes y las runas sean datos
-numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos como
-texto, es decir, si se intenta convertir el número `77` en una cadena
-(`string(77)`), Go seleccionará el punto de código Unicode `U+004d` (`77` es
-`4d` en números hexadecimales) y obtendrá la letra `M`.
+que un caracter/símbolo para el ojo humano; aunque los bytes y las runas sean
+datos numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos
+como texto, es decir, si se intenta representar el número `77` como una cadena,
+Go seleccionará el punto de código Unicode `U+004d` (`77` es `4d` en números
+hexadecimales), lo codificará con UTF-8 y obtendrá la letra `M`.
 
-Se usan las comillas (`"`) y los acentos graves (<code>\`</code>) para la
-definición de cadenas literales, y a diferencia de otros lenguajes, el
-apóstrofo (`'`) se usa para representar runas literales, no cadenas.
+Para la definición de cadenas literales interpretadas se usan las comillas
+(`"`) y para las cadenas sin formato los acentos graves (<code>\`</code>); a
+diferencia de otros lenguajes, el apóstrofo (`'`) se usa para representar runas
+literales, no cadenas.
 
+{{% go-playground "M0lvf5r9D8p" %}}
 ```go
-"Yo soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
-// Yo soy una cadena interpretada
+"Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
+// Soy una cadena interpretada
 // y puedo procesar secuencias de escape 😎
-```
 
-```go
-`Yo soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔`
-// Yo soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+`Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
 
-`Pero puedo tener varias líneas,
+Pero puedo tener varias líneas,
 quien es mejor ahora 😒`
+// Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+//
 // Pero puedo tener varias líneas,
 // quien es mejor ahora 😒
 ```
+{{% /go-playground %}}
 
-Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y `😂` tengan la misma longitud.
+Las cadenas interpretadas y las runas tienen la capacidad de procesar
+secuencias de escape, estas secuencias son caracteres precedidos por una barra
+invertida (`\`) que les permite alterar su comportamiento.
 
+```go
+"\a" // Bell character
+"\b" // Backspace
+"\t" // Horizontal tab
+"\n" // Line feed
+"\v" // Vertical tab
+"\f" // Form feed
+"\r" // Carriage return
+"\"" // Quotation mark
+"\\" // Backslash
+
+'\a' // 7
+'\b' // 8
+'\t' // 9
+'\n' // 10
+'\v' // 11
+'\f' // 12
+'\r' // 13
+'\'' // 39
+'\\' // 92
+
+// Unicode
+
+  // Versión corta (u y 4 dígitos)
+
+"\u004d" // "M"
+'\u004d' // 77
+
+  // Versión larga (U y 8 dígitos)
+
+"\U0000004d" // "M"
+'\U0000004d' // 77
+"\U00f1f064" // "😄"
+'\U00f1f064' // 128516
+
+// Bytes (UTF-8)
+
+  // Octales (3 dígitos)
+
+"\115"                // "M"
+'\115'                // 77
+"\360\237\230\204"    // "😄"
+// '\360\237\230\204' // No soporta más de un byte escapado
+
+  // Hexadecimales (x y 2 dígitos)
+
+"\x4d"                // "M"
+'\x4d'                // 77
+"\xf0\x9f\x98\x84"    // "😄"
+// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
+```
+
+Internamente, Go implementa las cadenas como porciones de bytes (`[]byte`), por
+lo que cuentan con casi todas las cualidades de las porciones, solo que son
+inmutables y por esta misma razón no tienen capacidad.
+
+{{% go-playground "yHrBgqgfqE9" %}}
+```go
+x := "Hola"
+
+x[2] = 'L' // Error
+cap(x)     // Error
+```
+{{% /go-playground %}}
+
+Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y
+`😂` tengan la misma longitud.
+
+{{% go-playground "oCaft33c5jj" %}}
 ```go
 len("Hola") // 4
 // "Hola" es una cadena compuesta por cuatro bytes, cada uno
@@ -1190,88 +1522,59 @@ len("😂") // 4
 // representan una runa
 // '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
 ```
+{{% /go-playground %}}
 
-Y ya que son un tipo de dato compuesto (técnicamente `[]byte`), soportan
-operaciones de porciones para acceder a sus elementos.
+Por lo que al iterar sobre ellas no se obtendrán caracteres/símbolos sino su
+representación en UTF-8.
 
-```go
-"Hola"[0]   // 72, primer elemento (0)
-"Hola"[1:3] // "ol", elementos del 1 (inclusivo) al 3 (exclusivo)
-"Hola"[:2]  // "Ho", elementos del 0 (inclusivo) al 2 (exclusivo)
-"Hola"[2:]  // "la", elementos del 2 (inclusivo) al último elemento (len("Hola"))
-"Hola"[3]   // 97, último elemento (len("Hola") - 1)
-"Hola"[:]   // "Hola", todos los elementos
-
-"😂"[1] // 159, extrae uno de los bytes que componen la runa
-```
-
-Pero son inmutables.
-
-```go
-"Hola"[2] = 'L' // cannot assign to "Hola"[2]
-```
-
-También si no se tiene en cuenta el hecho de que algunos caracteres están
-compuestos por más de un byte, iterar sobre ellos resultaría diferente a lo
-esperado.
-
+{{% go-playground "y0O2H_Y91Tc" %}}
 ```go
 x := "😂"
 
 for i := 0; i < len(x); i++ {
   fmt.Println(x[i])
 }
+
+// 240 -> 11110000
+// 159 -> 10011111
+// 152 -> 10011000
+// 130 -> 10000010
 ```
+{{% /go-playground %}}
 
-```shell-session
-240
-159
-152
-130
-```
+Para evitar este comportamiento se puede usar `range`, que extrae runa a runa.
 
-Por esto se recomienda usar `range`, que extrae runa a runa.
-
+{{% go-playground "CcnClPYtrEn" %}}
 ```go
 for _,  v := range "😂" {
   fmt.Println(v)
 }
+
+// 128514
 ```
+{{% /go-playground %}}
 
-```shell-session
-128514
-```
+O [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
+en los casos que no se quiera iterar sobre la cadena.
 
-O para los casos en los que `range` tampoco cumpla con las expectativas (no se
-quiera iterar sobre la cadena), se puede usar [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString).
-
+{{% go-playground "cStYBcRb9ZX" %}}
 ```go
-package main
+x := "😂"
 
-import (
-  "fmt"
-  "unicode/utf8"
-)
+// Sin iteración, extrae solo la primera runa y retorna la cantidad de
+// bytes que se leyeron.
+utf8.DecodeRuneInString(x) // 128514 4
 
-func main() {
-  x := "😂"
-
-  // Sin iteración, extrae solo la primera runa
-  fmt.Println(utf8.DecodeRuneInString(x))
-
-  // Equivale a usar range
-  for i := 0; i < len(x); {
-    v, w := utf8.DecodeRuneInString(x[i:])
-    fmt.Println(v)
-    i += w
-  }
+// Equivale a usar range
+for i := 0; i < len(x); {
+  v, w := utf8.DecodeRuneInString(x[i:])
+  fmt.Println(v)
+  i += w
 }
-```
 
-```shell-session
-128514 4
-128514
+// 128514
 ```
+{{% /go-playground %}}
 
 ### Representación sintáctica
 
@@ -1294,65 +1597,6 @@ caracteres
 multilineal`
 ```
 
-#### Secuencias de escape
-
-```go
-"\a" // Bell character
-"\b" // Backspace
-"\t" // Horizontal tab
-"\n" // Line feed
-"\v" // Vertical tab
-"\f" // Form feed
-"\r" // Carriage return
-"\"" // Quotation mark
-"\\" // Backslash
-
-'\a' // 7
-'\b' // 8
-'\t' // 9
-'\n' // 10
-'\v' // 11
-'\f' // 12
-'\r' // 13
-'\'' // 39
-'\\' // 92
-```
-
-También es posible escribir puntos de código Unicode o su representación en
-bytes.
-
-```go
-// Unicode
-
-  // Versión corta (u y 4 dígitos)
-
-'\u004d' // 77
-"\u004d" // "M"
-
-  // Versión larga (U y 8 dígitos)
-
-'\U0000004d' // 77
-"\U0000004d" // "M"
-'\U00f1f064' // 128516
-"\U00f1f064" // "😄"
-
-// Bytes (UTF-8)
-
-  // Octales (3 dígitos)
-
-'\115'                // 77
-"\115"                // "M"
-// '\360\237\230\204' // No soporta más de un byte escapado
-"\360\237\230\204"    // "😄"
-
-  // Hexadecimales (x y 2 dígitos)
-
-'\x4d'                // 77
-"\x4d"                // "M"
-// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
-"\xf0\x9f\x98\x84"    // "😄"
-```
-
 ### Valor cero
 
 ```go
@@ -1370,6 +1614,7 @@ bytes.
 
 <https://tour.golang.org/moretypes/2>
 <https://tour.golang.org/moretypes/3>
+* <https://research.swtch.com/godata>
 
 ## Punteros
 
@@ -1420,7 +1665,9 @@ x + y // (2+3i)
 
 <https://blog.golang.org/error-handling-and-go>
 
-# Compilador
+# Go tool
+
+## Compilador
 
 {{% loi %}}
 * <https://golang.org/pkg/go/build/>
