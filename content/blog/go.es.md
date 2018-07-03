@@ -647,6 +647,7 @@ paquete que sean necesarias.
 $ rm -rf $GOPATH/src/local/arithmetic
 ```
 
+{{% go-playground "8D3QO97NKE-" %}}
 `$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
@@ -669,7 +670,6 @@ func Add(operands ...Operander) float64 {
 
 `$GOPATH/src/local/arithmetic/whole_file_example_test.go`:
 
-{{% go-playground "8D3QO97NKE-" %}}
 ```go
 package arithmetic_test
 
@@ -728,6 +728,8 @@ son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
 Nombrados así en honor a [George Boole][], también son conocidos como
 lógicos, representan valores de verdad (verdadero o falso) que normalmente son
 usados para controlar el flujo de los programas.
+
+**TODO:** ¿Cómo son implementados?
 
 ### Representación sintáctica
 
@@ -903,7 +905,7 @@ Un número de punto flotante literal está compuesto por dos enteros separados
 por un punto (`.`), una letra `e`/`E` y otro entero; todos los enteros deben
 escribirse en base 10 y pueden tener signo (exceptuando el segundo).
 
-**TODO:** ¿Cómo son implementados los números de punto flotante en Go?
+**TODO:** ¿Cómo son implementados?
 
 #### Representación sintáctica
 
@@ -937,7 +939,6 @@ float64
 * <https://golang.org/ref/spec#Imaginary_literals>
 * <https://golang.org/ref/spec#Constant_expressions>
 * <https://golang.org/ref/spec#Complex_numbers>
-* [Números de punto flotante](#punto-flotante)
 {{% /loi %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
@@ -1117,6 +1118,12 @@ len(x)) // 3
   "Rivera",
   "Notararigo", // Pero incluso el último elemento deberá tener una
 }               // coma
+
+[...]struct{ X, Y float64 }{
+  struct{ X, Y float64 }{5, 10},
+
+  {15, 30}, // Se puede omitir el tipo de dato en los elementos
+}
 ```
 
 ### Valor cero
@@ -1258,9 +1265,9 @@ cap(y) // 4
 ```
 {{% /go-playground %}}
 
-Es posible inicializar una porción sin valores literales se puede usar la
-función `make`, que recibe tres argumentos: el tipo de porción, la longitud y
-opcionalmente la capacidad.
+Es posible inicializar una porción sin valores literales, para esto se puede
+usar la función `make`, que recibe tres argumentos: el tipo de porción, la
+longitud y opcionalmente la capacidad.
 
 {{% go-playground "QqtBDs72WGQ" %}}
 ```go
@@ -1280,7 +1287,7 @@ primera es `append`, que permite agregar elementos al final de una porción,
 recibe como argumentos una porción de un tipo específico y una lista de
 datos del mismo tipo, retorna una nueva porción que dependiendo de la
 capacidad, reutilizará el arreglo referenciado por la porción pasada como
-argumento o creará uno nuevo que pueda almacenar los nuevos elementos.
+argumento o creará uno nuevo que pueda almacenar los elementos.
 
 {{% go-playground "gaW_r9YvadO" %}}
 ```go
@@ -1331,20 +1338,20 @@ copiados, que es determinada por la mínima longitud entre ambas porciones.
 x := make([]int, 2)
 y := []int{1, 2, 3, 4}
 
-copy(x, y) // 2
-x          // [1 2]
+copy(x, y)     // 2
+fmt.Println(x) // [1 2]
 
 a := []byte{'a', 'b', 'c', 'o', 'u'}
 b := "aei"
 
-copy(a, b) // 3
-a          // "aeiou"
+copy(a, b)     // 3
+fmt.Println(a) // "aeiou"
 
 n := []bool{true, true, false, false, true}
 m := []bool{false, true}
 
 copy(n[1:3], m) // 2
-n               // [true false true false true]
+fmt.Println(n)  // [true false true false true]
 ```
 {{% /go-playground %}}
 
@@ -1383,6 +1390,12 @@ porción a una nueva con un arreglo propio.
   "Rivera",
   "Notararigo", // Pero incluso el último elemento deberá tener una
 }               // coma
+
+[]struct{ X, Y float64 }{
+  struct{ X, Y float64 }{5, 10},
+
+  {15, 30}, // Se puede omitir el tipo de dato en los elementos
+}
 ```
 
 ### Valor cero
@@ -1585,7 +1598,7 @@ string
 ### Ejemplos
 
 ```go
-'M'  //     74 -> U+004d  -> 1001101 (7 bits)
+'M'  // 74 -> U+004d -> 1001101 (7 bits)
 '😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
 
 "C"
@@ -1605,10 +1618,185 @@ multilineal`
 
 ## Mapas
 
-<https://tour.golang.org/moretypes/19>
-<https://tour.golang.org/moretypes/20>
-<https://tour.golang.org/moretypes/21>
-<https://tour.golang.org/moretypes/22>
+{{% loi %}}
+* <https://tour.golang.org/moretypes/19>
+* <https://tour.golang.org/moretypes/20>
+* <https://tour.golang.org/moretypes/21>
+* <https://tour.golang.org/moretypes/22>
+* <https://golang.org/ref/spec#Map_types>
+* <https://golang.org/ref/spec#Composite_literals>
+* <https://golang.org/ref/spec#Length_and_capacity>
+* <https://golang.org/ref/spec#Deletion_of_map_elements>
+* <https://golang.org/ref/spec#Making_slices_maps_and_channels>
+* <https://blog.golang.org/go-maps-in-action>
+* <https://golang.org/ref/spec#Comparison_operators>
+{{% /loi %}}
+
+**Nota:** cada vez que mencione a los arreglos, también hago referencia a los
+demás tipos que derivan de ellos, como las porciones y las cadenas.
+
+Son una estructura de datos que permite acceder a valores por medio de índices
+del tipo especificado (que no sea función, porción o mapa, pues no son valores
+comparables) durante su definición, a estos índices se les llaman claves, y a
+diferencia de los arreglos, el orden de sus elementos es irrelevante.
+
+La especificación del lenguaje no regula la manera en que son implementados,
+por lo que cada compilador puede tener su propia forma de manejarlos, lo único
+que debe mantenerse es que sean tipos de datos referenciales, como las
+porciones o los punteros.
+
+Para crear mapas se pueden usar valores literales.
+
+{{% go-playground "FGRrpitkgtQ" %}}
+```go
+x := map[string]int {
+  "cero": 0,
+  "uno":  1,
+  "dos":  2,
+  "tres": 3,
+}
+```
+{{% /go-playground %}}
+
+O la función `make`, que permite crear mapas vacíos, recibe como argumentos un
+tipo de mapa y opcionalmente una capacidad aproximada, que a diferencia de las
+porciones no representa un límite, sino la cantidad de elementos a las que se
+les reservará memoria automáticamente, esto evitará futuras tareas de
+reservación de memoria por lo que mejorará el rendimiento, pero estos espacios
+no serán contados en su longitud hasta que reciban algún valor, cosa que puede
+comprobarse usando la función `len(MAPA)`, que retorna la cantidad de elementos
+dentro del mapa y la representa con un número entero del tipo `int`.
+
+{{% go-playground "p1eBzG_B9_G" %}}
+```go
+x := make(map[string]bool, 10)
+
+x["go"] = true
+x["javascript"] = true
+x["python"] = true
+x["php"] = true
+x["c#"] = false
+
+len(x) // 5
+```
+{{% /go-playground %}}
+
+Al igual que los arreglos, para acceder a sus valores se usan los corchetes
+(`[]`). Intentar acceder a una clave que no existe retornará el valor cero del
+tipo de dato que pueda recibir el mapa, para verificar la existencia de una
+clave se debe realizar una doble asignación, la primera variable recibirá el
+valor almacenado, y la segunda variable un booleano que será `true` si la clave
+existe o `false` en caso contrario.
+
+{{% go-playground "61Is7Ve_W4G" %}}
+```go
+x := map[string][]int{
+  "pares": {2, 4, 6, 8},
+  "impares": {1, 3, 5, 7, 9},
+}
+
+y := x["impares"]   // [1 3 5 7 9]
+z, ok := x["pares"] // [2 4 6 8] true
+
+a := x["fraccionales"] // []
+b, ok := x["enteros"]  // [] false
+```
+{{% /go-playground %}}
+
+
+La creación de nuevos pares clave-valor y la modificación de valores existentes
+son tareas bastante sencillas, que consisten en simplemente referenciar la
+clave que se quiere crear/modificar y asignarle un valor.
+
+{{% go-playground "BCPhbpeY_K3" %}}
+```go
+x := map[bool][]interface{}{
+  true: []interface{}{0, "True", []int{1, 2}},
+}
+
+x[false] = []interface{}{0, "", []int(nil)}     // Asignación
+x[true] = []interface{}{1, "True", []int{1, 2}} // Modificación
+```
+{{% /go-playground %}}
+
+Ya que sus claves no ofrecen ninguna garantía de orden, usar `range` o
+simplemente mostrarlos como una cadena podría resultar en un comportamiento
+impredecible.
+
+{{% go-playground "89nUjKLW7nn" %}}
+```go
+x := map[string]struct{ X, Y float64 }{
+  "l1": struct{ X, Y float64 }{5, 10},
+  "l2": {15, 30},
+  "l3": {25, 50},
+  "l4": {35, 70},
+  "l5": {45, 90},
+}
+
+// Orden aleatorio
+
+fmt.Println(x)
+fmt.Println(x)
+
+for k, v := range x {
+  fmt.Println(k, v)
+}
+
+// Orden predecible gracias al patrón en las claves
+
+for i := 1; i <= len(x); i++ {
+  k := fmt.Sprintf("l%v", i)
+
+  fmt.Println(k, x[k])
+}
+```
+{{% /go-playground %}}
+
+Es posible eliminar elementos de los mapas con la función `delete`, que recibe
+como argumentos un mapa y la clave del elemento a ser eliminado.
+
+{{% go-playground "tN0s8GaicHo" %}}
+```go
+x := map[int]string{
+  0: "cero",
+  1: "uno",
+  2: "dos",
+  1<<30: "infinito",
+}
+
+delete(x, 1<<30)
+```
+{{% /go-playground %}}
+
+### Representación sintáctica
+
+```go
+map[TIPO_CLAVE]TIPO_VALOR
+```
+
+### Ejemplos
+
+```go
+map[string]int{
+  "Miguel": 6,
+  "Angel": 5,
+  "Rivera": 6,
+  "Notararigo": 10,
+}
+
+map[string]struct{ X, Y float64 }{
+  "Lugar 1": struct{ X, Y float64 }{5, 10},
+
+  "Lugar 2": {15, 30}, // Se puede omitir el tipo de dato en los
+                       // elementos
+}
+```
+
+### Valor cero
+
+```go
+nil
+```
 
 ## Estructuras
 
