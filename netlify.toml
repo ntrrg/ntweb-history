@@ -18,6 +18,12 @@
   Referrer-Policy = "origin-when-cross-origin"
 
 [[redirects]]
+  from = "https://www.nt.web.ve/*"
+  to = "https://nt.web.ve/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://blog.nt.web.ve/*"
   to = "https://nt.web.ve/:splat"
   status = 301

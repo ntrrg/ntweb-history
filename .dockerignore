@@ -1,8 +1,10 @@
 *.sublime*
 *.swp
 Session.vim
-/public/
-nogit-*
 .DS_Store
 .screenrc
+.forestry/
+.git/
+.editorconfig
+.gitignore
 

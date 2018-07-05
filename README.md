@@ -1,8 +1,5 @@
-[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://hub.docker.com/r/ntrrg/site/)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
 [![](https://images.microbadger.com/badges/image/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site "Get your own image badge on microbadger.com")
-[![Build Status](https://travis-ci.com/ntrrg/ntrrg.github.io.svg?branch=master)](https://travis-ci.com/ntrrg/ntrrg.github.io)
-[![pipeline status](https://gitlab.com/ntrrg/ntrrg.github.io/badges/master/pipeline.svg)](https://gitlab.com/ntrrg/ntrrg.github.io/commits/master)
-[![Build status](https://ci.nt.web.ve/api/badges/ntrrg/site/status.svg)](https://ci.nt.web.ve/ntrrg/site)
 
 This site was migrated to Hugo and is hosted now by Netlify.
 
@@ -10,35 +7,45 @@ This site was migrated to Hugo and is hosted now by Netlify.
 
 ## Usage
 
-If you want to have a local copy of my site, there are two methods:
+### Docker
 
-1. Using Docker
+```shell-session
+docker run -p 1234:80 ntrrg/site
+```
 
-    ```sh
-    docker run -p 1234:80 ntrrg/site
-    ```
+Go to <http://localhost:1234/en/> with a browser.
 
-    Open <http://localhost:1234/en/> with a browser.
+### Hugo
 
-2. Using Hugo
+**Note:** use Hugo 0.42.1.
 
-    ```sh
-    git clone https://github.com/ntrrg/ntrrg.github.io.git
-    ```
+```shell-session
+git clone https://github.com/ntrrg/ntrrg.github.io.git
+```
 
-    ```sh
-    cd ntrrg.github.io/
-    ```
+```shell-session
+cd ntrrg.github.io/
+```
 
-    ```sh
-    .bin/install_hugo.sh
-    ```
+```shell-session
+hugo server
+```
 
-    ```sh
-    .vendor/hugo server
-    ```
+Go to <http://localhost:1313/en/> with a browser.
 
-    Open <http://localhost:1313/en/> with a browser.
+## Development
+
+* Lint markdown files:
+
+```shell-session
+docker run -itv "$PWD":/files/ ntrrg/md-linter:watch
+```
+
+* Run the development server:
+
+```shell-session
+docker run -itp 1313:1313 -v "$PWD":/site/ ntrrg/hugo:0.42.1
+```
 
 ## Acknowledgment
 
