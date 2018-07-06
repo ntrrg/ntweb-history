@@ -1,9 +1,11 @@
 #body {
   min-height: calc(100vh - 2em);
 
+  color: #24292e;
   background: #fff;
   font-family: monospace;
   font-size: 16px;
+  line-height: 1.5;
   padding: 1em;
 }
 
@@ -19,9 +21,15 @@
 
 #body > footer {
   border-top: 0.05em solid #aaa;
+  clear: both;
   color: #666;
   font-size: 0.8em;
   text-align: center;
+}
+
+a {
+  color: #427819;;
+  word-break: break-all;
 }
 
 ul.pagination {
@@ -30,5 +38,42 @@ ul.pagination {
 
 ul.pagination li {
   display: inline;
+}
+
+code,
+pre,
+pre > code,
+pre code {
+  background: #ccc;
+  border-radius: 0.2em;
+  font-family: monospace;
+}
+
+code {
+  padding: 0.1em 0.3em;
+}
+
+pre {
+  overflow: auto;
+  padding: 0.5em 1em;
+}
+
+pre > code {
+  padding: 0;
+}
+
+kbd {
+  background: rgb(230, 230, 230);
+  border-color: lightgrey;
+  border-radius: 0.2em;
+  border-style: outset;
+  border-width: 2px;
+  display: inline-block;
+  font-family: monospace;
+  padding: 0em 0.5em;
+}
+
+.small {
+  font-size: 0.85em;
 }
 

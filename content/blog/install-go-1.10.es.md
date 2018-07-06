@@ -149,7 +149,7 @@ $ tar -xvf go1.10.3.src.tar.gz
 $ git clone -b go1.10.3 --depth 1 https://go.googlesource.com/go
 ```
 
-7\. Compilar!
+7\. ¡Compilar!
 
 ```shell-session
 $ cd go/src

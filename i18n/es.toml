@@ -10,6 +10,21 @@ other = "Categorías"
 [TAGS]
 other = "Etiquetas"
 
+[WEBSITE]
+other = "Sitio web"
+
+[SOURCE_CODE]
+other = "Código fuente"
+
+[LICENSE]
+other = "Lincencia"
+
+[KINDS]
+other = "Tipos"
+
+[TECHS]
+other = "Tecnologías"
+
 [TOC_TITLE]
 other = "Tabla de Contenido"
 

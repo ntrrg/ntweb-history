@@ -6,15 +6,11 @@
   {{ if gt (len .Paginator.Pages) 0 }}
     <ul>
       {{ range .Paginator.Pages }}
-      <li>
-        {{ if .Params.date }}
-          <span>{{ .Date.Format "2006/01/02" }}</span>
-        {{ end }}
+        <li>
+          <a href="{{ .URL }}">{{ .Title }}</a>
 
-        <a href="{{ .URL }}">{{ .Title }}</a>
-
-        {{ with .Pages }}({{ len . }}){{ end }}
-      </li>
+          {{ with .Pages }}({{ len . }}){{ end }}
+        </li>
       {{ end }}
     </ul>
 

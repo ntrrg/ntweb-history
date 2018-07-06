@@ -25,7 +25,7 @@ Google. Es de código abierto y es ditribuido bajo una licencia
 
 * Imperativo, los programas se escriben como una serie de instrucciones que la
   computadora debe seguir para resolver un problema (si leyendo esto piensan
-  *«¿Y no es así como se escriben todos los programas? 😒»*, la respuesta es
+  *«¿Y no es así cómo se escriben todos los programas? 😒»*, la respuesta es
   no, existen otros paradigmas de programación que trabajan con enfoques muy
   diferentes a este).
 
@@ -148,7 +148,7 @@ func Reduce(s []int, f func(int, int) int, a int) int {
   computadores personales con procesadores de múltiples núcleos y hacer toda la
   computación en un solo hilo, sería un descaro decir que Go es un lenguaje de
   alto rendimiento, pero la verdad es que no hacen falta, ya se que suena loco
-  y probablemente piensen *«Claaaro, un programa con gran demanda de computo
+  y probablemente piensen *«Claaaro, un programa con gran demanda de cómputo
   que corre en un hilo puede ser tan rápido como uno que corre en múltiples
   hilos.. 😒»*, pensamiento sarcástico que sería muy merecido, pero el hecho es
   que Go cuenta con gorutinas, que son funciones que se ejecutan

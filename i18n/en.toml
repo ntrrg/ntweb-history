@@ -10,6 +10,21 @@ other = "Categories"
 [TAGS]
 other = "Tags"
 
+[WEBSITE]
+other = "Website"
+
+[SOURCE_CODE]
+other = "Source code"
+
+[LICENSE]
+other = "Lincense"
+
+[KINDS]
+other = "Kinds"
+
+[TECHS]
+other = "Technologies"
+
 [TOC_TITLE]
 other = "Table of Contents"
 

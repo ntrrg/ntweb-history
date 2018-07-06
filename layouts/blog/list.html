@@ -1,0 +1,46 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  {{ .Content }}
+
+  {{ if gt (len .Paginator.Pages) 0 }}
+    <ul>
+      {{ range .Paginator.Pages }}
+      <li class="article">
+        <a href="{{ .URL }}"><h3>{{ .Title }}</h3></a>
+
+        <p>{{ .Description }}</p>
+
+        <div class="article-metadata small">
+          <div>
+            <strong>{{ i18n "DATE" }}:</strong>
+
+            <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+          </div>
+
+          <div>
+            <strong>{{ i18n "CATEGORIES" }}:</strong>
+
+            {{ range .Params.categories }}
+              <a href="{{ absLangURL "categories/" }}{{ . | urlize }}">
+                @{{ . }}</a>
+            {{ end }}
+          </div>
+
+          <div>
+            <strong>{{ i18n "TAGS" }}:</strong>
+
+            {{ range .Params.tags }}
+              <a href="{{ absLangURL "tags/" }}{{ . | urlize }}">
+                #{{ . }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+
+    {{ template "_internal/pagination.html" . }}
+  {{ end }}
+{{ end }}
+

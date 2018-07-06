@@ -24,6 +24,12 @@ params:
 Paginate: 20
 permalinks:
   blog: /:sections/:slug/
+taxonomies:
+  tag: tags
+  category: categories
+  serie: series
+  kind: kinds
+  tech: techs
 
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true

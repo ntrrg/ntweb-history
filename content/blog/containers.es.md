@@ -174,8 +174,8 @@ Ya se que todo lo que escribí arriba depende de la técnica de trabajo de cada
 equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒😂, imaginen que
 están viendo una de esas publicidades exageradas de productos como *«La
 aspiradora que también lava, hace la comida y le canta canciones de cuna»*,
-igual que ellos, yo también tengo que vender mí producto 😄 (en este caso,
-el título del artículo porque yo no inventé los contenedores 😂).
+igual que ellos, yo también tengo que vender mí producto 😄 (en este caso, el
+uso de los contenedores, porque yo no inventé los contenedores 😂).
 
 {{% /note %}}
 
@@ -308,8 +308,8 @@ tienen un hardware potente, por algo usan Windows o macOS no? 😅.
 A pesar de que todo lo que escribí pareciera una charla de Herbalife y que la
 única solución a todos los problemas (hasta el hambre y la pobreza mundial) se
 solucionan con contenedores, cada uno de los métodos de implementación que usé
-de ejemplo tienen propósitos y enfoques diferentes, por lo que al usarlos como
-y donde deben, pueden mitigarse sus desventajas y obtener más ventajas que
+de ejemplo tienen propósitos y enfoques diferentes, por lo que al usarlos cómo
+y dónde deben, pueden mitigarse sus desventajas y obtener más ventajas que
 usando contenedores. Lo importante es siempre usar la herramienta correcta, y
 conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 

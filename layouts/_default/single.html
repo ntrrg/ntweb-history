@@ -4,29 +4,6 @@
   <article class="article markdown-body">
     <h1 class="article-title">{{ $title }}</h1>
 
-    <div class="article-metadata">
-      <dl>
-        <dt>{{ i18n "DATE" }}:</dt>
-        <dd>{{ .Date.Format "15:04:05 02/01/2006 -0700" }}</dd>
-
-        <dt>{{ i18n "CATEGORIES" }}:</dt>
-        <dd>
-          {{ range .Params.categories }}
-            <a href="{{ absLangURL "categories/" }}{{ . | urlize }}">
-              @{{ . }}</a>
-          {{ end }}
-        </dd>
-
-        <dt>{{ i18n "TAGS" }}:</dt>
-        <dd>
-          {{ range .Params.tags }}
-            <a href="{{ absLangURL "tags/" }}{{ . | urlize }}">
-              #{{ . }}</a>
-          {{ end }}
-        </dd>
-      </dl>
-    </div>
-
     {{ with .Params.image }}
       <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
     {{ end }}
