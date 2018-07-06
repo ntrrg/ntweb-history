@@ -1,6 +1,6 @@
 ---
 title: Cómo hacer contribuciones a Go
-date: 2018-06-05T21:39:06-04:00
+date: 2018-07-06T12:42:47-04:00
 description: Contribuir a Go sin morir en el intento.
 image: /uploads/gopher.png
 categories:
@@ -82,19 +82,10 @@ actual del proyecto puede verse desde <https://build.golang.org>.
 * Clonar el repositorio oficial o descargar el código de alguno de los
   subrepositorios si se pretende hacer el cambio en uno de ellos.
 
-**Go:**
-
 ```shell-session
-$ git clone https://go.googlesource.com/go
+$ git clone https://go.googlesource.com/go # Go
+$ go get -d -v golang.org/x/oauth2/...     # Subrepositorio
 ```
-
-**Subrepositorio:**
-
-```shell-session
-$ go get -d -v golang.org/x/oauth2/...
-```
-
----
 
 Después de cumplir con todos los requisitos, se deben instalar dos
 herramientas que facilitan algunas de las tareas durante el desarrollo:
@@ -109,7 +100,7 @@ $ go get -u -v golang.org/x/review/git-codereview
 
 En la sección [Realizar cambios](#realizar-cambios) muestro los comandos
 básicos, pero si quieren conocer más sobre esta herramienta pueden ver su
-ayuda ejecutando el siguiente comando
+ayuda ejecutando el siguiente comando:
 
 ```shell-session
 $ git codereview help
@@ -126,28 +117,34 @@ $ go get -u -v golang.org/x/tools/cmd/go-contrib-init
 
 # Realizar cambios
 
-1\. Ir al código fuente de Go o al del subrepositorio
-
-**Go:**
+1\. Ir al código fuente de Go o al del subrepositorio.
 
 ```shell-session
-$ cd path/to/go
+$ cd path/to/go                        # Go
+$ cd "$GOPATH/src/golang.org/x/oauth2" # Subrepositorio
 ```
 
-**Subrepositorio:**
-
-```shell-session
-$ cd "$GOPATH/src/golang.org/x/oauth2"
-```
-
-2\. Verificar que la rama activa sea `master`
+2\. Verificar que esté actualizado y funcione correctamente.
 
 ```shell-session
 $ git checkout master
+```
+
+```shell-session
 $ git pull origin master
 ```
 
-3\. Hacer los cambios.
+```shell-session
+$ (cd src/ && ./all.bash)
+```
+
+3\. Crear una rama.
+
+```shell-session
+$ git checkout -b fix-1234
+```
+
+4\. Hacer los cambios.
 
 ```shell-session
 $ EDITOR src/net/http/server.go # Go
@@ -156,7 +153,7 @@ $ EDITOR oauth2.go              # Subrepositorio
 
 **Código:**
 
-Todo archivo creado debe tener el texto de licencia
+Todo archivo creado debe tener el texto de licencia.
 
 ```go
 // Copyright YYYY The Go Authors. All rights reserved.
@@ -164,7 +161,7 @@ Todo archivo creado debe tener el texto de licencia
 // license that can be found in the LICENSE file.
 ```
 
-Toda funcionalidad agregada o modificada debe ser probada
+Toda funcionalidad agregada o modificada debe ser probada.
 
 ```shell-session
 $ # Go
@@ -191,24 +188,25 @@ $ go test -v ./...                          # Todas
 
 Es suficiente con solo modificar los archivos.
 
-4\. Agregar los cambios al área de confirmación de Git
+5\. Confirmar los cambios.
 
 ```shell-session
 $ git add .
 ```
 
-5\. Confirmar los cambios
-
 ```shell-session
 $ git codereview gofmt
-$ git codereview change RAMA
 ```
 
-`RAMA` será el nombre de la rama local donde se agregarán los cambios. Este
-comando solicitará mensaje de la confirmación, que debería ser algo como:
-
+```shell-session
+$ git codereview change
 ```
-net/http: descripción corta que complete "This change modifies Go to ___."
+
+Este comando solicitará un mensaje para la confirmación, que debería ser algo
+como:
+
+```text
+PAQUETE: descripción corta que complete "This change modifies Go to ___."
 
 Descripción detallada que responda "¿Por qué se hace la
 modificación?" y que no sobrepase los 72 caracteres.
@@ -216,29 +214,25 @@ modificación?" y que no sobrepase los 72 caracteres.
 Fixes: #123
 ```
 
-Si se debe hacer una modificación después de confirmar, simplemente se
-agregan los cambios al área de confirmación y se confirman sin especificar el
-nombre de la rama
+Si se debe hacer una modificación después de confirmar, simplemente se repite
+este paso.
 
-```shell-session
-$ git add .
-$ git codereview gofmt
-$ git codereview change
-```
-
-6\. Verificar que el código esté actualizado
+6\. Verificar que el código esté actualizado.
 
 ```shell-session
 $ git codereview sync
 ```
 
-Si hay cambios es recomendable ejecutar nuevamente las pruebas.
+Si hay cambios deben ejecutarse nuevamente las pruebas.
 
-7\. Publicar los cambios para que sean auditados
+7\. Publicar los cambios para que sean auditados.
 
 ```shell-session
 $ git codereview mail
 ```
+
+Si se debe hacer una modificación después de la auditoria, simplemente se
+repiten los pasos desde el 5.
 
 # Atribuciones
 

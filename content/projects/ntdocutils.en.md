@@ -24,9 +24,9 @@ It acts as a wrapper for the `rst2html5.py` front end.
 
 **NtDocutils** requires:
 
-* Python 3.4 or above
-* Docutils 0.14 (auto installed)
-* Pygments 2.2.0 (auto installed)
+* Python >= 3.4 
+* Docutils == 0.14 (auto installed)
+* Pygments == 2.2.0 (auto installed)
 
 ## From PyPI
 
@@ -112,62 +112,80 @@ And this is the result:
 
 ## Create a theme
 
-[Create your own theme](https://github.com/ntrrg/ntdocutils-theme-template).
+1\. Get the template.
+
+```shell-session
+$ git clone --depth 1 https://github.com/ntrrg/ntdocutils-theme-template.git
+```
+
+2\. Set up the template.
+
+```shell-session
+$ mv ntdocutils-theme-template REPOSITORY_NAME
+```
+
+```shell-session
+$ cd REPOSITORY_NAME
+```
+
+```shell-session
+$ EDITOR config.sh
+```
+
+`config.sh`:
+
+```sh
+NAME="test"
+VERSION="1.0.0"
+DESCRIPTION="This is a test theme."
+URL="https://github.com/ntrrg/ntdocutils-theme-test"
+AUTHOR="Miguel Angel Rivera Notararigo"
+EMAIL="ntrrgx@gmail.com"
+SERVER="https://ntrrg.github.io/ntdocutils-theme-test/ntdocutils-theme-test"
+```
+
+```shell-session
+$ ./setup.sh
+```
+
+3\. Edit  and test the template (see the [MDL theme](https://github.com/ntrrg/ntdocutils-theme-mdl/)
+code and use it as example).
+
+```shell-session
+$ EDITOR
+```
+
+```shell-session
+$ pip install -e .
+```
+
+```shell-session
+$ (cd docs && ntdocutils -T THEME_NAME -S local demo.rst index.html)
+```
+
+4\. Publish the theme.
+
+**Note:** a Python account is needed ([create an account](https://pypi.org/account/register/)).
+
+```shell-session
+$ pip install setuptools twine
+```
+
+```shell-session
+$ rm -rf dist
+```
+
+```shell-session
+$ python setup.py sdist bdist_well
+```
+
+```shell-session
+$ twine upload dist/*
+```
 
 # Uninstall
 
 ```shell-session
 $ pip uninstall -y NtDocutils docutils Pygments
 ```
-
-# Acknowledgment
-
-Working on this project I use/used:
-
-* [Debian](https://www.debian.org/)
-
-* [XFCE](https://xfce.org/)
-
-* [Sublime Text 3](https://www.sublimetext.com/3)
-
-* [Chrome](https://www.google.com/chrome/browser/desktop/index.html)
-
-* [Terminator](https://gnometerminator.blogspot.com/p/introduction.html)
-
-* [Zsh](http://www.zsh.org/)
-
-* [Git](https://git-scm.com/)
-
-* [EditorConfig](http://editorconfig.org/)
-
-* [Github](https://github.com)
-
-* [Inkscape](https://inkscape.org/en/)
-
-* [GIMP](https://www.gimp.org/)
-
-* [Material Icons](https://material.io/icons/)
-
-* [Roboto](https://fonts.google.com/specimen/Roboto)
-
-* [RawGit](https://rawgit.com/)
-
-* [st](https://st.suckless.org/)
-
-* [GNU Screen](https://www.gnu.org/software/screen)
-
-* [Vim](https://www.vim.org/)
-
-* [Gogs](https://gogs.io/)
-
-* [Python](https://www.python.org)
-
-* [Docutils](http://docutils.sourceforge.net/)
-
-* [Pygments](http://pygments.org)
-
-**Docutils Team.** *reStructuredText.* <http://docutils.sourceforge.net/rst.html>
-
-**Mozilla Developer Network.** *JavaScript.* <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
-
 
