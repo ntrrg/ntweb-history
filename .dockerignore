@@ -7,4 +7,6 @@ Session.vim
 .git/
 .editorconfig
 .gitignore
+Makefile
+*.mk
 
