@@ -420,8 +420,9 @@ type Operander interface {
 
 ```
 
-O iniciar el servidor HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
-con un navegador si se quiere ver la versión HTML.
+Para verlo en formato HTML se debe agregar la opción `-html`, pero el resultado
+será una página sin formato, por lo que es recomendable iniciar el servidor
+HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>.
 
 ```shell-session
 $ godoc -http :6060
@@ -436,12 +437,21 @@ suele ser suficiente con documentar el grupo y no cada una de ellas.
 Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
 si:
 
-* Tiene el formato de un URL, será convertido a un enlace HTML.
+* Inicia con una letra mayúscula y no termina con un punto, será convertido en
+  en un título.
+
+* Tiene el formato de un URL, será convertido a un enlace.
 
 * Tiene una indentación, será convertido a un bloque de código.
 
 * Tiene el formato `BUG(USUARIO): DESCRIPCIÓN.`, será agregado a la lista de
   bugs conocidos del paquete.
+
+También existen algunas convenciones que por ahora no reciben un formato
+especial, pero el texto tendrá un valor semántico si:
+
+* Tiene el formato `Deprecated: DESCRIPCIÓN.`, identificará al elemento como
+  descontinuado e indicará su remplazo en caso de que exista.
 
 Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
 sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
@@ -534,7 +544,6 @@ func Sub(operands ...int) int {
 
 `$GOPATH/src/local/arithmetic/example_test.go`:
 
-{{% go-playground "F89MWsdAyLS" %}}
 ```go
 package arithmetic_test
 
@@ -562,13 +571,23 @@ func ExampleSub() {
   // Output: 1
 }
 ```
-{{% /go-playground %}}
 
 Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
 <http://localhost:6060/pkg/local/arithmetic> con un navegador.
 
 ```shell-session
-$ godoc -http :6060
+$ godoc -http :6060 -play
+```
+
+**Nota:** los paquetes importados en los ejemplos deben estar publicados, pues
+son ejecutados en entornos aislados y no podrán acceder a los paquetes
+instalados en el host.
+
+Si se quieren ver los ejemplos en la línea de comandos, debe agregarse la
+opción `-ex`.
+
+```shell-session
+$ godoc -ex local/arithmetic
 ```
 
 Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
@@ -579,6 +598,7 @@ funciones son ejecutadas por `go test`, por lo que no solo tienen un uso
 informativo, sino que también ayudan a probar el código; si no se encuentra
 algún comentario especial, las funciones serán compiladas, pero no ejecutadas.
 
+{{% go-playground "F89MWsdAyLS" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   Example
@@ -590,6 +610,7 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
+{{% /go-playground %}}
 
 Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
 objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
@@ -597,7 +618,6 @@ letra.
 
 `$GOPATH/src/local/arithmetic/multiexample_test.go`:
 
-{{% go-playground "cKBokfh3L9v" %}}
 ```go
 package arithmetic_test
 
@@ -619,8 +639,8 @@ func ExampleAdd_five() {
   // Output: 15
 }
 ```
-{{% /go-playground %}}
 
+{{% go-playground "cKBokfh3L9v" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   Example
@@ -636,6 +656,7 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
+{{% /go-playground %}}
 
 Como un ejemplo es representado por una función, no es posible demostrar
 algunas funcionalidades como la implementación de interfaces, por esta razón
@@ -647,7 +668,6 @@ paquete que sean necesarias.
 $ rm -rf $GOPATH/src/local/arithmetic
 ```
 
-{{% go-playground "8D3QO97NKE-" %}}
 `$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
@@ -693,8 +713,8 @@ func ExampleAdd() {
   // Output: 2
 }
 ```
-{{% /go-playground %}}
 
+{{% go-playground "8D3QO97NKE-" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   ExampleAdd
@@ -702,6 +722,7 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
+{{% /go-playground %}}
 
 # Tipos de datos
 
