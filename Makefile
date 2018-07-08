@@ -11,6 +11,11 @@ build:
 build-docker:
 	@docker build -t ntrrg/site .
 
+.PHONY: clean
+clean:
+	docker rm -f site-lint 2> /dev/null || echo
+	rm -rf public
+
 .PHONY: hugo
 hugo:
 	@docker run --rm -it \
