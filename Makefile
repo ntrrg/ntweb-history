@@ -5,7 +5,7 @@ all: build
 
 .PHONY: build
 build:
-	@CMD="-v" $(MAKE) -s hugo
+	$(MAKE) -s "hugo -v"
 
 .PHONY: build-docker
 build-docker:
@@ -16,12 +16,12 @@ clean:
 	docker rm -f site-lint 2> /dev/null || echo
 	rm -rf public
 
-.PHONY: hugo
-hugo:
+.PHONY: hugo%
+hugo%:
 	@docker run --rm -it \
 		-u $$(id -u $$USER) \
 		-v "$$PWD":/site/ \
-	ntrrg/hugo:$(hugo_version) $$CMD
+	ntrrg/hugo:$(hugo_version) $*
 
 .PHONY: lint
 lint:
