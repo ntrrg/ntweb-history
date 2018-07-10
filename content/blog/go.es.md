@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2018-06-16T00:48:00-04:00
+date: 2018-07-10T06:25:00-04:00
 image: /uploads/gopher.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.
 categories:
@@ -17,9 +17,13 @@ tags:
 
 [Go license]: https://golang.org/LICENSE
 
-Fue diseñado en el año 2007 por Ken Thompson, Rob Pike y Robert Griesemer en
-Google. Es de código abierto y es ditribuido bajo una licencia
-[BSD-style][Go license]. Algunas de sus características son:
+Su fase de diseño inició en el año 2007 por parte de un equipo de ingenieros de
+Google, conformado en ese tiempo por Ken Thompson, Rob Pike y Robert Griesemer;
+luego de tener una base estable, se unieron los ingenieros Russ Cox e Ian Lance
+Taylor. Para inicios del 2012 se liberó la primera versión estable, de código
+abierto y ditribuido bajo una licencia [BSD-style][Go license].
+
+Algunas de sus características más resaltantes son:
 
 [GC]: https://es.wikipedia.org/wiki/Recolector_de_basura
 
@@ -45,8 +49,15 @@ Google. Es de código abierto y es ditribuido bajo una licencia
   y operadores, también tiene algunas bibliotecas que permiten aplicar técnicas
   de más bajo nivel).
 
-* Minimalista. La mayoría de las utilidades que faltan en el lenguaje, fueron
+* Minimalista, la mayoría de las utilidades que faltan en el lenguaje, fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
+
+* Usar la herramienta indicada para solucionar el problema es parte de su
+  filosofía, no tiene sentido usar una biblioteca de miles o millones de líneas
+  de código solo para crear un servicio web básico, pero tampoco es ideal tener
+  que implementar estructuras de datos complejas en cada proyecto que se haga.
+  El uso acertado de las herramientas es una parte muy importante dentro de la
+  ingeniería de software.
 
 {{< toc >}}
 
@@ -366,7 +377,7 @@ type Operander interface {
 
 // Add gets any number of Operander and returns their addition.
 func Add(operands ...Operander) float64 {
-  result := operands[0]
+  result := operands[0].Val()
 
   for _, v := range operands[1:] {
     if v.Val() == AdditiveIdentity {
@@ -420,9 +431,8 @@ type Operander interface {
 
 ```
 
-Para verlo en formato HTML se debe agregar la opción `-html`, pero el resultado
-será una página sin formato, por lo que es recomendable iniciar el servidor
-HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>.
+O iniciar el servidor HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
+con un navegador si se quiere ver la versión HTML.
 
 ```shell-session
 $ godoc -http :6060
@@ -437,21 +447,12 @@ suele ser suficiente con documentar el grupo y no cada una de ellas.
 Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
 si:
 
-* Inicia con una letra mayúscula y no termina con un punto, será convertido en
-  en un título.
-
-* Tiene el formato de un URL, será convertido a un enlace.
+* Tiene el formato de un URL, será convertido a un enlace HTML.
 
 * Tiene una indentación, será convertido a un bloque de código.
 
 * Tiene el formato `BUG(USUARIO): DESCRIPCIÓN.`, será agregado a la lista de
   bugs conocidos del paquete.
-
-También existen algunas convenciones que por ahora no reciben un formato
-especial, pero el texto tendrá un valor semántico si:
-
-* Tiene el formato `Deprecated: DESCRIPCIÓN.`, identificará al elemento como
-  descontinuado e indicará su remplazo en caso de que exista.
 
 Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
 sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
@@ -544,6 +545,7 @@ func Sub(operands ...int) int {
 
 `$GOPATH/src/local/arithmetic/example_test.go`:
 
+{{% go-playground "F89MWsdAyLS" %}}
 ```go
 package arithmetic_test
 
@@ -571,23 +573,13 @@ func ExampleSub() {
   // Output: 1
 }
 ```
+{{% /go-playground %}}
 
 Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
 <http://localhost:6060/pkg/local/arithmetic> con un navegador.
 
 ```shell-session
-$ godoc -http :6060 -play
-```
-
-**Nota:** los paquetes importados en los ejemplos deben estar publicados, pues
-son ejecutados en entornos aislados y no podrán acceder a los paquetes
-instalados en el host.
-
-Si se quieren ver los ejemplos en la línea de comandos, debe agregarse la
-opción `-ex`.
-
-```shell-session
-$ godoc -ex local/arithmetic
+$ godoc -http :6060
 ```
 
 Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
@@ -598,7 +590,6 @@ funciones son ejecutadas por `go test`, por lo que no solo tienen un uso
 informativo, sino que también ayudan a probar el código; si no se encuentra
 algún comentario especial, las funciones serán compiladas, pero no ejecutadas.
 
-{{% go-playground "F89MWsdAyLS" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   Example
@@ -610,7 +601,6 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
-{{% /go-playground %}}
 
 Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
 objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
@@ -618,6 +608,7 @@ letra.
 
 `$GOPATH/src/local/arithmetic/multiexample_test.go`:
 
+{{% go-playground "cKBokfh3L9v" %}}
 ```go
 package arithmetic_test
 
@@ -639,8 +630,8 @@ func ExampleAdd_five() {
   // Output: 15
 }
 ```
+{{% /go-playground %}}
 
-{{% go-playground "cKBokfh3L9v" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   Example
@@ -656,7 +647,6 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
-{{% /go-playground %}}
 
 Como un ejemplo es representado por una función, no es posible demostrar
 algunas funcionalidades como la implementación de interfaces, por esta razón
@@ -668,6 +658,7 @@ paquete que sean necesarias.
 $ rm -rf $GOPATH/src/local/arithmetic
 ```
 
+{{% go-playground "8D3QO97NKE-" %}}
 `$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
@@ -713,8 +704,8 @@ func ExampleAdd() {
   // Output: 2
 }
 ```
+{{% /go-playground %}}
 
-{{% go-playground "8D3QO97NKE-" %}}
 ```shell-session
 $ go test -v local/arithmetic
 === RUN   ExampleAdd
@@ -722,7 +713,6 @@ $ go test -v local/arithmetic
 PASS
 ok  	local/arithmetic
 ```
-{{% /go-playground %}}
 
 # Tipos de datos
 
