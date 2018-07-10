@@ -13,7 +13,7 @@ build-docker:
 
 .PHONY: clean
 clean:
-	docker rm -f site-lint 2> /dev/null || echo
+	docker rm -f $(lint_container) > /dev/null 2> /dev/null || true
 	rm -rf public
 
 .PHONY: hugo%
@@ -25,9 +25,9 @@ hugo%:
 
 .PHONY: lint
 lint:
-	@docker run --name site-lint -it \
+	@docker run --name $(lint_container) -it \
 		-v "$$PWD":/files/ \
-	ntrrg/md-linter:watch 2> /dev/null || docker start -ai site-lint
+	ntrrg/md-linter:watch 2> /dev/null || docker start -ai $(lint_container)
 
 .PHONY: run
 run:
