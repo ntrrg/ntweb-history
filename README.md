@@ -1,50 +1,54 @@
-[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
-[![](https://images.microbadger.com/badges/image/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site "Get your own image badge on microbadger.com")
-
 This site was migrated to Hugo and is hosted now by Netlify.
 
 <https://nt.web.ve>
 
-## Usage
+## Offline version
 
 ### Docker
 
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
+[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site)
+
 ```shell-session
-docker run -p 1234:80 ntrrg/site
+$ docker run --rm -p 1234:80 ntrrg/site
 ```
 
 Go to <http://localhost:1234/en/> with a browser.
 
 ### Hugo
 
-**Note:** use Hugo 0.42.1.
+**Note:** use Hugo 0.42.1 or above.
 
 ```shell-session
-git clone https://github.com/ntrrg/ntrrg.github.io.git
+$ wget https://github.com/ntrrg/ntrrg.github.io/archive/master.tar.gz
 ```
 
 ```shell-session
-cd ntrrg.github.io/
+$ tar -xvf master.tar.gz
 ```
 
 ```shell-session
-hugo server
+$ cd ntrrg.github.io-master/
+```
+
+```shell-session
+$ hugo server
 ```
 
 Go to <http://localhost:1313/en/> with a browser.
 
-## Development
+## Editing
 
 * Lint markdown files:
 
 ```shell-session
-docker run -itv "$PWD":/files/ ntrrg/md-linter:watch
+$ make lint
 ```
 
 * Run the development server:
 
 ```shell-session
-docker run -itp 1313:1313 -v "$PWD":/site/ ntrrg/hugo:0.42.1
+$ make run
 ```
 
 ## Acknowledgment
@@ -66,6 +70,8 @@ Working on this site I use/used:
 * [EditorConfig](http://editorconfig.org/)
 
 * [Vim](https://www.vim.org/)
+
+* [GNU make](https://www.gnu.org/software/make/)
 
 * [Hugo](https://gohugo.io)
 

@@ -1,7 +1,7 @@
 ---
 title: Demo page
 date: 2028-07-05T18:35:00-04:00
-image: /uploads/gopher.png
+image: /images/logo.png
 description: This is a demo page to see the styles from NtWeb.
 categories:
   - demo
@@ -16,17 +16,30 @@ math: true
 
 {{< toc >}}
 
-# Headers
+# Paragraphs
 
-# h1 Heading
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
+Any line with blank lines before and after it is a paragrah,
+consequent lines are joined.
 
+You need a blank line for a new paragraph.
+
+# Separators
 
 ---
+
+# Heading (h1) 
+
+## Heading (h2) 
+
+### Heading (h3) 
+
+#### Heading (h4) 
+
+##### Heading (h5) 
+
+###### Heading (h6) 
+
+# Text decoration
 
 **This is bold text**
 
@@ -36,39 +49,84 @@ __This is bold text__
 
 _This is italic text_
 
-~~Deleted text~~
+~~This is dashed text~~
 
-This is text with inline math \\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\) and with math blocks:
+<https://nt.web.ve>
+
+[This is a link](https://nt.web.ve)
+
+[This is a link with a title](https://nt.web.ve "This is the title!").
+
+# Images
+
+![test image](/images/logo.png)
+
+# Lists
+
+* Create a list by starting a line with `+`, `-`, or `*`
+* Sub-lists are made by indenting 2 spaces:
+  * This is a sublist
+* And everything become normal again
+
+1. This is
+2. an ordered
+3. list
+
+This
+: is a definition list.
+
+Term:
+: definition, you can add the `:` in the term.
+
+# Quotes
+
+<!--lint disable no-undefined-references no-shortcut-reference-link-->
+This paragraph has a footnote[^1].
+
+[^1]: And here is the footnote.
+<!--lint enable no-undefined-references no-shortcut-reference-link-->
+
+> Block quotes are
+> written like so.
+>
+> They can span multiple paragraphs, if you like.
+>
+> And **Markdown**!.
+>
+> -- The Author
+
+# Tables
+
+| Heading | Another heading |
+| ------- | --------------- |
+| text    | text            |
+| text    | text            |
+| text    | text            |
+
+| Heading | Another heading |
+| :-----: | :-------------: |
+|  text   |      text       |
+|  text   |      text       |
+|  text   |      text       |
+
+| Heading | Another heading |
+| ------: | --------------: |
+|    text |            text |
+|    text |            text |
+|    text |            text |
+
+# Math formulas
+
+This is a smart fraction 1/2, this is text with inline math
+\\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\) and this is a math blocks:
 
 $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
 $$
 
-> Block quotes are
-> written like so.
->
-> They can span multiple paragraphs,
-> if you like.
+# Code
 
-Some text, and some `code` and then a nice plain [link with title](https://github.com/davidhampgonsalves/davidhampgonsalves.com-hugo "title text!").
-
-and then
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-+ Very easy!
-
-vs.
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-## Code
-
-Inline `code`
+Inline `code`.
 
 ```go
 package main
@@ -80,23 +138,41 @@ func main() {
 }
 ```
 
+# Theme
+
+## Keyboard
+
 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
 
-| Heading | Another heading |
-| ------  | --------------- |
-|  text   |      text       |
-|  text   |      text       |
-|  text   |      text       |
+## Notes
 
-| Heading | Another heading |
-| :----:  | :-------------: |
-|  text   |      text       |
-|  text   |      text       |
-|  text   |      text       |
+{{% note %}}
+This is a note.
+{{% /note %}}
 
-| Heading | Another heading |
-| -----:  | --------------: |
-|  text   |      text       |
-|  text   |      text       |
-|  text   |      text       |
+{{% note "My title" %}}
+This is a note with a custom title.
+{{% /note %}}
+
+## Links of interest
+
+{{% loi %}}
+* <https://nt.web.ve>
+* <https://nt.web.ve/en>
+* <https://nt.web.ve/es>
+{{% /loi %}}
+
+## Go Playground
+
+{{% go-playground "sfPZJf_jZLF" %}}
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("hello, world")
+}
+```
+{{% /go-playground %}}
 

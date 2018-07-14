@@ -9,12 +9,12 @@ build:
 
 .PHONY: build-docker
 build-docker:
-	@docker build -t ntrrg/site .
+	docker build -t ntrrg/site .
 
 .PHONY: clean
 clean:
-	docker rm -f $(lint_container) > /dev/null 2> /dev/null || true
 	rm -rf public
+	docker rm -f $(lint_container) > /dev/null 2> /dev/null || true
 
 .PHONY: hugo%
 hugo%:

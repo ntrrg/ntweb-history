@@ -2,7 +2,6 @@
 title: NtDocutils
 source: https://github.com/ntrrg/ntdocutils
 description: Docutils theme manager.
-image: /images/logo.png
 license: MIT
 kinds:
   - cli
@@ -16,7 +15,8 @@ techs:
 [![pypi](https://img.shields.io/pypi/v/NtDocutils.svg)](https://pypi.python.org/pypi/NtDocutils)
 
 **NtDocutils** is a theme manager for [Docutils](http://docutils.sourceforge.net/).
-It acts as a wrapper for the `rst2html5.py` front end.
+It acts as a wrapper for the `rst2html5.py` frontend, and that enables the
+customization possibility of the resulting file.
 
 {{< toc >}}
 
@@ -90,7 +90,7 @@ And that's it, you already have a HTML file, just like Docutils.
 </p>
 
 To use a theme, just install it and pass the `-T THEME` flag, for example, to
-use the [MDL](https://getmdl.io) theme.
+use the [MDL theme](https://ntrrg.github.io/ntdocutils-theme-mdl):
 
 ```shell-session
 $ pip install ntdocutils-theme-mdl
@@ -152,20 +152,28 @@ $ ./setup.sh
 code and use it as example).
 
 ```shell-session
-$ EDITOR
-```
-
-```shell-session
 $ pip install -e .
 ```
 
 ```shell-session
-$ (cd docs && ntdocutils -T THEME_NAME -S local demo.rst index.html)
+$ cd docs
+```
+
+```shell-session
+$ ntdocutils -T THEME_NAME -S local demo.rst index.html
 ```
 
 4\. Publish the theme.
 
 **Note:** a Python account is needed ([create an account](https://pypi.org/account/register/)).
+
+```shell-session
+$ rm -rf ntdocutils-theme-THEME_NAME
+```
+
+```shell-session
+$ cd ..
+```
 
 ```shell-session
 $ pip install setuptools twine

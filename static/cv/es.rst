@@ -17,22 +17,20 @@ Resumen curricular
 
 **Teléfono:** +584247484276
 
-**Correo electrónico :** ntrrgx@gmail.com
+**Correo electrónico:** ntrrgx@gmail.com
 
-**Sitio web :** https://nt.web.ve
+**Sitio web:** https://nt.web.ve/es
 
 **GitHub:** https://github.com/ntrrg
-
-**LinkedIn:** https://www.linkedin.com/in/ntrrg/
 
 Habilidades
 ===========
 
-Programación avanzada con Go, JavaScript (Node.js) y Shell Scripting.
+Programación avanzada con Go y Shell Scripting.
 
-APIs, Microservicios y CLIs
+APIs, Microservicios y CLIs.
 
-REST (HTTP y UDS), RPC (gRPC), AMQP (RabitMQ).
+REST (TCP/UDS), RPC (gRPC) y AMQP (RabitMQ).
 
 Contenedores (Docker y systemd-nspawn).
 
@@ -40,26 +38,44 @@ Orquestación de contenedores (Docker Swarm).
 
 Computación en la nuve (GCP).
 
-Pruebas unitarias e integración continua (Travis, Gilab CI, Drone).
+CI (Travis, Gilab CI, Drone) y CD (Netlify, Heroku).
 
-Bases de datos relacionales (MySQL, PostgreSQL y SQLite).
+Bases de datos relacionales (MySQL, PostgreSQL, SQLite).
 
 Sistemas de control de versiones (Git).
 
-Programación básica con C, C++ y Python.
+Programación básica con C, C++, JavaScript (Node.js) y Python.
 
-Aplicaciones web (HTML5, CSS3 y JavaScript ES6).
+Aplicaciones web (HTML5, CSS3, JavaScript ES6).
 
 Instalación y configuración de servidores (LVM, Debian, SSH, DNS, HTTP, rsync).
 
-Instalación y configuración básica de redes.
+Configuración básica de redes.
 
 Soporte a equipos Linux (Debian based), Android, iOS y Windows (>= XP).
 
 Dominio medio del inglés.
 
+|pb|
+
 Proyectos
 =========
+
+* **ntgo**
+
+  https://github.com/ntrrg/ntgo
+
+  Conjunto de paquetes Go, una STDLIB personal.
+
+  Go.
+
+* **Tema MDL para NtDocutils**
+
+  https://github.com/ntrrg/ntdocutils-theme-mdl
+
+  Tema MDL para NtDocutils.
+
+  Python, HTML5, CSS3, JavaScript (ES6), MDL.
 
 * **NtDocutils**
 
@@ -69,13 +85,7 @@ Proyectos
 
   Python.
 
-* **Tema MDL para NtDocutils**
-
-  https://github.com/ntrrg/ntdocutils-theme-mdl
-
-  Tema MDL para NtDocutils.
-
-  Python, HTML5, CSS3, JavaScript (ES6), MDL.
+|pb|
 
 Charlas
 =======
@@ -88,14 +98,10 @@ Charlas
 
   2016/02/12
 
+|pb|
+
 Formación académica
 ===================
-
-* **Full Stack Web Development Certification**
-
-  *freeCodeCamp*
-
-  2017 - ...
 
 * **Ingeniero en Informática**
 
@@ -109,10 +115,14 @@ Formación académica
 
   2010 - 2013
 
-|pb|
-
 Certificación y reconocimientos
 ===============================
+
+* **Desarrollo Web Full Stack**
+
+  *freeCodeCamp*
+
+  2017 - ...
 
 * **Excelencia Académica**
 

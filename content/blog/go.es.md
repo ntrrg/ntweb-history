@@ -49,17 +49,86 @@ Algunas de sus características más resaltantes son:
   y operadores, también tiene algunas bibliotecas que permiten aplicar técnicas
   de más bajo nivel).
 
-* Minimalista, la mayoría de las utilidades que faltan en el lenguaje, fueron
+* Minimalista, la mayoría de las utilidades que faltan en el lenguaje fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
 
-* Usar la herramienta indicada para solucionar el problema es parte de su
-  filosofía, no tiene sentido usar una biblioteca de miles o millones de líneas
-  de código solo para crear un servicio web básico, pero tampoco es ideal tener
-  que implementar estructuras de datos complejas en cada proyecto que se haga.
-  El uso acertado de las herramientas es una parte muy importante dentro de la
-  ingeniería de software.
-
 {{< toc >}}
+
+# Filosofía, proverbios y citas
+
+{{% loi %}}
+* <https://www.youtube.com/watch?v=PAAkCSZUG1c>
+{{% /loi %}}
+
+> Don't communicate by sharing memory, share memory by communicating.
+
+<!-- -->
+
+> Concurrency is not parallelism.
+
+<!-- -->
+
+> Channels orchestrate; mutexes serialize.
+
+<!-- -->
+
+> The bigger the interface, the weaker the abstraction.
+
+<!-- -->
+
+> Make the zero value usefull.
+
+<!-- -->
+
+> interface{} says nothing.
+
+<!-- -->
+
+> Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
+
+<!-- -->
+
+> A little copying is better than a little dependency.
+
+<!-- -->
+
+> Syscall must always be guarded with build tags.
+
+<!-- -->
+
+> Cgo must always be guarded with build tags.
+
+<!-- -->
+
+> Cgo is not Go.
+
+<!-- -->
+
+> With the unsafe package there are no guarantees.
+
+<!-- -->
+
+> Clear is better than clever.
+
+<!-- -->
+
+> Reflection is never clear.
+
+<!-- -->
+
+> Errors are values.
+
+<!-- -->
+
+> Don't just check errors, handle them gracefully.
+
+<!-- -->
+
+> Design the architectura, name the components, document the details.
+
+<!-- -->
+
+> Documentation is for users.
 
 # Funcionalidades excluidas
 
@@ -358,7 +427,7 @@ aquellas precedidas directamente por una o más líneas de comentarios.
 `$GOPATH/src/local/arithmetic/aritmetic.go`:
 
 ```go
-// Package arithmetic provides arithmetics operations for any type.
+// Package arithmetic provides arithmetic operations for any type.
 package arithmetic
 
 // Identity constants
@@ -403,7 +472,7 @@ PACKAGE DOCUMENTATION
 package arithmetic
     import "local/arithmetic"
 
-    Package arithmetic provides arithmetics operations for any type.
+    Package arithmetic provides arithmetic operations for any type.
 
 CONSTANTS
 
@@ -463,7 +532,7 @@ su comentario de documentación.
 
 ```go
 /*
-Package arithmetic provides arithmetics operations for any type.
+Package arithmetic provides arithmetic operations for any type.
 
 This is a long description of the Arithmetic package.
 
@@ -1032,14 +1101,14 @@ x = │1│3│5│7│9│
     └─┴─┴─┴─┴─┘
      0 1 2 3 4
 
-x[0] -> 1
-x[2] -> 5
-x[4] -> 9
+x[0]   -> 1
+x[2]   -> 5
+x[4]   -> 9
 x[0:2] -> [1 3]
 x[3:5] -> [7 9]
-x[:3] -> [1 3 5]
-x[2:] -> [5 7 9]
-x[:] -> [1 3 5 7 9]
+x[:3]  -> [1 3 5]
+x[2:]  -> [5 7 9]
+x[:]   -> [1 3 5 7 9]
 
 x[0] = 0
 x[4] = 0
@@ -1170,7 +1239,8 @@ Al igual que los arreglos, son un conjunto de elementos de un tipo de dato
 asignado arbitrariamente, pero con algunas diferencias importantes, entre las
 cuales destaca la posibilidad de alterar su tamaño después de crearse, por lo
 que generalmente son más comunes en el código fuente. Sus elementos también
-están enumerados como los arreglos y también soportan operaciones de porciones.
+están enumerados como los arreglos y soportan operaciones de porciones (ya se
+que por algo se llaman porciones, pero es bueno aclararlo 😅).
 
 Otra diferencia con los arreglos, es la forma en la que son implementadas
 internamente por el lenguaje, pues en lugar de representar bloques de memoria,
@@ -1193,9 +1263,9 @@ y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│
      └─────┴───┴───┘    └─┴─┘ └─┴─┴─┘ 
        ptr  lon cap      0 1   2 3 4
 
-y[:]  -> [1, 3]
-y[:2] -> [1, 3]
-y[:5] -> [1, 3, 5, 7, 9]
+y[:]  -> [1 3]
+y[:2] -> [1 3]
+y[:5] -> [1 3 5 7 9]
 y[:6] -> Error, sobrepasa la capacidad
 y[2]  -> Error, sobrepasa la longitud
 
@@ -1206,9 +1276,9 @@ z -> │&x[1]│ 3 │ 4 │ -> │3│5│7│ │9│
      └─────┴───┴───┘    └─┴─┴─┘ └─┘
        ptr  lon cap      0 1 2   3
 
-z[:]  -> [3, 5, 7]
-z[:2] -> [3, 5]
-z[:4] -> [3, 5, 7, 9]
+z[:]  -> [3 5 7]
+z[:2] -> [3 5]
+z[:4] -> [3 5 7 9]
 z[:5] -> Error, sobrepasa la capacidad
 y[3]  -> Error, sobrepasa la longitud
 
@@ -1219,10 +1289,27 @@ a -> │&x[3]│ 2 │ 2 │ -> │7│9│
      └─────┴───┴───┘    └─┴─┘
        ptr  lon cap      0 1
 
-a[:]  -> [7, 9]
-a[:2] -> [7, 9]
+a[:]  -> [7 9]
+a[:2] -> [7 9]
 a[:3] -> Error, sobrepasa la capacidad
 a[2]  -> Error, sobrepasa la longitud
+```
+
+Es posible limitar su capacidad agregando un tercer índice a la sintaxis de
+porciones (`x[i:j:k]`), y al igual que el segundo índice, es exclusivo.
+
+```
+b = x[:3:4] -> Solo el primer índice es opcional con esta sintaxis
+
+     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
+b -> │&x[0]│ 3 │ 4 │ -> │1│3│5│ │7│
+     └─────┴───┴───┘    └─┴─┴─┘ └─┘
+       ptr  lon cap      0 1 2   3
+
+b[:]  -> [1 3 5]
+b[:2] -> [1 3]
+b[:4] -> [1 3 5 7]
+b[:5] -> Error, sobrepasa la capacidad
 ```
 
 Ya que las porciones solo tienen una referencia a un arreglo, pasarlas como
@@ -1239,27 +1326,27 @@ x = │2│4│6│8│
 y = [:3]
 z = [1:]
 
-x -> [2, 4, 6, 8]
-y -> [2, 4, 6]
-z -> [4, 6, 8]
+x -> [2 4 6 8]
+y -> [2 4 6]
+z -> [4 6 8]
 
 x[1] = 3
 
-x -> [2, 3, 6, 8]
-y -> [2, 3, 6]
-z -> [3, 6, 8]
+x -> [2 3 6 8]
+y -> [2 3 6]
+z -> [3 6 8]
 
 y[0] = 1
 
-x -> [1, 3, 6, 8]
-y -> [1, 3, 6]
-z -> [3, 6, 8]
+x -> [1 3 6 8]
+y -> [1 3 6]
+z -> [3 6 8]
 
 z[2] = 9
 
-x -> [1, 3, 6, 9]
-y -> [1, 3, 6]
-z -> [3, 6, 9]
+x -> [1 3 6 9]
+y -> [1 3 6]
+z -> [3 6 9]
 ```
 
 Para obtener la longitud y la capacidad de una porción se deben usar las

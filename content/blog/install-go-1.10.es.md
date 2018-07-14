@@ -138,8 +138,14 @@ $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
 
 ```shell-session
 $ wget https://dl.google.com/go/go1.10.3.src.tar.gz
+```
+
+```shell-session
 $ md5sum go1.10.3.src.tar.gz
 d15dfb264105c5e84fbe33f4a4aa5021  go1.10.3.src.tar.gz
+```
+
+```shell-session
 $ tar -xvf go1.10.3.src.tar.gz
 ```
 
@@ -153,6 +159,9 @@ $ git clone -b go1.10.3 --depth 1 https://go.googlesource.com/go
 
 ```shell-session
 $ cd go/src
+```
+
+```shell-session
 $ ./all.bash
 ```
 
@@ -167,6 +176,9 @@ carpeta del código fuente.
 
 ```shell-session
 $ cd ../../
+```
+
+```shell-session
 # mv go /usr/local/
 ```
 
