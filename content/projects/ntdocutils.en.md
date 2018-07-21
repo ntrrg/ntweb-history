@@ -106,6 +106,34 @@ And this is the result:
   <img alt="MDL Theme" src="/uploads/ntdocutils/mdl-example.png"/>
 </p>
 
+## CLI
+
+```shell-session
+usage: ntdocutils [-h] [-V] [-T THEME] [-S SERVER] SOURCE DESTINATION
+
+NtDocutils is a theme manager for Docutils.
+
+positional arguments:
+  SOURCE                file to process.
+  DESTINATION           file to generate.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
+  -T THEME, --theme THEME
+                        theme used to generate DESTINATION.
+  -S SERVER, --server SERVER
+                        server from where assets will be downloaded. If
+                        'local' is passed as value, it will activate the
+                        offline mode, this will create a directory with the
+                        theme name in the 'DESTINATION' parent folder and
+                        stores the necessary assets in there.
+
+NtDocutils v1.0.0 https://nt.web.ve/en/projects/ntdocutils
+Copyright (c) 2017 Miguel Angel Rivera Notararigo
+Licensed under The MIT License
+```
+
 # Themes
 
 * [MDL](https://ntrrg.github.io/ntdocutils-theme-mdl)

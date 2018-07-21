@@ -107,6 +107,51 @@ Y el resultado es:
   <img alt="MDL Theme" src="/uploads/ntdocutils/mdl-example.png"/>
 </p>
 
+## CLI
+
+```shell-session
+usage: ntdocutils [-h] [-V] [-T THEME] [-S SERVER] SOURCE DESTINATION
+
+NtDocutils is a theme manager for Docutils.
+
+positional arguments:
+  SOURCE                file to process.
+  DESTINATION           file to generate.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
+  -T THEME, --theme THEME
+                        theme used to generate DESTINATION.
+  -S SERVER, --server SERVER
+                        server from where assets will be downloaded. If
+                        'local' is passed as value, it will activate the
+                        offline mode, this will create a directory with the
+                        theme name in the 'DESTINATION' parent folder and
+                        stores the necessary assets in there.
+
+NtDocutils v1.0.0 https://nt.web.ve/en/projects/ntdocutils
+Copyright (c) 2017 Miguel Angel Rivera Notararigo
+Licensed under The MIT License
+```
+
+NtDocutils recibe dos argumentos, `SOURCE` y `DESTINATION`, que son el archivo
+reStructuredText y el archivo donde se escribirá resultado (HTML)
+respectivamente; además puede recibir cuatro opciones:
+
+* `-h`, `--help`: muestra el texto de ayuda de arriba y finaliza la ejecución.
+
+* `-V`, `--version`: muestra la versión de NtDocutils y finaliza la ejecución.
+
+* `-T TEMA`, `--theme TEMA`: determina el tema que será usado para procesar el
+  archivo `SOURCE`; si no se especifica algún tema, se usará el estilo
+  predeterminado de Docutils.
+
+* `-S SERVIDOR`, `--server SERVIDOR`: servidor de donde se descargarán los
+  archivos estáticos del tema (CSS, JavaScript, etc...); en caso de que se use
+  el valor `local`, NtDocutils creará una carpeta justo al lado del archivo
+  `DESTINATION` que contendrá todos archivos necesitados por el tema.
+
 # Temas
 
 * [MDL](https://ntrrg.github.io/ntdocutils-theme-mdl)
