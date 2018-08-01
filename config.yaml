@@ -11,6 +11,7 @@ params:
     name: NtWeb
     image: images/isologo.png
   image: images/logo.png
+  titleSeparator: ·
   social:
     - name: GitHub (@ntrrg)
       url: https://github.com/ntrrg
@@ -20,6 +21,7 @@ params:
       url: https://www.linkedin.com/in/ntrrg
     - name: Telegram (@ntrrg)
       url: https://t.me/ntrrg
+  googleTagManager: GTM-NZ2R3W7
   goPlayground: https://play.golang.org
 Paginate: 10000
 permalinks:

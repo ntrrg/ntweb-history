@@ -9,7 +9,7 @@ build:
 
 .PHONY: build-docker
 build-docker:
-	docker build -t ntrrg/site .
+	docker build -t $(docker_image) .
 
 .PHONY: clean
 clean:
