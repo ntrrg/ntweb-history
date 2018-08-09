@@ -244,7 +244,7 @@ Para empezar a programar solo hacen falta dos cosas:
 
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 
-[Instalar Go]: {{< relref "blog/install-go-1.10.es.md" >}}
+[Instalar Go]: {{< relref "/blog/install-go-1.10.es.md" >}}
 [Install Go]: https://golang.org/doc/install
 
 * El compilador (pueden ver las instrucciones para instalarlo en la
@@ -844,10 +844,10 @@ Existen tres grupos de datos numéricos:
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
-* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
-* [Números octales]({{< relref "blog/octal-numbers.es.md" >}})
-* [Números hexadecimales]({{< relref "blog/hex-numbers.es.md" >}})
-* [Complemento a dos]({{< relref "blog/twos-complement.es.md" >}})
+* [Números binarios]({{< relref "/blog/binary-numbers.es.md" >}})
+* [Números octales]({{< relref "/blog/octal-numbers.es.md" >}})
+* [Números hexadecimales]({{< relref "/blog/hex-numbers.es.md" >}})
+* [Complemento a dos]({{< relref "/blog/twos-complement.es.md" >}})
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 {{% /loi %}}
 
@@ -959,8 +959,8 @@ uintptr // Permite almacenar direcciones de memoria
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <http://www.oxfordmathcenter.com/drupal7/node/43>
-* [Números binarios]({{< relref "blog/binary-numbers.es.md" >}})
-* [Representación de números de punto flotante]({{< relref "blog/ieee-754.es.md" >}})
+* [Números binarios]({{< relref "/blog/binary-numbers.es.md" >}})
+* [Representación de números de punto flotante]({{< relref "/blog/ieee-754.es.md" >}})
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 {{% /loi %}}
 
@@ -1512,7 +1512,7 @@ nil
 * <https://blog.golang.org/slices>
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
-* [Codificación de texto]({{< relref "blog/text-encoding.es.md" >}})
+* [Codificación de texto]({{< relref "/blog/text-encoding.es.md" >}})
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 {{% /loi %}}
 

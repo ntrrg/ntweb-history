@@ -36,7 +36,7 @@ ella.
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 
 [Go Release Cycle]: https://github.com/golang/go/wiki/Go-Release-Cycle
-[Ciclo de desarrollo de Go]: {{< relref "blog/go-release-cycle.es.md" >}}
+[Ciclo de desarrollo de Go]: {{< relref "/blog/go-release-cycle.es.md" >}}
 
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 

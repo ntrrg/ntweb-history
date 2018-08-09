@@ -5,7 +5,7 @@ all: build
 
 .PHONY: build
 build:
-	$(MAKE) -s "hugo -v"
+	$(MAKE) -s "hugo ''"
 
 .PHONY: build-docker
 build-docker:

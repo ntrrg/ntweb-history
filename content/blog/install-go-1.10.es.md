@@ -88,7 +88,7 @@ $ echo "export GOROOT=\"$GOROOT\"" >> ~/.profile
 
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 
-[Cómo contribuir a Go]: {{< relref "blog/contribute-to-go.es.md" >}}
+[Cómo contribuir a Go]: {{< relref "/blog/contribute-to-go.es.md" >}}
 
 Para este método también es necesario tener los binarios, pues desde la
 versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo

@@ -17,7 +17,7 @@ Go to <http://localhost:1234/en/> with a browser.
 
 ### Hugo
 
-**Note:** use Hugo 0.42.1 or above.
+**Note:** use Hugo 0.46 or above.
 
 ```shell-session
 $ wget https://github.com/ntrrg/ntrrg.github.io/archive/master.tar.gz

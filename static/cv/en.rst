@@ -103,10 +103,10 @@ Talks
 
 |pb|
 
-Academic
-========
+Education
+=========
 
-* **Engineering Informatics**
+* **Informatics Engineer**
 
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
 
