@@ -1,3 +1,8 @@
+#body > main {
+  width: 80ex;
+  margin: 1em auto;
+}
+
 img.site-img {
   max-width: 15em;
 

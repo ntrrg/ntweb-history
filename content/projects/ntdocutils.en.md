@@ -143,14 +143,13 @@ Licensed under The MIT License
 1\. Get the template.
 
 ```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/ntdocutils-theme-template.git
+$ git clone \
+  --depth 1 \
+https://github.com/ntrrg/ntdocutils-theme-template.git \
+REPOSITORY_NAME
 ```
 
 2\. Set up the template.
-
-```shell-session
-$ mv ntdocutils-theme-template REPOSITORY_NAME
-```
 
 ```shell-session
 $ cd REPOSITORY_NAME

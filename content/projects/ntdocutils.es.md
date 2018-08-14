@@ -160,14 +160,13 @@ respectivamente; además puede recibir cuatro opciones:
 1\. Obtener la plantilla.
 
 ```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/ntdocutils-theme-template.git
+$ git clone \
+  --depth 1 \
+https://github.com/ntrrg/ntdocutils-theme-template.git \
+NOMBRE_REPOSITORIO
 ```
 
 2\. Configurar la plantilla.
-
-```shell-session
-$ mv ntdocutils-theme-template NOMBRE_REPOSITORIO
-```
 
 ```shell-session
 $ cd NOMBRE_REPOSITORIO
