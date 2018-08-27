@@ -15,6 +15,7 @@ build-docker:
 clean:
 	rm -rf public
 	docker rm -f $(lint_container) > /dev/null 2> /dev/null || true
+	docker rm -f $(lint_container)-watch > /dev/null 2> /dev/null || true
 
 .PHONY: hugo%
 hugo%:
@@ -27,7 +28,13 @@ hugo%:
 lint:
 	@docker run --name $(lint_container) -it \
 		-v "$$PWD":/files/ \
-	ntrrg/md-linter:watch 2> /dev/null || docker start -ai $(lint_container)
+	ntrrg/md-linter 2> /dev/null || docker start -ai $(lint_container)
+
+.PHONY: lint-watch
+lint-watch:
+	@docker run --name $(lint_container)-watch -it \
+		-v "$$PWD":/files/ \
+	ntrrg/md-linter:watch 2> /dev/null || docker start -ai $(lint_container)-watch
 
 .PHONY: run
 run:
