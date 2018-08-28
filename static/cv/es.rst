@@ -30,7 +30,7 @@ Programación avanzada con Go y Shell Scripting.
 
 APIs, Microservicios y CLIs.
 
-REST (TCP/UDS), RPC (gRPC) y AMQP (RabitMQ).
+REST (TCP/UDS).
 
 Contenedores (Docker y systemd-nspawn).
 
@@ -46,9 +46,7 @@ Sistemas de control de versiones (Git).
 
 Programación básica con C, C++, JavaScript (Node.js) y Python.
 
-Aplicaciones web (HTML5, CSS3, JavaScript ES6).
-
-Instalación y configuración de servidores (LVM, Debian, SSH, DNS, HTTP, rsync).
+Instalación y configuración de servidores.
 
 Configuración básica de redes.
 
@@ -58,47 +56,29 @@ Dominio medio del inglés.
 
 |pb|
 
-Proyectos
-=========
+Experiencia
+===========
 
-* **ntgo**
+* **Desarrollador Fullstack**
 
-  https://github.com/ntrrg/ntgo
+  *KickOff* - Mérida, Venezuela
 
-  Conjunto de paquetes Go, una STDLIB personal.
+  2017/07 - 2017/12
 
-  Go.
+  Crear una aplicación de broadcasting de alto rendimiento.
 
-* **Tema MDL para NtDocutils**
+  Google Cloud Platform, JavaScript, Node.js, Express.js,
+  Socket.io, MySQL, WebRTC, Licode, HTML5, CSS3, Webpack.
 
-  https://github.com/ntrrg/ntdocutils-theme-mdl
+* **Desarrollador Backend**
 
-  Tema MDL para NtDocutils.
+  *Vultur* - Mérida, Venezuela
 
-  Python, HTML5, CSS3, JavaScript (ES6), MDL.
+  2016/06 - 2017/06
 
-* **NtDocutils**
+  Crear módulos para Odoo.
 
-  https://github.com/ntrrg/ntdocutils
-
-  Gestor de temas para Docutils.
-
-  Python.
-
-|pb|
-
-Charlas
-=======
-
-* **Desarrollo de alto rendimiento con Wheezy Web**
-
-  http://www.python.info.ve/eventos/pytatuy-2016/
-
-  Mérida, Venezuela
-
-  2016/02/12
-
-|pb|
+  Python, PostgreSQL, Odoo.
 
 Formación académica
 ===================
@@ -114,6 +94,8 @@ Formación académica
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
 
   2010 - 2013
+
+|pb|
 
 Certificación y reconocimientos
 ===============================
@@ -135,6 +117,46 @@ Certificación y reconocimientos
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
 
   2013/05
+
+Charlas
+=======
+
+* **Desarrollo de alto rendimiento con Wheezy Web**
+
+  http://www.python.info.ve/eventos/pytatuy-2016/
+
+  Mérida, Venezuela
+
+  2016/02/12
+
+|pb|
+
+Proyectos
+=========
+
+* **NtDocutils**
+
+  https://nt.web.ve/es/projects/ntdocutils
+
+  *Gestor de temas para Docutils.*
+
+  Python.
+
+* **NtGo**
+
+  https://github.com/ntrrg/ntgo
+
+  *Conjunto de paquetes Go.*
+
+  Go.
+
+* **NtOS**
+
+  https://nt.web.ve/es/projects/ntos
+
+  *Sistema Debian live con persistencia cifrada por defecto.*
+
+  Shell scripting.
 
 .. raw:: html
 

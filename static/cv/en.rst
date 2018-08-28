@@ -30,7 +30,7 @@ Go and Shell Scripting advanced programming.
 
 APIs, Microservices and CLIs.
 
-REST (TCP/UDS), RPC (gRPC) and AMQP (RabitMQ).
+REST (TCP/UDS).
 
 Containers (Docker and systemd-nspawn).
 
@@ -46,9 +46,7 @@ Version control systems (Git).
 
 C, C++, JavaScript (Node.js) and Python basic programming.
 
-Web application (HTML5, CSS3, JavaScript ES6).
-
-Servers installation and configuration (LVM, Debian, SSH, DNS, HTTP, rsync).
+Servers installation and configuration.
 
 Basis networks configuration.
 
@@ -61,47 +59,29 @@ Spanish native speaker.
 
 |pb|
 
-Projects
-========
+Experience
+==========
 
-* **ntgo**
+* **Fullstack developer**
 
-  https://github.com/ntrrg/ntgo
+  *KickOff* - Mérida, Venezuela
 
-  A set of Go packages, my personal STDLIB.
+  2016/06 - 2017/06
 
-  Go.
+  Create a high performance broadcasting application.
 
-* **NtDocutils MDL Theme**
+  Google Cloud Platform, JavaScript, Node.js, Express.js,
+  Socket.io, MySQL, WebRTC, Licode, HTML5, CSS3, Webpack.
 
-  https://github.com/ntrrg/ntdocutils-theme-mdl
+* **Backend developer**
 
-  NtDocutils MDL theme.
+  *Vultur* - Mérida, Venezuela
 
-  Python, HTML5, CSS3, JavaScript (ES6), MDL.
+  2016/06 - 2017/06
 
-* **NtDocutils**
+  Create Odoo modules.
 
-  https://github.com/ntrrg/ntdocutils
-
-  Docutils theme manager.
-
-  Python.
-
-|pb|
-
-Talks
-=====
-
-* **Desarrollo de alto rendimiento con Wheezy Web**
-
-  http://www.python.info.ve/eventos/pytatuy-2016/
-
-  Mérida, Venezuela
-
-  2016/12/02
-
-|pb|
+  Python, PostgreSQL, Odoo.
 
 Education
 =========
@@ -117,6 +97,8 @@ Education
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
 
   2010 - 2013
+
+|pb|
 
 Certifications and awards
 =========================
@@ -138,6 +120,47 @@ Certifications and awards
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
 
   2013/05
+
+Talks
+=====
+
+* **Desarrollo de alto rendimiento con Wheezy Web (High performance development
+  with Wheezy Web)**
+
+  http://www.python.info.ve/eventos/pytatuy-2016/
+
+  Mérida, Venezuela
+
+  2016/12/02
+
+|pb|
+
+Projects
+========
+
+* **NtDocutils**
+
+  https://nt.web.ve/en/projects/ntdocutils
+
+  Docutils theme manager.
+
+  Python.
+
+* **NtGo**
+
+  https://github.com/ntrrg/ntgo
+
+  A set of Go packages.
+
+  Go.
+
+* **NtOS**
+
+  https://nt.web.ve/en/projects/ntos
+
+  Debian live system with encrypted persistence.
+
+  Shell scripting.
 
 .. raw:: html
 
