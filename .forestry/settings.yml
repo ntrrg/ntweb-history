@@ -4,13 +4,44 @@ auto_deploy: false
 admin_path: 
 webhook_url: 
 sections:
-  content/projects:
-    default_front_matter_template: projects
-  content/blog:
-    default_front_matter_template: blog
+- type: directory
+  path: content/kinds
+  label: Kinds
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/techs
+  label: Techs
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/categories
+  label: Categories
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/tags
+  label: Tags
+  create: all
+  match: "**/*"
+- type: directory
+  path: content
+  label: Pages
+  create: all
+  match: "*"
+- type: directory
+  path: content/projects
+  label: Projects
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/blog
+  label: Blog
+  create: all
+  match: "**/*"
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
-version: 0.42.1
+version: 0.47.1

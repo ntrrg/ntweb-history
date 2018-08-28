@@ -1,4 +1,5 @@
 ---
+label: blog
 hide_body: false
 is_partial: false
 fields:
@@ -39,3 +40,21 @@ fields:
   type: tag_list
   hidden: false
   default: []
+pages:
+- content/blog/demo.en.md
+- content/blog/text-encoding.es.md
+- content/blog/demo.es.md
+- content/blog/containers.es.md
+- content/blog/ieee-754.es.md
+- content/blog/hugo-0.41.en.md
+- content/blog/go.es.md
+- content/blog/binary-numbers.es.md
+- content/blog/hex-numbers.es.md
+- content/blog/octal-numbers.es.md
+- content/blog/twos-complement.es.md
+- content/blog/contribute-to-go.es.md
+- content/blog/go-release-cycle.es.md
+- content/blog/_index.es.md
+- content/blog/hugo-0.41.es.md
+- content/blog/install-go-1.10.es.md
+- content/blog/_index.en.md
