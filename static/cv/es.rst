@@ -11,11 +11,13 @@ Resumen curricular
 
 **Nombre:** Miguel Angel Rivera Notararigo
 
+**Nacionalidades:** Venezolano, Italiano
+
 **Fecha de nacimiento:** 1992/04/30
 
 **Dirección:** Av. Bolívar con calle Honduras #243, Ejido, Mérida, Venezuela
 
-**Teléfono:** +584247484276
+**Teléfono:** `+584247484276 <tel:+584247484276>`_
 
 **Correo electrónico:** ntrrgx@gmail.com
 
@@ -52,7 +54,7 @@ Configuración básica de redes.
 
 Soporte a equipos Linux (Debian based), Android, iOS y Windows (>= XP).
 
-Dominio medio del inglés.
+Dominio intermedio del inglés.
 
 |pb|
 
@@ -168,12 +170,36 @@ Proyectos
 
 |pb|
 
+.. image:: images/academic_record.jpg
+
+|pb|
+
+.. image:: images/academic_record-2.jpg
+
+|pb|
+
+.. image:: images/engineer_degree_record.jpg
+
+|pb|
+
 .. image:: images/engineer_degree.jpg
+
+|pb|
+
+.. image:: images/engineer_degree-back.jpg
+
+|pb|
+
+.. image:: images/bachelor_degree_record.jpg
 
 |pb|
 
 .. image:: images/bachelor_degree.jpg
     :height: 70em
+
+|pb|
+
+.. image:: images/bachelor_degree-back.jpg
 
 |pb|
 

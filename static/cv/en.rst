@@ -11,11 +11,13 @@ Resume
 
 **Name:** Miguel Angel Rivera Notararigo
 
+**Citizenships:** Venezuelan, Italian
+
 **Birth date:** 1992/30/04
 
 **Address:** Av. Bolívar con calle Honduras #243, Ejido, Mérida, Venezuela
 
-**Phone:** +584247484276
+**Phone:** `+584247484276 <tel:+584247484276>`_
 
 **Email:** ntrrgx@gmail.com
 
@@ -53,9 +55,7 @@ Basis networks configuration.
 Technical support for Linux (Debian based), Android, iOS and Windows (>= XP)
 devices.
 
-English middle proficiency.
-
-Spanish native speaker.
+English (intermediate level), Spanish (Native speaker).
 
 |pb|
 
@@ -172,7 +172,55 @@ Projects
 
 |pb|
 
+.. image:: images/academic_record.jpg
+
+|pb|
+
+.. image:: images/academic_record-2.jpg
+
+|pb|
+
+.. image:: images/academic_record-en.jpg
+
+|pb|
+
+.. image:: images/academic_record-en-2.jpg
+
+|pb|
+
+.. image:: images/academic_record-en-3.jpg
+
+|pb|
+
+.. image:: images/engineer_degree_record.jpg
+
+|pb|
+
+.. image:: images/engineer_degree_record-en.jpg
+
+|pb|
+
 .. image:: images/engineer_degree.jpg
+
+|pb|
+
+.. image:: images/engineer_degree-back.jpg
+
+|pb|
+
+.. image:: images/engineer_degree-en.jpg
+
+|pb|
+
+.. image:: images/engineer_degree-en-2.jpg
+
+|pb|
+
+.. image:: images/bachelor_degree_record.jpg
+
+|pb|
+
+.. image:: images/bachelor_degree_record-en.jpg
 
 |pb|
 
@@ -181,8 +229,24 @@ Projects
 
 |pb|
 
+.. image:: images/bachelor_degree-back.jpg
+
+|pb|
+
+.. image:: images/bachelor_degree-en.jpg
+
+|pb|
+
+.. image:: images/bachelor_degree-en-2.jpg
+
+|pb|
+
 .. image:: images/academic_excellence.jpg
     :height: 70em
+
+|pb|
+
+.. image:: images/academic_excellence-en.jpg
 
 |pb|
 
