@@ -1,4 +1,5 @@
 ---
+label: projects
 hide_body: false
 is_partial: false
 fields:
@@ -29,3 +30,8 @@ fields:
 - type: tag_list
   name: techs
   label: Technologies used
+pages:
+- content/projects/ntdocutils.en.md
+- content/projects/ntdocutils.es.md
+- content/projects/_index.es.md
+- content/projects/_index.en.md
