@@ -5,9 +5,15 @@
 }
 
 img.site-img {
-  max-width: 15em;
+  max-width: 100%;
 
   display: block;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  img.site-img {
+    max-width: 15em;
+  }
 }
 
