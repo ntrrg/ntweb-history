@@ -1,0 +1,15 @@
+@media print {
+  #body > header,
+  #body > footer {
+    display: none;
+  }
+
+  .article code,
+  .article pre,
+  .article pre > code,
+  .article pre code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+}
+

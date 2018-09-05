@@ -5,4 +5,5 @@ Session.vim
 nogit-*
 .DS_Store
 .screenrc
+/resources/
 

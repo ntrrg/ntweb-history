@@ -8,55 +8,11 @@ Debian (NtOS)
 v10.0
 -----
 
+Config files
+============
+
 Mounts
 ======
-
-Manual
-------
-
-.. code:: sh
-
-    su
-
-.. code:: sh
-
-    mkdir /media/ntrrg/Nt{Disk,Laptop,Server}
-
-.. code:: sh
-
-    chown -R ntrrg:ntrrg /media/ntrrg/*
-
-.. code:: sh
-
-    cryptsetup luksOpen /dev/NtDisk/Data NtDisk
-
-.. code:: sh
-
-    mount /dev/mapper/NtDisk /media/ntrrg/NtDisk
-
-.. code:: sh
-
-    mount /dev/NtLaptop/Data /media/ntrrg/NtLaptop
-
-.. code:: sh
-
-    # Remote (non root)
-    exit
-    sshfs nt.web.ve:/media/ntrrg/NtServer /media/ntrrg/NtServer
-
-    # Local
-    mount /dev/NtServer/Data /media/ntrrg/NtServer
-
-Automatic
----------
-
-.. code:: sh
-
-    su
-
-.. code:: sh
-
-    vim /etc/crypttab
 
 ``/etc/crypttab``
 
@@ -65,7 +21,7 @@ Automatic
 
     NtDisk    /dev/NtDisk/Data    none    luks
 
-.. code:: sh
+.. code:: shell-session
 
     vim /etc/fstab
 
@@ -94,127 +50,59 @@ Automatic
     /media/ntrrg/NtFlash/Server/var/lib/docker            /var/lib/docker      btrfs    bind    0    0
     # /media/ntrrg/NtFlash/Server/var/lib/rkt               /var/lib/rkt         btrfs    bind    0    0
 
-Config file
-===========
-
-Live config
------------
-
-``${PERSISTENCE}/``:
-
-.. code:: text
-    :number-lines:
-
-    /bin union
-    /etc union
-    /home union
-    /media union
-    /opt union
-    /root union
-    /sbin union
-    /srv union
-    /usr union
-    /var union
-
-Zsh
----
-
-``~/.zshenv``:
-
-.. code:: text
-    :number-lines:
-
-    export SERVER="/media/ntrrg/NtFlash/Server"
-    export NTENVS="${SERVER}/var/lib/ntenvs"
-    export GOENVS="${NTENVS}/go"
-    export NODE_ENVS="${NTENVS}/node"
-
-    export PATH="${SERVER}/bin:${PATH}"
-
-    . go_activate
-    . node_activate
-
 Syncs
 =====
 
-``NtLaptop`` -> ``NtFlash``:
+``NtFlash`` -> Backup:
 
-.. code:: sh
+.. code:: shell-session
 
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-      --exclude="/Server/" \
-    /media/ntrrg/NtLaptop/ /media/ntrrg/NtFlash/
+    # rsync -uaXHh --delay-updates --delete-delay --progress \
+      --exclude="/var/" \
+      /media/ntrrg/NtFlash/ /path/to/backup/
+
+``NtFlash`` -> Dropbox:
+
+.. code:: shell-session
+
+    $ rsync -uah --delay-updates --delete-delay --progress \
+      --exclude=".dropbox.cache/" --exclude=".dropbox" \
+      /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
+      /home/ntrrg/Dropbox/
+
+``NtFlash`` -> MEGA:
+
+.. code:: shell-session
+
+    $ cp -af --reflink \
+      /media/ntrrg/NtFlash/srv/storage/data/* \
+      /media/ntrrg/NtFlash/var/mega/
+
+.. code:: shell-session
+
+    $ rsync --ignore-existing -ah --delete --progress \
+      --exclude=".debris/" \
+      /media/ntrrg/NtFlash/srv/storage/data/ \
+      /media/ntrrg/NtFlash/var/mega/
 
 ``NtFlash`` -> ``NtServer``:
 
-.. code:: sh
+.. code:: shell-session
 
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-      --exclude="/Server/" \
-    /media/ntrrg/NtFlash/ /media/ntrrg/NtDisk/srv/storage/data/ntrrg/
-
-----
-
-``NtServer`` -> ``NtDisk``:
-
-.. code:: sh
-
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-      --exclude="/var/lib/docker" --exclude="/var/lib/rkt" \
-    /media/ntrrg/NtServer/ /media/ntrrg/NtDisk/
+    $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
+      --exclude="_/games" --exclude="_/videos" \
+      /media/ntrrg/NtFlash/srv/storage/data/ \
+      ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/
 
 ----
 
-``NtServer`` -> ``NtFlash``:
+``NtServer`` -> Backup:
 
-.. code:: sh
+.. code:: shell-session
 
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-      --exclude="/debian/"
-    /media/ntrrg/NtServer/srv/mirrors/ \
-    /media/ntrrg/NtFlash/Server/srv/mirrors/
-
-``NtFlash`` -> ``NtLaptop``:
-
-.. code:: sh
-
-    rsync -uaHXh --delay-updates --delete-delay --progress \
-    /media/ntrrg/NtFlash/Server/srv/mirrors/ \
-    /media/ntrrg/NtLaptop/Server/srv/mirrors/
-
-----
-
-``NtServer`` -> Dropbox:
-
-.. code:: sh
-
-    cd /media/ntrrg/NtServer/srv/storage/data/ntrrg/
-
-    cp -rf --reflink \
-    Backups Development Documents Pictures Ringtones Templates Work \
-    /media/ntrrg/NtServer/srv/sync/data/ntrrg/Dropbox
-
-    rsync --ignore-existing -ah --delete --progress \
-      --exclude=".dropbox.cache/" --exclude=".dropbox" \
-    Backups Development Documents Pictures Ringtones Templates Work \
-    /media/ntrrg/NtServer/srv/sync/data/ntrrg/Dropbox/
-
-----
-
-``NtServer`` -> MEGA:
-
-.. code:: sh
-
-    cd /media/ntrrg/NtServer/srv/storage/data/ntrrg/
-
-    cp -rf --reflink \
-    Backups Development Documents Pictures Ringtones Templates Work \
-    /media/ntrrg/NtServer/srv/sync/data/ntrrg/mega
-
-    rsync --ignore-existing -ah --delete --progress \
-      --exclude=".debris/" \
-    Backups Development Documents Pictures Ringtones Templates Work \
-    /media/ntrrg/NtServer/srv/sync/data/ntrmega/
+    # rsync -uaXHh --delay-updates --delete-delay --progress \
+      --exclude="/var/" \
+      /media/ntrrg/NtServer/ /path/to/backup/
 
 Mirrors
 -------
@@ -222,36 +110,33 @@ Mirrors
 Alpine
 ++++++
 
-.. code:: sh
+.. code:: shell-session
 
-    rsync -uaHXzh --delay-updates --delete-after --progress \
-      --exclude="v2.*" --exclude="v3.[0-6]" \
+    $ rsync -uaHXzh --delay-updates --delete-after --progress \
+      --exclude="/v2.*/" --exclude="/v3.[0-6]/" --exclude="/edge/" \
       --exclude="/**/releases" --exclude="**/aarch64" --exclude="**/armhf" \
       --exclude="**/ppc64le" --exclude="**/s390x" --exclude="**/x86" \
-    rsync://rsync.alpinelinux.org/alpine/ \
-    /media/ntrrg/NtServer/srv/mirrors/alpine/
+      rsync://rsync.alpinelinux.org/alpine/ \
+      /media/ntrrg/NtServer/srv/mirrors/alpine/
 
 Debian
 ++++++
 
-.. code:: sh
+.. code:: shell-session
 
     cd
 
-.. code:: sh
+.. code:: shell-session
 
     bin/ftpsync sync:all
 
 Installation
 ************
 
-.. code:: sh
+.. code:: shell-session
 
     TO="/media/ntrrg/NtServer/srv/mirrors/debian"
     RSYNC_HOST="ftp.us.debian.org"
     RSYNC_PATH="debian"
     ARCH_INCLUDE="amd64"
-
-Keyboad shortcuts
-=================
 

@@ -1,12 +1,22 @@
 {{ with .Params.math }}
-  <script async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 {{ end }}
+
+{{ $scripts := slice }}
+{{ $scripts = union $scripts (slice (resources.Get "js/main.js")) }}
 
 {{ if eq .Kind "page" }}
-<script async src="/js/article.js"></script>
+  {{ $scripts = union $scripts (slice (resources.Get "js/article.js")) }}
 {{ end }}
 
-<script async src="/js/main.js"></script>
+{{ if .Site.IsServer }}
+  {{ range $scripts }}
+    <script async src="{{ .Permalink }}"></script>
+  {{ end }}
+{{ else }}
+  {{ $script := resources.Concat "js/bundle.js" $scripts | minify | fingerprint }}
+
+  <script async src="{{ $script.Permalink }}"
+          integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
 

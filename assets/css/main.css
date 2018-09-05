@@ -106,6 +106,8 @@ kbd {
 }
 
 .articles-list .article {
+  width: calc(100% - 4em);
+
   border: 0.1em dashed;
   float: left;
   margin: 0.5em;

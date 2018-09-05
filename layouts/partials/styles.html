@@ -1,10 +1,22 @@
-<link rel="stylesheet" href="{{ relURL "vendor/normalize.css" }}"/>
-<link rel="stylesheet" href="{{ relURL "css/main.css" }}"/>
+{{ $sheets := slice }}
+{{ $sheets = union $sheets (slice (resources.Get "vendor/normalize.css")) }}
+{{ $sheets = union $sheets (slice (resources.Get "css/main.css")) }}
 
 {{ if .IsHome }}
-  <link rel="stylesheet" href="{{ relURL "css/home.css" }}"/>
+  {{ $sheets = union $sheets (slice (resources.Get "css/home.css")) }}
 {{ else if eq .Kind "page" }}
-  <link rel="stylesheet" href="{{ relURL "css/article.css" }}"/>
-  <link rel="stylesheet" href="{{ relURL "css/print.css" }}" media="print"/>
+  {{ $sheets = union $sheets (slice (resources.Get "css/article.css")) }}
+  {{ $sheets = union $sheets (slice (resources.Get "css/print.css")) }}
+{{ end }}
+
+{{ if .Site.IsServer }}
+  {{ range $sheets }}
+    <link rel="stylesheet" href="{{ .Permalink }}"/>
+  {{ end }}
+{{ else }}
+  {{ $sheet := resources.Concat "css/bundle.css" $sheets | minify | fingerprint }}
+
+  <link rel="stylesheet" href="{{ $sheet.Permalink }}"
+        integrity="{{ $sheet.Data.Integrity }}"/>
 {{ end }}
 

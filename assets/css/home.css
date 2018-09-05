@@ -1,5 +1,6 @@
 #body > main {
-  width: 80ex;
+  max-width: 80ex;
+
   margin: 1em auto;
 }
 

@@ -1,8 +1,6 @@
-This site was migrated to Hugo and is hosted now by Netlify.
-
 <https://nt.web.ve>
 
-## Offline version
+## Usage
 
 ### Docker
 
@@ -17,18 +15,17 @@ Go to <http://localhost:1234/en/> with a browser.
 
 ### Hugo
 
-**Note:** use Hugo 0.46 or above.
+**Requirements:**
+
+* Git
+* Hugo >= 0.48
 
 ```shell-session
-$ wget https://github.com/ntrrg/ntrrg.github.io/archive/master.tar.gz
+$ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git
 ```
 
 ```shell-session
-$ tar -xvf master.tar.gz
-```
-
-```shell-session
-$ cd ntrrg.github.io-master/
+$ cd ntrrg.github.io/
 ```
 
 ```shell-session
@@ -37,18 +34,28 @@ $ hugo server
 
 Go to <http://localhost:1313/en/> with a browser.
 
-## Editing
+## Edition
 
-* Lint markdown files:
+**Requirements:**
+
+* Git
+* GNU Make
+* Hugo >= 0.48
 
 ```shell-session
-$ make lint
+$ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git
 ```
 
-* Run the development server:
+```shell-session
+$ cd ntrrg.github.io/
+```
 
 ```shell-session
 $ make run
+```
+
+```shell-session
+$ make lint
 ```
 
 ## Acknowledgment
