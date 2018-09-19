@@ -40,5 +40,5 @@ lint-watch:
 
 .PHONY: run
 run:
-	USER="root" $(MAKE) -s "hugo "
+	$(MAKE) -s "hugo "
 
