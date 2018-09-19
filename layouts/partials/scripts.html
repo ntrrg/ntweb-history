@@ -2,19 +2,21 @@
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 {{ end }}
 
+{{ $suffix := "" }}
 {{ $scripts := slice }}
 {{ $scripts = union $scripts (slice (resources.Get "js/main.js")) }}
 
 {{ if eq .Kind "page" }}
+  {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = union $scripts (slice (resources.Get "js/article.js")) }}
 {{ end }}
 
-{{ if .Site.IsServer }}
+{{ if not .Site.IsServer }}
   {{ range $scripts }}
     <script async src="{{ .Permalink }}"></script>
   {{ end }}
 {{ else }}
-  {{ $script := resources.Concat "js/bundle.js" $scripts | minify | fingerprint }}
+  {{ $script := resources.Concat (printf "js/bundle%v.js" $suffix) $scripts | minify | fingerprint }}
 
   <script async src="{{ $script.Permalink }}"
           integrity="{{ $script.Data.Integrity }}"></script>

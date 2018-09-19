@@ -20,27 +20,25 @@ clean:
 .PHONY: hugo%
 hugo%:
 	@docker run --rm -it \
+		-e PORT=$(hugo_port) \
+		-p $(hugo_port):$(hugo_port) \
 		-u $$(id -u $$USER) \
 		-v "$$PWD":/site/ \
-	ntrrg/hugo:$(hugo_version) $*
+		ntrrg/hugo:$(hugo_version) $*
 
 .PHONY: lint
 lint:
 	@docker run --name $(lint_container) -it \
 		-v "$$PWD":/files/ \
-	ntrrg/md-linter 2> /dev/null || docker start -ai $(lint_container)
+		ntrrg/md-linter 2> /dev/null || docker start -ai $(lint_container)
 
 .PHONY: lint-watch
 lint-watch:
 	@docker run --name $(lint_container)-watch -it \
 		-v "$$PWD":/files/ \
-	ntrrg/md-linter:watch 2> /dev/null || docker start -ai $(lint_container)-watch
+		ntrrg/md-linter:watch 2> /dev/null || docker start -ai $(lint_container)-watch
 
 .PHONY: run
 run:
-	@docker run --rm -it \
-		-e PORT=$(hugo_port) \
-		-p $(hugo_port):$(hugo_port) \
-		-v "$$PWD":/site/ \
-	ntrrg/hugo:$(hugo_version)
+	USER="root" $(MAKE) -s "hugo "
 

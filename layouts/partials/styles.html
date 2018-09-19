@@ -1,10 +1,13 @@
+{{ $suffix := "" }}
 {{ $sheets := slice }}
 {{ $sheets = union $sheets (slice (resources.Get "vendor/normalize.css")) }}
 {{ $sheets = union $sheets (slice (resources.Get "css/main.css")) }}
 
 {{ if .IsHome }}
+  {{ $suffix = printf "%v-home" $suffix  }}
   {{ $sheets = union $sheets (slice (resources.Get "css/home.css")) }}
 {{ else if eq .Kind "page" }}
+  {{ $suffix = printf "%v-page" $suffix  }}
   {{ $sheets = union $sheets (slice (resources.Get "css/article.css")) }}
   {{ $sheets = union $sheets (slice (resources.Get "css/print.css")) }}
 {{ end }}
@@ -14,7 +17,7 @@
     <link rel="stylesheet" href="{{ .Permalink }}"/>
   {{ end }}
 {{ else }}
-  {{ $sheet := resources.Concat "css/bundle.css" $sheets | minify | fingerprint }}
+  {{ $sheet := resources.Concat (printf "css/bundle%v.css" $suffix) $sheets | minify | fingerprint }}
 
   <link rel="stylesheet" href="{{ $sheet.Permalink }}"
         integrity="{{ $sheet.Data.Integrity }}"/>
