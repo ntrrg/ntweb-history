@@ -11,7 +11,7 @@
   {{ $scripts = union $scripts (slice (resources.Get "js/article.js")) }}
 {{ end }}
 
-{{ if not .Site.IsServer }}
+{{ if .Site.IsServer }}
   {{ range $scripts }}
     <script async src="{{ .Permalink }}"></script>
   {{ end }}
