@@ -5,6 +5,7 @@
     {{ if gt (len .Site.Sections) 0 }}
       {{ range .Site.Sections }}
         | <a href="{{ .URL }}">{{ .Title }}</a>
+        {{- with .Pages }}<sup>({{ len . }})</sup>{{ end }}
       {{ end }}
     {{ end }}
   </main>

@@ -99,13 +99,13 @@ kbd {
   font-size: 0.85em;
 }
 
-.articles-list {
+.pages-list {
   list-style: none;
   margin: 0em;
   padding: 0em;
 }
 
-.articles-list .article {
+.pages-list li {
   width: calc(100% - 4em);
 
   border: 0.1em dashed;
@@ -115,24 +115,24 @@ kbd {
 }
 
 @media (min-width: 768px) {
-  .articles-list {
+  .pages-list {
     display: flex;
     align-items: center;
     flex-flow: wrap;
     justify-content: space-around;
   }
 
-  .articles-list .article {
+  .pages-list li {
     width: calc(50% - 4em);
   }
 }
 
 @media (min-width: 1200px) {
-  .articles-list .article {
+  .pages-list li {
     width: calc(33.33% - 4em);
   }
 }
 
-.articles-list .article .article-title {
+.pages-list li h3 {
   margin: 0em;
 }

@@ -40,7 +40,7 @@ Go to <http://localhost:1313/en/> with a browser.
 
 * Git
 * GNU Make
-* Hugo >= 0.48
+* Docker >= 18.03
 
 ```shell-session
 $ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git

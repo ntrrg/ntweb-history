@@ -1,5 +1,14 @@
+# Cabecera
+
 [DARK_THEME]
 other = "Tema oscuro"
+
+# Inicio
+
+[SOCIAL_NETWORKS]
+other = "Redes sociales"
+
+# Artículos del blog
 
 [DATE]
 other = "Fecha"
@@ -9,6 +18,8 @@ other = "Categorías"
 
 [TAGS]
 other = "Etiquetas"
+
+# Proyectos
 
 [WEBSITE]
 other = "Sitio web"
@@ -25,6 +36,8 @@ other = "Tipos"
 [TECHS]
 other = "Tecnologías"
 
+# Shortcodes
+
 [TOC_TITLE]
 other = "Tabla de Contenido"
 
@@ -33,4 +46,3 @@ other = "Nota"
 
 [DEFAULT_LOI_TITLE]
 other = "Enlaces de interés"
-

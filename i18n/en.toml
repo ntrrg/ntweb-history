@@ -1,5 +1,14 @@
+# Header
+
 [DARK_THEME]
 other = "Dark theme"
+
+# Home
+
+[SOCIAL_NETWORKS]
+other = "Social networks"
+
+# Blog articles
 
 [DATE]
 other = "Date"
@@ -9,6 +18,8 @@ other = "Categories"
 
 [TAGS]
 other = "Tags"
+
+# Projects
 
 [WEBSITE]
 other = "Website"
@@ -25,6 +36,8 @@ other = "Kinds"
 [TECHS]
 other = "Technologies"
 
+# Shortcodes
+
 [TOC_TITLE]
 other = "Table of Contents"
 
@@ -33,4 +46,3 @@ other = "Note"
 
 [DEFAULT_LOI_TITLE]
 other = "Links of interest"
-

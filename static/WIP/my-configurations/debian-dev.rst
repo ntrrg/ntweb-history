@@ -91,7 +91,8 @@ Syncs
 
     $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
       --exclude="_/games" --exclude="_/videos" \
-      /media/ntrrg/NtFlash/srv/storage/data/ \
+      /media/ntrrg/NtFlash/srv/storage/data/_ \
+      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
       ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/
 
 ----

@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <img src="{{ relURL .Site.Params.image }}" alt="NtWeb" class="site-img"/>
+
+  {{ with .Site.GetPage "/about" }}
+    {{ .Content }}
+  {{ end }}
+
+  <h2>{{ i18n "SOCIAL_NETWORKS" }}</h2>
+
+  <ul>
+    {{ range .Site.Params.social }}
+      <li><a href="{{ .url }}">{{ .name }}</a></li>
+    {{ end }}
+  </ul>
+{{ end }}
+

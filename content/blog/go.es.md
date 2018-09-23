@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2018-07-10T06:25:00-04:00
+date: 2018-09-23T16:40:00-04:00
 image: /uploads/gopher.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.
 categories:
@@ -348,7 +348,7 @@ El objetivo principal de la documentación son las definiciones (`package`,
 `const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
 aquellas precedidas directamente por una o más líneas de comentarios.
 
-`$GOPATH/src/local/arithmetic/aritmetic.go`:
+`$GOPATH/src/local/arithmetic/arithmetic.go`:
 
 ```go
 // Package arithmetic provides arithmetic operations for any type.
@@ -384,48 +384,8 @@ func Add(operands ...Operander) float64 {
 }
 ```
 
-Y para ver el resultado, se debe ejecutar el comando `godoc` con la ruta de
-importación del paquete.
-
-```shell-session
-$ godoc local/arithmetic
-use 'godoc cmd/local/arithmetic' for documentation on the arithmetic command 
-
-PACKAGE DOCUMENTATION
-
-package arithmetic
-    import "local/arithmetic"
-
-    Package arithmetic provides arithmetic operations for any type.
-
-CONSTANTS
-
-const (
-    AdditiveIdentity       = 0
-    MultiplicativeIdentity = 1
-)
-    Identity constants
-
-FUNCTIONS
-
-func Add(operands ...Operander) float64
-    Add gets any number of Operander and returns their addition.
-
-TYPES
-
-type Operander interface {
-    Val() float64
-}
-    Operander is the interface that wraps the arithmetic representation
-    methods.
-
-    Val returns the variable's arithmetic representation (float64).
-
-
-```
-
-O iniciar el servidor HTTP de GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
-con un navegador si se quiere ver la versión HTML.
+Para ver el resultado se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
+<http://localhost:6060/pkg/local/arithmetic> con un navegador web.
 
 ```shell-session
 $ godoc -http :6060
@@ -510,7 +470,7 @@ si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
 `ExampleIDENTIFICADOR`/`ExampleIDENTIFICADOR_MÉTODO` para tener como objetivo
 solo un elemento.
 
-`$GOPATH/src/local/arithmetic/aritmetic.go`:
+`$GOPATH/src/local/arithmetic/arithmetic.go`:
 
 ```go
 package arithmetic
@@ -652,7 +612,7 @@ $ rm -rf $GOPATH/src/local/arithmetic
 ```
 
 {{% go-playground "8D3QO97NKE-" %}}
-`$GOPATH/src/local/arithmetic/aritmetic.go`:
+`$GOPATH/src/local/arithmetic/arithmetic.go`:
 
 ```go
 package arithmetic
