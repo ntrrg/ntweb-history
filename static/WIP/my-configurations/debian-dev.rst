@@ -75,14 +75,16 @@ Syncs
 .. code:: shell-session
 
     $ cp -af --reflink \
-      /media/ntrrg/NtFlash/srv/storage/data/* \
+      /media/ntrrg/NtFlash/srv/storage/data/_ \
+      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
       /media/ntrrg/NtFlash/var/mega/
 
 .. code:: shell-session
 
-    $ rsync --ignore-existing -ah --delete --progress \
+    $ rsync --ignore-existing -uaXHh --delay-updates --delete-delay --progress \
       --exclude=".debris/" \
-      /media/ntrrg/NtFlash/srv/storage/data/ \
+      /media/ntrrg/NtFlash/srv/storage/data/_ \
+      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
       /media/ntrrg/NtFlash/var/mega/
 
 ``NtFlash`` -> ``NtServer``:
@@ -90,8 +92,6 @@ Syncs
 .. code:: shell-session
 
     $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
-      --exclude="_/games" --exclude="_/videos" \
-      /media/ntrrg/NtFlash/srv/storage/data/_ \
       /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
       ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/
 
@@ -104,6 +104,15 @@ Syncs
     # rsync -uaXHh --delay-updates --delete-delay --progress \
       --exclude="/var/" \
       /media/ntrrg/NtServer/ /path/to/backup/
+
+``NtServer`` -> ``NtFlash``:
+
+.. code:: shell-session
+
+    $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
+      --exclude="_/games" --exclude="_/videos" \
+      ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/_ \
+      /media/ntrrg/NtFlash/srv/storage/data/
 
 Mirrors
 -------
