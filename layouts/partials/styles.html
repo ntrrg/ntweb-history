@@ -1,6 +1,5 @@
 {{ $suffix := "" }}
-{{ $sheets := slice }}
-{{ $sheets = union $sheets (slice (resources.Get "vendor/normalize.css")) }}
+{{ $sheets := slice (resources.Get "vendor/normalize.css") }}
 {{ $sheets = union $sheets (slice (resources.Get "css/main.css")) }}
 
 {{ if .IsHome }}

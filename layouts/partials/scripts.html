@@ -3,8 +3,7 @@
 {{ end }}
 
 {{ $suffix := "" }}
-{{ $scripts := slice }}
-{{ $scripts = union $scripts (slice (resources.Get "js/main.js")) }}
+{{ $scripts := slice (resources.Get "js/main.js") }}
 
 {{ if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
