@@ -54,7 +54,5 @@ pages:
 - content/blog/octal-numbers.es.md
 - content/blog/twos-complement.es.md
 - content/blog/contribute-to-go.es.md
-- content/blog/_index.es.md
 - content/blog/hugo-0.41.es.md
 - content/blog/install-go-1.10.es.md
-- content/blog/_index.en.md
