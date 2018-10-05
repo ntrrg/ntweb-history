@@ -11,14 +11,20 @@ sections:
   match: "*"
 - type: directory
   path: content/blog
-  label: Blog
+  label: Articles
   create: all
   match: "**/*"
+  exclude: "**/_*"
+  templates:
+  - blog
 - type: directory
   path: content/projects
   label: Projects
   create: all
   match: "**/*"
+  exclude: "**/_*"
+  templates:
+  - projects
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: ''
