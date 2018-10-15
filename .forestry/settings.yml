@@ -28,7 +28,7 @@ sections:
 - type: heading
   label: Data
 - type: document
-  path: config.yml
+  path: config.yaml
   label: Parameters
 upload_dir: static/uploads
 public_path: "/uploads"
