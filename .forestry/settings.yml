@@ -4,8 +4,6 @@ auto_deploy: false
 admin_path: "/admin/"
 webhook_url: 
 sections:
-- type: heading
-  label: Data
 - type: directory
   path: content
   label: Pages
@@ -27,10 +25,11 @@ sections:
   exclude: "**/_*"
   templates:
   - projects
+- type: heading
+  label: Data
 - type: document
   path: config.yml
   label: Parameters
-  match: "**/*"
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: ''
