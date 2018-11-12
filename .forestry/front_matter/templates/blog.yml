@@ -41,9 +41,9 @@ fields:
   hidden: false
   default: []
 pages:
-- content/blog/go.es.md
 - content/blog/demo.en.md
 - content/blog/demo.es.md
+- content/blog/go.es.md
 - content/blog/go-release-cycle.es.md
 - content/blog/text-encoding.es.md
 - content/blog/containers.es.md
