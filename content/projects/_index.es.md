@@ -1,5 +1,5 @@
 ---
-title: Proyectos
+title: Projects
 ---
 
 [Tipos](/es/kinds/)

@@ -1,7 +1,7 @@
 ---
 title: Página de ejemplo
 date: 2028-07-05T18:35:00-04:00
-image: /images/logo.png
+image: /uploads/logo.png
 description: Esta es una página de ejemplo para ver los estilos de NtWeb.
 categories:
   - demo
@@ -59,7 +59,7 @@ _Este es texto en cursiva_
 
 # Imágenes
 
-![imagen de prueba](/images/logo.png)
+![imagen de prueba](/uploads/logo.png)
 
 # Listas
 

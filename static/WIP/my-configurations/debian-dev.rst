@@ -61,6 +61,14 @@ Syncs
       --exclude="/var/" \
       /media/ntrrg/NtFlash/ /path/to/backup/
 
+``NtFlash`` -> Non-Linux FS:
+
+.. code:: shell-session
+
+    $ rsync -urth --delay-updates --delete-delay --progress \
+      /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
+      /path/to/mounted/fs/
+
 ``NtFlash`` -> Dropbox:
 
 .. code:: shell-session

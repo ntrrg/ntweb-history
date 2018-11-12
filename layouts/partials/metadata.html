@@ -1,10 +1,14 @@
-{{ $author := $.Param "author" }}
 {{ $org := .Site.Params.org }}
 {{ $description := $.Param "description" }}
-{{ $image := (absURL ($.Param "image")) }}
 {{ $date := .Date.Format "2006-01-02T15:04:05-0700" }}
+{{ $image := (absURL ($.Param "image")) }}
+{{ $author := $org }}
 
-<link rel="canonical" href="{{ .Permalink }}"/>
+{{ with $.Param "author" }}
+  {{ $author = (index $.Site.Data.authors .) }}
+{{ end }}
+
+<link rel="canonical" href="{{ absURL .Permalink }}"/>
 <meta name="robots" content="index, follow"/>
 
 <meta name="author" content="{{ $author.name }}"/>
@@ -12,13 +16,13 @@
 
 <!-- Open Graph -->
 
-<meta property="og:url" content="{{ .Permalink }}"/>
-<meta property="og:site_name" content="{{ .Site.Title }}"/>
+<meta property="og:url" content="{{ absURL .Permalink }}"/>
+<meta property="og:site_name" content="{{ .Site.Params.title }}"/>
 <meta property="og:title" content="{{ .Title }}"/>
 <meta property="og:description" content="{{ $description }}"/>
 <meta property="og:image" content="{{ $image }}"/>
 
-{{ if eq .Kind "page" }}
+{{ if eq .Type "blog" }}
   <meta property="og:type" content="article"/>
   <meta property="article:published_time" content="{{ $date }}"/>
 
@@ -28,7 +32,7 @@
     {
       "@context": "http://schema.org",
       "@type": "BlogPosting",
-      "mainEntityOfPage": "{{ .Permalink }}",
+      "mainEntityOfPage": "{{ absURL .Permalink }}",
       "headline": "{{ $description }}",
 		  "datePublished": "{{ $date }}",
 		  "dateModified": "{{ $date }}",
@@ -36,14 +40,14 @@
       "author": {
         "@type": "Person",
         "name": "{{ $author.name }}",
-        "email": "{{ $author.email }}"
+        "email": "{{ $author.social.email.text }}"
       },
       "publisher": {
         "@type": "Organization",
         "name": "{{ $org.name }}",
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ absURL $org.image }}",
+          "url": "{{ absURL "uploads/isologo-amp.png" }}",
           "width": 206,
           "height": 60
         }

@@ -1,38 +1,50 @@
 baseURL: https://nt.web.ve/
-title: NtWeb
-copyright: Copyright © 2018 Miguel Angel Rivera Notararigo
 enableRobotsTXT: true
 params:
-  author:
+  title: ntWeb
+  titleSeparator: ·
+  org:
     id: ntrrg
     name: Miguel Angel Rivera Notararigo
-    email: ntrrgx@gmail.com
-  org:
-    name: NtWeb
-    image: images/isologo.png
-  image: images/logo.png
-  titleSeparator: ·
-  social:
-    - name: GitHub (@ntrrg)
-      url: https://github.com/ntrrg
-    - name: Gmail (ntrrgx@gmail.com)
-      url: mailto://ntrrgx@gmail.com
-    - name: LinkedIn (ntrrg)
-      url: https://www.linkedin.com/in/ntrrg
-    - name: Telegram (@ntrrg)
-      url: https://t.me/ntrrg
+    image: uploads/logo.png
+    vimage: uploads/isologo.png
+    social:
+      github:
+        text: GitHub (@ntrrg)
+        url: https://github.com/ntrrg
+        icon: fab fa-github
+        weight: 1
+      linkedin:
+        text: LinkedIn (ntrrg)
+        url: https://www.linkedin.com/in/ntrrg
+        icon: fab fa-linkedin
+        weight: 2
+      telegram:
+        text: Telegram (@ntrrg)
+        url: https://t.me/ntrrg
+        icon: fab fa-telegram
+        weight: 3
+      email:
+        text: ntrrgx@gmail.com
+        url: mailto://ntrrgx@gmail.com
+        icon: fab fa-google
+        weight: 4
+      phone:
+        text: +58 424-7484276
+        url: tel://584247484276
+        icon: fa fa-phone-square
+        weight: 5
   googleTagManager: GTM-NZ2R3W7
+  disqus: ntweb
   goPlayground: https://play.golang.org
-Paginate: 10000
 permalinks:
   blog: /:sections/:slug/
 taxonomies:
+  serie: series
   tag: tags
   category: categories
-  serie: series
   kind: kinds
   tech: techs
-
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 languages:

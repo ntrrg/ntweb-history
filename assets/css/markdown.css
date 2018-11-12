@@ -1,0 +1,123 @@
+:root {
+  --code-background: #ccc;
+}
+
+.markdown {
+  position: relative;
+}
+
+.markdown #toc-title {
+  font-size: 2em;
+}
+
+.markdown hr {
+  width: 80%;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: 0.5em 0em;
+}
+
+.markdown h1 {
+  font-size: 2em;
+}
+
+.markdown h2 {
+  font-size: 1.8em;
+}
+
+.markdown h3 {
+  font-size: 1.6em;
+}
+
+.markdown h4 {
+  font-size: 1.4em;
+}
+
+.markdown h5 {
+  font-size: 1.2em;
+}
+
+.markdown h6 {
+  font-size: 1.1em;
+}
+
+.markdown p {
+  margin-bottom: 0.5em;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0em;
+}
+
+.markdown img {
+  max-width: 100%;
+
+  display: block;
+  margin: auto;
+}
+
+.markdown ol,
+.markdown ul {
+  margin-left: 1.5em;
+  padding-left: 0em;
+}
+
+.markdown dt {
+  font-weight: bold;
+}
+
+.markdown .footnotes {
+  font-size: 0.8em;
+  margin-top: 2em;
+}
+
+.markdown blockquote {
+  border-left: 0.2em solid;
+  font-style: italic;
+  margin: 0em;
+  opacity: 0.5;
+  padding-left: 1em;
+}
+
+.markdown table {
+  margin: 1em auto;
+}
+
+.markdown th, 
+.markdown td {
+  border: 0.1em solid;
+  padding: 0.5em 1em;
+}
+
+.markdown code,
+.markdown pre,
+.markdown pre > code,
+.markdown pre code {
+  background: var(--code-background);
+  border-radius: 0.2em;
+  font-family: monospace;
+}
+
+.markdown code {
+  padding: 0.1em 0.3em;
+}
+
+.markdown code:not([class]) {
+  word-break: break-word;
+}
+
+.markdown pre {
+  overflow: auto;
+  padding: 0.5em 1em;
+}
+
+.markdown pre > code {
+  padding: 0;
+}
+

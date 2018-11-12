@@ -1,48 +1,42 @@
-# Header
-
-[DARK_THEME]
-other = "Dark theme"
-
-# Home
-
-[SOCIAL_NETWORKS]
-other = "Social networks"
-
-# Blog articles
-
-[DATE]
-other = "Date"
+[BLOG]
+other = "Blog"
 
 [CATEGORIES]
 other = "Categories"
 
-[TAGS]
-other = "Tags"
+[DATE]
+other = "Date"
 
-# Projects
-
-[WEBSITE]
-other = "Website"
-
-[SOURCE_CODE]
-other = "Source code"
-
-[LICENSE]
-other = "Lincense"
-
-[KINDS]
-other = "Kinds"
-
-[TECHS]
-other = "Technologies"
-
-# Shortcodes
-
-[TOC_TITLE]
-other = "Table of Contents"
+[DEFAULT_LOI_TITLE]
+other = "Links of interest"
 
 [DEFAULT_NOTE_TITLE]
 other = "Note"
 
-[DEFAULT_LOI_TITLE]
-other = "Links of interest"
+[KINDS]
+other = "Kinds"
+
+[LICENSE]
+other = "Lincense"
+
+[PROJECTS]
+other = "Projects"
+
+[SOCIAL_NETWORKS]
+other = "Social networks"
+
+[SOURCE_CODE]
+other = "Source code"
+
+[TAGS]
+other = "Tags"
+
+[TECHS]
+other = "Technologies"
+
+[TOC_TITLE]
+other = "Table of Contents"
+
+[WEBSITE]
+other = "Website"
+

@@ -1,10 +1,14 @@
 ---
 title: {{ replace .Name "-" " " | title }}
-website: https://site.com
-source: https://github.com/user/project
 description: Short description.
-image: /uploads/image.png
-license: MIT
+image: https://via.placeholder.com/350x350
+metadata:
+  website: https://site.com
+  source-code: https://github.com/user/project
+  license: MIT
+labels:
+  - "[![Alt](https://via.placeholder.com/90x20)](#)"
+  - "[![Alt](https://via.placeholder.com/90x20)](#)"
 kinds:
   - kind-1
 techs:

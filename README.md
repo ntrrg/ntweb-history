@@ -18,7 +18,7 @@ Go to <http://localhost:1234/en/> with a browser.
 **Requirements:**
 
 * Git
-* Hugo >= 0.49
+* Hugo >= 0.50
 
 ```shell-session
 $ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git

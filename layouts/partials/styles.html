@@ -1,24 +1,34 @@
 {{ $suffix := "" }}
-{{ $sheets := slice (resources.Get "vendor/normalize.css") }}
-{{ $sheets = union $sheets (slice (resources.Get "css/main.css")) }}
+{{ $sheets := slice }}
+{{ $sheets = $sheets | append "vendor/normalize.css" }}
+{{ $sheets = $sheets | append "css/main.css" }}
 
 {{ if .IsHome }}
   {{ $suffix = printf "%v-home" $suffix  }}
-  {{ $sheets = union $sheets (slice (resources.Get "css/home.css")) }}
+  {{ $sheets = $sheets | append "css/home.css" }}
+{{ else if gt (len .Pages) 0 }}
+  {{ $suffix = printf "%v-list" $suffix  }}
+  {{ $sheets = $sheets | append "css/markdown.css" }}
+  {{ $sheets = $sheets | append "css/list.css" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
-  {{ $sheets = union $sheets (slice (resources.Get "css/article.css")) }}
-  {{ $sheets = union $sheets (slice (resources.Get "css/print.css")) }}
+  {{ $sheets = $sheets | append "css/markdown.css" }}
+  {{ $sheets = $sheets | append "css/article.css" }}
+  {{ $sheets = $sheets | append "css/print.css" }}
 {{ end }}
 
 {{ if .Site.IsServer }}
   {{ range $sheets }}
-    <link rel="stylesheet" href="{{ .Permalink }}"/>
+    {{ $sheet := resources.Get . }}
+    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
   {{ end }}
 {{ else }}
-  {{ $sheet := resources.Concat (printf "css/bundle%v.css" $suffix) $sheets | minify | fingerprint }}
+  {{ $res := slice }}
+  {{ range $sheets }}{{ $res = $res | append (resources.Get .) }}{{ end }}
 
-  <link rel="stylesheet" href="{{ $sheet.Permalink }}"
+  {{ $sheet := resources.Concat (printf "css/bundle%v.css" $suffix) $res | minify | fingerprint }}
+
+  <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"
         integrity="{{ $sheet.Data.Integrity }}"/>
 {{ end }}
 

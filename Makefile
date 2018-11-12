@@ -1,5 +1,7 @@
 include config.mk
 
+lint_container := $(subst /,-,$(docker_image))-lint
+
 .PHONY: all
 all: build
 

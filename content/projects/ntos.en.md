@@ -1,8 +1,11 @@
 ---
 title: NtOS
-source: https://github.com/ntrrg/ntos
 description: Debian live system with encrypted persistence.
-license: MIT
+metadata:
+  source-code: https://github.com/ntrrg/ntos
+  license: MIT
+labels:
+  - "[![Travis build btatus](https://travis-ci.com/ntrrg/ntos.svg?branch=master)](https://travis-ci.com/ntrrg/ntos)"
 kinds:
   - operative-system
 techs:
@@ -13,8 +16,6 @@ techs:
   - make
   - shellcheck
 ---
-
-[![Travis build btatus](https://travis-ci.com/ntrrg/ntos.svg?branch=master)](https://travis-ci.com/ntrrg/ntos)
 
 **NtOS** is a Debian live system with encrypted persistence by default. It is
 attached at the Debian testing release cycle, so there are no version numbers

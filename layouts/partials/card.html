@@ -1,0 +1,34 @@
+<div class="card">
+  {{ if or (eq .Type "blog") (eq .Type "projects") }}
+    <a href="{{ .URL }}"><h3>{{ .Title }}</h3></a>
+
+    <p>{{ .Description }}</p>
+
+    <div class="metadata small">
+      <div>
+        <strong>{{ i18n "DATE" }}:</strong>
+        <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+      </div>
+
+      {{ $page := . }}
+
+      {{ range $name, $pages := .Site.Taxonomies }}
+        {{ if isset $page.Params $name }}
+          <div>
+            <strong>{{ i18n ($name | upper) }}:</strong>
+
+            {{ range (index $page.Params $name) }}
+              <a href="{{ absLangURL $name }}/{{ . | urlize }}">
+                {{ . }}</a>
+            {{ end }}
+          </div>
+
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <a href="{{ .URL }}">{{ .Title }}</a>
+
+    {{ with .Pages }}({{ len . }}){{ end }}
+  {{ end }}
+</div>

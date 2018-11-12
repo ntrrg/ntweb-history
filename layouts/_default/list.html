@@ -1,82 +1,18 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  {{ $title := i18n (replace (.Title | upper) " " "_") }}
+
+  {{ if ne $title "" }}
+    <h1>{{ $title }}</h1>
+  {{ else }}
+    <h1>{{ .Title }}</h1>
+  {{ end }}
 
   {{ .Content }}
 
   {{ if gt (len .Paginator.Pages) 0 }}
     <ul class="pages-list">
       {{ range .Paginator.Pages }}
-        {{ if eq .Type "blog" }}
-          <li class="article">
-            <a href="{{ .URL }}"><h3>{{ .Title }}</h3></a>
-
-            <p>{{ .Description }}</p>
-
-            <div class="metadata small">
-              <div>
-                <strong>{{ i18n "DATE" }}:</strong>
-
-                <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
-              </div>
-
-              <div>
-                <strong>{{ i18n "CATEGORIES" }}:</strong>
-
-                {{ range .Params.categories }}
-                  <a href="{{ absLangURL "categories/" }}{{ . | urlize }}">
-                    @{{ . }}</a>
-                {{ end }}
-              </div>
-
-              <div>
-                <strong>{{ i18n "TAGS" }}:</strong>
-
-                {{ range .Params.tags }}
-                  <a href="{{ absLangURL "tags/" }}{{ . | urlize }}">
-                    #{{ . }}</a>
-                {{ end }}
-              </div>
-            </div>
-          </li>
-        {{ else if eq .Type "projects" }}
-          <li class="project">
-            <a href="{{ .URL }}"><h3>{{ .Title }}</h3></a>
-
-            <p>{{ .Description }}</p>
-
-            <div class="metadata small">
-              <div>
-                <strong>{{ i18n "LICENSE" }}:</strong>
-
-                <span>{{ .Params.license }}</span>
-              </div>
-
-              <div>
-                <strong>{{ i18n "KINDS" }}:</strong>
-
-                {{ range .Params.kinds }}
-                  <a href="{{ absLangURL "kinds/" }}{{ . | urlize }}">
-                    @{{ . }}</a>
-                {{ end }}
-              </div>
-
-              <div>
-                <strong>{{ i18n "TECHS" }}:</strong>
-
-                {{ range .Params.techs }}
-                  <a href="{{ absLangURL "techs/" }}{{ . | urlize }}">
-                    #{{ . }}</a>
-                {{ end }}
-              </div>
-            </div>
-          </li>
-        {{ else }}
-          <li>
-            <a href="{{ .URL }}">{{ .Title }}</a>
-
-            {{ with .Pages }}({{ len . }}){{ end }}
-          </li>
-        {{ end }}
+        <li>{{ partial "card.html" . }}</li>
       {{ end }}
     </ul>
 

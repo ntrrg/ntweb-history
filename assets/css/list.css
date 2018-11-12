@@ -1,0 +1,25 @@
+.pages-list {
+  list-style: none;
+  margin: 0em;
+  padding: 0em;
+}
+
+@media (min-width: 768px) {
+  .pages-list {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    justify-content: space-around;
+  }
+}
+
+.pages-list li {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pages-list li {
+    width: 50%;
+  }
+}
+

@@ -1,8 +1,11 @@
 ---
 title: NtDocutils
-source: https://github.com/ntrrg/ntdocutils
 description: Docutils theme manager.
-license: MIT
+metadata:
+  source-code: https://github.com/ntrrg/ntdocutils
+  license: MIT
+labels:
+- "[![pypi](https://img.shields.io/pypi/v/NtDocutils.svg)](https://pypi.python.org/pypi/NtDocutils)"
 kinds:
   - cli
   - documentation
@@ -11,8 +14,6 @@ techs:
   - docutils
   - pygments
 ---
-
-[![pypi](https://img.shields.io/pypi/v/NtDocutils.svg)](https://pypi.python.org/pypi/NtDocutils)
 
 **NtDocutils** is a theme manager for [Docutils](http://docutils.sourceforge.net/).
 It acts as a wrapper for the `rst2html5.py` frontend, and that enables the

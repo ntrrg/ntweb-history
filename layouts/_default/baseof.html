@@ -28,27 +28,28 @@
   <meta name="mobile-web-app-capable" content="yes"/>
 
   <link rel="icon" sizes="192x192"
-        href="{{ relURL "images/favicon-192x192.png" }}"/>
+        href="{{ relURL "favicon-192x192.png" }}"/>
 
     <!-- Windows (144x144) -->
   <meta name="msapplication-TileImage"
-        content="{{ relURL "images/favicon-144x144.png" }}"/>
-  <meta name="msapplication-TileColor" content="#333"/>
+        content="{{ relURL "favicon-144x144.png" }}"/>
+
+  <meta name="msapplication-TileColor" content="#fff"/>
 
     <!-- Safari on iOS (120x120) -->
   <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-  <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
+  <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.title }}"/>
 
   <link rel="apple-touch-icon-precomposed"
-        href="{{ relURL "images/favicon-120x120.png" }}"/>
+        href="{{ relURL "favicon-120x120.png" }}"/>
 
     <!-- Default (32x32) -->
   <link rel="shortcut icon" href="{{ relURL "favicon.ico" }}"/>
 
   <title>
     {{ if not .IsHome }}{{ .Title }} {{ .Site.Params.titleSeparator }}{{ end }}
-    {{ .Site.Title }}
+    {{ .Site.Params.title }}
   </title>
 
   {{ range .AlternativeOutputFormats }}
@@ -62,22 +63,93 @@
 </head>
 <body>
 {{ if not .Site.IsServer }}
+{{ with .Site.Params.googleTagManager }}
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZ2R3W7"
+    <iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 {{ end }}
+{{ end }}
 
 <div id="body">
-  {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+  <header role="banner">
+    <div>
+      <strong>
+        <a href="{{ .Site.Home.URL }}">{{ .Site.Params.title }}</a>
+      </strong>
+
+      {{ if gt (len .Site.Sections) 0 }}
+        {{ range sort .Site.Sections }}
+          | <a href="{{ .URL }}">{{ .Title }}</a>
+          {{- with .Pages }}<sup>({{ len . }})</sup>{{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div>
+      {{ if .IsTranslated }}
+        {{ range .Translations }}
+          [<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>]
+        {{ end }}
+      {{ end }}
+    </div>
+  </header>
 
   <main>
     {{ block "main" . }}{{ end }}
+
+    {{ if and (eq .Params.comments true) (not .Site.IsServer) }}
+      {{ $page := . }}
+
+      {{ with .Site.Params.disqus }}
+        <div id="disqus_thread"></div>
+
+        <script>
+          var disqus_config = function () {
+            this.page.url = '{{ absURL $page.Permalink }}';
+            this.page.identifier = '{{ $page.Permalink }}';
+          };
+
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://{{ . }}.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+
+        <noscript>
+          Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      {{ end }}
+    {{ end }}
   </main>
 
-  {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+  <footer>
+    <p>
+      Powered by
+      <a href="https://gohugo.io">Hugo</a>,
+      <a href="https://www.netlify.com/">Netlify</a>
+      and
+
+      <a href="https://github.com/ntrrg/ntrrg.github.io/#acknowledgment">
+        more
+      </a>
+    </p>
+
+    <p class="copyright">
+      Copyright &copy; {{ now.Format "2006" }} {{ .Site.Params.org.name }}
+    </p>
+
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons License" style="border-width:0"
+            src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+      </a>
+    </p>
+  </footer>
 </div>
 
 {{ block "scripts" . }}{{ partial "scripts.html" . }}{{ end }}

@@ -2,7 +2,7 @@
 title: {{ replace .Name "-" " " | title }}
 date: {{ .Date }}
 description: Short description.
-image: /uploads/image.png
+image: https://via.placeholder.com/350x350
 categories:
   - category1
 tags:

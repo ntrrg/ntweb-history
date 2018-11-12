@@ -1,7 +1,7 @@
 ---
 title: Demo page
 date: 2028-07-05T18:35:00-04:00
-image: /images/logo.png
+image: /uploads/logo.png
 description: This is a demo page to see the styles from NtWeb.
 categories:
   - demo
@@ -59,7 +59,7 @@ _This is italic text_
 
 # Images
 
-![test image](/images/logo.png)
+![test image](/uploads/logo.png)
 
 # Lists
 

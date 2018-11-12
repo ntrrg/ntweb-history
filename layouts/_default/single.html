@@ -8,7 +8,51 @@
       <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
     {{ end }}
 
-    {{ .Content }}
+    <div class="metadata small">
+      {{ if isset .Params "date" }}
+        <div>
+          <strong>{{ i18n "DATE" }}:</strong>
+          <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+        </div>
+      {{ end }}
+
+      {{ range $key, $value := .Params.metadata }}
+        <div>
+          <strong>{{ i18n (replace ($key | upper) "-" "_") }}:</strong>
+
+          {{ if or (hasPrefix $value "http://") (hasPrefix $value "https://") }}
+            <a href="{{ $value }}">{{ $value }}</a>
+          {{ else }}
+            {{ $value }}
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ $page := . }}
+
+      {{ range $name, $pages := .Site.Taxonomies }}
+        {{ if isset $page.Params $name }}
+          <div>
+            <strong>{{ i18n ($name | upper) }}:</strong>
+
+            {{ range (index $page.Params $name) }}
+              <a href="{{ absLangURL $name }}/{{ . | urlize }}">
+                {{ . }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    {{ with .Params.labels }}
+      <div class="labels">
+        {{ range . }}
+          {{ markdownify . }}
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <div class="markdown">{{ .Content }}</div>
   </article>
 {{ end }}
 

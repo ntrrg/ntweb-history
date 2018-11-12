@@ -1,23 +1,42 @@
+{{ $externals := slice }}
+{{ $externals = $externals | append "vendor/fontawesome-5.5.0.js" }}
+
 {{ with .Params.math }}
-  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  {{ $externals = $externals | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
 {{ end }}
 
 {{ $suffix := "" }}
-{{ $scripts := slice (resources.Get "js/main.js") }}
+{{ $scripts := slice }}
+{{ $scripts = $scripts | append "js/main.js" }}
 
 {{ if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
-  {{ $scripts = union $scripts (slice (resources.Get "js/article.js")) }}
+  {{ $scripts = $scripts | append "js/article.js" }}
+{{ end }}
+
+{{ range $externals }}
+  {{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}
+    <script defer src="{{ . }}"></script>
+  {{ else }}
+    {{ $script := resources.Get . | minify | fingerprint }}
+
+    <script defer src="{{ $script.Permalink }}"
+            integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
 {{ end }}
 
 {{ if .Site.IsServer }}
   {{ range $scripts }}
-    <script async src="{{ .Permalink }}"></script>
+    {{ $script := resources.Get . }}
+    <script defer src="{{ $script.Permalink }}"></script>
   {{ end }}
 {{ else }}
-  {{ $script := resources.Concat (printf "js/bundle%v.js" $suffix) $scripts | minify | fingerprint }}
+  {{ $res := slice }}
+  {{ range $scripts }}{{ $res = $res | append (resources.Get .) }}{{ end }}
 
-  <script async src="{{ $script.Permalink }}"
+  {{ $script := resources.Concat (printf "js/bundle%v.js" $suffix) $res | minify | fingerprint }}
+
+  <script defer src="{{ $script.Permalink }}"
           integrity="{{ $script.Data.Integrity }}"></script>
 {{ end }}
 
