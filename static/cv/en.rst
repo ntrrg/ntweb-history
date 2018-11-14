@@ -78,7 +78,7 @@ Experience
 
   *KickOff* - Mérida, Venezuela
 
-  2016/06 - 2017/06
+  2017/07 - 2018/06
 
   Create a high performance broadcasting application.
 

@@ -77,12 +77,12 @@ Experiencia
 
   *KickOff* - Mérida, Venezuela
 
-  2017/07 - 2017/12
+  2017/07 - 2018/06
 
   Crear una aplicación de broadcasting de alto rendimiento.
 
-  Google Cloud Platform, JavaScript, Node.js, Express.js,
-  Socket.io, MySQL, WebRTC, Licode, HTML5, CSS3, Webpack.
+  Google Cloud Platform, JavaScript, Node.js, Express.js, Socket.io, MySQL,
+  WebRTC, Licode, HTML5, CSS3, Webpack.
 
 * **Desarrollador Backend**
 
