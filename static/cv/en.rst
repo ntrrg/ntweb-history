@@ -1,6 +1,6 @@
-======
-Resume
-======
+================
+Curriculum Vitae
+================
 
 .. image:: images/facepic.jpg
     :height: 15em
@@ -13,7 +13,7 @@ Resume
 
 **Citizenships:** Venezuelan, Italian
 
-**Birth date:** 1992/30/04
+**Birth date:** 04/30/1992
 
 **Address:** Av. Bolívar con calle Honduras #243, Ejido, Mérida, Venezuela
 
@@ -30,9 +30,17 @@ Skills
 
 Go and Shell Scripting advanced programming.
 
-APIs, Microservices and CLIs.
+Familiarity with C, C++, JavaScript (Node.js) and Python.
 
-REST (TCP/UDS).
+Familiarity with modern Fronend technologies (HTML5, CSS3, ES6).
+
+Static sites generators (Hugo).
+
+Relational databases (MySQL, PostgreSQL, SQLite).
+
+NoSQL databases (Badger).
+
+Version control systems (Git).
 
 Containers (Docker and systemd-nspawn).
 
@@ -41,12 +49,6 @@ Containers orchestration (Docker Swarm).
 Cloud computing (GCP).
 
 CI (Travis, Gilab CI, Drone) and CD (Netlify, Heroku).
-
-Relational databases (MySQL, PostgreSQL, SQLite).
-
-Version control systems (Git).
-
-C, C++, JavaScript (Node.js) and Python basic programming.
 
 Servers installation and configuration.
 
@@ -62,6 +64,16 @@ English (intermediate level), Spanish (Native speaker).
 Experience
 ==========
 
+* **Frontend developer**
+
+  `Agrocompostela <https://agrocompostela.com>`_ - Remote
+
+  2018/10 - 2018/11
+
+  Create a corporate web site wth blog, ecommerce and more content.
+
+  Hugo, HTML5, CSS3, JavaScript, Bootstrap, jQuery.
+
 * **Fullstack developer**
 
   *KickOff* - Mérida, Venezuela
@@ -70,8 +82,8 @@ Experience
 
   Create a high performance broadcasting application.
 
-  Google Cloud Platform, JavaScript, Node.js, Express.js,
-  Socket.io, MySQL, WebRTC, Licode, HTML5, CSS3, Webpack.
+  Google Cloud Platform, JavaScript, Node.js, Express.js, Socket.io, MySQL,
+  WebRTC, Licode, HTML5, CSS3, Webpack.
 
 * **Backend developer**
 
@@ -85,6 +97,12 @@ Experience
 
 Education
 =========
+
+* **Full Stack Web Development**
+
+  *freeCodeCamp*
+
+  2018 - ...
 
 * **Informatics Engineer**
 
@@ -102,12 +120,6 @@ Education
 
 Certifications and awards
 =========================
-
-* **Full Stack Web Development**
-
-  *freeCodeCamp*
-
-  2017 - ...
 
 * **Academic excelence**
 
@@ -133,34 +145,40 @@ Talks
 
   2016/12/02
 
-|pb|
-
 Projects
 ========
 
-* **NtDocutils**
+* **ntdocutils**
 
   https://nt.web.ve/en/projects/ntdocutils
 
-  Docutils theme manager.
+  *Docutils theme manager.*
 
   Python.
 
-* **NtGo**
+* **ntgo**
 
   https://github.com/ntrrg/ntgo
 
-  A set of Go packages.
+  *A set of Go packages.*
 
   Go.
 
-* **NtOS**
+* **ntos**
 
   https://nt.web.ve/en/projects/ntos
 
-  Debian live system with encrypted persistence.
+  *Debian live system with encrypted persistence.*
 
   Shell scripting.
+
+* **usersd**
+
+  https://github.com/ntrrg/usersd
+
+  *Authentication and authorization daemon.*
+
+  Go.
 
 .. raw:: html
 

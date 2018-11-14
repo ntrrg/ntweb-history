@@ -1,6 +1,6 @@
-==================
-Resumen curricular
-==================
+================
+Curriculum Vitae
+================
 
 .. image:: images/facepic.jpg
     :height: 15em
@@ -13,7 +13,7 @@ Resumen curricular
 
 **Nacionalidades:** Venezolano, Italiano
 
-**Fecha de nacimiento:** 1992/04/30
+**Fecha de nacimiento:** 30/04/1992
 
 **Dirección:** Av. Bolívar con calle Honduras #243, Ejido, Mérida, Venezuela
 
@@ -30,9 +30,17 @@ Habilidades
 
 Programación avanzada con Go y Shell Scripting.
 
-APIs, Microservicios y CLIs.
+Familiarizado con C, C++, JavaScript (Node.js) y Python.
 
-REST (TCP/UDS).
+Familiarizado con tecnologías Frontend modernas (HTML5, CSS3, ES6).
+
+Generadores de sitios web estáticos (Hugo).
+
+Bases de datos relacionales (MySQL, PostgreSQL, SQLite).
+
+Bases de datos no relacionales (Badger).
+
+Sistemas de control de versiones (Git).
 
 Contenedores (Docker y systemd-nspawn).
 
@@ -41,12 +49,6 @@ Orquestación de contenedores (Docker Swarm).
 Computación en la nuve (GCP).
 
 CI (Travis, Gilab CI, Drone) y CD (Netlify, Heroku).
-
-Bases de datos relacionales (MySQL, PostgreSQL, SQLite).
-
-Sistemas de control de versiones (Git).
-
-Programación básica con C, C++, JavaScript (Node.js) y Python.
 
 Instalación y configuración de servidores.
 
@@ -60,6 +62,16 @@ Dominio intermedio del inglés.
 
 Experiencia
 ===========
+
+* **Frontend developer**
+
+  `Agrocompostela <https://agrocompostela.com>`_ - Remote
+
+  2018/10 - 2018/11
+
+  Crear un sitio web corporativo con blog, ecommerce o otros contenidos.
+
+  Hugo, HTML5, CSS3, JavaScript, Bootstrap, jQuery.
 
 * **Desarrollador Fullstack**
 
@@ -85,6 +97,12 @@ Experiencia
 Formación académica
 ===================
 
+* **Desarrollo Web Full Stack**
+
+  *freeCodeCamp*
+
+  2018 - ...
+
 * **Ingeniero en Informática**
 
   *Universidad Politécnica Territorial del Estado Mérida (UPTM)*
@@ -101,12 +119,6 @@ Formación académica
 
 Certificación y reconocimientos
 ===============================
-
-* **Desarrollo Web Full Stack**
-
-  *freeCodeCamp*
-
-  2017 - ...
 
 * **Excelencia Académica**
 
@@ -131,12 +143,10 @@ Charlas
 
   2016/02/12
 
-|pb|
-
 Proyectos
 =========
 
-* **NtDocutils**
+* **ntdocutils**
 
   https://nt.web.ve/es/projects/ntdocutils
 
@@ -144,7 +154,7 @@ Proyectos
 
   Python.
 
-* **NtGo**
+* **ntgo**
 
   https://github.com/ntrrg/ntgo
 
@@ -152,13 +162,21 @@ Proyectos
 
   Go.
 
-* **NtOS**
+* **ntos**
 
   https://nt.web.ve/es/projects/ntos
 
   *Sistema Debian live con persistencia cifrada por defecto.*
 
   Shell scripting.
+
+* **usersd**
+
+  https://github.com/ntrrg/usersd
+
+  *Demonio de autenticación y autorización.*
+
+  Go.
 
 .. raw:: html
 
