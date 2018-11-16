@@ -32,7 +32,7 @@ Go and Shell Scripting advanced programming.
 
 Familiarity with C, C++, JavaScript (Node.js) and Python.
 
-Familiarity with modern Fronend technologies (HTML5, CSS3, ES6).
+Familiarity with modern Frontend technologies (HTML5, CSS3, ES6).
 
 Static sites generators (Hugo).
 
@@ -52,7 +52,7 @@ CI (Travis, Gilab CI, Drone) and CD (Netlify, Heroku).
 
 Servers installation and configuration.
 
-Basis networks configuration.
+Basic networks configuration.
 
 Technical support for Linux (Debian based), Android, iOS and Windows (>= XP)
 devices.
