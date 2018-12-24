@@ -57,51 +57,44 @@ Syncs
 
 .. code:: shell-session
 
-    # rsync -uaXHh --delay-updates --delete-delay --progress \
-      --exclude="/var/" \
-      /media/ntrrg/NtFlash/ /path/to/backup/
+    # rsync -uaXHh --delete-delay --progress \
+        --exclude="/var/" \
+        /media/ntrrg/NtFlash/ /path/to/backup/
 
 ``NtFlash`` -> Non-Linux FS:
 
 .. code:: shell-session
 
-    $ rsync -urth --delay-updates --delete-delay --progress \
-      /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
-      /path/to/mounted/fs/
+    $ rsync -urth --delete-delay --progress \
+        /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
+        /path/to/mounted/fs/
 
 ``NtFlash`` -> Dropbox:
 
 .. code:: shell-session
 
-    $ rsync -uah --delay-updates --delete-delay --progress \
-      --exclude=".dropbox.cache/" --exclude=".dropbox" \
-      /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
-      /home/ntrrg/Dropbox/
+    $ rsync -uah --delete-delay --progress \
+        --exclude=".dropbox.cache/" --exclude=".dropbox" \
+        /media/ntrrg/NtFlash/srv/storage/data/ntrrg/ \
+        /home/ntrrg/Dropbox/
 
 ``NtFlash`` -> MEGA:
 
 .. code:: shell-session
 
-    $ cp -af --reflink \
-      /media/ntrrg/NtFlash/srv/storage/data/_ \
-      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
-      /media/ntrrg/NtFlash/var/mega/
-
-.. code:: shell-session
-
-    $ rsync --ignore-existing -uaXHh --delay-updates --delete-delay --progress \
-      --exclude=".debris/" \
-      /media/ntrrg/NtFlash/srv/storage/data/_ \
-      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
-      /media/ntrrg/NtFlash/var/mega/
+    $ rsync -uaXHh --delete-delay --progress \
+        --exclude=".debris/" \
+        /media/ntrrg/NtFlash/srv/storage/data/_ \
+        /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
+        /media/ntrrg/NtFlash/var/mega/
 
 ``NtFlash`` -> ``NtServer``:
 
 .. code:: shell-session
 
     $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
-      /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
-      ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/
+        /media/ntrrg/NtFlash/srv/storage/data/ntrrg \
+        ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/
 
 ----
 
@@ -109,18 +102,18 @@ Syncs
 
 .. code:: shell-session
 
-    # rsync -uaXHh --delay-updates --delete-delay --progress \
-      --exclude="/var/" \
-      /media/ntrrg/NtServer/ /path/to/backup/
+    # rsync -uaXHh --delete-delay --progress \
+        --exclude="/var/" \
+        /media/ntrrg/NtServer/ /path/to/backup/
 
 ``NtServer`` -> ``NtFlash``:
 
 .. code:: shell-session
 
     $ rsync -e "ssh -p 8022" -uaXHh --delay-updates --delete-delay --progress \
-      --exclude="_/games" --exclude="_/videos" \
-      ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/_ \
-      /media/ntrrg/NtFlash/srv/storage/data/
+        --exclude="_/games" --exclude="_/videos" \
+        ntrrg@home.nt.web.ve:/media/ntrrg/NtServer/srv/storage/data/_ \
+        /media/ntrrg/NtFlash/srv/storage/data/
 
 Mirrors
 -------
@@ -130,7 +123,7 @@ Alpine
 
 .. code:: shell-session
 
-    $ rsync -uaHXzh --delay-updates --delete-after --progress \
+    $ rsync -uaHXzh --delete-after --progress \
       --exclude="/v2.*/" --exclude="/v3.[0-6]/" --exclude="/edge/" \
       --exclude="/**/releases" --exclude="**/aarch64" --exclude="**/armhf" \
       --exclude="**/ppc64le" --exclude="**/s390x" --exclude="**/x86" \
