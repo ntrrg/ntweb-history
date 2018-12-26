@@ -5,10 +5,12 @@
     <p>{{ .Description }}</p>
 
     <div class="metadata small">
-      <div>
-        <strong>{{ i18n "DATE" }}:</strong>
-        <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
-      </div>
+      {{ if .Params.date }}
+        <div>
+          <strong>{{ i18n "DATE" }}:</strong>
+          <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+        </div>
+      {{ end }}
 
       {{ $page := . }}
 
