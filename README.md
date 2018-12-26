@@ -1,54 +1,35 @@
-<https://nt.web.ve>
+[![Travis build btatus](https://travis-ci.com/ntrrg/site.svg?branch=master)](https://travis-ci.com/ntrrg/site)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
+[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site)
 
 ## Usage
 
 ### Docker
 
-[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
-[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site)
-
 ```shell-session
 $ docker run --rm -p 1234:80 ntrrg/site
 ```
 
-Go to <http://localhost:1234/en/> with a browser.
+Go to <http://localhost:1234/> with a browser.
 
 ### Hugo
 
 **Requirements:**
 
-* Git
 * Hugo >= 0.52
-
-```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/website.git
-```
-
-```shell-session
-$ cd website/
-```
 
 ```shell-session
 $ hugo server
 ```
 
-Go to <http://localhost:1313/en/> with a browser.
+Go to <http://localhost:1313/> with a browser.
 
 ## Edition
 
 **Requirements:**
 
-* Git
 * GNU Make
 * Docker >= 18.03
-
-```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/website.git
-```
-
-```shell-session
-$ cd website/
-```
 
 ```shell-session
 $ make run
@@ -104,5 +85,11 @@ Working on this site I use/used:
 
 * [Google Tag Manager](https://www.google.com/analytics/tag-manager/)
 
-* [Forestry](https://forestry.io)
+* [Forestry](https://forestry.io) 
+
+* [FontAwesome](https://fontawesome.com/) 
+
+* [Disqus](https://disqus.com/) 
+
+* [MathJax](https://www.mathjax.org/) 
 

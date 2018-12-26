@@ -1,7 +1,7 @@
 baseURL: https://nt.web.ve/
 enableRobotsTXT: true
 params:
-  title: ntWeb
+  title: ntrrg
   titleSeparator: ·
   org:
     id: ntrrg
