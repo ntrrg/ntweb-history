@@ -21,11 +21,11 @@ Go to <http://localhost:1234/en/> with a browser.
 * Hugo >= 0.52
 
 ```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git
+$ git clone --depth 1 https://github.com/ntrrg/website.git
 ```
 
 ```shell-session
-$ cd ntrrg.github.io/
+$ cd website/
 ```
 
 ```shell-session
@@ -43,11 +43,11 @@ Go to <http://localhost:1313/en/> with a browser.
 * Docker >= 18.03
 
 ```shell-session
-$ git clone --depth 1 https://github.com/ntrrg/ntrrg.github.io.git
+$ git clone --depth 1 https://github.com/ntrrg/website.git
 ```
 
 ```shell-session
-$ cd ntrrg.github.io/
+$ cd website/
 ```
 
 ```shell-session
