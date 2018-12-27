@@ -108,6 +108,7 @@ Y el resultado es:
 ## CLI
 
 ```shell-session
+$ ntdocutils -h
 usage: ntdocutils [-h] [-V] [-T THEME] [-S SERVER] SOURCE DESTINATION
 
 NtDocutils is a theme manager for Docutils.

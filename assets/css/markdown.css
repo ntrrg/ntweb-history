@@ -1,5 +1,6 @@
 :root {
-  --code-background: #ccc;
+  --code-background: #eee;
+  --code-color: var(--font-color);
 }
 
 .markdown {
@@ -101,6 +102,7 @@
 .markdown pre code {
   background: var(--code-background);
   border-radius: 0.2em;
+  color: var(--code-color);
   font-family: monospace;
 }
 

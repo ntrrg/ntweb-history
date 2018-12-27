@@ -1,5 +1,5 @@
 ---
-title: NtOS
+title: ntos
 description: Debian live system with encrypted persistence.
 metadata:
   source-code: https://github.com/ntrrg/ntos
@@ -17,7 +17,7 @@ techs:
   - shellcheck
 ---
 
-**NtOS** is a Debian live system with encrypted persistence by default. It is
+**ntos** is a Debian live system with encrypted persistence by default. It is
 attached at the Debian testing release cycle, so there are no version numbers
 nor release names, just weekly builds.
 

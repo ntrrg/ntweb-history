@@ -33,11 +33,12 @@ a {
 }
 
 kbd {
-  background: rgb(230, 230, 230);
+  background: var(--code-background);
   border-color: lightgrey;
   border-radius: 0.2em;
   border-style: outset;
-  border-width: 2px;
+  border-width: 0.1em;
+  color: var(--code-color);
   display: inline-block;
   font-family: monospace;
   padding: 0em 0.5em;

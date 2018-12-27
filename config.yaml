@@ -45,6 +45,8 @@ taxonomies:
   category: categories
   kind: kinds
   tech: techs
+pygmentsCodeFences: true
+pygmentsUseClasses: true
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 languages:
