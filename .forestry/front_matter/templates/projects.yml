@@ -31,5 +31,5 @@ fields:
   name: techs
   label: Technologies used
 pages:
-- content/projects/ntdocutils.en.md
 - content/projects/ntdocutils.es.md
+- content/projects/ntdocutils.en.md
