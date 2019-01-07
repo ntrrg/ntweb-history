@@ -1,13 +1,13 @@
-[![Travis build btatus](https://travis-ci.com/ntrrg/site.svg?branch=master)](https://travis-ci.com/ntrrg/site)
-[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/site.svg)](https://store.docker.com/community/images/ntrrg/site)
-[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/site.svg)](https://microbadger.com/images/ntrrg/site)
+[![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/ntweb.svg)](https://store.docker.com/community/images/ntrrg/ntweb)
+[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/ntweb.svg)](https://microbadger.com/images/ntrrg/ntweb)
 
 ## Usage
 
 ### Docker
 
 ```shell-session
-$ docker run --rm -p 1234:80 ntrrg/site
+$ docker run --rm -p 1234:80 ntrrg/ntweb
 ```
 
 Go to <http://localhost:1234/> with a browser.
