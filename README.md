@@ -15,7 +15,7 @@ Go to <http://localhost:1234/> with a browser.
 
 **Requirements:**
 
-* Hugo >= 0.52
+* Hugo >= 0.53
 
 ```shell-session
 $ hugo server
@@ -28,7 +28,7 @@ Go to <http://localhost:1313/> with a browser.
 **Requirements:**
 
 * GNU Make
-* Docker >= 18.03
+* Docker >= 18.09
 
 ```shell-session
 $ make run
