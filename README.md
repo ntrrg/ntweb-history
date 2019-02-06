@@ -15,7 +15,7 @@ Go to <http://localhost:1234/> with a browser.
 
 **Requirements:**
 
-* Hugo >= 0.53
+* Hugo >= 0.54.0
 
 ```shell-session
 $ hugo server

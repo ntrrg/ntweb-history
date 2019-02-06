@@ -1,4 +1,4 @@
-hugo_version := 0.53
+hugo_version := 0.54.0
 hugo_port := 1313
 docker_image := ntrrg/ntweb
 lint_container := $(subst /,-,$(docker_image))-lint
