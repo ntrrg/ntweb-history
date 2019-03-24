@@ -6,13 +6,13 @@
     {{ .Content }}
   {{ end }}
 
-  <h2>{{ i18n "SOCIAL_NETWORKS" }}</h2>
+  <h2>{{ i18n "CONTACT" }}</h2>
 
-  <ul class="social-networks">
-    {{ range sort .Site.Params.org.social "weight" }}
+  <ul class="contact">
+    {{ range sort .Site.Params.org.contact "weight" }}
       <li>
         <i class="{{ .icon }}"></i>
-        <a href="{{ .url }}">{{ .text }}</a>
+        <a href="{{ .url | safeURL }}">{{ .text }}</a>
       </li>
     {{ end }}
   </ul>

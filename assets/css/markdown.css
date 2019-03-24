@@ -69,6 +69,10 @@
   padding-left: 0em;
 }
 
+.markdown .task-list {
+  list-style: none;
+}
+
 .markdown dt {
   font-weight: bold;
 }

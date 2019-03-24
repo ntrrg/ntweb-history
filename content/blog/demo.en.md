@@ -72,6 +72,9 @@ _This is italic text_
 2. an ordered
 3. list
 
+* [ ] This is
+* [x] a task list
+
 This
 : is a definition list.
 

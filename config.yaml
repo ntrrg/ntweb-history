@@ -8,7 +8,7 @@ params:
   org:
     id: ntrrg
     name: Miguel Angel Rivera Notararigo
-    social:
+    contact:
       github:
         text: GitHub (@ntrrg)
         url: https://github.com/ntrrg
@@ -29,11 +29,21 @@ params:
         url: mailto://ntrrgx@gmail.com
         icon: fab fa-google
         weight: 4
-      phone:
-        text: +58 424-7484276
-        url: tel://584247484276
-        icon: fa fa-phone-square
+      google-fi:
+        text: 5203130363@msg.fi.google.com
+        url: mailto://5203130363@msg.fi.google.com
+        icon: fab fa-google
         weight: 5
+      phone-us:
+        text: +1 520-313-0363
+        url: tel://+15203130363
+        icon: fa fa-phone-square
+        weight: 6
+      phone-ve:
+        text: +58 424-7484276
+        url: tel://+584247484276
+        icon: fa fa-phone-square
+        weight: 7
   googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   goPlayground: https://play.golang.org

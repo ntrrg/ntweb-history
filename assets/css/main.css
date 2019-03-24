@@ -108,6 +108,7 @@ ul.pagination li {
 
   box-sizing: border-box;
   padding: 0em 1em;
+  padding-bottom: 1em;
 
   grid-area: main;
 }

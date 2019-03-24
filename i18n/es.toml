@@ -22,8 +22,8 @@ other = "Lincencia"
 [PROJECTS]
 other = "Proyectos"
 
-[SOCIAL_NETWORKS]
-other = "Redes sociales"
+[CONTACT]
+other = "Contactos"
 
 [SOURCE_CODE]
 other = "Código fuente"

@@ -72,6 +72,9 @@ _Este es texto en cursiva_
 2. una lista
 3. ordenada
 
+* [ ] Esta es
+* [x] una lista de tareas
+
 Esta
 : una lista de definiciones.
 
