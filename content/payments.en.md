@@ -36,6 +36,12 @@ ntrrgx@gmail.com
 1GaWFTw2WBA4cYooG4LFGC8EGRghgh178A
 ```
 
+# Ether
+
+```
+0xa5D824013d2D995a9eB99422a4c06e940F9e116b
+```
+
 # Uphold
 
 ```
