@@ -119,6 +119,7 @@ tags:
 * [ ] Planetes
 * [x] Psycho-Pass
 * [x] Psycho-Pass 2
+* [ ] Ranma
 * [ ] Rakudai Kishi no Cavalry
 * [ ] Re:zero
 * [ ] Rokka no Yusha
@@ -161,4 +162,6 @@ tags:
 * [ ] Twin Star Exorcists
 * [ ] Umineko no Naku Koro ni
 * [ ] Yu-Gi-Oh!
+* [ ] Yu Yu Hakusho
+* [ ] Zatch Bell
 
