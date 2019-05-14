@@ -14,6 +14,7 @@ techs:
   - live-boot
   - travis-ci
   - make
+draft: true
 ---
 
 **ntos** is a Debian live system with encrypted persistence by default. It is
