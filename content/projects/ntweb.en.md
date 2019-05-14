@@ -12,7 +12,7 @@ kinds:
 techs:
   - make
   - hugo
-  - cd
+  - continuos-deployment
   - html5
   - css3
   - javascript
