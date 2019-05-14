@@ -1,4 +1,4 @@
-FROM ntrrg/hugo:0.54.0 as build
+FROM ntrrg/hugo:latest as build
 USER 0
 COPY . /site
 RUN hugo -d /public --baseUrl /
