@@ -1,6 +1,3 @@
-[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/ntweb.svg)](https://hub.docker.com/r/ntrrg/ntweb)
-[![MicroBadger Size](https://img.shields.io/microbadger/image-size/ntrrg/ntweb.svg)](https://microbadger.com/images/ntrrg/ntweb)
-
 **ntWeb** es un pequeño sitio web con grandes intenciones
 
 ## Uso
@@ -23,7 +20,7 @@ $ docker run --rm -p 1313:80 ntrrg/ntweb
 
 Ir a <http://localhost:1313/> con un navegador web.
 
-## Reconocimientos
+## Atribuciones
 
 Trabando en este proyecto uso/usé:
 
