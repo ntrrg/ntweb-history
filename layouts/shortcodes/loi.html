@@ -1,8 +1,8 @@
-<div class="note">
+<div class="note loi">
   <header>
     {{ i18n "DEFAULT_LOI_TITLE" }}
   </header>
 
-  <main>{{ .Inner }}</main>
+  <main>{{ markdownify .Inner }}</main>
 </div>
 

@@ -1,0 +1,14 @@
+{{ $src   := .Get "src" }}
+{{ $alt   := .Get "alt" }}
+{{ $class := .Get "class" }}
+{{ $style := .Get "style" }}
+{{ $lazy  := .Get "lazy" }}
+
+{{ if ne $lazy "false" }}
+  {{ $class = printf "%s lazy-load" $class }} 
+{{ end }}
+
+<img class="{{ $class }}" alt="{{ $alt }}"
+  {{ with $style }}style="{{ safeCSS . }}"{{ end }}
+  {{ if ne $lazy "false" }}data-{{end}}src="{{ $src }}"/>
+

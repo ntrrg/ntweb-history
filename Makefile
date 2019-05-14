@@ -1,4 +1,4 @@
-hugo_version := 0.54.0
+hugo_version := latest
 hugo_port := 1313
 docker_image := ntrrg/ntweb
 lint_container := $(subst /,-,$(docker_image))-lint
@@ -10,7 +10,7 @@ all: build
 build:
 	@docker run --rm -it \
 		-u $$(id -u $$USER) \
-		-v "$$PWD":/site/ \
+		-v "$$PWD":/srv/ \
 		ntrrg/hugo:$(hugo_version)
 
 .PHONY: build-docker
@@ -42,7 +42,7 @@ run:
 	@docker run --rm -it \
 		-p $(hugo_port):$(hugo_port) \
 		-u $$(id -u $$USER) \
-		-v "$$PWD":/site/ \
+		-v "$$PWD":/srv/ \
 		ntrrg/hugo:$(hugo_version) server \
 			-DEF --bind=0.0.0.0 --port=$(hugo_port) --baseUrl=/ --appendPort=false
 

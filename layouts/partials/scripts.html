@@ -1,5 +1,4 @@
 {{ $externals := slice }}
-{{ $externals = $externals | append "vendor/fontawesome-5.5.0.js" }}
 
 {{ with .Params.math }}
   {{ $externals = $externals | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
@@ -9,7 +8,9 @@
 {{ $scripts := slice }}
 {{ $scripts = $scripts | append "js/main.js" }}
 
-{{ if eq .Kind "page" }}
+{{ if .IsHome }}
+  {{ $externals = $externals | append "vendor/fontawesome-5.5.0.js" }}
+{{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = $scripts | append "js/article.js" }}
 {{ end }}

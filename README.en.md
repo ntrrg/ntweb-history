@@ -5,19 +5,9 @@
 
 ## Usage
 
-### Docker
-
-```shell-session
-$ docker run --rm -p 1234:80 ntrrg/ntweb
-```
-
-Go to <http://localhost:1234/> with a browser.
-
-### Hugo
-
 **Requirements:**
 
-* Hugo >= 0.54.0
+* Hugo >= 0.55
 
 ```shell-session
 $ hugo server
@@ -25,24 +15,17 @@ $ hugo server
 
 Go to <http://localhost:1313/> with a browser.
 
-## Edition
-
-**Requirements:**
-
-* GNU Make
-* Docker >= 18.09
+### Docker
 
 ```shell-session
-$ make run
+$ docker run --rm -p 1313:80 ntrrg/ntweb
 ```
 
-```shell-session
-$ make lint
-```
+Go to <http://localhost:1313/> with a browser.
 
 ## Acknowledgment
 
-Working on this site I use/used:
+Working on this project I use/used:
 
 * [Debian](https://www.debian.org/)
 

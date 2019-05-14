@@ -1,7 +1,7 @@
 ---
 title: Demo page
 date: 2028-07-05T18:35:00-04:00
-image: /uploads/logo.png
+image: images/ntrrg.png
 description: This is a demo page to see the styles from NtWeb.
 categories:
   - demo
@@ -59,7 +59,39 @@ _This is italic text_
 
 # Images
 
-![test image](/uploads/logo.png)
+## Inline
+
+Inline image with {{< img src="images/hugo.png" style="height: 1em;" >}}
+
+## Wide
+
+{{< img src="images/merida.jpg" class="wide" >}}
+
+## Block (center aligned)
+
+{{< img src="images/merida.jpg" class="block" >}}
+
+{{< img src="images/ntrrg.png" class="align-left" >}}
+
+## Left aligned
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+{{< img src="images/ntrrg.png" class="align-right" >}}
+
+## Right aligned
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 # Lists
 

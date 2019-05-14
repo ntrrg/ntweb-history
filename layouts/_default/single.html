@@ -5,7 +5,8 @@
     <h1 class="article-title">{{ $title }}</h1>
 
     {{ with .Params.image }}
-      <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
+      <img alt="{{ $title }}" data-src="{{ . }}"
+           class="article-image lazy-load"/>
     {{ end }}
 
     <div class="metadata small">
@@ -44,15 +45,17 @@
       {{ end }}
     </div>
 
-    {{ with .Params.labels }}
-      <div class="labels">
-        {{ range . }}
-          {{ markdownify . }}
-        {{ end }}
-      </div>
-    {{ end }}
+    <div class="markdown">
+      {{ if isset .Params "content" }}
+        {{ $content := getJSON .Params.content.url }}
 
-    <div class="markdown">{{ .Content }}</div>
+        {{ if eq .Params.content.api "github" }}
+          {{ base64Decode $content.content | markdownify }}
+        {{ end }}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
+    </div>
   </article>
 {{ end }}
 

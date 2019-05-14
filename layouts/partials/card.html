@@ -1,6 +1,6 @@
 <div class="card">
   {{ if or (eq .Type "blog") (eq .Type "projects") }}
-    <a href="{{ .URL }}"><h3>{{ .Title }}</h3></a>
+    <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
 
     <p>{{ .Description }}</p>
 
@@ -24,12 +24,11 @@
                 {{ . }}</a>
             {{ end }}
           </div>
-
         {{ end }}
       {{ end }}
     </div>
   {{ else }}
-    <a href="{{ .URL }}">{{ .Title }}</a>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
 
     {{ with .Pages }}({{ len . }}){{ end }}
   {{ end }}
