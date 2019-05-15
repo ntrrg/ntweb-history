@@ -1,4 +1,4 @@
-**ntWeb** es un pequeño sitio web con grandes intenciones
+**ntWeb** es un pequeño sitio web con grandes intenciones.
 
 ## Uso
 

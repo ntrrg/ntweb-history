@@ -1,6 +1,6 @@
 ---
-title: Porqué usar contenedores
-date: 2018-04-08T01:14:00-04:00
+title: ¿Por qué usar contenedores?
+date: 2019-05-14T2:54:00-04:00
 description: Básicamente, le permiten a los programadores y administradores de sistemas desarrollar e implementar aplicaciones de una manera mucho más sencilla.
 categories:
   - tecnología
@@ -22,59 +22,38 @@ otros métodos:
 
 # Con servidores físicos (bare-metal)
 
-1\. El programador escribe la aplicación en su computadora.
+1. El programador escribe la aplicación en su computadora.
 
-2\. El programador se asegura de que la aplicación funciona en su computadora.
+2. El programador se asegura de que la aplicación funciona en su computadora.
 
-3\. El programador sube el código fuente al repositorio Git.
+3. El programador sube el código fuente al repositorio Git.
 
-4\. El administrador de sistemas clona/actualiza el repositorio en el servidor
+4. El administrador de sistemas clona/actualiza el repositorio en el servidor
 de pruebas.
 
-5\. El administrador de sistemas inicia la instalación de la aplicación y sus
+5. El administrador de sistemas inicia la instalación de la aplicación y sus
 dependencias (otras aplicaciones, archivos, carpetas y cualquier otra cosa que
 necesite la aplicación para instalarse y ejecutarse) en el servidor siguiendo
 las instrucciones o corriendo algún script del programador.
 
-6\. Todos los integrantes del equipo hacen una plegaria al dios de su creencia
+6. Todos los integrantes del equipo hacen una plegaria al dios de su creencia
 y esperan que todo salga bien.
 
-7\. Existen dos posibilidades en este punto:
+7. Existen dos posibilidades en este punto: la primera es que la instalación
+   finalice correctamente; y la segunda es que ocurra un error porque el
+   administrador de sistemas se saltó accidentalmente unos pasos o porque
+   alguna de las dependencias no se cumple (esta es bastante común, ya que en
+   los entornos de desarrollo suelen tener preinstalados muchos más paquetes
+   que los servidores). Aquí en donde normalmente se escucha el famoso *«Que
+   raro, en mi máquina sí funciona»*.
 
-&nbsp; 7.1. La instalación finaliza correctamente, se ejecutan las pruebas y
-se generan dos nuevas posibilidades:
+8. El administrador de sistemas, y probablemente otros miembros del equipo,
+   auditan la aplicación y si todo funciona correctamente se implementa en
+   producción.
 
-&nbsp;&nbsp;&nbsp; 7.1.1. La aplicación funciona correctamente y se migra al
-servidor de producción.
-
-&nbsp;&nbsp;&nbsp; 7.1.2. Ocurre un error durante las pruebas porque las
-dependencias de ejecución no se cumplen y el programador dice *«Que raro, en
-mi máquina sí funciona»*. Existen dos posibilidades por las que falló:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1.2.1. Al programador se le olvidó que la
-aplicación durante su ejecución necesitaba X dependencia, pero como en su
-máquina ya estaba antes de empezar a desarrollar, nunca se generó el error.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1.2.2. El administrador de sistemas se salto
-accidentalmente una de las instrucciones del programador y dice *«Esto no es 
-mi culpa, díganle al programador ese que aprenda a programar bien 😒»*.
-
-&nbsp; 7.2. Ocurre un error durante la instalación porque las dependencias de
- instalación no se cumplen y el programador dice *«Que raro, en mi máquina
- sí se instala»*. Existen dos posibilidades por las que falló:
-
-&nbsp;&nbsp;&nbsp; 7.2.1. Al programador se le olvidó que la aplicación
-durante la instalación necesitaba X dependencia, pero como en su máquina ya
-estaba antes de empezar a desarrollar, nunca se generó el error.
-
-&nbsp;&nbsp;&nbsp; 7.2.2. El administrador de sistemas se saltó
-accidentalmente una de las instrucciones del programador y dice *«Esto no es 
-es mi culpa, díganle al programador ese que haga bien su trabajo y explique 
-mejor como se debe instalar 😒»* (solo aplica si no se usa un script de
-instalación).
-
-Sin contar que cada programador que forme parte del equipo tendrá que hacer lo
-mismo que el administrador de sistemas, solo que en su computadora.
+Por cierto, cada programador que forme parte del equipo tendrá que hacer el
+mismo proceso en su computadora, por lo que todos deberían trabajar bajo el
+mismo entorno (o muy parecido) para evitar problemas de compatibilidad.
 
 **Ventajas:**
 
@@ -85,8 +64,6 @@ mismo que el administrador de sistemas, solo que en su computadora.
 
 **Desventajas:**
 
-[Mr. Robot]: http://www.usanetwork.com/mrrobot
-
 1. Las probabilidades de fallo son muy altas.
 
 2. El equipo debe estar muy organizado para evitar otro tipo de fallas (las de
@@ -94,19 +71,13 @@ mismo que el administrador de sistemas, solo que en su computadora.
 
 3. Si alguien rompe la seguridad de la aplicación (que no es que sea fácil de
    hacer, solo es en el caso de que logre hacerlo), tendrá acceso directo al
-   servidor y no es que haga falta ser super usuario o
-   [<img alt="Mr. Robot" src="/uploads/mr-robot.png" style="height: 1.25em;"/>][Mr. Robot]
-   para afectarlo, con solo correr un
-   `while true; do; echo 'Soy un come CPU Muajaja! 😈'; done`
-   ya habrá un consumo relevante de CPU que podría aumentar su temperatura, o
-   con otros truquitos que afecten la RAM, el espacio de almacenamiento, etc...
+   servidor y no es que haga falta ser super usuario o {{< img  src="images/mr-robot.png" alt="Mr. Robot" style="height: 1.25em;" >}}
+   para afectarlo, con solo correr un `while true; do; echo 'Muajaja! 😈'; done`
+   ya habrá un consumo relevante de CPU que podría aumentar su temperatura.
 
 El resultado, una estructura parecida a:
 
-<p align="center">
-  <img alt="Arquitectura de una aplicación en un servidor físico"
-    src="/uploads/containers/architectures-bare-metal-es.svg"/>
-</p>
+{{< img src="images/architectures-bare-metal-es.svg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
 
 # Con máquinas virtuales
 
@@ -134,7 +105,7 @@ El resultado, una estructura parecida a:
 
 **Ventajas:**
 
-1. Las probabilidades de fallo son muy bajas (o hasta nulas).
+1. Las probabilidades de fallo son muy bajas.
 
 2. Es bastante fácil replicar el entorno de desarrollo (si se usan imágenes).
 
@@ -161,12 +132,9 @@ El resultado, una estructura parecida a:
 Se generan dos estructuras, la primera para el entorno de producción y la otra
 en la computadora de cada programador:
 
-<p align="center">
-  <img alt="Arquitectura de una aplicación en máquinas virtuales"
-    src="/uploads/containers/architectures-vm-es.svg"/>
-</p>
+{{< img src="images/architectures-vm-es.svg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
 
-# Con contenedores (¡¡POR FIN!!)
+# Contenedores (¡¡POR FIN!!)
 
 {{% note %}}
 
@@ -195,10 +163,7 @@ se encargan de agregar aplicaciones sobre Linux para facilitar su uso. Todos
 los contenedores corren el mismo sistema operativo, pero pueden tener
 diferentes distribuciones.
 
-<p align="center">
-  <img alt="Sistema operativo"
-    src="/uploads/containers/os-definition-es.svg"/>
-</p>
+{{< img src="images/os-definition-es.svg" alt="Sistema operativo" class="block" >}}
 
 Existen muchas herramientas para manipular contenedores y cada una tiene
 métodos específicos de trabajar con ellos, pero normalmente todas tienen un
@@ -220,13 +185,15 @@ ciclo de trabajo parecido a este:
 
 6. Si el contenedor ya no es de utilidad, se elimina.
 
-Algunas de las herramientas más conocidas son:
+Algunas de las herramientas más conocidas para la gestión de contenedores son:
 
 * [Docker](https://www.docker.com/)
 
 * [rkt](https://coreos.com/rkt/)
 
 * [runC](https://github.com/opencontainers/runc)
+
+* [LXC](https://linuxcontainers.org/)
 
 * [systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
 
@@ -238,9 +205,9 @@ tareas repetitivas al momento de llevar los contenedores a entornos de
 producción (sí, a producción, no me equivoqué escribiendo), algunas de estos
 orquestadores son:
 
-* [Docker Swarm](https://docs.docker.com/engine/swarm/)
-
 * [Kubernetes](https://kubernetes.io/)
+
+* [Docker Swarm](https://docs.docker.com/engine/swarm/)
 
 * [Mesos](http://mesos.apache.org/)
 
@@ -248,8 +215,7 @@ orquestadores son:
 
 * [Nomad](https://www.nomadproject.io/)
 
-Haré un ejemplo de implementación con contenedores igual a los anteriores para
-ver sus ventajas y desventajas:
+## Implementación
 
 1. El administrador de sistemas le asigna una imagen base de un contenedor al
    programador para que la replique en su computadora.
@@ -268,27 +234,18 @@ ver sus ventajas y desventajas:
    auditan la aplicación y si todo funciona correctamente se implementa en
    producción.
 
-Los pasos son casi iguales a como se harían usando máquinas virtuales.
+Es muy fácil notar la similitud de los pasos con los de las máquinas virtuales.
 
 **Ventajas:**
 
-1. Las probabilidades de fallo son muy bajas (o hasta nulas).
-
-2. Es bastante fácil replicar el entorno de desarrollo.
-
-3. Si alguien rompe la seguridad de la aplicación, solo tendrá acceso al
-   contenedor y no afectará a otros servicios.
-
-4. La aplicación puede tener acceso al hardware según se configure.
-
-5. No hace falta que el equipo esté tan organizado para implementar una versión
-   de la aplicación.
+1. Todas las ventajas de usar máquinas virtuales, pero con menor consumo de
+   recursos.
 
 **Desventajas:**
 
 1. El host estará corriendo múltiples distribuciones, lo que se traduce en
-   más tareas para el CPU, pero la sobrecarga es mínima si se compara con un
-   servidor físico.
+   más tareas para el CPU, pero la sobrecarga es mínima si se compara con una
+   máquina virtual.
 
 2. La barrera de seguridad entre el host y los contenedores no es tan grande
    como la de una máquina virtual.
@@ -298,10 +255,7 @@ iguales, con la excepción de los programadores que usen Windows o macOS, pero
 dudo que les importe el consumo desproporcionado de recursos, normalmente
 tienen un hardware potente, por algo usan Windows o macOS no? 😅.
 
-<p align="center">
-  <img alt="Arquitectura de una aplicación en contenedores"
-    src="/uploads/containers/architectures-container-es.svg"/>
-</p>
+{{< img src="images/architectures-container-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # En conclusión
 
@@ -313,10 +267,7 @@ y dónde deben, pueden mitigarse sus desventajas y obtener más ventajas que
 usando contenedores. Lo importante es siempre usar la herramienta correcta, y
 conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 
-<p align="center">
-  <img alt="Arquitectura de una aplicación en contenedores"
-    src="/uploads/containers/architectures-es.svg"/>
-</p>
+{{< img src="images/architectures-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # Atribuciones
 

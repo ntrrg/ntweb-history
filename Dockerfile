@@ -1,6 +1,6 @@
 FROM ntrrg/hugo:latest as build
 USER 0
-COPY . /site
+COPY . /srv
 RUN hugo -d /public --baseUrl /
 
 FROM ntrrg/nginx:http
