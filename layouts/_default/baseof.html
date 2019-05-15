@@ -100,8 +100,10 @@
 
       {{ if gt (len .Site.Sections) 0 }}
         {{ range sort .Site.Sections }}
-          | <a href="{{ .Permalink }}">{{ .Title }}</a>
-          {{- with .Pages }}<sup>({{ len . }})</sup>{{ end }}
+          {{ if ne .Params.hidden true }}
+            | <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{- with .Pages }}<sup>({{ len . }})</sup>{{ end }}
+          {{ end }}
         {{ end }}
       {{ end }}
     </div>

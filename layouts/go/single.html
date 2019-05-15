@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{ $pkg := replaceRE "^https?://(.+)" "$1" .Permalink | strings.TrimRight "/" }}
+  {{ $src := index .Params "source-code" }}
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <meta name="go-import"
+        content="{{ printf "%s git %s" $pkg $src }}"/>
+
+  {{ $dirPath := printf "%s/tree/master{/dir}" $src }}
+  {{ $filePath := printf "%s/blob/master{/dir}/{file}#L{line}" $src }}
+
+  <meta name="go-source"
+        content="{{ printf "%s %s %s %s" $pkg $src $dirPath $filePath }}"/>
+
+  <meta http-equiv="refresh"
+        content="0; url=https://godoc.org/{{ $pkg }}/"/>
+</head>
+<body>
+  Nothing to see here; <a href="https://godoc.org/{{ $pkg }}/">see the package on godoc</a>.
+</body>
+</html>
+

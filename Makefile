@@ -44,5 +44,6 @@ run:
 		-u $$(id -u $$USER) \
 		-v "$$PWD":/srv/ \
 		ntrrg/hugo:$(hugo_version) server \
-			-DEF --bind=0.0.0.0 --port=$(hugo_port) --baseUrl=/ --appendPort=false
+			-DEF --noHTTPCache --bind=0.0.0.0 --port=$(hugo_port) \
+			--baseUrl=/ --appendPort=false
 

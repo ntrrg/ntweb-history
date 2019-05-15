@@ -1,6 +1,3 @@
-[BLOG]
-other = "Blog"
-
 [CATEGORIES]
 other = "Categories"
 
@@ -18,9 +15,6 @@ other = "Kinds"
 
 [LICENSE]
 other = "Lincense"
-
-[PROJECTS]
-other = "Projects"
 
 [CONTACT]
 other = "Contact"
