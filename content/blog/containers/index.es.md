@@ -1,6 +1,6 @@
 ---
 title: ¿Por qué usar contenedores?
-date: 2019-05-14T2:54:00-04:00
+date: 2019-05-14T22:54:00-07:00
 description: Básicamente, le permiten a los programadores y administradores de sistemas desarrollar e implementar aplicaciones de una manera mucho más sencilla.
 categories:
   - tecnología
@@ -233,8 +233,6 @@ orquestadores son:
 6. El administrador de sistemas, y probablemente otros miembros del equipo,
    auditan la aplicación y si todo funciona correctamente se implementa en
    producción.
-
-Es muy fácil notar la similitud de los pasos con los de las máquinas virtuales.
 
 **Ventajas:**
 
