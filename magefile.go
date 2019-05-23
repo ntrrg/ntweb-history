@@ -26,7 +26,17 @@ var (
 	dockerImage = "ntrrg/ntweb"
 
 	lintContainer = strings.Replace(dockerImage, "/", "-", -1) + "-lint"
+
+	cfg hc.Provider
 )
+
+func init() {
+	var err error
+	cfg, err = getHugoConfig(hugoConfig)
+	if err != nil {
+		panic(err)
+	}
+}
 
 type Build mg.Namespace
 
@@ -81,30 +91,21 @@ func (Run) Docker() error {
 type Gen mg.Namespace
 
 func (Gen) Go() error {
-	cfg, err := getHugoConfig(hugoConfig)
-	if err != nil {
-		return err
-	}
-
 	goDir := filepath.Clean("content/go")
 
-	indexFileContent := []byte(`
+	err := writeMultiLangFile(
+		filepath.Join(goDir, "_index.md"),
+		[]byte(`
 ---
 title: Go packages
 hidden: true
 ---
-`[1:])
+`[1:]),
+		0644,
+	)
 
-	for lang := range cfg.GetStringMap("languages") {
-		err = ioutil.WriteFile(
-			filepath.Join(goDir, "_index."+lang+".md"),
-			indexFileContent,
-			0644,
-		)
-
-		if err != nil {
-			return err
-		}
+	if err != nil {
+		return err
 	}
 
 	re, err := regexp.Compile(`(?:(\w+) )?(https?:/.+)`)
@@ -120,7 +121,7 @@ hidden: true
 			name = path.Base(src)
 		}
 
-		err = ioutil.WriteFile(
+		err = writeMultiLangFile(
 			filepath.Join(goDir, name+".md"),
 			[]byte(genPackagePage(name, src)),
 			0644,
@@ -202,6 +203,26 @@ func runLinter(name, tag string) error {
 
 	if err != nil {
 		return sh.RunV("docker", "start", "-a", "-i", name)
+	}
+
+	return nil
+}
+
+func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
+	i := strings.LastIndex(path, ".")
+	if i < 0 {
+		i = len(path) - 1
+	}
+
+	ext := filepath.Ext(path)
+
+	for lang := range cfg.GetStringMap("languages") {
+		path := path[:i] + "." + lang + ext
+
+		err := ioutil.WriteFile(path, content, mode)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
