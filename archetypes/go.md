@@ -1,9 +1,6 @@
 ---
 title: {{ .Name }}
-server: github | gitlab | etc
-source-code: https://github.com/user/project
+source-code: https://github.com/user/{{ .Name }}
 url: /go/{{ .Name }}
-aliases:
-  - /go/{{ .Name }}/subpackage
 ---
 

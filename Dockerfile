@@ -1,9 +1,9 @@
-FROM ntrrg/hugo:latest as build
+FROM ntrrg/hugo:0.55.6 as build
 USER 0
 COPY . /srv
-RUN hugo -d /public --baseUrl /
+RUN hugo --baseUrl /
 
 FROM ntrrg/nginx:http
-COPY --from=build /public /usr/share/nginx/html
+COPY --from=build /srv/public /usr/share/nginx/html
 EXPOSE 80
 
