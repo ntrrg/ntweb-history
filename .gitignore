@@ -6,4 +6,5 @@ nogit-*
 .DS_Store
 .screenrc
 /resources/
+/go-pkgs/
 

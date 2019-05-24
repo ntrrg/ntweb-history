@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {{ $pkg := replaceRE "^https?://(.+)" "$1" .Permalink | strings.TrimRight "/" }}
+  {{ $pkg := .Title }}
   {{ $src := index .Params "source-code" }}
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,7 +16,9 @@
         content="{{ printf "%s %s %s %s" $pkg $src $dirPath $filePath }}"/>
 </head>
 <body>
-  Nothing to see here; <a href="https://godoc.org/{{ $pkg }}/">see the package on godoc</a>.
+  <h1>{{ .Title }}</h1>
+  <p>{{ .Description }}</p>
+  <p><a href="https://godoc.org/{{ $pkg }}/">See the package on godoc.</a></p>
 </body>
 </html>
 

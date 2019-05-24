@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/user"
-	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -28,6 +27,7 @@ var (
 	lintContainer = strings.Replace(dockerImage, "/", "-", -1) + "-lint"
 
 	cfg hc.Provider
+	wd  string
 )
 
 func init() {
@@ -35,6 +35,11 @@ func init() {
 	cfg, err = getHugoConfig(hugoConfig)
 	if err != nil {
 		panic(err)
+	}
+
+	wd, err = os.Getwd()
+	if err != nil {
+		return err
 	}
 }
 
@@ -52,7 +57,7 @@ func Clean() error {
 	_ = sh.RunV("docker", "rm", "-f", lintContainer)
 	_ = sh.RunV("docker", "rm", "-f", lintContainer+"-watch")
 
-	for _, target := range []string{"public", "resources"} {
+	for _, target := range []string{"go-pkgs", "public", "resources"} {
 		if err := os.RemoveAll(target); err != nil {
 			return err
 		}
@@ -108,47 +113,68 @@ hidden: true
 		return err
 	}
 
-	re, err := regexp.Compile(`(?:(\w+) )?(https?:/.+)`)
+	re, err := regexp.Compile(`(?:([\w/\-]+) )?(https?:/.+)`)
 	if err != nil {
 		return err
 	}
 
-	for _, pkg := range cfg.GetStringSlice("params.goPackages") {
-		pkgEls := re.FindStringSubmatch(pkg)
-		name, src := pkgEls[1], pkgEls[2]
-
-		if name == "" {
-			name = path.Base(src)
-		}
-
-		err = writeMultiLangFile(
-			filepath.Join(goDir, name+".md"),
-			[]byte(genPackagePage(name, src)),
-			0644,
-		)
-
+	for _, src := range cfg.GetStringSlice("params.goPackages") {
+		_ = re.FindStringSubmatch(src)
+		pkgs, err := getGoPkgs(src)
 		if err != nil {
-			return err
+			return nil
 		}
+
+		_ = pkgs
+
+		// for _, pkg := range pkgs {
+		// 	err := writeMultiLangFile(
+		// 		filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
+		// 		[]byte(pkg), 0644,
+		// 	)
+
+		// 	if err != nil {
+		// 		return err
+		// 	}
+		// }
 	}
 
 	return nil
 }
 
-func genPackagePage(name, src string) string {
+func genPackagePage(name, src, desc string) string {
 	content := `
 ---
 title: %s
 source-code: %s
+descripton: %s
 url: /go/%s
 ---
 `[1:]
 
-	return fmt.Sprintf(content, name, src, name)
+	return fmt.Sprintf(content, name, src, desc, name)
 }
 
-func getGoPkgs(pkg string) []string {
-	return nil
+func getGoPkgs(src string) ([]string, error) {
+	goPkgsDir := "go-pkgs"
+	if err := os.MkdirAll(goPkgsDir, 0755); err != nil {
+		return nil, err
+	}
+
+	_ = sh.RunV("git", "-C", goPkgsDir, "clone", src)
+
+	err := sh.RunV(
+		"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}",
+		filepath.Join("./", goPkgsDir),
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// genPackagePage(prefix, src)
+
+	return []string{}, nil
 }
 
 func getHugoConfig(cfgFile string) (hc.Provider, error) {
@@ -168,11 +194,6 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 }
 
 func runHugoDocker(args ...string) error {
-	wd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
 	u, err := user.Current()
 	if err != nil {
 		return nil
@@ -190,11 +211,6 @@ func runHugoDocker(args ...string) error {
 }
 
 func runLinter(name, tag string) error {
-	wd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
 	err = sh.RunV(
 		"docker", "run", "--name", name, "-i", "-t",
 		"-v", wd+":/files/",
