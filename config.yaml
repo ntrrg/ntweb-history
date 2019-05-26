@@ -49,7 +49,6 @@ params:
   goPlayground: https://play.golang.org
   goPackages:
     - https://github.com/ntrrg/ntgo
-    - https://github.com/ntrrg/usersd
 permalinks:
   blog: /:sections/:slug/
 taxonomies:

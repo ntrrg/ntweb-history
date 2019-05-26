@@ -3,10 +3,13 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"os/user"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -28,10 +31,14 @@ var (
 
 	cfg hc.Provider
 	wd  string
+
+	goDir     = filepath.Clean("content/go")
+	goPkgsDir = filepath.Join(os.TempDir(), "ntweb-go-pkgs")
 )
 
 func init() {
 	var err error
+
 	cfg, err = getHugoConfig(hugoConfig)
 	if err != nil {
 		panic(err)
@@ -39,7 +46,7 @@ func init() {
 
 	wd, err = os.Getwd()
 	if err != nil {
-		return err
+		panic(err)
 	}
 }
 
@@ -57,8 +64,8 @@ func Clean() error {
 	_ = sh.RunV("docker", "rm", "-f", lintContainer)
 	_ = sh.RunV("docker", "rm", "-f", lintContainer+"-watch")
 
-	for _, target := range []string{"go-pkgs", "public", "resources"} {
-		if err := os.RemoveAll(target); err != nil {
+	for _, dst := range []string{goPkgsDir, "public", "resources"} {
+		if err := sh.Rm(dst); err != nil {
 			return err
 		}
 	}
@@ -95,86 +102,97 @@ func (Run) Docker() error {
 
 type Gen mg.Namespace
 
-func (Gen) Go() error {
-	goDir := filepath.Clean("content/go")
+func (Gen) GoPkgs() error {
+	if err := os.MkdirAll(goPkgsDir, 0755); err != nil {
+		return err
+	}
 
-	err := writeMultiLangFile(
-		filepath.Join(goDir, "_index.md"),
-		[]byte(`
----
-title: Go packages
-hidden: true
----
-`[1:]),
-		0644,
-	)
-
+	srcRE, err := regexp.Compile(`(?:([\w/\-]+) )?(https?:/.+)`)
 	if err != nil {
 		return err
 	}
 
-	re, err := regexp.Compile(`(?:([\w/\-]+) )?(https?:/.+)`)
+	pkgRE, err := regexp.Compile(`(?:([\w/\-.]+): )(.+)`)
 	if err != nil {
 		return err
 	}
 
-	for _, src := range cfg.GetStringSlice("params.goPackages") {
-		_ = re.FindStringSubmatch(src)
-		pkgs, err := getGoPkgs(src)
-		if err != nil {
-			return nil
+	for _, repo := range cfg.GetStringSlice("params.goPackages") {
+		repoElems := srcRE.FindStringSubmatch(repo)
+		name, src := repoElems[1], repoElems[2]
+
+		if name == "" {
+			name = path.Base(src)
 		}
 
-		_ = pkgs
+		dst := filepath.Join(goPkgsDir, name)
 
-		// for _, pkg := range pkgs {
-		// 	err := writeMultiLangFile(
-		// 		filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
-		// 		[]byte(pkg), 0644,
-		// 	)
+		if _, err := os.Stat(dst); err != nil {
+			gerr := sh.Run("git", "clone", "--depth", "1", src, dst)
+			if gerr != nil {
+				if gerr := sh.Rm(dst); gerr != nil {
+					return gerr
+				}
 
-		// 	if err != nil {
-		// 		return err
-		// 	}
-		// }
+				return gerr
+			}
+		}
+
+		c := exec.Command("go", "list", "-m")
+		c.Dir = dst
+		output, err := c.Output()
+		if err != nil {
+			return err
+		}
+
+		mod := string(bytes.TrimSpace(output))
+		prefix := path.Dir(mod) + "/"
+
+		c = exec.Command(
+			"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}", "./"+name+"/...",
+		)
+
+		c.Dir = goPkgsDir
+		output, err = c.Output()
+		if err != nil {
+			return err
+		}
+
+		for _, entry := range bytes.Split(bytes.TrimSpace(output), []byte("\n")) {
+			els := pkgRE.FindSubmatch(entry)
+
+			if len(els) < 3 {
+				return fmt.Errorf("Bad package format in module %s: %q", mod,  entry)
+			}
+
+			pkg, doc := strings.TrimPrefix(string(els[1]), prefix), string(els[2])
+
+			err := writeMultiLangFile(
+				filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
+				[]byte(genPackagePage(pkg, mod, src, doc)), 0644,
+			)
+
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	return nil
 }
 
-func genPackagePage(name, src, desc string) string {
+func genPackagePage(pkg, mod, src, doc string) string {
 	content := `
 ---
 title: %s
+module: %s
 source-code: %s
-descripton: %s
+description: %s
 url: /go/%s
 ---
 `[1:]
 
-	return fmt.Sprintf(content, name, src, desc, name)
-}
-
-func getGoPkgs(src string) ([]string, error) {
-	goPkgsDir := "go-pkgs"
-	if err := os.MkdirAll(goPkgsDir, 0755); err != nil {
-		return nil, err
-	}
-
-	_ = sh.RunV("git", "-C", goPkgsDir, "clone", src)
-
-	err := sh.RunV(
-		"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}",
-		filepath.Join("./", goPkgsDir),
-	)
-
-	if err != nil {
-		return nil, err
-	}
-
-	// genPackagePage(prefix, src)
-
-	return []string{}, nil
+	return fmt.Sprintf(content, pkg, mod, src, doc, pkg)
 }
 
 func getHugoConfig(cfgFile string) (hc.Provider, error) {
@@ -196,7 +214,7 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 func runHugoDocker(args ...string) error {
 	u, err := user.Current()
 	if err != nil {
-		return nil
+		return err
 	}
 
 	args = append([]string{
@@ -211,7 +229,7 @@ func runHugoDocker(args ...string) error {
 }
 
 func runLinter(name, tag string) error {
-	err = sh.RunV(
+	err := sh.RunV(
 		"docker", "run", "--name", name, "-i", "-t",
 		"-v", wd+":/files/",
 		"ntrrg/md-linter:"+tag,
