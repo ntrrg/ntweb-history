@@ -146,7 +146,10 @@ func (Gen) GoPkgs() error {
 		}
 
 		mod := string(bytes.TrimSpace(output))
-		prefix := path.Dir(mod) + "/"
+
+		if err := writePackagePage(src, mod, mod, ""); err != nil {
+			return err
+		}
 
 		c = exec.Command(
 			"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}", "./"+name+"/...",
@@ -159,20 +162,15 @@ func (Gen) GoPkgs() error {
 		}
 
 		for _, entry := range bytes.Split(bytes.TrimSpace(output), []byte("\n")) {
-			els := pkgRE.FindSubmatch(entry)
+			elms := pkgRE.FindSubmatch(entry)
 
-			if len(els) < 3 {
-				return fmt.Errorf("Bad package format in module %s: %q", mod,  entry)
+			if len(elms) < 3 {
+				return fmt.Errorf("Bad package format in module %s: '%q'", mod, entry)
 			}
 
-			pkg, doc := strings.TrimPrefix(string(els[1]), prefix), string(els[2])
+			pkg, doc := string(elms[1]), string(elms[2])
 
-			err := writeMultiLangFile(
-				filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
-				[]byte(genPackagePage(pkg, mod, src, doc)), 0644,
-			)
-
-			if err != nil {
+			if err := writePackagePage(src, mod, pkg, doc); err != nil {
 				return err
 			}
 		}
@@ -181,18 +179,21 @@ func (Gen) GoPkgs() error {
 	return nil
 }
 
-func genPackagePage(pkg, mod, src, doc string) string {
+func genPackagePage(src, mod, pkg, doc string) string {
+	prefix := path.Dir(mod) + "/"
+	pkg = strings.TrimPrefix(string(pkg), prefix)
+
 	content := `
 ---
 title: %s
-module: %s
 source-code: %s
+module: %s
 description: %s
 url: /go/%s
 ---
 `[1:]
 
-	return fmt.Sprintf(content, pkg, mod, src, doc, pkg)
+	return fmt.Sprintf(content, pkg, src, mod, doc, pkg)
 }
 
 func getHugoConfig(cfgFile string) (hc.Provider, error) {
@@ -260,4 +261,11 @@ func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
 	}
 
 	return nil
+}
+
+func writePackagePage(src, mod, pkg, doc string) error {
+	return writeMultiLangFile(
+		filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
+		[]byte(genPackagePage(src, mod, pkg, doc)), 0644,
+	)
 }
