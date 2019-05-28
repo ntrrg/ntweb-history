@@ -42,10 +42,10 @@ y esperan que todo salga bien.
 7. Existen dos posibilidades en este punto: la primera es que la instalación
    finalice correctamente; y la segunda es que ocurra un error porque el
    administrador de sistemas se saltó accidentalmente unos pasos o porque
-   alguna de las dependencias no se cumple (esta es bastante común, ya que en
-   los entornos de desarrollo suelen tener preinstalados muchos más paquetes
-   que los servidores). Aquí en donde normalmente se escucha el famoso *«Que
-   raro, en mi máquina sí funciona»*.
+   alguna de las dependencias no se cumple (esta es bastante común, ya que los
+   entornos de desarrollo suelen tener preinstalados muchos más paquetes que
+   los servidores). Aquí en donde normalmente se escucha el famoso *«Que raro,
+   en mi máquina sí funciona»*.
 
 8. El administrador de sistemas, y probablemente otros miembros del equipo,
    auditan la aplicación y si todo funciona correctamente se implementa en
