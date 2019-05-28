@@ -120,7 +120,7 @@
   <main>
     {{ block "main" . }}{{ end }}
 
-    {{ if and (ne .Params.comments false) (not .Site.IsServer) }}
+    {{ if and (eq .Params.comments true) (not .Site.IsServer) }}
       {{ $page := . }}
 
       {{ with .Site.Params.disqus }}
