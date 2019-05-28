@@ -1,6 +1,9 @@
 [CATEGORIES]
 other = "Categorías"
 
+[CONTACT]
+other = "Contactos"
+
 [DATE]
 other = "Fecha"
 
@@ -10,17 +13,14 @@ other = "Enlaces de interés"
 [DEFAULT_NOTE_TITLE]
 other = "Nota"
 
-[GO_PACKAGES]
-other = "Paquetes Go"
-
 [KINDS]
 other = "Tipos"
 
 [LICENSE]
 other = "Lincencia"
 
-[CONTACT]
-other = "Contactos"
+[NO_CONTENT]
+other = "[WIP] Todavía no hay contenido en esta sección."
 
 [SOURCE_CODE]
 other = "Código fuente"

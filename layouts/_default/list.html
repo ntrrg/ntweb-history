@@ -17,6 +17,8 @@
     </ul>
 
     {{ template "_internal/pagination.html" . }}
+  {{ else }}
+    <p>{{ i18n "NO_CONTENT" }}</p>
   {{ end }}
 {{ end }}
 

@@ -101,8 +101,8 @@
       {{ if gt (len .Site.Sections) 0 }}
         {{ range sort .Site.Sections }}
           {{ if ne .Params.hidden true }}
-            | <a href="{{ .Permalink }}">{{ .Title }}</a>
-            {{- with .Pages }}<sup>({{ len . }})</sup>{{ end }}
+            {{ $l := len .Pages }}
+            | <a href="{{ .Permalink }}">{{ .Title }}</a><sup>({{ $l }})</sup>
           {{ end }}
         {{ end }}
       {{ end }}
@@ -120,7 +120,7 @@
   <main>
     {{ block "main" . }}{{ end }}
 
-    {{ if and (eq .Params.comments true) (not .Site.IsServer) }}
+    {{ if and (ne .Params.comments false) (not .Site.IsServer) }}
       {{ $page := . }}
 
       {{ with .Site.Params.disqus }}

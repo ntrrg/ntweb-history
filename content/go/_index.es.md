@@ -1,4 +1,4 @@
 ---
-title: Go packages
+title: Paquetes Go
 hidden: true
 ---
