@@ -46,10 +46,10 @@
     </div>
 
     <div class="markdown">
-      {{ if isset .Params "content" }}
-        {{ $content := getJSON .Params.content.url }}
+      {{ with .Params.content }}
+        {{ $content := getJSON .url }}
 
-        {{ if eq .Params.content.api "github" }}
+        {{ if eq .api "github" }}
           {{ base64Decode $content.content | markdownify }}
         {{ end }}
       {{ else }}

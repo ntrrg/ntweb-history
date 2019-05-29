@@ -7,6 +7,7 @@ categories:
   - category1
 tags:
   - tag1
+comments: true
 draft: true
 ---
 

@@ -13,6 +13,7 @@ kinds:
   - kind-1
 techs:
   - tech-1
+comments: true
 draft: true
 ---
 

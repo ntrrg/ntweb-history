@@ -1,0 +1,18 @@
+os: linux
+dist: xenial
+git:
+  depth: 1
+language: go
+go: "1.12"
+env:
+  - GO111MODULE=on
+jobs:
+  include:
+    - stage: "Linting"
+      name: "Go"
+      script: ./mage -v lint:go
+    - name: "Markdown"
+      script: ./mage -v lint:md
+    - stage: "Build"
+      script: ./mage -v gen:default build:docker
+

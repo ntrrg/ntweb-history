@@ -17,6 +17,7 @@ import (
 	hc "github.com/gohugoio/hugo/config"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
+	ntos "nt.web.ve/go/ntgo/os"
 )
 
 var (
@@ -25,30 +26,20 @@ var (
 	hugoVersion = "0.55.6"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
+
 	dockerImage = "ntrrg/ntweb"
 
 	lintContainer = strings.Replace(dockerImage, "/", "-", -1) + "-lint"
 
-	cfg hc.Provider
 	wd  string
+	cfg hc.Provider
 
-	goDir     = filepath.Clean("content/go")
-	goPkgsDir = filepath.Join(os.TempDir(), "ntweb-go-pkgs")
+	prjDir   = filepath.Clean("content/projects")
+	prjRepos = filepath.Join(os.TempDir(), "ntweb-projects")
+
+	goDir   = filepath.Clean("content/go")
+	goRepos = filepath.Join(os.TempDir(), "ntweb-go-pkgs")
 )
-
-func init() {
-	var err error
-
-	cfg, err = getHugoConfig(hugoConfig)
-	if err != nil {
-		panic(err)
-	}
-
-	wd, err = os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-}
 
 type Build mg.Namespace
 
@@ -64,7 +55,7 @@ func Clean() error {
 	_ = sh.RunV("docker", "rm", "-f", lintContainer)
 	_ = sh.RunV("docker", "rm", "-f", lintContainer+"-watch")
 
-	for _, dst := range []string{goPkgsDir, "public", "resources"} {
+	for _, dst := range []string{prjRepos, goRepos, "public", "resources"} {
 		if err := sh.Rm(dst); err != nil {
 			return err
 		}
@@ -75,12 +66,20 @@ func Clean() error {
 
 type Lint mg.Namespace
 
-func (Lint) Default() error {
-	return runLinter(lintContainer, "latest")
+func (Lint) Default() {
+	mg.Deps(Lint.Go, Lint.Md)
 }
 
-func (Lint) Watch() error {
-	return runLinter(lintContainer+"-watch", "watch")
+func (Lint) Go() error {
+	return sh.RunV("gofmt", "-d", "-e", "-s", "magefile.go")
+}
+
+func (Lint) Md() error {
+	return runMdLinter(lintContainer, "latest")
+}
+
+func (Lint) MdWatch() error {
+	return runMdLinter(lintContainer+"-watch", "watch")
 }
 
 type Run mg.Namespace
@@ -102,8 +101,12 @@ func (Run) Docker() error {
 
 type Gen mg.Namespace
 
+func (Gen) Default() {
+	mg.Deps(Gen.GoPkgs, Gen.Projects)
+}
+
 func (Gen) GoPkgs() error {
-	if err := os.MkdirAll(goPkgsDir, 0755); err != nil {
+	if err := os.MkdirAll(goRepos, 0755); err != nil {
 		return err
 	}
 
@@ -112,7 +115,7 @@ func (Gen) GoPkgs() error {
 		return err
 	}
 
-	pkgRE, err := regexp.Compile(`(?:([\w/\-.]+): )(.+)`)
+	pkgRE, err := regexp.Compile(`([\w/\-.]+): (.+)?`)
 	if err != nil {
 		return err
 	}
@@ -125,17 +128,10 @@ func (Gen) GoPkgs() error {
 			name = path.Base(src)
 		}
 
-		dst := filepath.Join(goPkgsDir, name)
+		dst := filepath.Join(goRepos, name)
 
-		if _, err := os.Stat(dst); err != nil {
-			gerr := sh.Run("git", "clone", "--depth", "1", src, dst)
-			if gerr != nil {
-				if gerr := sh.Rm(dst); gerr != nil {
-					return gerr
-				}
-
-				return gerr
-			}
+		if err := cloneRepo(dst, src); err != nil {
+			return err
 		}
 
 		c := exec.Command("go", "list", "-m")
@@ -146,7 +142,6 @@ func (Gen) GoPkgs() error {
 		}
 
 		mod := string(bytes.TrimSpace(output))
-
 		if err := writePackagePage(src, mod, mod, ""); err != nil {
 			return err
 		}
@@ -155,7 +150,7 @@ func (Gen) GoPkgs() error {
 			"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}", "./"+name+"/...",
 		)
 
-		c.Dir = goPkgsDir
+		c.Dir = goRepos
 		output, err = c.Output()
 		if err != nil {
 			return err
@@ -165,7 +160,7 @@ func (Gen) GoPkgs() error {
 			elms := pkgRE.FindSubmatch(entry)
 
 			if len(elms) < 3 {
-				return fmt.Errorf("Bad package format in module %s: '%q'", mod, entry)
+				return fmt.Errorf("bad package format in module %s: %q", mod, entry)
 			}
 
 			pkg, doc := string(elms[1]), string(elms[2])
@@ -174,6 +169,53 @@ func (Gen) GoPkgs() error {
 				return err
 			}
 		}
+	}
+
+	return nil
+}
+
+func (Gen) Projects() error {
+	if err := os.MkdirAll(prjRepos, 0755); err != nil {
+		return err
+	}
+
+	for _, src := range cfg.GetStringSlice("params.projects") {
+		name := path.Base(src)
+		dst := filepath.Join(prjRepos, name)
+		if err := cloneRepo(dst, src); err != nil {
+			return err
+		}
+
+		src = filepath.Join(dst, ".ntweb")
+		dst = filepath.Join(prjDir, name)
+
+		if err := sh.Rm(dst); err != nil {
+			return err
+		}
+
+		if err := ntos.Cp(dst, src); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func cloneRepo(dst, src string) error {
+	if dst == "" {
+		dst = path.Base(src)
+	}
+
+	if _, err := os.Stat(dst); err == nil {
+		return sh.Run("git", "-C", dst, "pull", "origin", "master")
+	}
+
+	if err := sh.Run("git", "clone", "--depth", "1", src, dst); err != nil {
+		if err := sh.Rm(dst); err != nil {
+			return err
+		}
+
+		return err
 	}
 
 	return nil
@@ -209,7 +251,7 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 		return nil, err
 	}
 
-	return hc.FromConfigString(string(cfgData), filepath.Ext(hugoConfig))
+	return hc.FromConfigString(string(cfgData), filepath.Ext(cfgFile))
 }
 
 func runHugoDocker(args ...string) error {
@@ -221,15 +263,15 @@ func runHugoDocker(args ...string) error {
 	args = append([]string{
 		"run", "--rm", "-i", "-t",
 		"-u", u.Uid,
-		"-v", wd+":/srv/",
-		"-p", hugoPort+":"+hugoPort,
-		"ntrrg/hugo:"+hugoVersion,
+		"-v", wd + ":/srv/",
+		"-p", hugoPort + ":" + hugoPort,
+		"ntrrg/hugo:" + hugoVersion,
 	}, args...)
 
 	return sh.RunV("docker", args...)
 }
 
-func runLinter(name, tag string) error {
+func runMdLinter(name, tag string) error {
 	err := sh.RunV(
 		"docker", "run", "--name", name, "-i", "-t",
 		"-v", wd+":/files/",
@@ -268,4 +310,18 @@ func writePackagePage(src, mod, pkg, doc string) error {
 		filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
 		[]byte(genPackagePage(src, mod, pkg, doc)), 0644,
 	)
+}
+
+func init() {
+	var err error
+
+	wd, err = os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+
+	cfg, err = getHugoConfig(hugoConfig)
+	if err != nil {
+		panic(err)
+	}
 }

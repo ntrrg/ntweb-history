@@ -47,6 +47,9 @@ params:
   googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   goPlayground: https://play.golang.org
+  projects:
+    - https://github.com/ntrrg/ntdocutils
+    - https://github.com/ntrrg/ntgo
   goPackages:
     - https://github.com/ntrrg/ntgo
 permalinks:

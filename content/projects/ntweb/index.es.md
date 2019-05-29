@@ -1,3 +1,27 @@
+---
+title: ntWeb
+description: Un pequeño sitio web con grandes intenciones.
+metadata:
+  source-code: https://github.com/ntrrg/ntweb
+  license: MIT
+kinds:
+  - website
+techs:
+  - mage
+  - go
+  - docker
+  - hugo
+  - html5
+  - css3
+  - javascript
+  - implementación-continua
+  - integración-continua
+  - travis
+  - netlify
+---
+
+[![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
+
 **ntWeb** es un pequeño sitio web con grandes intenciones.
 
 ## Uso
@@ -73,4 +97,8 @@ Trabando en este proyecto uso/usé:
 * [Disqus](https://disqus.com/) 
 
 * [MathJax](https://www.mathjax.org/) 
+
+* [Mage](https://magefile.org/)
+
+* [Termux](https://termux.com)
 
