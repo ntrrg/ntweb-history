@@ -4,13 +4,9 @@ title: Métodos de pago
 
 {{< toc false >}}
 
-# AirTM
+# Bolívares
 
-```
-ntrrgx@gmail.com
-```
-
-# Banco de Venezuela
+## Banco de Venezuela
 
 ```
 01020151950000371056
@@ -20,7 +16,7 @@ Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
 ```
 
-# Banco Mercantil
+## Banco Mercantil
 
 ```
 01050672730672206978
@@ -30,19 +26,29 @@ Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
 ```
 
-# Bitcoin
+# Crypto
+
+## Bitcoin
 
 ```
 1GaWFTw2WBA4cYooG4LFGC8EGRghgh178A
 ```
 
-# Ether
+## Ether
 
 ```
 0xa5D824013d2D995a9eB99422a4c06e940F9e116b
 ```
 
-# Uphold
+# Dólares
+
+## AirTM
+
+```
+ntrrgx@gmail.com
+```
+
+## Uphold
 
 ```
 ntrrg
