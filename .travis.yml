@@ -14,5 +14,5 @@ jobs:
     - name: "Markdown"
       script: ./mage -v lint:md
     - stage: "Build"
-      script: ./mage -v gen:default build:docker
+      script: ./mage -v build:docker
 
