@@ -14,21 +14,23 @@ techs:
   - html5
   - css3
   - javascript
-  - continuos-deployment
-  - continuos-integration
   - travis
   - netlify
 ---
 
 [![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
 
-**ntWeb** is a small site with great intentions.
+**ntWeb** is a small site with great intentions. It provides a personal
+portfolio, a blogging platform and Go package vanity URLs.
 
-## Usage
+# Usage
 
 **Requirements:**
 
 * Hugo >= 0.55
+
+Get the source code and run the following command in the project root
+directory:
 
 ```shell-session
 $ hugo server
@@ -36,7 +38,7 @@ $ hugo server
 
 Go to <http://localhost:1313/> with a browser.
 
-### Docker
+## Docker
 
 ```shell-session
 $ docker run --rm -p 1313:80 ntrrg/ntweb
@@ -44,7 +46,7 @@ $ docker run --rm -p 1313:80 ntrrg/ntweb
 
 Go to <http://localhost:1313/> with a browser.
 
-## Acknowledgment
+# Acknowledgment
 
 Working on this project I use/used:
 

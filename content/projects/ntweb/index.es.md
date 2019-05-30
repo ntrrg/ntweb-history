@@ -14,37 +14,39 @@ techs:
   - html5
   - css3
   - javascript
-  - implementación-continua
-  - integración-continua
   - travis
   - netlify
 ---
 
 [![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
 
-**ntWeb** es un pequeño sitio web con grandes intenciones.
+**ntWeb** es un pequeño sitio web con grandes intenciones. Provee un
+portafolio, una plataforma de blog y URLs personalizadas para paquetes Go.
 
-## Uso
+# Uso
 
 **Requerimientos:**
 
 * Hugo >= 0.55
 
+Descargue el código fuente y ejecute el siguente comando en la carpeta raíz del
+proyecto:
+
 ```shell-session
 $ hugo server
 ```
 
-Ir a <http://localhost:1313/> con un navegador web.
+Vaya a <http://localhost:1313/> con un navegador web.
 
-### Docker
+## Docker
 
 ```shell-session
 $ docker run --rm -p 1313:80 ntrrg/ntweb
 ```
 
-Ir a <http://localhost:1313/> con un navegador web.
+Vaya a <http://localhost:1313/> con un navegador web.
 
-## Atribuciones
+# Atribuciones
 
 Trabando en este proyecto uso/usé:
 
