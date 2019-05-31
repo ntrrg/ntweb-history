@@ -11,6 +11,7 @@ tags:
   - devops
   - sysadmin
 math: true
+comments: true
 ---
 
 Básicamente, le permiten a los programadores y administradores de sistemas
@@ -268,6 +269,10 @@ conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 {{< img src="images/architectures-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # Atribuciones
+
+Las imágenes fueron creadas con [Draw.io](https://www.draw.io/).
+
+<br/>
 
 **OCI Team.** *OCI Runtime Specification.* <https://github.com/opencontainers/runtime-spec>
 

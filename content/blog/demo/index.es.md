@@ -1,8 +1,8 @@
 ---
 title: Página de ejemplo
 date: 2028-07-05T18:35:00-04:00
-image: /uploads/logo.png
-description: Esta es una página de ejemplo para ver los estilos de NtWeb.
+image: images/ntrrg.png
+description: Esta es una página de ejemplo para ver los estilos de ntWeb.
 categories:
   - demo
 tags:
@@ -56,42 +56,6 @@ _Este es texto en cursiva_
 [Este es un enlace](https://nt.web.ve)
 
 [Este es un enlace con título](https://nt.web.ve "Este es el título!").
-
-# Imágenes
-
-## De línea
-
-Imágenes de línea con {{< img src="images/hugo.png" style="height: 1em;" >}}
-
-## Extendidas
-
-{{< img src="images/merida.jpg" class="wide" >}}
-
-## De bloque (centradas)
-
-{{< img src="images/merida.jpg" class="block" >}}
-
-{{< img src="images/ntrrg.png" class="align-left" >}}
-
-## Alineadas a la izquierda
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-{{< img src="images/ntrrg.png" class="align-right" >}}
-
-## Alineadas a la derecha
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 # Listas
 
@@ -175,20 +139,6 @@ func main() {
 
 # Tema
 
-## Teclado
-
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Supr</kbd>
-
-## Notas
-
-{{% note %}}
-Esta es una nota
-{{% /note %}}
-
-{{% note "Mi título" %}}
-Esta es una nota con título personalizado.
-{{% /note %}}
-
 ## Enlaces de interés
 
 {{% loi %}}
@@ -210,4 +160,54 @@ func main() {
 }
 ```
 {{% /go-playground %}}
+
+## Imágenes
+
+### De línea
+
+Imágenes de línea con {{< img src="images/hugo.png" style="height: 1em;" >}}
+
+### Extendidas
+
+{{< img src="images/merida.jpg" class="wide" >}}
+
+### De bloque (centradas)
+
+{{< img src="images/merida.jpg" class="block" >}}
+
+{{< img src="images/ntrrg.png" class="align-left" >}}
+
+### Alineadas a la izquierda
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+{{< img src="images/ntrrg.png" class="align-right" >}}
+
+### Alineadas a la derecha
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Notas
+
+{{% note %}}
+Esta es una nota
+{{% /note %}}
+
+{{% note "Mi título" %}}
+Esta es una nota con título personalizado.
+{{% /note %}}
+
+## Teclado
+
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Supr</kbd>
 

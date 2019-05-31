@@ -1,11 +1,12 @@
 ---
 title: Lista de Anime
-date: 2019-03-24T11:21:00-07:00
-description: Mi lista de Anime.
+date: 2019-05-31T11:30:00-07:00
+description: Una lista de anime que ya vi, estoy viendo o tal vez veré.
 categories:
   - entretenimiento
 tags:
   - anime
+comments: true
 ---
 
 * [x] 91 Days

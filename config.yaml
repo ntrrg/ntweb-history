@@ -3,11 +3,12 @@ enableRobotsTXT: true
 params:
   title: ntrrg
   titleSeparator: ·
-  image: uploads/logo.png
-  vimage: uploads/isologo.png
+  image: images/logo.png
+  vimage: images/isologo.png
   org:
     id: ntrrg
     name: Miguel Angel Rivera Notararigo
+    website: https://nt.web.ve
     contact:
       github:
         text: GitHub (@ntrrg)

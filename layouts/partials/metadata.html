@@ -12,6 +12,7 @@
 <meta name="robots" content="index, follow"/>
 
 <meta name="author" content="{{ $author.name }}"/>
+<link rel="author" href="{{ $author.website }}"/>
 <meta name="description" content="{{ $description }}"/>
 
 <!-- Open Graph -->
@@ -47,7 +48,7 @@
         "name": "{{ $org.name }}",
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ absURL "uploads/isologo-amp.png" }}",
+          "url": "{{ absURL "images/isologo-amp.png" }}",
           "width": 206,
           "height": 60
         }
