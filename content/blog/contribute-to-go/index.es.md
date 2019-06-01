@@ -1,8 +1,8 @@
 ---
 title: Cómo hacer contribuciones a Go
 date: 2018-07-06T12:42:47-04:00
-description: Contribuir a Go sin morir en el intento.
-image: /uploads/gopher.png
+description: Cómo contribuir a Go sin morir en el intento.
+image: images/go.png
 categories:
   - tecnología
 tags:
@@ -11,6 +11,7 @@ tags:
   - lenguajes-de-programación
   - go
   - contribuir-a-un-proyecto
+comments: true
 ---
 
 Además de intimidante, hacer una contribución por primera vez en cualquier
@@ -33,36 +34,25 @@ ella.
 
 {{% note "Proceso de contribución" %}}
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
-
-[Go Release Cycle]: https://github.com/golang/go/wiki/Go-Release-Cycle
-[Ciclo de desarrollo de Go]: {{< relref "/blog/go-release-cycle.es.md" >}}
-
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
 Antes de empezar a trabajar, es bueno tener una idea de como se desarrolla el
 proceso de contribución para no sentir que todo funciona por arte de magia y
 que hay crear cuentas en sitios específicos solo porque la guía lo dice.
 
-<!--lint disable no-undefined-references-->
+[Go Release Cycle]: https://github.com/golang/go/wiki/Go-Release-Cycle
 
 Cada versión estable de Go tiene un ciclo de desarrollo de seis meses, de los
 cuales los primeros tres tienen como meta recibir todos los cambios posibles, y
 durante los tres meses restantes solo se recibirán arreglos de fallas o
-mejoras en la documentación; si quieren más detalles sobre el ciclo de
-desarrollo, vayan a esta [página][Go Release Cycle] o lean este
-[artículo][Ciclo de desarrollo de Go].
+mejoras en la documentación; para obtener más detalles sobre el ciclo de
+desarrollo, es recomendable ir a esta [página][Go Release Cycle].
 
-<!--lint enable no-undefined-references-->
-
-El repositorio oficial del proyecto está alojado en
-<https://go.googlesource.com/go>, la rama `master` es la que recibe todo el
-código que será utilizado para generar la próxima versión estable; antes de
-llegar ahí, el código debe ser auditado por miembros de la comunidad, esto se
-hace desde <https://go-review.googlesource.com>; una vez auditado, dependiendo
-de la fecha y de cuanto afecten al lenguaje, los nuevos cambios son mezclados
-y esperan para ser liberados al final del ciclo de desarrollo activo; el estado
-actual del proyecto puede verse desde <https://build.golang.org>.
+El repositorio oficial del proyecto está alojado en <https://go.googlesource.com/go>,
+la rama `master` es la que recibe todo el código que será utilizado para
+generar la próxima versión estable; antes de llegar ahí, el código debe ser
+auditado por miembros de la comunidad, esto se hace desde <https://go-review.googlesource.com>;
+una vez auditado, dependiendo de la fecha y de cuanto afecten al lenguaje, los
+nuevos cambios son mezclados y esperan para ser liberados al final del ciclo de
+desarrollo activo; el estado actual del proyecto puede verse desde <https://build.golang.org>.
 
 {{% /note %}}
 
@@ -99,7 +89,7 @@ $ go get -u -v golang.org/x/review/git-codereview
 ```
 
 En la sección [Realizar cambios](#realizar-cambios) muestro los comandos
-básicos, pero si quieren conocer más sobre esta herramienta pueden ver su
+básicos, pero si se quiere conocer más sobre esta herramienta se puede ver su
 ayuda ejecutando el siguiente comando:
 
 ```shell-session

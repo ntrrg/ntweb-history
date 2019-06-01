@@ -272,14 +272,14 @@ func runHugoDocker(args ...string) error {
 }
 
 func runMdLinter(name, tag string) error {
-	err := sh.RunV(
-		"docker", "run", "--name", name, "-i", "-t",
-		"-v", wd+":/files/",
-		"ntrrg/md-linter:"+tag,
-	)
+	err := sh.RunV("docker", "start", "-a", "-i", name)
 
 	if err != nil {
-		return sh.RunV("docker", "start", "-a", "-i", name)
+		return sh.RunV(
+			"docker", "run", "--name", name, "-i", "-t",
+			"-v", wd+":/files/",
+			"ntrrg/md-linter:"+tag,
+		)
 	}
 
 	return nil
