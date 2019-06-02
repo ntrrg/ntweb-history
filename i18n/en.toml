@@ -22,6 +22,9 @@ other = "Lincense"
 [NO_CONTENT]
 other = "[WIP] There is no content in this section yet."
 
+[SETTINGS]
+other = "Settings"
+
 [SOURCE_CODE]
 other = "Source code"
 

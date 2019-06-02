@@ -22,6 +22,9 @@ other = "Lincencia"
 [NO_CONTENT]
 other = "[WIP] Todavía no hay contenido en esta sección."
 
+[SETTINGS]
+other = "Ajustes"
+
 [SOURCE_CODE]
 other = "Código fuente"
 

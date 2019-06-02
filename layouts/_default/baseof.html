@@ -92,8 +92,10 @@
 {{ end }}
 
 <div id="body">
+  <div id="settings"></div>
+
   <header role="banner">
-    <div>
+    <nav>
       <strong>
         <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.title }}</a>
       </strong>
@@ -106,7 +108,9 @@
           {{ end }}
         {{ end }}
       {{ end }}
-    </div>
+
+      | <a href="#">{{ i18n "SETTINGS" }}</a>
+    </nav>
 
     <div>
       {{ if .IsTranslated }}
