@@ -1,7 +1,7 @@
 ---
 title: Go (Golang)
 date: 2018-09-23T16:40:00-04:00
-image: /uploads/gopher.png
+image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.
 categories:
   - tecnología
@@ -17,24 +17,26 @@ tags:
 
 [Go license]: https://golang.org/LICENSE
 
-Su fase de diseño inició en el año 2007 por parte de un equipo de ingenieros de
-Google, conformado en ese tiempo por Ken Thompson, Rob Pike y Robert Griesemer;
-luego de tener una base estable, se unieron los ingenieros Russ Cox e Ian Lance
-Taylor. Para inicios del 2012 se liberó la primera versión estable, de código
-abierto y ditribuido bajo una licencia [BSD-style][Go license].
+Es un lenguaje minimalista y de alto rendimiento.  Su fase de diseño inició en
+el año 2007 por parte de un equipo de ingenieros de Google, conformado en ese
+tiempo por Ken Thompson, Rob Pike y Robert Griesemer; luego de tener una base
+estable, se unieron los ingenieros Russ Cox e Ian Lance Taylor. Para inicios
+del 2012 se liberó la primera versión estable, de código abierto y ditribuido
+bajo una licencia [BSD-style][Go license].
 
 Algunas de sus características más resaltantes son:
 
 [GC]: https://es.wikipedia.org/wiki/Recolector_de_basura
 
 * Imperativo, los programas se escriben como una serie de instrucciones que la
-  computadora debe seguir para resolver un problema (si leyendo esto piensan
-  *«¿Y no es así cómo se escriben todos los programas? 😒»*, la respuesta es
-  no, existen otros paradigmas de programación que trabajan con enfoques muy
-  diferentes a este).
+  computadora debe seguir para resolver un problema (leyendo esto se puede
+  pensar *«¿Y no es así cómo se escriben todos los programas? 😒»*, 
+  la respuesta es no, existen otros paradigmas de programación que trabajan con
+  enfoques muy diferentes a este).
 
 * Compilado, todo el código escrito es traducido a lenguaje máquina antes de
-  poder ejecutarse.
+  poder ejecutarse, esto significa que no hace falta instalar Go en la máquina
+  que se usará el binario generado.
 
 * Tipado estático, una vez que se define el tipo de una variable, este no puede
   ser modificado.
@@ -43,7 +45,7 @@ Algunas de sus características más resaltantes son:
   tipo, deben hacerse cambios de tipo explícitamente.
 
 * No es necesario liberar manualmente la memoria asignada, usa un [GC][] que se
-  encarga de esto, lo que da facilidades en el manejo de memoria.
+  encarga de esto, pero también ofrece facilidades para el manejo de memoria.
 
 * Concurrencia y paralelismo de manera nativa (por medio de palabras reservadas
   y operadores, también tiene algunas bibliotecas que permiten aplicar técnicas
