@@ -63,13 +63,13 @@ Algunas de sus características más resaltantes son:
 * <https://www.youtube.com/watch?v=k9Zbuuo51go>
 {{% /loi %}}
 
-* Genéricos, aunque es posible que en alguna futura versión se agregue, por
+* Genéricos. Aunque es posible que en alguna futura versión se agregue, por
   ahora no se ha logrado obtener una solución que compense su complejidad con
   su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
   ofrecen abstracción de una manera muy elegante.
 
-* Conjuntos, por la falta de tipos genéricos en el lenguaje, representan
-  agregar un nuevo tipo de dato al código base Go y debido a que es bastante
+* Conjuntos. Por la falta de tipos genéricos en el lenguaje, representan
+  agregar un nuevo tipo de dato al código base de Go y debido a que es bastante
   sencillo implementarlos en la mayoría de los casos, no es muy relevante su
   existencia.
 
@@ -85,14 +85,14 @@ len(x) // 2
 ```
 {{% /go-playground %}}
 
-* `while` y `do-while`, solo hay una estructura de repetición (`for`) y aunque
+* `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
   parezca limitado, es una ventaja para los programadores no tener que pensar
   en cuál estructura usar, tal vez suene a exagerar, pero en internet es muy
   fácil encontrar discusiones largas y repetitivas de varios lenguajes sobre
   cuál de todas las estructuras de repetición es la más rápida.
 
 * `map`, `filter` y la familia de funciones favoritas de los programadores
-  funcionales, por la falta de tipos genéricos sería necesario definir
+  funcionales. Por la falta de tipos genéricos sería necesario definir
   muchísimas funciones para cada tipo, pero además, ¿por qué llamar 100
   funciones para sumar los elementos de un arreglo si puede usarse una
   estructura de repetición muy sencilla?, si la reacción a esto es *«No me
@@ -135,7 +135,7 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 ```
 {{% /go-playground %}}
 
-* Excepciones, usar estructuras de control (como `try {} catch {}`) para
+* Excepciones. Usar estructuras de control (como `try {} catch {}`) para
   manejar los errores puede resultar en flujos complejos que dificultan a los
   programadores el proceso de identificación y solución de errores (debugging).
   En su lugar los errores se manejan por medio del mecanismo de retorno
@@ -143,26 +143,28 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 
 * Afirmaciones (asserts), en la mayoría de las ocasiones, los programadores
   usan las afirmaciones para generar errores en tiempo de ejecución y así, no
-  tener que implementar de mejor manera el flujo del programa. Al igual que con
-  las excepciones, existen otros métodos para manejar las afirmaciones en Go.
+  tener que implementar de mejor manera el flujo del programa. Para un
+  comportamiento similar se puede usar la función `panic`, pero su uso para
+  simplificar el manejo de errores no está recomendado.
 
-* Aritmética de punteros, no está permitida, ya que Go usa un GC.
+* Aritmética de punteros. No está permitida, por la forma en que se maneja la
+  memoria.
 
 * Hilos de procesos (threads), una de las tareas que suele agregar muchísima
   complejidad al código fuente es la programación multithreading, aunque claro,
-  si se pretende programar una aplicación que se usará en servidores o en
-  computadores personales con procesadores de múltiples núcleos y hacer toda la
-  computación en un solo hilo, sería un descaro decir que Go es un lenguaje de
-  alto rendimiento, pero la verdad es que no hacen falta, ya se que suena loco
-  y probablemente piensen *«Claaaro, un programa con gran demanda de cómputo
-  que corre en un hilo puede ser tan rápido como uno que corre en múltiples
-  hilos.. 😒»*, pensamiento sarcástico que sería muy merecido, pero el hecho es
-  que Go cuenta con gorutinas, que son funciones que se ejecutan
-  independientemente del hilo principal y son automáticamente distribuidas
-  entre más hilos para evitar el bloqueo de las operaciones, esto genera una
-  abstracción de más alto nivel para este tipo de operaciones, por lo que el
-  programador no debe lidear directamente con hilos (vean la sección de
-  [gorutinas](#gorutinas)).
+  si se pretende programar una aplicación que se usará en computadoras potentes
+  (como servidores o computadores personales con procesadores de múltiples
+  núcleos) y hacer toda la computación en un solo hilo, sería un descaro decir
+  que Go es un lenguaje de alto rendimiento, pero la verdad es que no hacen
+  falta, ya se que suena loco y probablemente se pueda pensar  *«Claaaro, un
+  programa con gran demanda de cómputo que corre en un hilo puede ser tan
+  rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
+  que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
+  son funciones que se ejecutan independientemente del hilo principal y son
+  automáticamente distribuidas entre más hilos para evitar el bloqueo de las
+  operaciones, esto genera una abstracción de más alto nivel para este tipo de
+  tareas, por lo que el programador no debe lidear directamente con hilos (vear
+  la sección de [Goroutines](#goroutines)).
 
 # Herramientas necesarias
 
@@ -173,9 +175,8 @@ Para empezar a programar solo hacen falta dos cosas:
 [Instalar Go]: {{< relref "/blog/install-go-1.12/index.es.md" >}}
 [Install Go]: https://golang.org/doc/install
 
-* El compilador (pueden ver las instrucciones para instalarlo en la
-  [documentación oficial][Install Go] o en este [artículo][Instalar Go]
-  sobre como instalar Go).
+* El compilador (se pueden ver las instrucciones para instalarlo en la
+  [documentación oficial][Install Go] o en este [artículo][Instalar Go]).
 
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
 
@@ -217,7 +218,7 @@ deben iniciar con una línea que contenga `package NOMBRE`, donde `NOMBRE` es
 un valor asignado por el desarrollador y es el identificador con el que otros
 podrán utilizarlo dentro de sus programas. Cuando se pretende desarrollar
 algún comando o alguna aplicación se usa `package main`, `main` es un nombre
-especial que le dice al compilador que la intención del archivo no es servir
+especial que le dice al compilador que la intención del paquete no es servir
 como biblioteca, sino como un ejecutable.
 
 ```go
@@ -272,7 +273,7 @@ func main() {
 El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
 usando el comando `go run`.
 
-```go
+```shell-session
 $ go run hola_mundo.go
 hola, mundo
 ```
@@ -281,18 +282,18 @@ El segundo, es generar un archivo ejecutable a partir del archivo fuente y
 después ejecutarlo (obvio no? 😅), el comando anterior hace esto mismo, solo
 que crea un archivo temporal y lo ejecuta automáticamente.
 
-```go
+```shell-session
 $ go build hola_mundo.go
 $ ./hola_mundo
 hola, mundo
 ```
 
 Aunque en algunos casos baste con un archivo para crear un paquete útil, en
-otras ocasiones la cantidad de código tiende a expandirse y tener muchas
-líneas en un solo lugar puede generar algunos problemas, por lo que es
-recomendable que lean la sección sobre [modularización](#paquetes). Para
-obtener más información sobre el comando `go` y como usarlo con múltiples
-archivos, pueden ir a la sección del [compilador](#compilador).
+otras ocasiones la cantidad de código tiende a expandirse y tener muchas líneas
+en un solo lugar puede generar algunos problemas, por lo que es recomendable
+leer la sección sobre [Modularización](#paquetes). Para obtener más información
+sobre el comando `go` y como usarlo con múltiples archivos, se debe leer la
+sección del [Compilador](#compilador).
 
 # Comentarios
 
@@ -386,8 +387,8 @@ func Add(operands ...Operander) float64 {
 }
 ```
 
-Para ver el resultado se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
-<http://localhost:6060/pkg/local/arithmetic> con un navegador web.
+Para ver el resultado se debe iniciar GoDoc e ir a la ruta <http://localhost:6060/pkg/local/arithmetic>
+con un navegador web.
 
 ```shell-session
 $ godoc -http :6060
@@ -406,8 +407,10 @@ si:
 
 * Tiene una indentación, será convertido a un bloque de código.
 
-* Tiene el formato `BUG(USUARIO): DESCRIPCIÓN.`, será agregado a la lista de
-  bugs conocidos del paquete.
+* Tiene el formato `IDENTIFICADOR(USUARIO): DESCRIPCIÓN.`, será agregado a la
+  lista de notas del paquete. `IDENTIFICADOR` puede ser cualquier combinación
+  de más de dos letras mayúsculas. El idenficador `BUG` tiene el comportamiento
+  especial de crear una lista de bugs en la página del paquete.
 
 Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
 sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
@@ -435,239 +438,34 @@ This is a long description of the Arithmetic package.
 		fmt.Println(r)
 	}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod
-egestas elit sed viverra. Nunc tincidunt lacinia orci in mattis.
-Praesent cursus neque et dapibus faucibus. Maecenas at sem ut arcu
-ornare commodo. Morbi laoreet diam sit amet est ultricies imperdiet.
-Proin ullamcorper ac massa a accumsan. Praesent quis bibendum tellus.
-Sed id velit libero. Fusce dapibus purus neque, sit amet sollicitudin
-odio porttitor posuere. Mauris eu dui elementum, fermentum ante vitae,
-porttitor nunc. Duis mi elit, viverra at turpis vitae, sollicitudin
-aliquet velit. Pellentesque nisl turpis, pulvinar et consectetur et,
-iaculis vel leo. Suspendisse euismod sem at vehicula fermentum. Duis
-viverra eget ante a accumsan.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+euismod egestas elit sed viverra. Nunc tincidunt lacinia orci in
+mattis. Praesent cursus neque et dapibus faucibus. Maecenas at
+sem ut arcu ornare commodo. Morbi laoreet diam sit amet est
+ultricies imperdiet. Proin ullamcorper ac massa a accumsan.
+Praesent quis bibendum tellus. Sed id velit libero. Fusce dapibus
+purus neque, sit amet sollicitudin odio porttitor posuere. Mauris
+eu dui elementum, fermentum ante vitae, porttitor nunc. Duis mi
+elit, viverra at turpis vitae, sollicitudin aliquet velit.
+Pellentesque nisl turpis, pulvinar et consectetur et, iaculis vel
+leo. Suspendisse euismod sem at vehicula fermentum. Duis viverra
+eget ante a accumsan.
 
-Aenean dui lectus, ultrices at elit id, pellentesque faucibus dolor.
-Duis blandit vulputate est, eget sollicitudin ipsum pellentesque quis.
-Cras sed nibh sed sapien suscipit tincidunt venenatis id eros.
-Praesent laoreet, erat quis hendrerit dignissim, justo diam semper
-elit, sit amet commodo lacus ipsum eget nisl. In a mi tellus. In hac
-habitasse platea dictumst. Aliquam et neque a quam mollis molestie.
-Etiam tempor arcu quis justo molestie congue.
+Aenean dui lectus, ultrices at elit id, pellentesque faucibus
+dolor. Duis blandit vulputate est, eget sollicitudin ipsum
+pellentesque quis. Cras sed nibh sed sapien suscipit tincidunt
+venenatis id eros. Praesent laoreet, erat quis hendrerit
+dignissim, justo diam semper elit, sit amet commodo lacus ipsum
+eget nisl. In a mi tellus. In hac habitasse platea dictumst.
+Aliquam et neque a quam mollis molestie. Etiam tempor arcu quis
+justo molestie congue.
 */
 package arithmetic
 ```
 
-### Ejemplos
-
-{{% loi %}}
-* <https://blog.golang.org/examples>
-{{% /loi %}}
-
 Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
 ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
-interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
-en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
-si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
-`ExampleIDENTIFICADOR`/`ExampleIDENTIFICADOR_MÉTODO` para tener como objetivo
-solo un elemento.
-
-`$GOPATH/src/local/arithmetic/arithmetic.go`:
-
-```go
-package arithmetic
-
-func Add(operands ...int) int {
-  result := operands[0]
-
-  for _, v := range operands[1:] {
-    result += v
-  }
-
-  return result
-}
-
-func Sub(operands ...int) int {
-  result := operands[0]
-
-  for _, v := range operands[1:] {
-    result -= v
-  }
-
-  return result
-}
-```
-
-`$GOPATH/src/local/arithmetic/example_test.go`:
-
-{{% go-playground "F89MWsdAyLS" %}}
-```go
-package arithmetic_test
-
-import (
-  "fmt"
-
-  a "local/arithmetic"
-)
-
-func Example() {
-  r := a.Add(1, 2) - a.Sub(3, 4)
-  fmt.Println(r)
-  // Output: 4
-}
-
-func ExampleAdd() {
-  r := a.Add(1, 2, 3, 4)
-  fmt.Println(r)
-  // Output: 10
-}
-
-func ExampleSub() {
-  r := a.Sub(5, 3, 1)
-  fmt.Println(r)
-  // Output: 1
-}
-```
-{{% /go-playground %}}
-
-Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
-<http://localhost:6060/pkg/local/arithmetic> con un navegador.
-
-```shell-session
-$ godoc -http :6060
-```
-
-Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
-y al final de cada una deberá existir un comentario especial `// Output: VALOR`
-que indica los valores esperados, si se necesitan múltiples líneas, simplemente
-se agregan como comentarios justo después del comentario especial. Estas
-funciones son ejecutadas por `go test`, por lo que no solo tienen un uso
-informativo, sino que también ayudan a probar el código; si no se encuentra
-algún comentario especial, las funciones serán compiladas, pero no ejecutadas.
-
-```shell-session
-$ go test -v local/arithmetic
-=== RUN   Example
---- PASS: Example (0.00s)
-=== RUN   ExampleAdd
---- PASS: ExampleAdd (0.00s)
-=== RUN   ExampleSub
---- PASS: ExampleSub (0.00s)
-PASS
-ok  	local/arithmetic
-```
-
-Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
-objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
-letra.
-
-`$GOPATH/src/local/arithmetic/multiexample_test.go`:
-
-{{% go-playground "cKBokfh3L9v" %}}
-```go
-package arithmetic_test
-
-import (
-  "fmt"
-
-  a "local/arithmetic"
-)
-
-func ExampleAdd_two() {
-  r := a.Add(1, 2)
-  fmt.Println(r)
-  // Output: 3
-}
-
-func ExampleAdd_five() {
-  r := a.Add(1, 2, 3, 4, 5)
-  fmt.Println(r)
-  // Output: 15
-}
-```
-{{% /go-playground %}}
-
-```shell-session
-$ go test -v local/arithmetic
-=== RUN   Example
---- PASS: Example (0.00s)
-=== RUN   ExampleAdd
---- PASS: ExampleAdd (0.00s)
-=== RUN   ExampleSub
---- PASS: ExampleSub (0.00s)
-=== RUN   ExampleAdd_two
---- PASS: ExampleAdd_two (0.00s)
-=== RUN   ExampleAdd_five
---- PASS: ExampleAdd_five (0.00s)
-PASS
-ok  	local/arithmetic
-```
-
-Como un ejemplo es representado por una función, no es posible demostrar
-algunas funcionalidades como la implementación de interfaces, por esta razón
-existen los ejemplos de archivos, estos consisten en un archivo que contiene
-exclusivamente una función de ejemplo y todas las definiciones a nivel de
-paquete que sean necesarias.
-
-```shell-session
-$ rm -rf $GOPATH/src/local/arithmetic
-```
-
-{{% go-playground "8D3QO97NKE-" %}}
-`$GOPATH/src/local/arithmetic/arithmetic.go`:
-
-```go
-package arithmetic
-
-type Operander interface {
-  Val() float64
-}
-
-func Add(operands ...Operander) float64 {
-  result := operands[0].Val()
-
-  for _, v := range operands[1:] {
-    result += v.Val()
-  }
-
-  return result
-}
-```
-
-`$GOPATH/src/local/arithmetic/whole_file_example_test.go`:
-
-```go
-package arithmetic_test
-
-import (
-  "fmt"
-
-  a "local/arithmetic"
-)
-
-type Operand string
-
-func (o Operand) Val() float64 {
-  return float64(len(o))
-}
-
-func ExampleAdd() {
-  var x, y Operand = "a", "b"
-
-  r := a.Add(x, y)
-  fmt.Println(r)
-  // Output: 2
-}
-```
-{{% /go-playground %}}
-
-```shell-session
-$ go test -v local/arithmetic
-=== RUN   ExampleAdd
---- PASS: ExampleAdd (0.00s)
-PASS
-ok  	local/arithmetic
-```
+interfaz web. Para más información ver la sección de [Ejempos](#ejemplos-pruebas).
 
 # Tipos de datos
 
@@ -1836,6 +1634,219 @@ x + y // (2+3i)
 <https://golang.org/ref/spec#Handling_panics>
 
 <https://blog.golang.org/error-handling-and-go>
+
+# Pruebas
+
+## Ejemplos (pruebas)
+
+{{% loi %}}
+* <https://blog.golang.org/examples>
+{{% /loi %}}
+
+Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
+ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
+interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
+en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
+si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
+`ExampleIDENTIFICADOR`/`ExampleIDENTIFICADOR_MÉTODO` para tener como objetivo
+solo un elemento.
+
+`$GOPATH/src/local/arithmetic/arithmetic.go`:
+
+```go
+package arithmetic
+
+func Add(operands ...int) int {
+  result := operands[0]
+
+  for _, v := range operands[1:] {
+    result += v
+  }
+
+  return result
+}
+
+func Sub(operands ...int) int {
+  result := operands[0]
+
+  for _, v := range operands[1:] {
+    result -= v
+  }
+
+  return result
+}
+```
+
+`$GOPATH/src/local/arithmetic/example_test.go`:
+
+{{% go-playground "F89MWsdAyLS" %}}
+```go
+package arithmetic_test
+
+import (
+  "fmt"
+
+  a "local/arithmetic"
+)
+
+func Example() {
+  r := a.Add(1, 2) - a.Sub(3, 4)
+  fmt.Println(r)
+  // Output: 4
+}
+
+func ExampleAdd() {
+  r := a.Add(1, 2, 3, 4)
+  fmt.Println(r)
+  // Output: 10
+}
+
+func ExampleSub() {
+  r := a.Sub(5, 3, 1)
+  fmt.Println(r)
+  // Output: 1
+}
+```
+{{% /go-playground %}}
+
+Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
+<http://localhost:6060/pkg/local/arithmetic> con un navegador.
+
+```shell-session
+$ godoc -http :6060
+```
+
+Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
+y al final de cada una deberá existir un comentario especial `// Output: VALOR`
+que indica los valores esperados, si se necesitan múltiples líneas, simplemente
+se agregan como comentarios justo después del comentario especial. Estas
+funciones son ejecutadas por `go test`, por lo que no solo tienen un uso
+informativo, sino que también ayudan a probar el código; si no se encuentra
+algún comentario especial, las funciones serán compiladas, pero no ejecutadas.
+
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   Example
+--- PASS: Example (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSub
+--- PASS: ExampleSub (0.00s)
+PASS
+ok  	local/arithmetic
+```
+
+Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
+objetivo, solo hace falta agregar un sufijo que inicie con un guión bajo y una
+letra.
+
+`$GOPATH/src/local/arithmetic/multiexample_test.go`:
+
+{{% go-playground "cKBokfh3L9v" %}}
+```go
+package arithmetic_test
+
+import (
+  "fmt"
+
+  a "local/arithmetic"
+)
+
+func ExampleAdd_two() {
+  r := a.Add(1, 2)
+  fmt.Println(r)
+  // Output: 3
+}
+
+func ExampleAdd_five() {
+  r := a.Add(1, 2, 3, 4, 5)
+  fmt.Println(r)
+  // Output: 15
+}
+```
+{{% /go-playground %}}
+
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   Example
+--- PASS: Example (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSub
+--- PASS: ExampleSub (0.00s)
+=== RUN   ExampleAdd_two
+--- PASS: ExampleAdd_two (0.00s)
+=== RUN   ExampleAdd_five
+--- PASS: ExampleAdd_five (0.00s)
+PASS
+ok  	local/arithmetic
+```
+
+Como un ejemplo es representado por una función, no es posible demostrar
+algunas funcionalidades como la implementación de interfaces, por esta razón
+existen los ejemplos de archivos, estos consisten en un archivo que contiene
+exclusivamente una función de ejemplo y todas las definiciones a nivel de
+paquete que sean necesarias.
+
+```shell-session
+$ rm -rf $GOPATH/src/local/arithmetic
+```
+
+{{% go-playground "8D3QO97NKE-" %}}
+`$GOPATH/src/local/arithmetic/arithmetic.go`:
+
+```go
+package arithmetic
+
+type Operander interface {
+  Val() float64
+}
+
+func Add(operands ...Operander) float64 {
+  result := operands[0].Val()
+
+  for _, v := range operands[1:] {
+    result += v.Val()
+  }
+
+  return result
+}
+```
+
+`$GOPATH/src/local/arithmetic/whole_file_example_test.go`:
+
+```go
+package arithmetic_test
+
+import (
+  "fmt"
+
+  a "local/arithmetic"
+)
+
+type Operand string
+
+func (o Operand) Val() float64 {
+  return float64(len(o))
+}
+
+func ExampleAdd() {
+  var x, y Operand = "a", "b"
+
+  r := a.Add(x, y)
+  fmt.Println(r)
+  // Output: 2
+}
+```
+{{% /go-playground %}}
+
+```shell-session
+$ go test -v local/arithmetic
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+PASS
+ok  	local/arithmetic
+```
 
 # Go tool
 
