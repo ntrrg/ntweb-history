@@ -156,7 +156,7 @@ func Reduce(s []int, f func(int, int) int, a int) int {
   (como servidores o computadores personales con procesadores de múltiples
   núcleos) y hacer toda la computación en un solo hilo, sería un descaro decir
   que Go es un lenguaje de alto rendimiento, pero la verdad es que no hacen
-  falta, ya se que suena loco y probablemente se pueda pensar  *«Claaaro, un
+  falta, ya se que suena loco y probablemente se pueda pensar *«Claaaro, un
   programa con gran demanda de cómputo que corre en un hilo puede ser tan
   rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
   que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
