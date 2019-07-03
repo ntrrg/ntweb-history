@@ -1,6 +1,7 @@
 FROM ntrrg/hugo:0.55.6 as build
 USER 0
-COPY . /srv
+WORKDIR /srv
+COPY . .
 RUN hugo --baseUrl /
 
 FROM ntrrg/nginx:http
