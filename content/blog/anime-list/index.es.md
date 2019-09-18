@@ -90,6 +90,7 @@ comments: true
 * [ ] K
 * [ ] Kage Shadow
 * [ ] Kill la Kill
+* [ ] Kimetsu no Yaiba
 * [x] Kimi no Na wa
 * [ ] Kino's Journey
 * [ ] Kite
