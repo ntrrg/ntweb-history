@@ -1,4 +1,4 @@
-FROM ntrrg/hugo:0.55.6 as build
+FROM ntrrg/hugo:0.58.3 as build
 USER 0
 WORKDIR /srv
 COPY . .

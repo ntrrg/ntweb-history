@@ -27,7 +27,7 @@ portfolio, a blogging platform and Go package vanity URLs.
 
 **Requirements:**
 
-* Hugo >= 0.55
+* Hugo >= 0.58
 
 Get the source code and run the following command in the project root
 directory:
