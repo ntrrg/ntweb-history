@@ -26,7 +26,7 @@ comments: true
 * [ ] Black Clover
 * [ ] Blade Runner
 * [ ] Bladedance of Elementalers
-* [ ] Bleach
+* [x] Bleach
 * [ ] Blood+
 * [ ] Blood-C
 * [ ] Blood: The Last Vampire
@@ -107,7 +107,7 @@ comments: true
 * [ ] Monthly Girls' Nozaki-kun
 * [ ] Mushishi
 * [ ] Nanatsu no Taizai
-* [ ] Naruto
+* [x] Naruto
 * [ ] Naruto Shippuden
 * [ ] Natsume Yūjin-Chō
 * [ ] Nichijou
