@@ -11,7 +11,7 @@ comments: true
 
 * [x] 91 Days
 * [ ] Afro Samurai
-* [ ] Akame Ga Kill!
+* [ ] Akame Ga Kiru!
 * [ ] Akatsuki no Yona
 * [ ] Aldnoah Zero
 * [ ] Angel Beats!
