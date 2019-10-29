@@ -21,9 +21,9 @@ import (
 )
 
 var (
-	Default = Build.Default
+	Default = Build
 
-	hugoVersion = "0.58.3"
+	hugoVersion = "0.59.0"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
@@ -31,9 +31,7 @@ var (
 	cfg hc.Provider
 )
 
-type Build mg.Namespace
-
-func (Build) Default() error {
+func Build() error {
 	return sh.RunV("hugo")
 }
 
@@ -53,9 +51,7 @@ func (Lint) Go() error {
 	return sh.RunV("gofmt", "-d", "-e", "-s", "magefile.go")
 }
 
-type Run mg.Namespace
-
-func (Run) Default() error {
+func Run() error {
 	return sh.RunV(
 		"hugo", "server", "-D", "-E", "-F",
 		"--noHTTPCache", "--port", hugoPort,
@@ -118,11 +114,13 @@ func init() {
 // Docker //
 ////////////
 
-func (Build) Docker() error {
+type Docker mg.Namespace
+
+func (Docker) Build() error {
 	return runHugoDocker()
 }
 
-func (Run) Docker() error {
+func (Docker) Run() error {
 	return runHugoDocker(
 		"server", "-D", "-E", "-F", "--noHTTPCache",
 		"--bind", "0.0.0.0", "--port", hugoPort,
@@ -139,7 +137,7 @@ func runHugoDocker(args ...string) error {
 	args = append([]string{
 		"run", "--rm", "-i", "-t",
 		"-u", u.Uid,
-		"-v", wd + ":/srv/",
+		"-v", wd + ":/site/",
 		"-p", hugoPort + ":" + hugoPort,
 		"ntrrg/hugo:" + hugoVersion,
 	}, args...)

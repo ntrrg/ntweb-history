@@ -1,8 +1,8 @@
-FROM ntrrg/hugo:0.58.3 as build
+FROM ntrrg/hugo:0.59.0 as build
 COPY . .
 RUN hugo --baseUrl /
 
 FROM ntrrg/nginx:http
-COPY --from=build /tmp/site/public /usr/share/nginx/html
+COPY --from=build /site/public /usr/share/nginx/html
 EXPOSE 80
 

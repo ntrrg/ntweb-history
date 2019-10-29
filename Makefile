@@ -1,4 +1,4 @@
-hugo_version := 0.58.3
+hugo_version := 0.59.0
 hugo_port := 1313
 
 .PHONY: all
@@ -32,10 +32,11 @@ docker-hugo%:
 		-e PORT=$(hugo_port) \
 		-p $(hugo_port):$(hugo_port) \
 		-u $$(id -u $$USER) \
+		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
 		ntrrg/hugo:$(hugo_version) $*
 
 .PHONY: docker-run
 docker-run:
-	$(MAKE) -s "docker-hugo "
+	$(MAKE) -s "docker-hugo server -DEF --noHTTPCache --port $(hugo_port)"
 

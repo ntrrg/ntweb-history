@@ -11,5 +11,5 @@ jobs:
     - stage: "Linting"
       script: ./mage -v lint:go
     - stage: "Build"
-      script: ./mage -v build:docker
+      script: ./mage -v docker:build
 
