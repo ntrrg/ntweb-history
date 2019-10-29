@@ -38,5 +38,5 @@ docker-hugo%:
 
 .PHONY: docker-run
 docker-run:
-	$(MAKE) -s "docker-hugo server -DEF --noHTTPCache --port $(hugo_port)"
+	$(MAKE) -s "docker-hugo server -DEF --noHTTPCache --bind 0.0.0.0 --port $(hugo_port) --appendPort=false"
 
