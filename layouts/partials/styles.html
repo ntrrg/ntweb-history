@@ -8,12 +8,12 @@
   {{ $sheets = $sheets | append "css/home.css" }}
 {{ else if gt (len .Pages) 0 }}
   {{ $suffix = printf "%v-list" $suffix  }}
-  {{ $sheets = $sheets | append "css/markdown.css" }}
   {{ $sheets = $sheets | append "css/list.css" }}
+  {{ $sheets = $sheets | append "css/markdown.css" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
-  {{ $sheets = $sheets | append "css/markdown.css" }}
   {{ $sheets = $sheets | append "css/article.css" }}
+  {{ $sheets = $sheets | append "css/markdown.css" }}
   {{ $sheets = $sheets | append "css/highlight/_main.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokailight.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokai.css" }}

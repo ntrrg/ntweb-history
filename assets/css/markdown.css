@@ -1,19 +1,31 @@
 :root {
   --code-background: #eee;
   --code-color: var(--font-color);
+  --kbd-background: #eee;
+  --kbd-color: #333;
 }
 
 .markdown {
   position: relative;
 }
 
-.markdown #toc-title {
-  font-size: 2em;
+/* Paragrahps */
+
+.markdown p {
+  margin-bottom: 0.5em;
 }
+
+.markdown p:last-child {
+  margin-bottom: 0em;
+}
+
+/* Separators */
 
 .markdown hr {
   width: 80%;
 }
+
+/* Heading */
 
 .markdown h1,
 .markdown h2,
@@ -48,43 +60,22 @@
   font-size: 1.1em;
 }
 
-.markdown p {
-  margin-bottom: 0.5em;
+/* Text decoration */
+
+.markdown b, .mkardown strong {
+  font-weight: bolder;
 }
 
-.markdown p:last-child {
-  margin-bottom: 0em;
+.markdown i, .mkardown em {
+  font-style: italic;
 }
 
-.markdown img {
-  max-width: 100%;
+.markdown a {
+  color: var(--accent-color);
+  text-decoration: underline;
 }
 
-.markdown img.block {
-  display: block;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.markdown img.wide {
-  max-width: none;
-  width: calc(100% + 2em);
-
-  display: block;
-
-  margin-left: -1em;
-}
-
-.markdown img.align-left {
-  float: left;
-  margin-right: 1em;
-}
-
-.markdown img.align-right {
-  float: right;
-  margin-left: 1em;
-}
+/* Lists */
 
 .markdown ol,
 .markdown ul {
@@ -100,6 +91,8 @@
   font-weight: bold;
 }
 
+/* Quotes */
+
 .markdown .footnotes {
   font-size: 0.8em;
   margin-top: 2em;
@@ -113,6 +106,8 @@
   padding-left: 1em;
 }
 
+/* Tables */
+
 .markdown table {
   margin: 1em auto;
 }
@@ -122,6 +117,14 @@
   border: 0.1em solid;
   padding: 0.5em 1em;
 }
+
+/* Images */
+
+.markdown img {
+  max-width: 100%;
+}
+
+/* Code */
 
 .markdown code,
 .markdown pre,
@@ -148,5 +151,19 @@
 
 .markdown pre > code {
   padding: 0;
+}
+
+/* Keyboard */
+
+.markdown kbd {
+  background: var(--kbd-background);
+  border-color: lightgrey;
+  border-radius: 0.2em;
+  border-style: outset;
+  border-width: 0.1em;
+  color: var(--kbd-color);
+  display: inline-block;
+  font-family: monospace;
+  padding: 0em 0.5em;
 }
 

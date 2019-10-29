@@ -20,6 +20,8 @@
   }
 }
 
+/* Elements */
+
 body {
   color: var(--font-color);
   background: var(--background);
@@ -30,47 +32,22 @@ body {
 
 a {
   color: var(--accent-color);
-  word-break: break-all;
+  text-decoration: none;
 }
 
-kbd {
-  background: var(--code-background);
-  border-color: lightgrey;
-  border-radius: 0.2em;
-  border-style: outset;
-  border-width: 0.1em;
-  color: var(--code-color);
-  display: inline-block;
-  font-family: monospace;
-  padding: 0em 0.5em;
+/* Classes */
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .small {
   font-size: 0.85em;
 }
 
-.card {
-  max-width: 100%;
-
-  border: 0.1em dashed;
-  box-sizing: border-box;
-  margin: 0.5em;
-  padding: 1.5em 2em;
-}
-
-.card h3 {
-  margin: 0em;
-}
-
-ul.pagination {
-  list-style: none;
-  padding: 0em;
-  text-align: center;
-}
-
-ul.pagination li {
-  display: inline;
-}
+/* Page structure */
 
 #body {
   min-height: 100vh;
@@ -91,18 +68,6 @@ ul.pagination li {
       ".  main  ."
       ". footer .";
   }
-}
-
-#body > #settings {
-  width: 100vw;
-  height: 100vh;
-
-  background: var(--background);
-
-  position: fixed;
-  bottom: 100%;
-  left: 0em;
-  z-index: 999999;
 }
 
 #body > header {
@@ -128,12 +93,24 @@ ul.pagination li {
 
 #body > footer {
   grid-area: footer;
-}
 
-#body > footer {
   border-top: 0.05em solid;
   font-size: 0.8em;
   padding: 0em 1em;
   text-align: center;
+}
+
+/* Settings */
+
+#body > #settings {
+  width: 100vw;
+  height: 100vh;
+
+  background: var(--background);
+
+  position: fixed;
+  bottom: 100%;
+  left: 0em;
+  z-index: 999999;
 }
 

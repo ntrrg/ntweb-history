@@ -1,8 +1,8 @@
 ---
 title: Demo page
-date: 2028-07-05T18:35:00-04:00
+date: 2028-07-05T18:35:00-0400
 image: images/ntrrg.png
-description: This is a demo page to see the styles from ntWeb.
+description: This is a demo page to see the Markdown styles.
 categories:
   - demo
 tags:
@@ -114,10 +114,14 @@ This paragraph has a footnote[^1].
 |    text |            text |
 |    text |            text |
 
+# Images
+
+!["Alternative text"](images/ntrrg.png "This is the title")
+
 # Math formulas
 
 This is a smart fraction 1/2, this is text with inline math
-\\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\) and this is a math blocks:
+\\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\) and this is a math block:
 
 $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
@@ -137,21 +141,11 @@ func main() {
 }
 ```
 
-# Theme
+## Keyboard
 
-## Go Playground
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
 
-{{% go-playground "sfPZJf_jZLF" %}}
-```go
-package main
-
-import "fmt"
-
-func main() {
-  fmt.Println("hello, world")
-}
-```
-{{% /go-playground %}}
+# Shortcodes
 
 ## Images
 
@@ -189,17 +183,19 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## Keyboard
+## Go Playground
 
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
+{{% go-playground "sfPZJf_jZLF" %}}
+```go
+package main
 
-## Links of interest
+import "fmt"
 
-{{% loi %}}
-* <https://nt.web.ve>
-* <https://nt.web.ve/en>
-* <https://nt.web.ve/es>
-{{% /loi %}}
+func main() {
+  fmt.Println("hello, world")
+}
+```
+{{% /go-playground %}}
 
 ## Notes
 
@@ -210,4 +206,12 @@ This is a note.
 {{% note "My title" %}}
 This is a note with a custom title.
 {{% /note %}}
+
+## Links of interest
+
+{{% loi %}}
+* <https://nt.web.ve>
+* <https://nt.web.ve/en>
+* <https://nt.web.ve/es>
+{{% /loi %}}
 

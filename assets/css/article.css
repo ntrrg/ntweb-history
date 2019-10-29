@@ -25,9 +25,7 @@
   }
 }
 
-.article .labels {
-  margin-top: 1em;
-}
+/* Heading */
 
 .article h1::before,
 .article h2::before,
@@ -61,6 +59,48 @@
 .article h6::before {
   content: "###### ";
 }
+
+/* Shortcodes */
+
+  /* Table of contents */
+
+#toc-title {
+  font-size: 2em;
+}
+
+  /* Images shortcode */
+
+img.shortcode {
+  max-width: 100%;
+}
+
+img.shortcode.block {
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.shortcode.wide {
+  max-width: none;
+  width: calc(100% + 2em);
+
+  display: block;
+
+  margin-left: -1em;
+}
+
+img.shortcode.align-left {
+  float: left;
+  margin-right: 1em;
+}
+
+img.shortcode.align-right {
+  float: right;
+  margin-left: 1em;
+}
+
+  /* Notes */
 
 .article .note {
   border: 0.1em solid;

@@ -20,19 +20,19 @@
 [[redirects]]
   from = "https://www.nt.web.ve/*"
   to = "https://nt.web.ve/:splat"
-  status = 301
+  status = 303
   force = true
 
 [[redirects]]
   from = "https://blog.nt.web.ve/*"
   to = "https://nt.web.ve/:splat"
-  status = 301
+  status = 303
   force = true
 
 [[redirects]]
   from = "https://ntweb.netlify.com/*"
   to = "https://nt.web.ve/:splat"
-  status = 301
+  status = 303
   force = true
 
 [[redirects]]

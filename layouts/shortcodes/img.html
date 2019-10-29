@@ -4,11 +4,11 @@
 {{ $style := .Get "style" }}
 {{ $lazy  := .Get "lazy" }}
 
-{{ if ne $lazy "false" }}
+{{ if eq $lazy "true" }}
   {{ $class = printf "%s lazy-load" $class }} 
 {{ end }}
 
-<img class="{{ $class }}" alt="{{ $alt }}"
+<img class="shortcode {{ $class }}" alt="{{ $alt }}"
   {{ with $style }}style="{{ safeCSS . }}"{{ end }}
-  {{ if ne $lazy "false" }}data-{{end}}src="{{ $src }}"/>
+  {{ if eq $lazy "true" }}data-{{end}}src="{{ $src }}"/>
 

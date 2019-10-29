@@ -1,11 +1,11 @@
 body[data-code-theme="monokailight"] {
   /* Background */
-  --code-color: #272822;
   --code-background: #eee;
+  --code-color: #272822;
 
   /* Error */
-  --code-err-color: #1e0010;
   --code-err-background: #960050;
+  --code-err-color: #1e0010;
 
   /* LineHighlight */
   --code-hl-background: #ffffcc;

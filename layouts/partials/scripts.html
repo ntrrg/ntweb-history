@@ -9,7 +9,7 @@
 {{ $scripts = $scripts | append "js/main.js" }}
 
 {{ if .IsHome }}
-  {{ $externals = $externals | append "vendor/fontawesome-5.5.0.js" }}
+{{ else if gt (len .Pages) 0 }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = $scripts | append "js/article.js" }}

@@ -2,6 +2,6 @@
 title: Projects
 ---
 
-[Kinds](/en/kinds/)
-[Technologies](/en/techs/)
+\[[Kinds](/en/kinds/)\]
+\[[Technologies](/en/techs/)\]
 

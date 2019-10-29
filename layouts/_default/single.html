@@ -1,12 +1,10 @@
 {{ define "main" }}
-  {{ $title := .Title }}
-
   <article class="article">
+    {{ $title := .Title }}
     <h1 class="article-title">{{ $title }}</h1>
 
     {{ with .Params.image }}
-      <img alt="{{ $title }}" data-src="{{ . }}"
-           class="article-image lazy-load"/>
+      <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
     {{ end }}
 
     <div class="metadata small">

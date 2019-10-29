@@ -2,6 +2,6 @@
 title: Blog
 ---
 
-[Categories](../categories/)
-[Tags](../tags/)
+\[[Categories](../categories/)\]
+\[[Tags](../tags/)\]
 

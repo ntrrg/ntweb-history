@@ -25,3 +25,30 @@
   }
 }
 
+/* Card */
+
+.card {
+  max-width: 100%;
+
+  border: 0.1em dashed;
+  box-sizing: border-box;
+  margin: 0.5em;
+  padding: 1.5em 2em;
+}
+
+.card h3 {
+  margin: 0em;
+}
+
+/* Pagination */
+
+ul.pagination {
+  list-style: none;
+  padding: 0em;
+  text-align: center;
+}
+
+ul.pagination li {
+  display: inline;
+}
+

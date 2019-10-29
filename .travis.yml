@@ -9,10 +9,7 @@ env:
 jobs:
   include:
     - stage: "Linting"
-      name: "Go"
       script: ./mage -v lint:go
-    - name: "Markdown"
-      script: ./mage -v lint:md
     - stage: "Build"
       script: ./mage -v build:docker
 

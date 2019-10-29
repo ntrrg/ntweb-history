@@ -4,6 +4,9 @@ other = "Categorías"
 [CONTACT]
 other = "Contactos"
 
+[CREATION_DATE]
+other = "Fecha de creación"
+
 [DATE]
 other = "Fecha"
 

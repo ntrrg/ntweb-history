@@ -9,11 +9,16 @@
   <h2>{{ i18n "CONTACT" }}</h2>
 
   <ul class="contact">
-    {{ range sort .Site.Params.org.contact "weight" }}
-      <li>
-        <i class="{{ .icon }}"></i>
-        <a href="{{ .url | safeURL }}">{{ .text }}</a>
-      </li>
+    {{ $authorURL := printf "/authors/%s" .Site.Params.defaultAuthor }}
+    {{ $author := (.Site.GetPage $authorURL).Params }}
+
+    {{ range sort $author.social "weight" }}
+      {{ if gt .weight 1 }}
+        <li title="{{ .label }}">
+          <img src="{{ .icon }}" alt="{{ .label }}"/>
+          <a href="{{ .url | safeURL }}">{{ .text }}</a>
+        </li>
+      {{ end }}
     {{ end }}
   </ul>
 {{ end }}

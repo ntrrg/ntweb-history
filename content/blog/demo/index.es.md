@@ -1,8 +1,8 @@
 ---
 title: Página de ejemplo
-date: 2028-07-05T18:35:00-04:00
+date: 2028-07-05T18:35:00-0400
 image: images/ntrrg.png
-description: Esta es una página de ejemplo para ver los estilos de ntWeb.
+description: Esta es una página de ejemplo para ver los estilos de Markdown.
 categories:
   - demo
 tags:
@@ -114,6 +114,10 @@ Este párrafo tiene una nota de pie[^1].
 |   texto |           texto |
 |   texto |           texto |
 
+# Imágenes
+
+!["Texto altenativo"](images/ntrrg.png "Este es el título")
+
 # Fórmulas matemáticas
 
 Esta es una fracción inteligente 1/2, este texto tiene una fórmula de línea
@@ -137,29 +141,11 @@ func main() {
 }
 ```
 
-# Tema
+## Teclado
 
-## Enlaces de interés
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Supr</kbd>
 
-{{% loi %}}
-* <https://nt.web.ve>
-* <https://nt.web.ve/en>
-* <https://nt.web.ve/es>
-{{% /loi %}}
-
-## Go Playground
-
-{{% go-playground "sfPZJf_jZLF" %}}
-```go
-package main
-
-import "fmt"
-
-func main() {
-  fmt.Println("hello, world")
-}
-```
-{{% /go-playground %}}
+# Shortcodes
 
 ## Imágenes
 
@@ -197,6 +183,20 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+## Go Playground
+
+{{% go-playground "sfPZJf_jZLF" %}}
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("hello, world")
+}
+```
+{{% /go-playground %}}
+
 ## Notas
 
 {{% note %}}
@@ -207,7 +207,11 @@ Esta es una nota
 Esta es una nota con título personalizado.
 {{% /note %}}
 
-## Teclado
+## Enlaces de interés
 
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Supr</kbd>
+{{% loi %}}
+* <https://nt.web.ve>
+* <https://nt.web.ve/en>
+* <https://nt.web.ve/es>
+{{% /loi %}}
 
