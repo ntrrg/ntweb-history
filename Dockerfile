@@ -4,5 +4,4 @@ RUN hugo --baseUrl /
 
 FROM ntrrg/nginx:http
 COPY --from=build /site/public /usr/share/nginx/html
-EXPOSE 80
 
