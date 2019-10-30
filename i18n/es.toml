@@ -1,8 +1,11 @@
+[AUTHOR]
+other = "Autor"
+
 [CATEGORIES]
 other = "Categorías"
 
 [CONTACT]
-other = "Contactos"
+other = "Contacto"
 
 [CREATION_DATE]
 other = "Fecha de creación"
@@ -21,6 +24,9 @@ other = "Tipos"
 
 [LICENSE]
 other = "Lincencia"
+
+[NAME]
+other = "Nombre"
 
 [NO_CONTENT]
 other = "[WIP] Todavía no hay contenido en esta sección."

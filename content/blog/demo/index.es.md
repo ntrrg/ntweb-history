@@ -1,5 +1,6 @@
 ---
 title: Página de ejemplo
+author: ntrrg
 date: 2028-07-05T18:35:00-0400
 image: images/ntrrg.png
 description: Esta es una página de ejemplo para ver los estilos de Markdown.

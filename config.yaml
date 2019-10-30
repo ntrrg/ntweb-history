@@ -26,10 +26,10 @@ params:
   name: ntrrg
   title: ntrrg
   titleSeparator: ☮
+  author: ntrrg
+  singleAuthor: true
   image: images/logo.png
-  vimage: images/isologo.png
-  defaultAuthor: ntrrg
-  singleUser: true
+  ampImage: images/isologo-amp.png
   # googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   goPlayground: https://play.golang.org

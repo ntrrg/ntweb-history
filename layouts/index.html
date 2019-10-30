@@ -1,21 +1,19 @@
 {{ define "main" }}
-  <img src="{{ relURL .Site.Params.image }}"
-       alt="{{ .Site.Params.title }}" class="site-img"/>
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
 
-  {{ with .Site.GetPage "/about" }}
-    {{ .Content }}
-  {{ end }}
+  <img src="{{ relURL $author.Params.image }}"
+       alt="{{ $author.Params.name }}" class="site-img"/>
+
+  {{ $author.Content }}
 
   <h2>{{ i18n "CONTACT" }}</h2>
 
   <ul class="contact">
-    {{ $authorURL := printf "/authors/%s" .Site.Params.defaultAuthor }}
-    {{ $author := (.Site.GetPage $authorURL).Params }}
-
-    {{ range sort $author.social "weight" }}
+    {{ range sort $author.Params.social "weight" }}
       {{ if gt .weight 1 }}
         <li title="{{ .label }}">
-          <img src="{{ .icon }}" alt="{{ .label }}"/>
+          <img src="/images/fa-{{ .icon }}.svg" alt="{{ .label }}"/>
           <a href="{{ .url | safeURL }}">{{ .text }}</a>
         </li>
       {{ end }}

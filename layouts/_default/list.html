@@ -12,7 +12,7 @@
   {{ if gt (len .Paginator.Pages) 0 }}
     <ul class="pages-list">
       {{ range .Paginator.Pages }}
-        <li>{{ partial "card.html" . }}</li>
+        <li>{{ partial "card.tmpl" . }}</li>
       {{ end }}
     </ul>
 

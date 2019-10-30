@@ -1,21 +1,14 @@
 {{ $description := $.Param "description" }}
 {{ $date := .Date.Format "2006-01-02T15:04:05-0700" }}
 {{ $image := (absURL ($.Param "image")) }}
-{{ $authorURL := "" }}
-
-{{ with .Params.author }}
-  {{ $authorURL = printf "/authors/%s" . }}
-{{ else }}
-  {{ $authorURL = printf "/authors/%s" .Site.Params.defaultAuthor }}
-{{ end }}
-
+{{ $authorURL := printf "/authors/%s" ($.Param "author") }}
 {{ $author := (.Site.GetPage $authorURL).Params }}
 
 <link rel="canonical" href="{{ .Permalink }}"/>
 <meta name="robots" content="index, follow"/>
 
 <meta name="author" content="{{ $author.name }}"/>
-<link rel="author" href="{{ $author.social.website.text }}"/>
+<link rel="author" href="{{ $author.social.website.url }}"/>
 <meta name="description" content="{{ $description }}"/>
 
 <!-- Open Graph -->
@@ -43,11 +36,7 @@
 		  "dateModified": "{{ $date }}",
       "image": "{{ $image }}",
       "author": {
-        {{ if eq $author.type "org" }}
-          "@type": "Organization",
-        {{ else }}
-          "@type": "Person",
-        {{ end }}
+        "@type": "{{ $author.authortype }}",
         "name": "{{ $author.name }}",
         "email": "{{ $author.social.email.text }}"
       },
@@ -56,7 +45,7 @@
         "name": "{{ .Site.Params.name }}",
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ absURL .Site.Params.vimage }}",
+          "url": "{{ absURL .Site.Params.ampImage }}",
           "width": 206,
           "height": 60
         }

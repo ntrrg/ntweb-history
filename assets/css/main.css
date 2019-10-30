@@ -43,6 +43,10 @@ a {
   text-align: center;
 }
 
+.muted {
+  opacity: 0.8;
+}
+
 .small {
   font-size: 0.85em;
 }
@@ -98,19 +102,5 @@ a {
   font-size: 0.8em;
   padding: 0em 1em;
   text-align: center;
-}
-
-/* Settings */
-
-#body > #settings {
-  width: 100vw;
-  height: 100vh;
-
-  background: var(--background);
-
-  position: fixed;
-  bottom: 100%;
-  left: 0em;
-  z-index: 999999;
 }
 

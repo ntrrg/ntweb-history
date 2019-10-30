@@ -19,7 +19,7 @@
   {{ end }}
   {{ end }}
 
-  {{ block "metadata" . }}{{ partial "metadata.html" . }}{{ end }}
+  {{ block "metadata" . }}{{ partial "metadata.tmpl" . }}{{ end }}
 
   <!-- App and icons -->
 
@@ -76,7 +76,7 @@
           href="{{ .Permalink | safeURL }}"/>
   {{ end }}
 
-  {{ block "styles" . }}{{ partial "styles.html" . }}{{ end }}
+  {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
   {{ hugo.Generator }}
 </head>
 <body data-code-theme="monokailight">
@@ -92,25 +92,8 @@
 {{ end }}
 
 <div id="body">
-  <div id="settings"></div>
-
   <header role="banner">
-    <nav>
-      <strong>
-        <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.name }}</a>
-      </strong>
-
-      {{ if gt (len .Site.Sections) 0 }}
-        {{ range sort .Site.Sections }}
-          {{ if ne .Params.hidden true }}
-            {{ $l := len .Pages }}
-            | <a href="{{ .Permalink }}">{{ .Title }}</a><sup>({{ $l }})</sup>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-
-      | <a href="#">{{ i18n "SETTINGS" }}</a>
-    </nav>
+    {{ partialCached "navbar.tmpl" .Site }}
 
     <div>
       {{ if .IsTranslated }}
@@ -152,39 +135,10 @@
     {{ end }}
   </main>
 
-  <footer>
-    <p>
-      Powered by
-      <a href="https://magefile.org/">Mage</a>,
-      <a href="https://gohugo.io">Hugo</a>,
-      <a href="https://fontawesome.com">FontAwesome</a>
-      and
-
-      <a href="{{ absLangURL "/projects/ntweb" }}">
-        some other tools
-      </a>
-    </p>
-
-    <p>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-        Creative Commons Attribution 4.0 International license (CC BY 4.0)
-
-        <!--
-        <img alt="Creative Commons License" style="border-width:0"
-             src="https://i.creativecommons.org/l/by/4.0/80x15.png"/>
-        -->
-      </a>
-    </p>
-
-    <p class="copyright">
-      {{ $authorURL := printf "/authors/%s" .Site.Params.defaultAuthor }}
-      {{ $author := (.Site.GetPage $authorURL).Params }}
-      Copyright &copy; 2018 {{ $author.name }}
-    </p>
-  </footer>
+  {{ partialCached "footer.tmpl" .Site }}
 </div>
 
-{{ block "scripts" . }}{{ partial "scripts.html" . }}{{ end }}
+{{ block "scripts" . }}{{ partial "scripts.tmpl" . }}{{ end }}
 </body>
 </html>
 

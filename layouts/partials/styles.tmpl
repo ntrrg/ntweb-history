@@ -6,9 +6,14 @@
 {{ if .IsHome }}
   {{ $suffix = printf "%v-home" $suffix  }}
   {{ $sheets = $sheets | append "css/home.css" }}
+  {{ $sheets = $sheets | append "css/contact.css" }}
 {{ else if gt (len .Pages) 0 }}
   {{ $suffix = printf "%v-list" $suffix  }}
   {{ $sheets = $sheets | append "css/list.css" }}
+  {{ $sheets = $sheets | append "css/markdown.css" }}
+{{ else if eq .Type "authors" }}
+  {{ $sheets = $sheets | append "css/article.css" }}
+  {{ $sheets = $sheets | append "css/contact.css" }}
   {{ $sheets = $sheets | append "css/markdown.css" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}

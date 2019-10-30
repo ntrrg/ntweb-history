@@ -1,5 +1,6 @@
 ---
 title: Demo page
+author: ntrrg
 date: 2028-07-05T18:35:00-0400
 image: images/ntrrg.png
 description: This is a demo page to see the Markdown styles.

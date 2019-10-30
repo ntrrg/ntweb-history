@@ -15,19 +15,3 @@ img.site-img {
   }
 }
 
-.contact {
-  list-style: none;
-  padding-left: 1em;
-}
-
-.contact li {
-  display: flex;
-  align-items: center;
-}
-
-.contact img {
-  width: 1.5em;
-
-  margin-right: 0.5em;
-}
-

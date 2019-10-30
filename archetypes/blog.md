@@ -1,5 +1,6 @@
 ---
 title: {{ replace .Name "-" " " | title }}
+author: userid
 creationDate: {{ .Date }}
 date: {{ .Date }}
 description: Short description.

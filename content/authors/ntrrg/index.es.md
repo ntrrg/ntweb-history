@@ -1,51 +1,56 @@
 ---
 id: ntrrg
 name: Miguel Angel Rivera Notararigo
-image: images/logo.png
-vimage: images/isologo.png
+position: Desarrollador Backend
+image: /images/logo.png
 social:
   website:
     label: Sitio web
-    text: https://nt.web.ve
-    url: https://nt.web.ve
-    icon: /images/fa-globe.svg
+    text: nt.web.ve/es
+    url: https://nt.web.ve/es
+    icon: globe
     weight: 1
   github:
     label: GitHub
     text: "@ntrrg"
     url: https://github.com/ntrrg
-    icon: /images/fa-github.svg
+    icon: github
     weight: 2
   linkedin:
     label: LinkedIn
     text: ntrrg
     url: https://www.linkedin.com/in/ntrrg
-    icon: /images/fa-linkedin.svg
+    icon: linkedin
     weight: 3
   telegram:
     label: Telegram
     text: "@ntrrg"
     url: https://t.me/ntrrg
-    icon: /images/fa-telegram.svg
+    icon: telegram
     weight: 4
   email:
     label: Correo eletrónico
     text: ntrrgx@gmail.com
     url: mailto://ntrrgx@gmail.com
-    icon: /images/fa-email.svg
+    icon: email
     weight: 5
   phone-ve:
     label: Teléfono (Venezuela)
     text: +58 424-7484276
     url: tel://+584247484276
-    icon: /images/fa-phone-square.svg
+    icon: phone-square
     weight: 6
   phone-us:
     label: Teléfono (US)
     text: +1 520-313-0363
     url: tel://+15203130363
-    icon: /images/fa-phone-square.svg
+    icon: phone-square
     weight: 7
-type: person
+authortype: Person
 ---
+
+Hola! soy Miguel Angel, solo otro desarrollador más trabajando duro para no ser
+solo otro desarrollador más.
+
+¿Necesita un programador? Dele un vistazo a mi [CV](https://docs.google.com/document/d/1bpNTpgJaeQeQHOCwvgACP91DUgfQ1NUo-ZhFe8EMH3U/edit?usp=sharing) ([PDF](/cv/es.pdf)).
 

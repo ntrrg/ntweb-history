@@ -1,9 +1,20 @@
+nogit-*
+
+# MacOS
+.DS_Store
+
+# Sublime Text
 *.sublime*
+
+# GNU Screen
+.screenrc
+
+# Vim
 *.sw[op]
 Session.vim
+*~
+
+# Hugo
 /public/
-nogit-*
-.DS_Store
-.screenrc
 /resources/
 
