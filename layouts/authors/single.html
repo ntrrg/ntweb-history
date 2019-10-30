@@ -1,29 +1,13 @@
 {{ define "main" }}
   <article class="article">
-    {{ $title := .Params.id }}
+    {{ $title := .Params.name }}
+
     {{ with .Params.image }}
       <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
     {{ end }}
 
     <h1 class="article-title">{{ $title }}</h1>
     <h2 class="article-subtitle muted">{{ .Params.position }}</h2>
-
-    <div>
-      <strong>{{ i18n "NAME" }}:</strong>
-      <span>{{ .Params.name }}</span>
-    </div>
-
-    <ul class="contact">
-      {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
-      {{ $author := (.Site.GetPage $authorURL).Params }}
-
-      {{ range sort $author.social "weight" }}
-        <li title="{{ .label }}">
-          <img src="/images/fa-{{ .icon }}.svg" alt="{{ .label }}"/>
-          <a href="{{ .url | safeURL }}">{{ .text }}</a>
-        </li>
-      {{ end }}
-    </ul>
 
     <div class="markdown">
       {{ with .Params.content }}
@@ -36,6 +20,21 @@
         {{ .Content }}
       {{ end }}
     </div>
+
+    <br/>
+    <strong>{{ i18n "CONTACT" }}:</strong>
+
+    <ul class="contact">
+      {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+      {{ $author := (.Site.GetPage $authorURL).Params }}
+
+      {{ range sort $author.social "weight" }}
+        <li title="{{ .label }}">
+          <img src="{{ .icon }}" alt="{{ .label }}"/>
+          <a href="{{ .url | safeURL }}">{{ .text }}</a>
+        </li>
+      {{ end }}
+    </ul>
   </article>
 {{ end }}
 

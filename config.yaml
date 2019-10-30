@@ -40,4 +40,19 @@ params:
     - https://github.com/ntrrg/pish
   goPackages:
     - https://github.com/ntrrg/ntgo
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS
+  taxonomyTerm:
+    - HTML
+    - RSS
+  page:
+    - HTML
 

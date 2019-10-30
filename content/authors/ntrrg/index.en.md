@@ -8,43 +8,43 @@ social:
     label: Website
     text: nt.web.ve/en
     url: https://nt.web.ve/en
-    icon: globe
+    icon: /images/social/fa-globe.svg
     weight: 1
-  github:
-    label: GitHub
-    text: "@ntrrg"
-    url: https://github.com/ntrrg
-    icon: github
-    weight: 2
-  linkedin:
-    label: LinkedIn
-    text: ntrrg
-    url: https://www.linkedin.com/in/ntrrg
-    icon: linkedin
-    weight: 3
   telegram:
     label: Telegram
     text: "@ntrrg"
     url: https://t.me/ntrrg
-    icon: telegram
+    icon: /images/social/fa-telegram.svg
+    weight: 2
+  github:
+    label: GitHub
+    text: "@ntrrg"
+    url: https://github.com/ntrrg
+    icon: /images/social/fa-github.svg
+    weight: 3
+  linkedin:
+    label: LinkedIn
+    text: ntrrg
+    url: https://www.linkedin.com/in/ntrrg
+    icon: /images/social/fa-linkedin.svg
     weight: 4
   email:
     label: Email
     text: ntrrgx@gmail.com
     url: mailto://ntrrgx@gmail.com
-    icon: email
+    icon: /images/social/fa-email.svg
     weight: 5
   phone-ve:
     label: Phone (Venezuela)
     text: +58 424-7484276
     url: tel://+584247484276
-    icon: phone-square
+    icon: /images/social/fa-phone-square.svg
     weight: 6
   phone-us:
     label: Phone (US)
     text: +1 520-313-0363
     url: tel://+15203130363
-    icon: phone-square
+    icon: /images/social/fa-phone-square.svg
     weight: 7
 authortype: Person
 ---
