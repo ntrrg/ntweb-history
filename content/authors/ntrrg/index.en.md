@@ -22,30 +22,36 @@ social:
     url: https://github.com/ntrrg
     icon: /images/social/fa-github.svg
     weight: 3
+  docker:
+    label: Docker Hub
+    text: "ntrrg"
+    url: https://hub.docker.com/u/ntrrg
+    icon: /images/social/fa-docker.svg
+    weight: 4
   linkedin:
     label: LinkedIn
     text: ntrrg
     url: https://www.linkedin.com/in/ntrrg
     icon: /images/social/fa-linkedin.svg
-    weight: 4
+    weight: 5
   email:
     label: Email
     text: ntrrgx@gmail.com
     url: mailto://ntrrgx@gmail.com
     icon: /images/social/fa-email.svg
-    weight: 5
+    weight: 6
   phone-ve:
     label: Phone (Venezuela)
     text: +58 424-7484276
     url: tel://+584247484276
     icon: /images/social/fa-phone-square.svg
-    weight: 6
+    weight: 7
   phone-us:
     label: Phone (US)
     text: +1 520-313-0363
     url: tel://+15203130363
     icon: /images/social/fa-phone-square.svg
-    weight: 7
+    weight: 8
 authortype: Person
 ---
 

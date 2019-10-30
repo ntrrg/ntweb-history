@@ -12,8 +12,8 @@ social:
     weight: 1
   telegram:
     label: Telegram
-    text: "@example"
-    url: https://t.me/example
+    text: "@{{ replace .Name "-" " " }}"
+    url: https://t.me/{{ replace .Name "-" " " }}
     icon: /images/social/fa-telegram.svg
     weight: 2
   facebook:
