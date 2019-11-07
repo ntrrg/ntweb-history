@@ -6,37 +6,35 @@ all: build
 
 .PHONY: build
 build:
-	$(MAKE) -s "hugo ''"
+	hugo
 
 .PHONY: clean
 clean:
 	rm -rf public resources
 
-.PHONY: hugo%
-hugo%:
-	hugo $*
-
 .PHONY: run
 run:
-	$(MAKE) -s "hugo server -DEF --noHTTPCache --port $(hugo_port)"
+	hugo server -DEF --noHTTPCache --baseUrl / \
+		--bind 0.0.0.0 --port $(hugo_port) --appendPort=false
 
 # Docker
 
 .PHONY: docker-build
 docker-build:
-	$(MAKE) -s "docker-hugo ''"
+	@docker run --rm -it \
+		-u $$(id -u $$USER) \
+		-v "$${TMPDIR:-/tmp}":/tmp/ \
+		-v "$$PWD":/site/ \
+		ntrrg/hugo:$(hugo_version)
 
-.PHONY: docker-hugo%
-docker-hugo%:
+.PHONY: docker-run
+docker-run:
 	@docker run --rm -it \
 		-e PORT=$(hugo_port) \
 		-p $(hugo_port):$(hugo_port) \
 		-u $$(id -u $$USER) \
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(hugo_version) $*
-
-.PHONY: docker-run
-docker-run:
-	$(MAKE) -s "docker-hugo server -DEF --noHTTPCache --bind 0.0.0.0 --port $(hugo_port) --appendPort=false"
+		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --baseUrl / \
+		--bind 0.0.0.0 --port $(hugo_port) --appendPort=false
 

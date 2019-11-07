@@ -25,7 +25,7 @@
     <strong>{{ i18n "CONTACT" }}:</strong>
 
     <ul class="contact">
-      {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+      {{ $authorURL := printf "/authors/%s" ($.Param "author") }}
       {{ $author := (.Site.GetPage $authorURL).Params }}
 
       {{ range sort $author.social "weight" }}

@@ -10,13 +10,15 @@
   {{ .Content }}
 
   {{ if gt (len .Paginator.Pages) 0 }}
+    {{ partial "pagination.tmpl" . }}
+
     <ul class="pages-list">
       {{ range .Paginator.Pages }}
         <li>{{ partial "card.tmpl" . }}</li>
       {{ end }}
     </ul>
 
-    {{ template "_internal/pagination.html" . }}
+    {{ partial "pagination.tmpl" . }}
   {{ else }}
     <p>{{ i18n "NO_CONTENT" }}</p>
   {{ end }}

@@ -1,0 +1,18 @@
+{{ range .Site.Params.menu }}
+  {{ $page := $.Site.GetPage (strings.TrimRight "/" .url) }}
+  {{ $active := "" }}
+
+  {{ if and (eq .url "/") $.IsHome }}
+    {{ $active = "is-active" }}
+  {{ else if and (ne .url "/") (hasPrefix $.Permalink $page.Permalink) }}
+    {{ $active = "is-active" }}
+  {{ end }}
+
+  <a href="{{ $page.Permalink }}"
+     class="navbar-item has-text-centered is-uppercase {{ $active }}">
+    <span class="is-relative">
+      {{ .text | default $page.Title }}
+    </span>
+  </a>
+{{ end }}
+

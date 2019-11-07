@@ -53,8 +53,9 @@ func (Lint) Go() error {
 
 func Run() error {
 	return sh.RunV(
-		"hugo", "server", "-D", "-E", "-F",
-		"--noHTTPCache", "--port", hugoPort,
+		"hugo", "server", "-D", "-E", "-F", "--noHTTPCache",
+		"--bind", "0.0.0.0", "--port", hugoPort,
+		"--baseUrl", "/", "--appendPort=false",
 	)
 }
 

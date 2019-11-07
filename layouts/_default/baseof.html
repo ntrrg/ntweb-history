@@ -6,70 +6,36 @@
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 
   {{ if not .Site.IsServer }}
-  {{ with .Site.Params.googleTagManager }}
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','{{ . }}');
-    </script>
-    <!-- End Google Tag Manager -->
+    {{ with .Site.Params.googleTagManager }}
+      <!-- Google Tag Manager -->
+      <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ . }}');
+      </script>
+      <!-- End Google Tag Manager -->
+    {{ end }}
   {{ end }}
+
+  {{ block "head-metadata" . }}
+    {{ hugo.Generator }}
+    {{ partial "head-metadata.tmpl" . }}
+    {{ partial "head-app.tmpl" . }}
   {{ end }}
 
-  {{ block "metadata" . }}{{ partial "metadata.tmpl" . }}{{ end }}
-
-  <!-- App and icons -->
-
-  <meta name="theme-color" content="#fff"/>
-
-    <!-- Chrome on Android (192x192) -->
-  <meta name="mobile-web-app-capable" content="yes"/>
-
-  <link rel="icon" sizes="192x192"
-        href="{{ relURL "favicon-192x192.png" }}"/>
-
-    <!-- Windows (144x144) -->
-  <meta name="msapplication-TileImage"
-        content="{{ relURL "favicon-144x144.png" }}"/>
-
-  <meta name="msapplication-TileColor" content="#fff"/>
-
-    <!-- Safari on iOS (120x120) -->
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.name }}"/>
-
-  <meta name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"/>
-
-  <link rel="apple-touch-icon" href="{{ relURL "favicon-192x192.png" }}"/>
-
-  <link rel="apple-touch-icon" sizes="76x76"
-        href="{{ relURL "favicon-76x76.png" }}"/>
-
-  <link rel="apple-touch-icon" sizes="120x120"
-        href="{{ relURL "favicon-120x120.png" }}"/>
-
-  <link rel="apple-touch-icon" sizes="152x152"
-        href="{{ relURL "favicon-152x152.png" }}"/>
-
-  <link rel="apple-touch-icon-precomposed"
-        href="{{ relURL "favicon-120x120.png" }}"/>
-
-  <link rel="apple-touch-startup-image"
-        href="{{ relURL "favicon-192x192.png" }}"/>
-
-    <!-- Default (32x32) -->
   <link rel="shortcut icon" href="{{ relURL "favicon.ico" }}"/>
 
-  <!-- /App and icons -->
+  {{ block "head-title" . }}
+    <title>
+      {{ if not .IsHome }}
+        {{ .Title }} {{ .Site.Params.titleSeparator }}
+      {{ end }}
 
-  <title>
-    {{ if not .IsHome }}{{ .Title }} {{ .Site.Params.titleSeparator }}{{ end }}
-    {{ .Site.Params.title }}
-  </title>
+      {{ .Site.Params.title }}
+    </title>
+  {{ end }}
 
   {{ range .AlternativeOutputFormats }}
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}"
@@ -77,18 +43,17 @@
   {{ end }}
 
   {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
-  {{ hugo.Generator }}
 </head>
 <body data-code-theme="monokailight">
 {{ if not .Site.IsServer }}
-{{ with .Site.Params.googleTagManager }}
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-{{ end }}
+  {{ with .Site.Params.googleTagManager }}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  {{ end }}
 {{ end }}
 
 <div id="body">
