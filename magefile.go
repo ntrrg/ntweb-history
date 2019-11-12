@@ -3,6 +3,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"io/ioutil"
@@ -23,16 +24,54 @@ import (
 var (
 	Default = Build
 
-	hugoVersion = "0.59.0"
+	hugoVersion = "0.59.1"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
-	wd  string
 	cfg hc.Provider
 )
 
 func Build() error {
 	return sh.RunV("hugo")
+}
+
+type BumpVersion mg.Namespace
+
+func (BumpVersion) Hugo() error {
+	fn := func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if path == ".git" || path == "content" {
+			return filepath.SkipDir
+		}
+
+		if info.IsDir() || strings.HasSuffix(path, ".swp") || path == "go.sum" {
+			return nil
+		}
+
+		fd, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+
+		s := bufio.NewScanner(fd)
+
+		for s.Scan() {
+			if bytes.Contains(s.Bytes(), []byte(hugoVersion)) {
+				fmt.Println(path)
+			}
+		}
+
+		if err := s.Err(); err != nil {
+			return err
+		}
+
+		return nil
+	}
+
+	return filepath.Walk(".", fn)
 }
 
 func Clean() error {
@@ -100,11 +139,6 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 func init() {
 	var err error
 
-	wd, err = os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-
 	cfg, err = getHugoConfig(hugoConfig)
 	if err != nil {
 		panic(err)
@@ -131,6 +165,11 @@ func (Docker) Run() error {
 
 func runHugoDocker(args ...string) error {
 	u, err := user.Current()
+	if err != nil {
+		return err
+	}
+
+	wd, err := os.Getwd()
 	if err != nil {
 		return err
 	}

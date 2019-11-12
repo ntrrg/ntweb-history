@@ -1,4 +1,4 @@
-hugo_version := 0.59.0
+hugo_version := 0.59.1
 hugo_port := 1313
 
 .PHONY: all
@@ -7,6 +7,14 @@ all: build
 .PHONY: build
 build:
 	hugo
+
+.PHONY: bump-version-hugo
+bump-version-hugo:
+	@grep -lR "$(hugo_version)" . | \
+		grep -v "^\./\.git/" | \
+		grep -v "\.swp\$$" | \
+		grep -v "^\./go\.sum" | \
+		grep -v "^\./content/"
 
 .PHONY: clean
 clean:
