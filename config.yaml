@@ -1,27 +1,30 @@
 baseURL: https://nt.web.ve/
-enableRobotsTXT: true
 permalinks:
   blog: /:sections/:slug/
-taxonomies:
-  serie: series
-  tag: tags
-  category: categories
-  kind: kinds
-  tech: techs
-Paginate: 10
-pygmentsCodeFences: true
-pygmentsUseClasses: true
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
-languages:
-  en:
-    languageName: English
-    params:
-      description: A small site with great intentions.
-  es:
-    languageName: Español
-    params:
-      description: Un pequeño sitio web con grandes intenciones.
+taxonomies:
+  tag: tags
+  serie: series
+Paginate: 10
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS
+  taxonomyTerm:
+    - HTML
+    - RSS
+  page:
+    - HTML
+pygmentsCodeFences: true
+pygmentsUseClasses: true
+enableRobotsTXT: true
 params:
   name: ntrrg
   title: ntrrg
@@ -40,19 +43,13 @@ params:
     - https://github.com/ntrrg/pish
   goPackages:
     - https://github.com/ntrrg/ntgo
-outputs:
-  home:
-    - HTML
-    - RSS
-  section:
-    - HTML
-    - RSS
-  taxonomy:
-    - HTML
-    - RSS
-  taxonomyTerm:
-    - HTML
-    - RSS
-  page:
-    - HTML
+languages:
+  en:
+    languageName: English
+    params:
+      description: A small site with great intentions.
+  es:
+    languageName: Español
+    params:
+      description: Un pequeño sitio web con grandes intenciones.
 
