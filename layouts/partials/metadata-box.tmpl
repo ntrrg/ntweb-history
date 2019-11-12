@@ -42,7 +42,7 @@
 
         {{ range (index $page.Params $name) }}
           <a href="{{ absLangURL $name }}/{{ . | urlize }}">
-            {{ . }}</a>
+            #{{ . }}</a>
         {{ end }}
       </div>
     {{ end }}
