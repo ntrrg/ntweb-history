@@ -1,4 +1,9 @@
 ---
+publishdate: 2018-05-06T22:07:39-04:00
+date: 2019-11-08T17:33:54-04:00
+metadata:
+  source-code: https://github.com/ntrrg/docker-hugo
+  license: MIT
 title: docker-hugo
 description: CLI de Hugo en Docker.
 metadata:

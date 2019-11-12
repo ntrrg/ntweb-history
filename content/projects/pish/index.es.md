@@ -1,4 +1,9 @@
 ---
+publishdate: 2019-09-24T10:14:00-04:00
+date: 2019-10-23T17:01:12-04:00
+metadata:
+  source-code: https://github.com/ntrrg/pish
+  license: MIT
 title: pish
 description: Replicador de entornos.
 metadata:

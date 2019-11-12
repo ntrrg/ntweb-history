@@ -75,7 +75,7 @@ func (BumpVersion) Hugo() error {
 }
 
 func Clean() error {
-	for _, dst := range []string{prjRepos, goRepos, "public", "resources"} {
+	for _, dst := range []string{prjsRepos, goRepos, "public", "resources"} {
 		if err := sh.Rm(dst); err != nil {
 			return err
 		}
@@ -109,7 +109,7 @@ func cloneRepo(dst, src string) error {
 		return sh.Run("git", "-C", dst, "pull", "origin", "master")
 	}
 
-	if err := sh.Run("git", "clone", "--depth", "1", src, dst); err != nil {
+	if err := sh.Run("git", "clone", src, dst); err != nil {
 		if err := sh.Rm(dst); err != nil {
 			return err
 		}
@@ -318,24 +318,24 @@ func writePackagePage(src, mod, pkg, doc string) error {
 // Projects
 
 var (
-	prjDir   = filepath.Clean("content/projects")
-	prjRepos = filepath.Join(os.TempDir(), "ntweb-projects")
+	prjsDir   = filepath.Clean("content/projects")
+	prjsRepos = filepath.Join(os.TempDir(), "ntweb-projects")
 )
 
 func (Gen) Projects() error {
-	if err := os.MkdirAll(prjRepos, 0755); err != nil {
+	if err := os.MkdirAll(prjsRepos, 0755); err != nil {
 		return err
 	}
 
-	for _, src := range cfg.GetStringSlice("params.projects") {
-		name := path.Base(src)
-		dst := filepath.Join(prjRepos, name)
-		if err := cloneRepo(dst, src); err != nil {
+	for _, repoUrl := range cfg.GetStringSlice("params.projects") {
+		name := path.Base(repoUrl)
+		prjRepo := filepath.Join(prjsRepos, name)
+		if err := cloneRepo(prjRepo, repoUrl); err != nil {
 			return err
 		}
 
-		src = filepath.Join(dst, ".ntweb")
-		dst = filepath.Join(prjDir, name)
+		src := filepath.Join(prjRepo, ".ntweb")
+		dst := filepath.Join(prjsDir, name)
 
 		if err := sh.Rm(dst); err != nil {
 			return err
@@ -343,6 +343,64 @@ func (Gen) Projects() error {
 
 		if err := ntos.Cp(dst, src); err != nil {
 			return err
+		}
+
+		output, err := sh.Output("git", "-C", prjRepo, "log", "--format=%cI")
+		if err != nil {
+			return err
+		}
+
+		dates := strings.Split(output, "\n")
+		publishedAt := dates[len(dates) - 1]
+		modifiedAt := dates[0]
+
+		metadata := []byte(`---
+publishdate: ` + publishedAt + `
+date: ` + modifiedAt + `
+metadata:
+  source-code: ` + repoUrl + `
+  license: ` + "MIT" + `
+`)
+
+		indexes, err := filepath.Glob(dst + "/index.*.md")
+		if err != nil {
+			return err
+		}
+
+		for _, index := range indexes {
+			var (
+				f       *os.File
+				content []byte
+				err     error
+			)
+
+			f, err = os.Open(index)
+			if err != nil {
+				goto finish
+			}
+
+			content, err = ioutil.ReadAll(f)
+			if err != nil {
+				goto finish
+			}
+
+			f.Close()
+			f, err = os.Create(index)
+			if err != nil {
+				goto finish
+			}
+
+			content = append(
+				metadata,
+				content[bytes.IndexByte(content, '\n') + 1:]...,
+			)
+			_, err = f.Write(content)
+
+		finish:
+			f.Close()
+			if err != nil {
+				return err
+			}
 		}
 	}
 

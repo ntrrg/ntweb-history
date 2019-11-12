@@ -1,4 +1,9 @@
 ---
+publishdate: 2018-07-08T21:29:39-04:00
+date: 2019-10-29T10:46:23-04:00
+metadata:
+  source-code: https://github.com/ntrrg/ntgo
+  license: MIT
 title: ntgo
 description: Un conjunto de paquetes Go.
 metadata:

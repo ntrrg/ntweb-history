@@ -1,4 +1,9 @@
 ---
+publishdate: 2017-04-07T01:34:10-04:00
+date: 2019-05-28T18:36:26-07:00
+metadata:
+  source-code: https://github.com/ntrrg/ntdocutils
+  license: MIT
 title: ntDocutils
 description: Gestor de temas para Docutils.
 metadata:
