@@ -4,10 +4,9 @@ description: Dockerized Hugo CLI.
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
-kinds:
+tags:
   - cli
-  - container
-techs:
+  - containers
   - docker
   - hugo
 ---
@@ -18,18 +17,19 @@ techs:
 
 **docker-hugo** is a Dockerized [Hugo][] CLI.
 
-{{< toc >}}
+| Tag | Dockerfile |
+| --: | :-- |
+| `latest`, `0.59.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.1/Dockerfile) |
+| `0.59.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.0/Dockerfile) |
 
 <br/>
 
-| Tag | Dockerfile |
-| --: | :-- |
-| `latest`, `0.59.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.0/Dockerfile) |
+{{< toc >}}
 
 # Usage
 
 ```shell-session
-$ docker run --rm -v /path/to/my/site:/site \
+$ docker run --rm -v /path/to/my/site/:/site/ \
   ntrrg/hugo [OPTIONS] [COMMAND]
 ```
 
@@ -41,43 +41,48 @@ Since the Hugo binary from the container is called by `root`, it is
 recommendable to add the `-u` Docker flag.
 
 ```shell-session
-$ docker run --rm -v /path/to/my/site:/site -u $(id -u $USER) \
+$ docker run --rm -v /path/to/my/site/:/site/ \
+  -u $(id -u $USER) \
+  -v ${TMPDIR:-/tmp/}:/tmp/ \
   ntrrg/hugo [OPTIONS] [COMMAND]
 ```
 {{% /note %}}
 
 ## Examples
 
-* Create new Hugo skeleton
+* Create a new Hugo skeleton
 
 ```shell-session
-$ docker run --rm -v /path/to/my/site:/site ntrrg/hugo new site .
+$ docker run --rm -v /path/to/my/site/:/site/ \
+      ntrrg/hugo new site .
 ```
 
-* Build Hugo project
+* Build a Hugo project
 
 ```shell-session
-$ docker run --rm -v /path/to/my/site:/site ntrrg/hugo
+$ docker run --rm -v /path/to/my/site/:/site/ ntrrg/hugo
 ```
 
-* Run Hugo server
+* Run the Hugo server
 
 ```shell-session
-$ docker run --rm -itp 1313:1313 -v /path/to/my/site:/site \
-  ntrrg/hugo server -DEF --bind=0.0.0.0 \
-    --baseUrl=/ --appendPort=false
+$ docker run --rm -i -t -p 1313:1313 \
+      -v /path/to/my/site/:/site/ \
+      ntrrg/hugo server -DEF --baseUrl=/ \
+        --bind=0.0.0.0 --appendPort=false
 ```
 
-* Run Hugo server with custom port
+* Run the Hugo server with a custom port
 
 ```shell-session
 $ export PORT=8080
 ```
 
 ```shell-session
-$ docker run --rm -itp $PORT:$PORT -v /path/to/my/site:/site \
-  ntrrg/hugo server -DEF --bind=0.0.0.0 --port=$PORT \
-    --baseUrl=/ --appendPort=false
+$ docker run --rm -i -t -p $PORT:$PORT \
+      -v /path/to/my/site/:/site/ \
+      ntrrg/hugo server -DEF --bind=0.0.0.0 --port=$PORT \
+        --baseUrl=/ --appendPort=false
 ```
 
 # Acknowledgment
@@ -107,6 +112,8 @@ Working on this project I use/used:
 * [Github](https://github.com)
 
 * [Hugo][]
+
+* [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
 
 *Websocket for LiveReload using wrong port if Hugo binds to port 80.* <https://github.com/gohugoio/hugo/issues/2205>
 
