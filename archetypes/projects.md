@@ -1,5 +1,6 @@
 ---
 title: {{ replace .Name "-" " " | title }}
+publishdate: {{ .Date }}
 creationDate: {{ .Date }}
 date: {{ .Date }}
 description: Short description.

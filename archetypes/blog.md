@@ -1,7 +1,7 @@
 ---
 title: {{ replace .Name "-" " " | title }}
 author: userid
-creationDate: {{ .Date }}
+publishdate: {{ .Date }}
 date: {{ .Date }}
 description: Short description.
 image: https://via.placeholder.com/350x350

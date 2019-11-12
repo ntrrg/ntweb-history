@@ -1,11 +1,10 @@
 ---
 title: Instalar Go 1.10
-date: 2018-09-09T18:15:47-04:00
+date: 2018-09-09T18:15:47-0400
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
-categories:
-  - tecnología
 tags:
+  - tecnología
   - guías
   - instalaciones
   - lenguajes-de-programación
@@ -56,7 +55,6 @@ $ rm go1.10.8.linux-amd64.tar.gz
 ```
 
 {{% note %}}
-
 Es posible instalar Go en una ruta personalizada e incluso sin permisos de
 super usuario, los pasos serían muy parecidos a los anteriores, solo que hay
 que cambiar las rutas y opcionalmente (si se quieren usar algunas utilidades
@@ -81,24 +79,19 @@ $ echo "export GOROOT=\"$GOROOT\"" >> ~/.zshenv
 ```shell-session
 $ echo "export GOROOT=\"$GOROOT\"" >> ~/.profile
 ```
-
 {{% /note %}}
 
 # Desde el código fuente
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
-
-[Cómo contribuir a Go]: {{< relref "/blog/contribute-to-go/index.es.md" >}}
-
 Para este método también es necesario tener los binarios, pues desde la
 versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo
 tiene sentido usar este procedimiento si se tiene pensado [modificar el código
-fuente][Cómo contribuir a Go].
+fuente]({{< relref "/blog/contribute-to-go/index.es.md" >}}).
 
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
-**Nota:** puede que se necesite [Git](https://git-scm.com/) en algunas
-ocasiones, depende de como se realice la instalación.
+{{% note %}}
+Puede que se necesite [Git](https://git-scm.com/) en algunas ocasiones, depende
+de como se realice la instalación.
+{{% /note %}}
 
 1\. Descargar el paquete con los binarios
 
@@ -126,7 +119,7 @@ $ mv go toolchain
 ```
 
 5\. Establecer la variable de entorno `GOROOT_BOOTSTRAP`, que determina donde
-   buscar el compilador
+    buscar el compilador
 
 ```shell-session
 $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
@@ -165,9 +158,11 @@ $ cd go/src
 $ ./all.bash
 ```
 
-**Nota:** el script `all.bash` también ejecuta todas las pruebas (que es
-recomendable hacerlo), para saltarse las pruebas y solo compilar, se debe usar
-el script `make.bash`.
+{{% note %}}
+El script `all.bash` también ejecuta todas las pruebas (que es recomendable
+hacerlo), para saltarse las pruebas y solo compilar, se debe usar el script
+`make.bash`.
+{{% /note %}}
 
 Al terminar, deberían existir nuevos recursos (entre esos, los binarios) en la
 carpeta del código fuente.
@@ -198,7 +193,7 @@ go version go1.10.8 linux/amd64
 11\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm -r go1.10.8.linux-amd64.tar.gz go1.10.8.src.tar.gz toolchain
+$ rm -r go1.10.8.*.tar.gz toolchain
 ```
 
 Para instalar algunas utilidades más (como **godoc**, que permite visualizar la

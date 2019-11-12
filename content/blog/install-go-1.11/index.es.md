@@ -1,11 +1,11 @@
 ---
 title: Instalar Go 1.11
-date: 2019-06-01T10:00:00-07:00
+publishdate: 2019-06-01T10:00:00-0700
+date: 2019-11-12T06:30:00-0400
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
-categories:
-  - tecnología
 tags:
+  - tecnología
   - guías
   - instalaciones
   - lenguajes-de-programación
@@ -20,20 +20,20 @@ explico el procedimiento para hacerlo.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.11.10.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.11.13.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ sha256sum go1.11.10.linux-amd64.tar.gz
-aefaa228b68641e266d1f23f1d95dba33f17552ba132878b65bb798ffa37e6d0  go1.11.10.linux-amd64.tar.gz
+$ sha256sum go1.11.13.linux-amd64.tar.gz
+50fe8e13592f8cf22304b9c4adfc11849a2c3d281b1d7e09c924ae24874c6daa  go1.11.13.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo en `/usr/local`
 
 ```shell-session
-# tar -xvf go1.11.10.linux-amd64.tar.gz -C /usr/local
+# tar -xvf go1.11.13.linux-amd64.tar.gz -C /usr/local
 ```
 
 4\. Agregar los binarios a la lista de comandos del sistema
@@ -46,17 +46,16 @@ aefaa228b68641e266d1f23f1d95dba33f17552ba132878b65bb798ffa37e6d0  go1.11.10.linu
 
 ```shell-session
 $ go version
-go version go1.11.10linux/amd64
+go version go1.11.13 linux/amd64
 ```
 
 6\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm go1.11.10.linux-amd64.tar.gz
+$ rm go1.11.13.linux-amd64.tar.gz
 ```
 
 {{% note %}}
-
 Es posible instalar Go en una ruta personalizada e incluso sin permisos de
 super usuario, los pasos serían muy parecidos a los anteriores, solo que hay
 que cambiar las rutas y opcionalmente (si se quieren usar algunas utilidades
@@ -81,42 +80,37 @@ $ echo "export GOROOT=\"$GOROOT\"" >> ~/.zshenv
 ```shell-session
 $ echo "export GOROOT=\"$GOROOT\"" >> ~/.profile
 ```
-
 {{% /note %}}
 
 # Desde el código fuente
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
-
-[Cómo contribuir a Go]: {{< relref "/blog/contribute-to-go/index.es.md" >}}
-
 Para este método también es necesario tener los binarios, pues desde la
 versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo
 tiene sentido usar este procedimiento si se tiene pensado [modificar el código
-fuente][Cómo contribuir a Go].
+fuente]({{< relref "/blog/contribute-to-go/index.es.md" >}}).
 
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-
-**Nota:** puede que se necesite [Git](https://git-scm.com/) en algunas
-ocasiones, depende de como se realice la instalación.
+{{% note %}}
+Puede que se necesite [Git](https://git-scm.com/) en algunas ocasiones, depende
+de como se realice la instalación.
+{{% /note %}}
 
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.11.10.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.11.13.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ sha256sum go1.11.10.linux-amd64.tar.gz
-aefaa228b68641e266d1f23f1d95dba33f17552ba132878b65bb798ffa37e6d0  go1.11.10.linux-amd64.tar.gz
+$ sha256sum go1.11.13.linux-amd64.tar.gz
+50fe8e13592f8cf22304b9c4adfc11849a2c3d281b1d7e09c924ae24874c6daa  go1.11.13.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo
 
 ```shell-session
-$ tar -xvf go1.11.10.linux-amd64.tar.gz
+$ tar -xvf go1.11.13.linux-amd64.tar.gz
 ```
 
 4\. Renombrar la carpeta de Go (para evitar cualquier conflicto)
@@ -126,7 +120,7 @@ $ mv go toolchain
 ```
 
 5\. Establecer la variable de entorno `GOROOT_BOOTSTRAP`, que determina donde
-   buscar el compilador
+    buscar el compilador
 
 ```shell-session
 $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
@@ -137,22 +131,22 @@ $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
 **Paquete:**
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.11.10.src.tar.gz
+$ wget https://dl.google.com/go/go1.11.13.src.tar.gz
 ```
 
 ```shell-session
-$ sha256sum go1.11.10.src.tar.gz
-df27e96a9d1d362c46ecd975f1faa56b8c300f5c529074e9ea79bdd885493c1b  go1.11.10.src.tar.gz
+$ sha256sum go1.11.13.src.tar.gz
+5032095fd3f641cafcce164f551e5ae873785ce7b07ca7c143aecd18f7ba4076  go1.11.13.src.tar.gz
 ```
 
 ```shell-session
-$ tar -xvf go1.11.10.src.tar.gz
+$ tar -xvf go1.11.13.src.tar.gz
 ```
 
 **Git:**
 
 ```shell-session
-$ git clone -b go1.11.10--depth 1 https://go.googlesource.com/go
+$ git clone -b go1.11.13--depth 1 https://go.googlesource.com/go
 ```
 
 7\. ¡Compilar!
@@ -165,9 +159,11 @@ $ cd go/src
 $ ./all.bash
 ```
 
-**Nota:** el script `all.bash` también ejecuta todas las pruebas (que es
-recomendable hacerlo), para saltarse las pruebas y solo compilar, se debe usar
-el script `make.bash`.
+{{% note %}}
+El script `all.bash` también ejecuta todas las pruebas (que es recomendable
+hacerlo), para saltarse las pruebas y solo compilar, se debe usar el script
+`make.bash`.
+{{% /note %}}
 
 Al terminar, deberían existir nuevos recursos (entre esos, los binarios) en la
 carpeta del código fuente.
@@ -192,13 +188,13 @@ $ cd ../../
 
 ```shell-session
 $ go version
-go version go1.11.10linux/amd64
+go version go1.11.13 linux/amd64
 ```
 
 11\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm -r go1.11.10.linux-amd64.tar.gz go1.11.10.src.tar.gz toolchain
+$ rm -r go1.11.13.*.tar.gz toolchain
 ```
 
 Para instalar algunas utilidades más (como **godoc**, que permite visualizar la

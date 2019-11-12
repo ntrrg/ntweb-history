@@ -22,8 +22,8 @@ clean:
 
 .PHONY: run
 run:
-	hugo server -DEF --noHTTPCache --baseUrl / \
-		--bind 0.0.0.0 --port $(hugo_port) --appendPort=false
+	hugo server -DEF --noHTTPCache --i18n-warnings \
+		--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
 
 # Docker
 
@@ -43,6 +43,6 @@ docker-run:
 		-u $$(id -u $$USER) \
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --baseUrl / \
-		--bind 0.0.0.0 --port $(hugo_port) --appendPort=false
+		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --i18n-warnings \
+			--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
 

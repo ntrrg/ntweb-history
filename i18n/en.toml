@@ -1,17 +1,8 @@
 [AUTHOR]
 other = "Author"
 
-[CATEGORIES]
-other = "Categories"
-
 [CONTACT]
 other = "Contact"
-
-[CREATION_DATE]
-other = "Creation date"
-
-[DATE]
-other = "Date"
 
 [DEFAULT_LOI_TITLE]
 other = "Links of interest"
@@ -19,17 +10,17 @@ other = "Links of interest"
 [DEFAULT_NOTE_TITLE]
 other = "Note"
 
-[KINDS]
-other = "Kinds"
-
 [LICENSE]
 other = "Lincense"
 
-[NAME]
-other = "Name"
+[MODIFIED]
+other = "Modified"
 
 [NO_CONTENT]
 other = "[WIP] There is no content in this section yet."
+
+[PUBLISHED]
+other = "Published"
 
 [SETTINGS]
 other = "Settings"
@@ -39,9 +30,6 @@ other = "Source code"
 
 [TAGS]
 other = "Tags"
-
-[TECHS]
-other = "Technologies"
 
 [TOC_TITLE]
 other = "Table of Contents"
