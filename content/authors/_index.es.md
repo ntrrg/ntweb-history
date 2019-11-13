@@ -1,5 +1,4 @@
 ---
 title: Autores
-hidden: true
 ---
 

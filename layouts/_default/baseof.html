@@ -44,7 +44,7 @@
 
   {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
 </head>
-<body data-code-theme="monokailight">
+<body data-theme="light" data-code-theme="monokailight">
 {{ if not .Site.IsServer }}
   {{ with .Site.Params.googleTagManager }}
     <!-- Google Tag Manager (noscript) -->
@@ -58,7 +58,7 @@
 
 <div id="body">
   <header role="banner">
-    {{ partialCached "navbar.tmpl" .Site }}
+    {{ partial "navbar.tmpl" . }}
 
     <div>
       {{ if .IsTranslated }}

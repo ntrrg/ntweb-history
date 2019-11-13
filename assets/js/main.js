@@ -1,22 +1,28 @@
 // Theme
 
-/*
 window.addEventListener('load', () => {
-  if (localStorage.getItem('dark-theme')) {
-    setDarkTheme(true)
+  const theme = localStorage.getItem('theme')
+
+  if (theme) {
+    setTheme(theme)
+  }
+
+  const codeTheme = localStorage.getItem('code-theme')
+
+  if (codeTheme) {
+    setCodeTheme(codeTheme)
   }
 })
 
-function setDarkTheme(mode) {
-  if (mode) {
-    body.className = 'dark-theme'
-    localStorage.setItem('dark-theme', true)
-  } else {
-    body.className = ''
-    localStorage.removeItem('dark-theme')
-  }
+function setTheme(theme) {
+  document.body.dataset.theme = theme
+  localStorage.setItem('theme', theme)
 }
-*/
+
+function setCodeTheme(theme) {
+  document.body.dataset.codeTheme = theme
+  localStorage.setItem('code-theme', theme)
+}
 
 // Image lazy loading
 

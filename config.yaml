@@ -49,6 +49,10 @@ params:
     - https://github.com/ntrrg/usersd
   goPackages:
     - https://github.com/ntrrg/ntgo
+  menu:
+    - url: "/blog"
+    - url: "/projects"
+    - url: "/settings"
 languages:
   en:
     languageName: English

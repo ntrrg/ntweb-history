@@ -3,15 +3,6 @@
     <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.name }}</a>
   </strong>
 
-  {{ if gt (len .Site.Sections) 0 }}
-    {{ range sort .Site.Sections }}
-      {{ if ne .Params.hidden true }}
-        {{ $l := len .Pages }}
-        | <a href="{{ .Permalink }}">{{ .Title }}</a><sup>({{ $l }})</sup>
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
-  | <a href="#">{{ i18n "SETTINGS" }}</a>
+  {{ partial "menu-items.tmpl" . }}
 </nav>
 
