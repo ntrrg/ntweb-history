@@ -4,9 +4,8 @@ description: Un pequeño sitio web con grandes intenciones.
 metadata:
   source-code: https://github.com/ntrrg/ntweb
   license: MIT
-kinds:
+tags:
   - website
-techs:
   - mage
   - go
   - docker

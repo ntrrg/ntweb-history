@@ -11,17 +11,22 @@ outputs:
   home:
     - HTML
     - RSS
+    - JSON
   section:
     - HTML
     - RSS
+    - JSON
   taxonomy:
     - HTML
     - RSS
+    - JSON
   taxonomyTerm:
     - HTML
     - RSS
+    - JSON
   page:
     - HTML
+    - JSON
 pygmentsCodeFences: true
 pygmentsUseClasses: true
 enableRobotsTXT: true

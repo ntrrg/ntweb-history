@@ -1,0 +1,47 @@
+{{ define "data" }}
+  {
+    "sections": [
+      {{ range $i, $val := .Sections }}
+        {{ if ne $i 0 }},{{ end }}
+        {
+          "url": {{ jsonify .Permalink }},
+          "title": {{ jsonify .Title }},
+          "pages": {{ len .Pages }}
+        }
+      {{ end }}
+    ],
+    "taxonomies": [
+      {{ $i := 0 }}
+      {{ range $name, $terms := .Site.Taxonomies }}
+        {{ if ne $i 0 }},{{ end }}
+        {
+          "name": {{ jsonify $name }},
+          "url": {{ absLangURL $name | jsonify }},
+          "terms": [
+            {{ $j := 0 }}
+            {{ range $termName, $pages := $terms }}
+              {{ if ne $j 0 }},{{ end }}
+              {
+                "name": {{ jsonify $termName }},
+                "url": {{ printf "%s/%s" $name $termName | absLangURL | jsonify }},
+                "pages": {{ len .Pages }}
+              }
+              {{ $j = add $j 1 }}
+            {{ end }}
+          ]
+        }
+        {{ $i = add $i 1 }}
+      {{ end }}
+    ],
+    "pages": [
+      {{ range $i, $val := .RegularPages }}
+        {{ if ne $i 0 }},{{ end }}
+        {
+          "url": {{ jsonify .Permalink }},
+          "title": {{ jsonify .Title }}
+        }
+      {{ end }}
+    ]
+  }
+{{ end }}
+

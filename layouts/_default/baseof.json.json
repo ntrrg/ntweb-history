@@ -1,0 +1,26 @@
+{
+  "lang": {{ jsonify .Language.Lang }},
+  "title": {{ jsonify .Title }},
+  "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
+  "content": "{{ base64Encode .Content }}",
+  "data": {{ block "data" . }}{}{{ end }},
+  "altLang": [
+    {{ range $i, $val := .Translations }}
+      {{ if ne $i 0 }},{{ end }}
+      {
+        "lang": {{ jsonify .Language.Lang }},
+        "url": {{ jsonify .Permalink }}
+      }
+    {{ end }}
+  ],
+  "altMediaType": [
+    {{ range $i, $val := .AlternativeOutputFormats }}
+      {{ if ne $i 0 }},{{ end }}
+      {
+        "mediaType": {{ jsonify .MediaType.Type }},
+        "url": {{ jsonify .Permalink }}
+      }
+    {{ end }}
+  ]
+}
+

@@ -1,0 +1,15 @@
+{{ define "data" }}
+  {
+    "pages": [
+      {{ range $i, $val := .Pages }}
+        {{ if ne $i 0 }},{{ end }}
+        {
+          "url": {{ jsonify .Permalink }},
+          "title": {{ jsonify .Title }},
+          "description": {{ jsonify .Description }}
+        }
+      {{ end }}
+    ]
+  }
+{{ end }}
+

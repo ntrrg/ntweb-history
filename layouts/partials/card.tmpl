@@ -1,8 +1,6 @@
 <div class="card">
   {{ if eq .Type "authors" }}
-    <a href="{{ .Permalink }}">
-      <h3>{{ .Params.name }} ({{ .Params.id }})</h3>
-    </a>
+    <a href="{{ .Permalink }}"><h3>{{ .Title }} ({{ .Params.id }})</h3></a>
   {{ else if gt (len .Pages) 0 }}
     <a href="{{ .Permalink }}">{{ .Title }} ({{ len .Pages }})</a>
   {{ else }}
