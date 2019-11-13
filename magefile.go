@@ -351,15 +351,20 @@ func (Gen) Projects() error {
 		}
 
 		dates := strings.Split(output, "\n")
-		publishedAt := dates[len(dates) - 1]
+		publishedAt := dates[len(dates)-1]
 		modifiedAt := dates[0]
+
+		license, err := getLincense(filepath.Join(prjRepo, "LICENSE"))
+		if err != nil {
+			return err
+		}
 
 		metadata := []byte(`---
 publishdate: ` + publishedAt + `
 date: ` + modifiedAt + `
 metadata:
   source-code: ` + repoUrl + `
-  license: ` + "MIT" + `
+  license: ` + license + `
 `)
 
 		indexes, err := filepath.Glob(dst + "/index.*.md")
@@ -392,7 +397,7 @@ metadata:
 
 			content = append(
 				metadata,
-				content[bytes.IndexByte(content, '\n') + 1:]...,
+				content[bytes.IndexByte(content, '\n')+1:]...,
 			)
 			_, err = f.Write(content)
 
@@ -405,4 +410,26 @@ metadata:
 	}
 
 	return nil
+}
+
+func getLincense(path string) (string, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return "", err
+	}
+
+	defer f.Close()
+
+	s := bufio.NewScanner(f)
+
+	for s.Scan() {
+		switch {
+		case bytes.Contains(s.Bytes(), []byte("The MIT License")):
+			return "MIT", nil
+		case bytes.Contains(s.Bytes(), []byte("DO WHAT THE FUCK YOU WANT TO")):
+			return "WTFPL", nil
+		}
+	}
+
+	return "", s.Err()
 }

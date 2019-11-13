@@ -41,6 +41,7 @@ params:
     - https://github.com/ntrrg/ntdocutils
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/pish
+    - https://github.com/ntrrg/usersd
   goPackages:
     - https://github.com/ntrrg/ntgo
 languages:
