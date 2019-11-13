@@ -1,5 +1,6 @@
 ---
 id: {{ replace .Name "-" " " }}
+title: John
 name: John Doe
 position: CEO and Co-Founder
 image: https://via.placeholder.com/350x350

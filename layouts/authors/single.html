@@ -1,6 +1,6 @@
 {{ define "main" }}
   <article class="article">
-    {{ $title := .Params.name }}
+    {{ $title := .Title | default .Params.name }}
 
     {{ with .Params.image }}
       <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
@@ -8,6 +8,10 @@
 
     <h1 class="article-title">{{ $title }}</h1>
     <h2 class="article-subtitle muted">{{ .Params.position }}</h2>
+    
+    {{ if ne $title .Params.name }}
+      <strong class="name">{{ .Params.name }}</strong>
+    {{ end }}
 
     <div class="markdown">
       {{ with .Params.content }}
