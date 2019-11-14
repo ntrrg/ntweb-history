@@ -301,7 +301,7 @@ func writeGoPkgPage(src, mod, pkg, doc string) error {
 // Projects
 
 var (
-	prjsDir   = filepath.Clean("content/projects")
+	prjsDir = filepath.Clean("content/projects")
 )
 
 func (Gen) Projects() error {

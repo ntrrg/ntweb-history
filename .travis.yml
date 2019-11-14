@@ -10,6 +10,11 @@ jobs:
   include:
     - stage: "Linting"
       script: ./mage -v lint:go
+    - stage: "Content generation"
+      name: "Go packages"
+      script: ./mage -v gen:gopkgs
+      name: "Projects"
+      script: ./mage -v gen:projects
     - stage: "Build"
       script: ./mage -v docker:build
 
