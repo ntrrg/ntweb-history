@@ -43,6 +43,7 @@
   {{ end }}
 
   {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
+  {{ block "scripts" . }}{{ partial "scripts.tmpl" . }}{{ end }}
 </head>
 <body data-theme="light" data-code-theme="monokailight">
 {{ if not .Site.IsServer }}
@@ -102,8 +103,6 @@
 
   {{ partialCached "footer.tmpl" .Site }}
 </div>
-
-{{ block "scripts" . }}{{ partial "scripts.tmpl" . }}{{ end }}
 </body>
 </html>
 

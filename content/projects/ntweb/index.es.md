@@ -19,6 +19,7 @@ tags:
 
 [![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2f18cd17-5e78-45fa-a95d-0ae120ffc603/deploy-status)](https://app.netlify.com/sites/ntweb/deploys)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/ntweb.svg)](https://hub.docker.com/r/ntrrg/ntweb)
 
 **ntWeb** es un pequeño sitio web con grandes intenciones. Provee un
 portafolio, una plataforma de blog y URLs personalizadas para paquetes Go.
@@ -27,7 +28,7 @@ portafolio, una plataforma de blog y URLs personalizadas para paquetes Go.
 
 **Requerimientos:**
 
-* Hugo >= 0.58
+* Hugo >= 0.59
 
 Descargue el código fuente y ejecute el siguente comando en la carpeta raíz del
 proyecto:
@@ -103,4 +104,6 @@ Trabando en este proyecto uso/usé:
 * [Mage](https://magefile.org/)
 
 * [Termux](https://termux.com)
+
+* [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
 

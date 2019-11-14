@@ -1,11 +1,8 @@
+{{ $scripts := slice }}
 {{ $externals := slice }}
-
-{{ with .Params.math }}
-  {{ $externals = $externals | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
-{{ end }}
+{{ $externalsAsync := slice }}
 
 {{ $suffix := "" }}
-{{ $scripts := slice }}
 {{ $scripts = $scripts | append "js/main.js" }}
 
 {{ if .IsHome }}
@@ -13,6 +10,21 @@
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = $scripts | append "js/article.js" }}
+{{ end }}
+
+{{ with .Params.math }}
+  {{ $externalsAsync = $externalsAsync | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
+{{ end }}
+
+{{ range $externalsAsync }}
+  {{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}
+    <script async src="{{ . }}"></script>
+  {{ else }}
+    {{ $script := resources.Get . | minify | fingerprint }}
+
+    <script async src="{{ $script.Permalink }}"
+            integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
 {{ end }}
 
 {{ range $externals }}

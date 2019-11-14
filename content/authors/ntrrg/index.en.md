@@ -59,5 +59,42 @@ authortype: Person
 Hi! I am Miguel Angel, just another developer working hard to don't be just
 another developer.
 
-Do you need a developer? Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/cv/en.pdf)).
+## What can I do for you?
+
+I am a Software Developer passionate about creating high performance solutions
+that take the most advantage they can from the hardware they use. I always code
+following the best standards, verifying the code quality with analysis tools
+and automated tests. I am a huge fan of maths, AI and distributed computing.
+
+Since I coded my first lines in Go (July 2018), I knew that its simplicity,
+power and philosophy are the experience that any developer pursuing
+productivity and efficiency needs. I coded with PHP, Python and JavaScript
+(Node.js) in the past. I also finished the 42 C Piscine in Silicon Valley, so I
+have basic knoledge of C.
+
+### Skills
+
+* **Programming languages:** Go, JavaScript, Python, C, PHP.
+
+* **User interfaces:** Web (HTML, CSS, JavaScript).
+
+* **SQL databases:** SQLite, PostgreSQL, MySQL.
+
+* **NoSQL databases:** Badger.
+
+* **Search engines:** Bleve.
+
+* **VCS:** Git.
+
+* **QA:** linting, unit testing, CI (Drone, Travis, GitLab CI, Bitbucket
+  Pipelines, GolangCI), CD.
+
+* **Cloud:** GitHub Pages, Netlify, Heroku, GCP.
+
+* **Systems administration:** Linux (Debian, Alpine), Shell Scripting,
+  Containers (Docker, systemd-nspawn), Containers orchestration (Docker Swarm).
+
+* **Frameworks and libs:** Hugo.
+
+Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/cv/en.pdf)).
 

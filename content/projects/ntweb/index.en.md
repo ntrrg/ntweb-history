@@ -17,17 +17,18 @@ tags:
   - netlify
 ---
 
-[![Travis build btatus](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
+[![Travis build status](https://travis-ci.com/ntrrg/ntweb.svg?branch=master)](https://travis-ci.com/ntrrg/ntweb)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2f18cd17-5e78-45fa-a95d-0ae120ffc603/deploy-status)](https://app.netlify.com/sites/ntweb/deploys)
+[![Docker Build Status](https://img.shields.io/docker/build/ntrrg/ntweb.svg)](https://hub.docker.com/r/ntrrg/ntweb)
 
 **ntWeb** is a small site with great intentions. It provides a personal
-portfolio, a blogging platform and Go package vanity URLs.
+portfolio, a blogging platform and Go packages vanity URLs.
 
 # Usage
 
 **Requirements:**
 
-* Hugo >= 0.58
+* Hugo >= 0.59
 
 Get the source code and run the following command in the project root
 directory:
@@ -103,4 +104,6 @@ Working on this project I use/used:
 * [Mage](https://magefile.org/)
 
 * [Termux](https://termux.com)
+
+* [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
 

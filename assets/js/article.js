@@ -17,6 +17,6 @@ function resizeWideImages() {
   }
 }
 
-window.addEventListener('load', resizeWideImages)
+window.addEventListener('DOMContentLoaded', resizeWideImages)
 window.addEventListener('resize', resizeWideImages)
 
