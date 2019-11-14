@@ -12,7 +12,6 @@ import (
 	"os/user"
 	"path"
 	"path/filepath"
-	"regexp"
 	"strings"
 
 	hc "github.com/gohugoio/hugo/config"
@@ -75,7 +74,7 @@ func (BumpVersion) Hugo() error {
 }
 
 func Clean() error {
-	for _, dst := range []string{prjsRepos, goRepos, "public", "resources"} {
+	for _, dst := range []string{gitRepos, "public", "resources"} {
 		if err := sh.Rm(dst); err != nil {
 			return err
 		}
@@ -136,6 +135,26 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 	return hc.FromConfigString(string(cfgData), filepath.Ext(cfgFile))
 }
 
+func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
+	i := strings.LastIndex(path, ".")
+	if i < 0 {
+		i = len(path) - 1
+	}
+
+	ext := filepath.Ext(path)
+
+	for lang := range cfg.GetStringMap("languages") {
+		path := path[:i] + "." + lang + ext
+
+		err := ioutil.WriteFile(path, content, mode)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func init() {
 	var err error
 
@@ -189,6 +208,10 @@ func runHugoDocker(args ...string) error {
 // Content generation //
 ////////////////////////
 
+var (
+	gitRepos = filepath.Join(os.TempDir(), "ntweb-git-repos")
+)
+
 type Gen mg.Namespace
 
 func (Gen) Default() {
@@ -198,36 +221,19 @@ func (Gen) Default() {
 // Go packages
 
 var (
-	goDir   = filepath.Clean("content/go")
-	goRepos = filepath.Join(os.TempDir(), "ntweb-go-pkgs")
+	goPkgsDir = filepath.Clean("content/go")
 )
 
 func (Gen) GoPkgs() error {
-	if err := os.MkdirAll(goRepos, 0755); err != nil {
+	if err := os.MkdirAll(gitRepos, 0755); err != nil {
 		return err
 	}
 
-	srcRE, err := regexp.Compile(`(?:([\w/\-]+) )?(https?:/.+)`)
-	if err != nil {
-		return err
-	}
+	for _, repoUrl := range cfg.GetStringSlice("params.goPackages") {
+		name := path.Base(repoUrl)
+		dst := filepath.Join(gitRepos, name)
 
-	pkgRE, err := regexp.Compile(`([\w/\-.]+): (.+)?`)
-	if err != nil {
-		return err
-	}
-
-	for _, repo := range cfg.GetStringSlice("params.goPackages") {
-		repoElems := srcRE.FindStringSubmatch(repo)
-		name, src := repoElems[1], repoElems[2]
-
-		if name == "" {
-			name = path.Base(src)
-		}
-
-		dst := filepath.Join(goRepos, name)
-
-		if err := cloneRepo(dst, src); err != nil {
+		if err := cloneRepo(dst, repoUrl); err != nil {
 			return err
 		}
 
@@ -239,30 +245,27 @@ func (Gen) GoPkgs() error {
 		}
 
 		mod := string(bytes.TrimSpace(output))
-		if err := writePackagePage(src, mod, mod, ""); err != nil {
+		if err := writeGoPkgPage(repoUrl, mod, mod, ""); err != nil {
 			return err
 		}
 
 		c = exec.Command(
-			"go", "list", "-f", "{{ .ImportComment }}: {{ .Doc }}", "./"+name+"/...",
+			"go", "list",
+			"-f", "{{ .ImportPath }} {{ .Doc }}",
+			"./...",
 		)
 
-		c.Dir = goRepos
+		c.Dir = dst
 		output, err = c.Output()
 		if err != nil {
 			return err
 		}
 
-		for _, entry := range bytes.Split(bytes.TrimSpace(output), []byte("\n")) {
-			elms := pkgRE.FindSubmatch(entry)
+		for _, entry := range bytes.Split(bytes.TrimSpace(output), []byte{'\n'}) {
+			elms := bytes.SplitN(entry, []byte{' '}, 2)
+			pkg, doc := string(elms[0]), string(elms[1])
 
-			if len(elms) < 3 {
-				return fmt.Errorf("bad package format in module %s: %q", mod, entry)
-			}
-
-			pkg, doc := string(elms[1]), string(elms[2])
-
-			if err := writePackagePage(src, mod, pkg, doc); err != nil {
+			if err := writeGoPkgPage(repoUrl, mod, pkg, doc); err != nil {
 				return err
 			}
 		}
@@ -271,7 +274,7 @@ func (Gen) GoPkgs() error {
 	return nil
 }
 
-func genPackagePage(src, mod, pkg, doc string) string {
+func genGoPkgPage(src, mod, pkg, doc string) string {
 	prefix := path.Dir(mod) + "/"
 	pkg = strings.TrimPrefix(string(pkg), prefix)
 
@@ -288,30 +291,10 @@ url: /go/%s
 	return fmt.Sprintf(content, pkg, src, mod, doc, pkg)
 }
 
-func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
-	i := strings.LastIndex(path, ".")
-	if i < 0 {
-		i = len(path) - 1
-	}
-
-	ext := filepath.Ext(path)
-
-	for lang := range cfg.GetStringMap("languages") {
-		path := path[:i] + "." + lang + ext
-
-		err := ioutil.WriteFile(path, content, mode)
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
-func writePackagePage(src, mod, pkg, doc string) error {
+func writeGoPkgPage(src, mod, pkg, doc string) error {
 	return writeMultiLangFile(
-		filepath.Join(goDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
-		[]byte(genPackagePage(src, mod, pkg, doc)), 0644,
+		filepath.Join(goPkgsDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
+		[]byte(genGoPkgPage(src, mod, pkg, doc)), 0644,
 	)
 }
 
@@ -319,17 +302,16 @@ func writePackagePage(src, mod, pkg, doc string) error {
 
 var (
 	prjsDir   = filepath.Clean("content/projects")
-	prjsRepos = filepath.Join(os.TempDir(), "ntweb-projects")
 )
 
 func (Gen) Projects() error {
-	if err := os.MkdirAll(prjsRepos, 0755); err != nil {
+	if err := os.MkdirAll(gitRepos, 0755); err != nil {
 		return err
 	}
 
 	for _, repoUrl := range cfg.GetStringSlice("params.projects") {
 		name := path.Base(repoUrl)
-		prjRepo := filepath.Join(prjsRepos, name)
+		prjRepo := filepath.Join(gitRepos, name)
 		if err := cloneRepo(prjRepo, repoUrl); err != nil {
 			return err
 		}
