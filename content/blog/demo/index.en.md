@@ -57,6 +57,12 @@ _This is italic text_
 
 [This is a link with a title](https://nt.web.ve "This is the title!").
 
+[ntweb]: https://nt.web.ve
+
+[ntweb][]
+
+[My site][ntweb]
+
 # Lists
 
 * Create a list by starting a line with `+`, `-`, or `*`

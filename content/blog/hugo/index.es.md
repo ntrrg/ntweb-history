@@ -1,17 +1,17 @@
 ---
-title: Hugo 0.41
-date: 2018-05-06T01:19:25-04:00
-image: /uploads/hugo.png
-categories:
-  - tecnología
+title: Hugo
+author: ntrrg
+publishdate: 2018-05-06T01:19:25-04:00
+date: 2019-11-14T09:30:25-04:00
+image: images/hugo.png
+description: El generador de sitios web estáticos más fácil de usar y más rápido del mundo.
 tags:
-  - referencias
+  - tecnología
   - programación
   - programación-web
   - frontend
   - generador-de-sitios-estáticos
   - hugo
-  - go
 draft: true
 ---
 
@@ -34,16 +34,16 @@ sus mejores cualidades pues:
   rápido! ⚡).
 
 * No hay que preocuparse mucho por la seguridad (dudo que le hagan
-  inyecciones a los `.yaml` 😂).
+  inyecciones a los `.html` 😂).
 
 * Pueden alojarse con mucha facilidad.
 
-[latest-release]: https://github.com/gohugoio/hugo/releases/tag/v0.40.3
+[Hugo releases]: https://github.com/gohugoio/hugo/releases/
 
 Fue desarrollado inicialmente por Steve Francia y su primera versión estable
-fue liberada en 2012. A la fecha (mientras escribía esto 😂) su última
-versión estable es la número [0.40.3][latest-release] y algunas de sus
-características son:
+fue liberada en 2012. A la fecha (mientras escribía esto) su última versión
+estable es la número [0.59.1][Hugo releases] y algunas de sus características
+son:
 
 [Go HTML Templates]: http://golang.org/pkg/html/template/
 [Netlify CMS]: https://www.netlifycms.org/
@@ -64,17 +64,33 @@ características son:
 
 * Un montón más que pueden verse [aquí][Hugo features].
 
-Para realizar sus tareas usa: **Go**, que es un lenguaje de programación
-bastante llamativo (mi favorito si me preguntan), se encarga de procesar todos
-los archivos y convertirlos en el sitio; **Go HTML Templates** que es un
-lenguaje de plantillas implementado en la biblioteca estándar de Go, permite
-estructurar muy fácilmente los elementos del sitio y eliminar gran parte de
-las tareas repetitivas en la creación de páginas web; **Markdown**, que es un
-lenguaje de marcado muy sencillo con el que se escribe el contenido, y aunque
-sea posible usar otros lenguajes de marcado, se recomienda no cambiarlo pues se
-pierde la garantía de que el sitio sea generado rápidamente (no depende de
-Hugo, sino de la herramienta que procese el lenguaje); y algunos más, pero por
-ahora es suficiente con resaltar estos tres.
+{{< toc >}}
+
+# Herramientas necesarias
+
+[Hugo]: https://gohugo.io
+[Vim]: https://www.vim.org/
+[Docker]: https://docker.com
+[Firefox Developer Edition]: https://www.mozilla.org/en-US/firefox/developer/
+
+1. Un editor de texto (yo uso [Vim][])
+2. [Hugo][] o [Docker][]
+3. Un navegador web (yo uso [Firefox Developer Edition][])
+
+# ¿Cómo funciona?
+
+Básicamente, Hugo toma como entrada un directorio estructurado, que después de
+analizarlo, usará toda la información obtenida para generar el sitio web.
+
+Para realizar sus tareas usa: **Go HTML Templates** que es un lenguaje de
+plantillas implementado en la biblioteca estándar de Go, permite estructurar
+muy fácilmente los elementos del sitio y eliminar gran parte de las tareas
+repetitivas en la creación de páginas web; **Markdown** que es un lenguaje de
+marcado muy sencillo con el que se escribe el contenido, y aunque sea posible
+usar otros lenguajes de marcado, se recomienda no cambiarlo pues se pierde la
+garantía de que el sitio sea generado rápidamente (no depende de Hugo, sino de
+la herramienta que procese el lenguaje); y algunas herramientas más, pero por
+ahora es suficiente con resaltar estas dos.
 
 Por suerte, si se usa un tema, solo hace falta conocer un poco de Markdown y
 para los casos más extremos de personalización, se deben conocer tecnologías

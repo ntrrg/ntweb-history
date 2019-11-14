@@ -57,6 +57,12 @@ _Este es texto en cursiva_
 
 [Este es un enlace con título](https://nt.web.ve "Este es el título!").
 
+[ntweb]: https://nt.web.ve
+
+[ntweb][]
+
+[Mi sitio web][ntweb]
+
 # Listas
 
 * Cree una lista iniciando con `+`, `-`, o `*`

@@ -1,5 +1,6 @@
 ---
 title: Instalar Go 1.10
+author: ntrrg
 date: 2018-09-09T18:15:47-0400
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png

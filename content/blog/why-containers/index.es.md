@@ -1,10 +1,11 @@
 ---
 title: ¿Por qué usar contenedores?
-date: 2019-05-14T22:54:00-07:00
-description: Básicamente, le permiten a los programadores y administradores de sistemas desarrollar e implementar aplicaciones de una manera mucho más sencilla.
-categories:
-  - tecnología
+author: ntrrg
+publishdate: 2019-05-14T22:54:00-0700
+date: 2019-11-14T11:35:00-0400
+description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
+  - tecnología
   - entornos-de-desarrollo
   - contenedores
   - backend
@@ -218,20 +219,17 @@ orquestadores son:
 
 ## Implementación
 
-1. El administrador de sistemas le asigna una imagen base de un contenedor al
-   programador para que la replique en su computadora.
+1. El programador escribe la aplicación en su computadora.
 
-2. El programador escribe la aplicación en su computadora.
+2. El programador se asegura de que la aplicación funciona en el contenedor.
 
-3. El programador se asegura de que la aplicación funciona en el contenedor.
+3. El programador sube el código fuente al repositorio Git.
 
-4. El programador sube el código fuente al repositorio Git.
-
-5. El programador genera una imagen con la aplicación funcionando y la entrega
+4. El programador genera una imagen con la aplicación funcionando y la entrega
    al administrador de sistemas para que la implemente, o si se tiene
    automatizado, se crea un nuevo contenedor de pruebas basado en la imagen.
 
-6. El administrador de sistemas, y probablemente otros miembros del equipo,
+5. El administrador de sistemas, y probablemente otros miembros del equipo,
    auditan la aplicación y si todo funciona correctamente se implementa en
    producción.
 
@@ -263,8 +261,8 @@ A pesar de que todo lo que escribí pareciera una charla de Herbalife y que la
 solucionan con contenedores, cada uno de los métodos de implementación que usé
 de ejemplo tienen propósitos y enfoques diferentes, por lo que al usarlos cómo
 y dónde deben, pueden mitigarse sus desventajas y obtener más ventajas que
-usando contenedores. Lo importante es siempre usar la herramienta correcta, y
-conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
+usando contenedores. Lo importante es siempre aplicar la arquitectura correcta,
+y conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 
 {{< img src="images/architectures-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
