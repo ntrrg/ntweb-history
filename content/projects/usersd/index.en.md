@@ -1,19 +1,15 @@
 ---
 publishdate: 2018-09-18T22:31:27-04:00
-date: 2019-06-19T17:47:31-07:00
+date: 2019-11-24T17:38:57-04:00
 metadata:
   source-code: https://github.com/ntrrg/usersd
   license: WTFPL
 title: usersd
 description: Authentication and authorization microservice.
-metadata:
-  source-code: https://github.com/ntrrg/usersd
-  license: WTFPL
-kinds:
+tags:
   - daemon
   - cli
   - rest-server
-techs:
   - mage
   - go
   - golangci
