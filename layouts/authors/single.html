@@ -34,7 +34,7 @@
 
       {{ range sort $author.social "weight" }}
         <li title="{{ .label }}">
-          <img src="{{ .icon }}" alt="{{ .label }}"/>
+          {{ readFile .icon | safeHTML }}
           <a href="{{ .url | safeURL }}">{{ .text }}</a>
         </li>
       {{ end }}
