@@ -5,13 +5,13 @@ metadata:
   source-code: https://github.com/ntrrg/sdb
   license: MIT
 title: sdb
-description: Simple and embeddable database with full text search support.
+description: Base de datos simple y empotrable que soporta busquedas avanzadas.
 tags:
   - go
   - make
-  - database
-  - key-value-store
-  - library
+  - base-de-datos
+  - almacen-de-llaves-y-valores
+  - biblioteca
   - cli
   - restful-api
   - golangci
@@ -24,22 +24,23 @@ tags:
 [![GolangCI](https://golangci.com/badges/github.com/ntrrg/sdb.svg)](https://golangci.com/r/github.com/ntrrg/sdb)
 [![GoDoc](https://godoc.org/nt.web.ve/go/sdb/pkg/sdb?status.svg)](https://godoc.org/nt.web.ve/go/sdb/pkg/sdb)
 
-**sdb** is a simple and embeddable database with full text search support.
+**sdb** es una base de datos simple y empotrable que soporta busquedas
+avanzadas.
 
-# Support
+# Soporte
 
-If you need help or find a bug, file an issue at the [issue tracker](https://github.com/ntrrg/sdb/issues).
-If using technical tools is not your style, feel free to send us an email at
-ntrrgx@gmail.com.
+Si encuentra algún error o necesita ayuda, cree un issue en el [issue tracker](https://github.com/ntrrg/sdb/issues).
+Si usar herramientas técnicas no es su estilo, puede enviarnos un correo
+electrónico a la dirección ntrrgx@gmail.com
 
-# Contributing
+# Contribuir
 
-See the [contribution guide](https://github.com/ntrrg/sdb/blob/master/CONTRIBUTING.md)
-for more information.
+Ver la [guía de contribución](https://github.com/ntrrg/sdb/blob/master/CONTRIBUTING.md)
+para más información.
 
-# Acknowledgment
+# Atribuciones
 
-Working on this project we use/used:
+Trabando en este proyecto usamos:
 
 * [Debian](https://www.debian.org/)
 
