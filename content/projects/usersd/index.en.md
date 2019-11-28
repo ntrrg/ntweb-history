@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-09-18T22:31:27-04:00
-date: 2019-11-24T17:38:57-04:00
+date: 2019-11-27T11:23:32-04:00
 metadata:
   source-code: https://github.com/ntrrg/usersd
   license: WTFPL
