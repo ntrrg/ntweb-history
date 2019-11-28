@@ -16,12 +16,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function setTheme(theme) {
   document.body.dataset.theme = theme
-  localStorage.setItem('ntwbe-theme', theme)
+  localStorage.setItem('ntweb-theme', theme)
 }
 
 function setCodeTheme(theme) {
   document.body.dataset.codeTheme = theme
-  localStorage.setItem('ntwbe-code-theme', theme)
+  localStorage.setItem('ntweb-code-theme', theme)
 }
 
 // Image lazy loading
