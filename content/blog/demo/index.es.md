@@ -191,7 +191,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Go Playground
 
-{{% go-playground "sfPZJf_jZLF" %}}
+{{< go-playground >}}
 ```go
 package main
 
@@ -201,7 +201,7 @@ func main() {
   fmt.Println("hello, world")
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ## Notas
 

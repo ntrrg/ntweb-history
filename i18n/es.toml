@@ -10,6 +10,18 @@ other = "Enlaces de interés"
 [DEFAULT_NOTE_TITLE]
 other = "Nota"
 
+[GO_PLAYGROUND_ERROR]
+other = "No se pudo enviar el código, intente de nuevo"
+
+[GO_PLAYGROUND_OPEN]
+other = "Abrir en el Playground de Go"
+
+[GO_PLAYGROUND_RUN]
+other = "Correr en el Playground de Go"
+
+[GO_PLAYGROUND_SENDING]
+other = "Enviando el código.."
+
 [LICENSE]
 other = "Lincencia"
 

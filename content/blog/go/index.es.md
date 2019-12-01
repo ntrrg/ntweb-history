@@ -73,7 +73,7 @@ Algunas de sus características más resaltantes son:
   sencillo implementarlos en la mayoría de los casos, no es muy relevante su
   existencia.
 
-{{% go-playground "oZR8BSYAUVB" %}}
+{{< go-playground >}}
 ```go
 x := make(map[int]struct{})
 
@@ -83,7 +83,25 @@ x[1] = struct{}{}
 
 len(x) // 2
 ```
-{{% /go-playground %}}
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := make(map[int]struct{})
+
+  x[1] = struct{}{}
+  x[2] = struct{}{}
+  x[1] = struct{}{}
+
+  fmt.Println(len(x))
+}
+```
+{{< /go-playground >}}
 
 * `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
   parezca limitado, es una ventaja para los programadores no tener que pensar
@@ -99,7 +117,7 @@ len(x) // 2
   importa el rendimiento, quiero mis funciones 😒»* no hay problema, es muy
   fácil implementarlas, pero en este caso les recomendaría usar otro lenguaje.
 
-{{% go-playground "oNGlnMctzXv" %}}
+{{< go-playground id="oNGlnMctzXv" >}}
 ```go
 func ForEach(s []int, f func(int, int, []int)) {
   for i, v := range s {
@@ -133,7 +151,7 @@ func Reduce(s []int, f func(int, int) int, a int) int {
   return a
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 * Excepciones. Usar estructuras de control (como `try {} catch {}`) para
   manejar los errores puede resultar en flujos complejos que dificultan a los
@@ -258,7 +276,7 @@ Go se vería algo así:
 
 `hola_mundo.go`:
 
-{{% go-playground "hR9ZBMz-Pst" %}}
+{{< go-playground id="hR9ZBMz-Pst" >}}
 ```go
 package main
 
@@ -268,7 +286,7 @@ func main() {
   fmt.Println("hola, mundo")
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
 usando el comando `go run`.
@@ -309,18 +327,18 @@ dos tipos de comentarios:
 
 * De línea
 
-{{% go-playground "4g5BEqD0RGU" %}}
+{{< go-playground id="4g5BEqD0RGU" >}}
 ```go
 fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
 
 // Las sentencias comentadas no son procesadas por el compilador
 // fmt.Println("chao, mundo")
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 * Generales
 
-{{% go-playground "4HyigTWqiZ8" %}}
+{{< go-playground id="4HyigTWqiZ8" >}}
 ```go
 /*
   Así se escribe un comentario general
@@ -331,7 +349,7 @@ fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
   Este programa no hace nada..
 */
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ## Documentación
 
@@ -839,13 +857,13 @@ x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
 Para obtener la cantidad de elementos de un arreglo se debe usar la función
 `len(ARREGLO)` que retorna un número entero del tipo `int`.
 
-{{% go-playground "vpsI0bAQlYS" %}}
+{{< go-playground id="vpsI0bAQlYS" >}}
 ```go
 x := [3]int{1, 2, 3}
 
 len(x)) // 3
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ### Representación sintáctica
 
@@ -1037,7 +1055,7 @@ Para obtener la longitud y la capacidad de una porción se deben usar las
 funciones `len(PORCIÓN)` y `cap(PORCIÓN)`, ambas retornan un número entero del
 tipo `int`.
 
-{{% go-playground "l9D0hIL8Mpl" %}}
+{{< go-playground id="l9D0hIL8Mpl" >}}
 ```go
 x := [5]int{1, 2, 3, 4, 5}
 y := x[1:4]
@@ -1045,13 +1063,13 @@ y := x[1:4]
 len(y) // 3
 cap(y) // 4
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Es posible inicializar una porción sin valores literales, para esto se puede
 usar la función `make`, que recibe tres argumentos: el tipo de porción, la
 longitud y opcionalmente la capacidad.
 
-{{% go-playground "QqtBDs72WGQ" %}}
+{{< go-playground id="QqtBDs72WGQ" >}}
 ```go
 x := make([]bool, 3)
 // [false false false]
@@ -1062,7 +1080,7 @@ y := make([]byte, 3, 5)
 z := y[:cap(y)]
 // [0 0 0 0 0]
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Existen dos funciones que ayudan con el trabajo cotidiano de las porciones, la
 primera es `append`, que permite agregar elementos al final de una porción,
@@ -1071,7 +1089,7 @@ datos del mismo tipo, retorna una nueva porción que dependiendo de la
 capacidad, reutilizará el arreglo referenciado por la porción pasada como
 argumento o creará uno nuevo que pueda almacenar los elementos.
 
-{{% go-playground "gaW_r9YvadO" %}}
+{{< go-playground id="gaW_r9YvadO" >}}
 ```go
 a := []byte{1, 2, 3, 4, 5}
 b := a[:3]
@@ -1108,14 +1126,14 @@ y := append(c, 7, 8)
 // [1 2 3 6] 4 5
 // [3 6 5 7 8] 5
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 La segunda función es `copy`, se encarga de copiar elementos de una porción a
 otra, recibe dos porciones del mismo tipo como argumento y la primera es a la
 que se copiarán los elementos, al finalizar retorna la cantidad de elementos
 copiados, que es determinada por la mínima longitud entre ambas porciones.
 
-{{% go-playground "zmWI34jS_Pv" %}}
+{{< go-playground id="zmWI34jS_Pv" >}}
 ```go
 x := make([]int, 2)
 y := []int{1, 2, 3, 4}
@@ -1135,7 +1153,7 @@ m := []bool{false, true}
 copy(n[1:3], m) // 2
 fmt.Println(n)  // [true false true false true]
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Ya que las porciones hacen referencia a arreglos, aunque una porción solo tenga
 algunos elementos, mantendrá completo en memoria su arreglo referenciado, es
@@ -1213,7 +1231,7 @@ Para la definición de cadenas literales interpretadas se usan las comillas
 diferencia de otros lenguajes, el apóstrofo (`'`) se usa para representar runas
 literales, no cadenas.
 
-{{% go-playground "M0lvf5r9D8p" %}}
+{{< go-playground id="M0lvf5r9D8p" >}}
 ```go
 "Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
 // Soy una cadena interpretada
@@ -1228,7 +1246,7 @@ quien es mejor ahora 😒`
 // Pero puedo tener varias líneas,
 // quien es mejor ahora 😒
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Las cadenas interpretadas y las runas tienen la capacidad de procesar
 secuencias de escape, estas secuencias son caracteres precedidos por una barra
@@ -1290,19 +1308,19 @@ Internamente, Go implementa las cadenas como porciones de bytes (`[]byte`), por
 lo que cuentan con casi todas las cualidades de las porciones, solo que son
 inmutables y por esta misma razón no tienen capacidad.
 
-{{% go-playground "yHrBgqgfqE9" %}}
+{{< go-playground id="yHrBgqgfqE9" >}}
 ```go
 x := "Hola"
 
 x[2] = 'L' // Error
 cap(x)     // Error
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y
 `😂` tengan la misma longitud.
 
-{{% go-playground "oCaft33c5jj" %}}
+{{< go-playground id="oCaft33c5jj" >}}
 ```go
 len("Hola") // 4
 // "Hola" es una cadena compuesta por cuatro bytes, cada uno
@@ -1317,12 +1335,12 @@ len("😂") // 4
 // representan una runa
 // '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Por lo que al iterar sobre ellas no se obtendrán caracteres/símbolos sino su
 representación en UTF-8.
 
-{{% go-playground "y0O2H_Y91Tc" %}}
+{{< go-playground id="y0O2H_Y91Tc" >}}
 ```go
 x := "😂"
 
@@ -1335,11 +1353,11 @@ for i := 0; i < len(x); i++ {
 // 152 -> 10011000
 // 130 -> 10000010
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Para evitar este comportamiento se puede usar `range`, que extrae runa a runa.
 
-{{% go-playground "CcnClPYtrEn" %}}
+{{< go-playground id="CcnClPYtrEn" >}}
 ```go
 for _,  v := range "😂" {
   fmt.Println(v)
@@ -1347,12 +1365,12 @@ for _,  v := range "😂" {
 
 // 128514
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 O [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
 en los casos que no se quiera iterar sobre la cadena.
 
-{{% go-playground "cStYBcRb9ZX" %}}
+{{< go-playground id="cStYBcRb9ZX" >}}
 ```go
 x := "😂"
 
@@ -1369,7 +1387,7 @@ for i := 0; i < len(x); {
 
 // 128514
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ### Representación sintáctica
 
@@ -1429,7 +1447,7 @@ porciones o los punteros.
 
 Para crear mapas se pueden usar valores literales.
 
-{{% go-playground "FGRrpitkgtQ" %}}
+{{< go-playground id="FGRrpitkgtQ" >}}
 ```go
 x := map[string]int {
   "cero": 0,
@@ -1438,7 +1456,7 @@ x := map[string]int {
   "tres": 3,
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 O la función `make`, que permite crear mapas vacíos, recibe como argumentos un
 tipo de mapa y opcionalmente una capacidad aproximada, que a diferencia de las
@@ -1449,7 +1467,7 @@ no serán contados en su longitud hasta que reciban algún valor, cosa que puede
 comprobarse usando la función `len(MAPA)`, que retorna la cantidad de elementos
 dentro del mapa y la representa con un número entero del tipo `int`.
 
-{{% go-playground "p1eBzG_B9_G" %}}
+{{< go-playground id="p1eBzG_B9_G" >}}
 ```go
 x := make(map[string]bool, 10)
 
@@ -1461,7 +1479,7 @@ x["c#"] = false
 
 len(x) // 5
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Al igual que los arreglos, para acceder a sus valores se usan los corchetes
 (`[]`). Intentar acceder a una clave que no existe retornará el valor cero del
@@ -1470,7 +1488,7 @@ clave se debe realizar una doble asignación, la primera variable recibirá el
 valor almacenado, y la segunda variable un booleano que será `true` si la clave
 existe o `false` en caso contrario.
 
-{{% go-playground "61Is7Ve_W4G" %}}
+{{< go-playground id="61Is7Ve_W4G" >}}
 ```go
 x := map[string][]int{
   "pares": {2, 4, 6, 8},
@@ -1483,14 +1501,14 @@ z, ok := x["pares"] // [2 4 6 8] true
 a := x["fraccionales"] // []
 b, ok := x["enteros"]  // [] false
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 
 La creación de nuevos pares clave-valor y la modificación de valores existentes
 son tareas bastante sencillas, que consisten en simplemente referenciar la
 clave que se quiere crear/modificar y asignarle un valor.
 
-{{% go-playground "BCPhbpeY_K3" %}}
+{{< go-playground id="BCPhbpeY_K3" >}}
 ```go
 x := map[bool][]interface{}{
   true: []interface{}{0, "True", []int{1, 2}},
@@ -1499,13 +1517,13 @@ x := map[bool][]interface{}{
 x[false] = []interface{}{0, "", []int(nil)}     // Asignación
 x[true] = []interface{}{1, "True", []int{1, 2}} // Modificación
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Ya que sus claves no ofrecen ninguna garantía de orden, usar `range` o
 simplemente mostrarlos como una cadena podría resultar en un comportamiento
 impredecible.
 
-{{% go-playground "89nUjKLW7nn" %}}
+{{< go-playground id="89nUjKLW7nn" >}}
 ```go
 x := map[string]struct{ X, Y float64 }{
   "l1": struct{ X, Y float64 }{5, 10},
@@ -1532,12 +1550,12 @@ for i := 1; i <= len(x); i++ {
   fmt.Println(k, x[k])
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Es posible eliminar elementos de los mapas con la función `delete`, que recibe
 como argumentos un mapa y la clave del elemento a ser eliminado.
 
-{{% go-playground "tN0s8GaicHo" %}}
+{{< go-playground id="tN0s8GaicHo" >}}
 ```go
 x := map[int]string{
   0: "cero",
@@ -1548,7 +1566,7 @@ x := map[int]string{
 
 delete(x, 1<<30)
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ### Representación sintáctica
 
@@ -1679,7 +1697,7 @@ func Sub(operands ...int) int {
 
 `$GOPATH/src/local/arithmetic/example_test.go`:
 
-{{% go-playground "F89MWsdAyLS" %}}
+{{< go-playground id="F89MWsdAyLS" >}}
 ```go
 package arithmetic_test
 
@@ -1707,7 +1725,7 @@ func ExampleSub() {
   // Output: 1
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
 <http://localhost:6060/pkg/local/arithmetic> con un navegador.
@@ -1742,7 +1760,7 @@ letra.
 
 `$GOPATH/src/local/arithmetic/multiexample_test.go`:
 
-{{% go-playground "cKBokfh3L9v" %}}
+{{< go-playground id="cKBokfh3L9v" >}}
 ```go
 package arithmetic_test
 
@@ -1764,7 +1782,7 @@ func ExampleAdd_five() {
   // Output: 15
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ```shell-session
 $ go test -v local/arithmetic
@@ -1792,7 +1810,7 @@ paquete que sean necesarias.
 $ rm -rf $GOPATH/src/local/arithmetic
 ```
 
-{{% go-playground "8D3QO97NKE-" %}}
+{{< go-playground id="8D3QO97NKE-" >}}
 `$GOPATH/src/local/arithmetic/arithmetic.go`:
 
 ```go
@@ -1838,7 +1856,7 @@ func ExampleAdd() {
   // Output: 2
 }
 ```
-{{% /go-playground %}}
+{{< /go-playground >}}
 
 ```shell-session
 $ go test -v local/arithmetic
