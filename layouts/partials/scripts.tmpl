@@ -13,7 +13,7 @@
 {{ end }}
 
 {{ with .Params.math }}
-  {{ $externalsAsync = $externalsAsync | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
+  {{ $externalsAsync = $externalsAsync | append "vendor/mathjax-v3.0.0.js" }}
 {{ end }}
 
 {{ range $externalsAsync }}
