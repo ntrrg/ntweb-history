@@ -23,7 +23,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion = "0.59.1"
+	hugoVersion = "0.60.1"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
@@ -42,7 +42,7 @@ func (BumpVersion) Hugo() error {
 			return err
 		}
 
-		if path == ".git" || path == "content" {
+		if path == ".git" || path == "assets" || path == "content" {
 			return filepath.SkipDir
 		}
 

@@ -1,4 +1,4 @@
-hugo_version := 0.59.1
+hugo_version := 0.60.1
 hugo_port := 1313
 
 .PHONY: all
@@ -14,6 +14,7 @@ bump-version-hugo:
 		grep -v "^\./\.git/" | \
 		grep -v "\.swp\$$" | \
 		grep -v "^\./go\.sum" | \
+		grep -v "^\./assets/" | \
 		grep -v "^\./content/"
 
 .PHONY: clean
