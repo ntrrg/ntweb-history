@@ -42,9 +42,8 @@ params:
   disqus: ntweb
   goPlayground: https://play.golang.org
   projects:
-    - https://github.com/ntrrg/ntdocutils
-    - https://github.com/ntrrg/docker-hugo
     - https://github.com/ntrrg/pish
+    - https://github.com/ntrrg/docker-hugo
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/sdb
     - https://github.com/ntrrg/usersd

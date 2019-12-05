@@ -1,6 +1,6 @@
 ---
 publishdate: 2019-11-28T10:31:22-04:00
-date: 2019-11-28T12:33:33-04:00
+date: 2019-12-04T05:50:01-04:00
 metadata:
   source-code: https://github.com/ntrrg/sdb
   license: MIT
@@ -12,8 +12,6 @@ tags:
   - database
   - key-value-store
   - library
-  - cli
-  - restful-api
   - golangci
   - badgerdb
   - blevesearch
