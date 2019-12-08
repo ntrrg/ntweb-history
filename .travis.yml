@@ -3,9 +3,12 @@ dist: xenial
 git:
   depth: 1
 language: go
-go: "1.13"
+go:
+  - "1.13"
 env:
   - GO111MODULE=on
+before_install:
+  - .mage/compile
 jobs:
   include:
     - stage: "Linting"

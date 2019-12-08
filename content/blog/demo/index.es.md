@@ -79,7 +79,7 @@ _Este es texto en cursiva_
 * [x] una lista de tareas
 
 Esta
-: una lista de definiciones.
+: es una lista de definiciones.
 
 Término:
 : definición, puede agregar los `:` al término.
@@ -138,7 +138,7 @@ $$
 
 Este es `código` de línea.
 
-```go
+```go {linenos=true,hl_lines=["1", "5-7"],linenostart=0}
 package main
 
 import "fmt"

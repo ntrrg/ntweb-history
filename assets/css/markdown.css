@@ -84,6 +84,10 @@
   font-weight: bold;
 }
 
+.markdown ul li input[type="checkbox"] {
+  margin-right: 1ex;
+}
+
 /* Quotes */
 
 .markdown .footnotes {
@@ -148,6 +152,10 @@
 
 .markdown pre > code {
   padding: 0;
+}
+
+.markdown .lntable tbody tr td.lntd:last-child {
+  width: 100%;
 }
 
 /* Keyboard */

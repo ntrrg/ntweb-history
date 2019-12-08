@@ -13,9 +13,11 @@ markup:
     lineNoStart: 1
     lineNos: false
     lineNumbersInTable: true
-    noClasses: true
-    style: monokai
+    noClasses: false
     tabWidth: 2
+  tableOfContents:
+    startLevel: 1
+    endLevel: 6
 outputs:
   home:
     - HTML

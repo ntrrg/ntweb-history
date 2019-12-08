@@ -1,4 +1,4 @@
-module magefile
+module mage
 
 go 1.13
 

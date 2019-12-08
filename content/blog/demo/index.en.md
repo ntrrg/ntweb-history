@@ -138,7 +138,7 @@ $$
 
 Inline `code`.
 
-```go
+```go {linenos=true,hl_lines=["1", "5-7"],linenostart=0}
 package main
 
 import "fmt"

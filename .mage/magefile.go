@@ -86,7 +86,7 @@ func Clean() error {
 type Lint mg.Namespace
 
 func (Lint) Go() error {
-	return sh.RunV("gofmt", "-d", "-e", "-s", "magefile.go")
+	return sh.RunV("gofmt", "-d", "-e", "-s", ".mage/magefile.go")
 }
 
 func Run() error {

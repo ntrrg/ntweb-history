@@ -1,18 +1,37 @@
 nogit-*
 
+######
+# OS #
+######
+
 # MacOS
 .DS_Store
 
+###########
+# Editors #
+###########
+
 # Sublime Text
 *.sublime*
-
-# GNU Screen
-.screenrc
 
 # Vim
 *.sw[op]
 Session.vim
 *~
+
+#########
+# Tools #
+#########
+
+# GNU Screen
+.screenrc
+
+# Mage
+/mage
+
+#######################
+# Frameworks and libs #
+#######################
 
 # Hugo
 /public/
