@@ -1,0 +1,7 @@
+{
+  "url": "https://api.instagram.com/oembed?url=%s",
+  "patterns": [
+    "^https://(www\\.)?instagram\\.com/p/"
+  ]
+}
+

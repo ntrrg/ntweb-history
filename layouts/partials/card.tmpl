@@ -4,6 +4,15 @@
   {{ else if gt (len .Pages) 0 }}
     <a href="{{ .Permalink }}">{{ .Title }} ({{ len .Pages }})</a>
   {{ else }}
+    {{ if isset .Params "image" }}
+      {{ if eq .Type "gallery" }}
+        <a href="{{ .Permalink }}">
+          <img alt="{{ .Title }}" class="lazy-load"
+               data-src="{{ .Params.image }}"/>
+        </a>
+      {{ end }}
+    {{ end }}
+
     <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
 
     {{ with .Description }}

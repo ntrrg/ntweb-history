@@ -1,7 +1,7 @@
 {{ $description := $.Param "description" }}
 {{ $publishdate := .PublishDate.Format "2006-01-02T15:04:05-0700" }}
 {{ $date := .Date.Format "2006-01-02T15:04:05-0700" }}
-{{ $image := (absURL ($.Param "image")) }}
+{{ $image := ($.Param "image" | absURL) }}
 {{ $authorURL := printf "/authors/%s" ($.Param "author") }}
 {{ $author := (.Site.GetPage $authorURL).Params }}
 

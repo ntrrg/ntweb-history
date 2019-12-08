@@ -1,12 +1,21 @@
 baseURL: https://nt.web.ve/
 permalinks:
   blog: /:sections/:slug/
-defaultContentLanguage: en
-defaultContentLanguageInSubdir: true
+  gallery: /:sections/:slug/
 taxonomies:
   tag: tags
   serie: series
 Paginate: 10
+markup:
+  highlight:
+    codeFences: true
+    hl_Lines: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    style: monokai
+    tabWidth: 2
 outputs:
   home:
     - HTML
@@ -27,8 +36,6 @@ outputs:
   page:
     - HTML
     - JSON
-pygmentsCodeFences: true
-pygmentsUseClasses: true
 enableRobotsTXT: true
 params:
   name: ntrrg
@@ -54,7 +61,10 @@ params:
   menu:
     - url: "/blog"
     - url: "/projects"
+    - url: "/gallery"
     - url: "/settings"
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
 languages:
   en:
     languageName: English

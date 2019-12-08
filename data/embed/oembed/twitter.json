@@ -1,0 +1,7 @@
+{
+  "url": "https://publish.twitter.com/oembed?url=%s",
+  "patterns": [
+    "^https://(www\\.)?twitter\\.com/"
+  ]
+}
+

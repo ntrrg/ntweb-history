@@ -8,21 +8,13 @@
 
     <h1 class="article-title">{{ $title }}</h1>
     <h2 class="article-subtitle muted">{{ .Params.position }}</h2>
-    
+
     {{ if ne $title .Params.name }}
       <strong class="name">{{ .Params.name }}</strong>
     {{ end }}
 
     <div class="markdown">
-      {{ with .Params.content }}
-        {{ $content := getJSON .url }}
-
-        {{ if eq .api "github" }}
-          {{ base64Decode $content.content | markdownify }}
-        {{ end }}
-      {{ else }}
-        {{ .Content }}
-      {{ end }}
+      {{ .Content }}
     </div>
 
     <br/>

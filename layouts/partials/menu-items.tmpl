@@ -1,5 +1,5 @@
 {{ range .Site.Params.menu }}
-  {{ if or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+  {{ if findRE "^https?://" .url 1 }}
     | <a href="{{ .url }}">{{ .text }}</a>
   {{ else }}
     {{ $page := $.Site.GetPage (strings.TrimRight "/" .url) }}

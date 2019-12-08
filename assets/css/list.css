@@ -19,6 +19,8 @@
   box-sizing: border-box;
   margin: 0.5em;
   padding: 1.5em 2em;
+
+  position: relative;
 }
 
 .card h3 {

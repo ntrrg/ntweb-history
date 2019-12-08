@@ -1,0 +1,15 @@
+.gallery {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: center;
+}
+
+.gallery iframe,
+.gallery twitter-widget,
+.gallery .fb-post {
+  display: block !important;
+  text-align: center !important;
+
+  margin: 0 auto !important;
+}
+

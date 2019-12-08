@@ -32,7 +32,7 @@
     <div>
       <strong>{{ i18n (replace ($key | upper) "-" "_") }}:</strong>
 
-      {{ if or (hasPrefix $value "http://") (hasPrefix $value "https://") }}
+      {{ if findRE "^https?://" $value 1 }}
         <a href="{{ $value }}">{{ $value }}</a>
       {{ else }}
         {{ $value }}
