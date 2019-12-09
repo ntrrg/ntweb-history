@@ -2,7 +2,15 @@
   "lang": {{ jsonify .Language.Lang }},
   "title": {{ jsonify .Title }},
   "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
-  "content": "{{ base64Encode .Content }}",
+  "content": {{- with .Params.content -}}
+    {{ $content := getJSON .url }}
+
+    {{- if eq .api "github" -}}
+      "{{ replace $content.content "\n" "\\n" }}"
+    {{- end -}}
+  {{- else -}}
+    "{{ base64Encode .Content }}"
+  {{- end }},
   "data": {{ block "data" . }}{}{{ end }},
   "altLang": [
     {{ range $i, $val := .Translations }}

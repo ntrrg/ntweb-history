@@ -9,17 +9,17 @@
 
     {{ partial "metadata-box.tmpl" . }}
 
+    {{ if eq .Params.toc true }}
+      <details class="toc">
+        <summary class="toc-title">
+          <strong>{{ i18n "TOC_TITLE" }}:</strong>
+        </summary>
+
+        {{ .TableOfContents }}
+      </details>
+    {{ end }}
+
     <div class="markdown">
-      {{ if eq .Params.toc true }}
-        <details class="toc">
-          <summary class="toc-title">
-            <strong>{{ i18n "TOC_TITLE" }}:</strong>
-          </summary>
-
-          {{ .TableOfContents }}
-        </details>
-      {{ end }}
-
       {{ with .Params.content }}
         {{ $content := getJSON .url }}
 

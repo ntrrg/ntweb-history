@@ -7,9 +7,10 @@ go:
   - "1.13"
 env:
   - GO111MODULE=on
+before_install:
+  - .mage/compile.sh
 jobs:
   include:
-    - script: .mage/compile
     - stage: "Linting"
       script: ./mage -v lint:go
     - stage: "Content generation"
