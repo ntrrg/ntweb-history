@@ -46,7 +46,11 @@ func (BumpVersion) Hugo() error {
 			return filepath.SkipDir
 		}
 
-		if info.IsDir() || strings.HasSuffix(path, ".swp") || path == "go.sum" {
+		if info.IsDir() || strings.HasSuffix(path, ".swp") {
+			return nil
+		}
+
+		if path == "mage" || path == ".mage/go.sum" {
 			return nil
 		}
 

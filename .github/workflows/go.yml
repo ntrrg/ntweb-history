@@ -1,0 +1,38 @@
+name: Go
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  ci:
+    name: CI
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        go_version: ["1.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{ matrix.go_version }}
+
+      - name: Get source code
+        uses: actions/checkout@v1
+
+      - name: Get dependencies
+        run: |
+          .mage/compile.sh
+
+      - name: Lint
+        run: ./mage -v lint:go
+
+      - name: Content generation: Go packages
+        run: ./mage -v gen:gopkgs
+
+      - name: Content generation: Projects
+        run: ./mage -v gen:projects
+
