@@ -32,6 +32,16 @@
   }
 }
 
+/* Share buttons */
+
+.share-buttons {
+  margin-top: 1em;
+}
+
+.share-buttons svg {
+  width: 1.5em;
+}
+
 /* Table of contents */
 
 .toc {

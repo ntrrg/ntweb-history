@@ -4,6 +4,7 @@
     <h1 class="article-title">{{ $title }}</h1>
 
     {{ partial "metadata-box.tmpl" . }}
+    {{ partial "share-buttons.tmpl" . }}
 
     <div class="markdown">
       {{ .Content }}

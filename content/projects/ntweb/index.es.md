@@ -29,7 +29,7 @@ portafolio, una plataforma de blog y URLs personalizadas para paquetes Go.
 
 **Requerimientos:**
 
-* Hugo >= 0.59
+* Hugo >= 0.60.1
 
 Descargue el código fuente y ejecute el siguente comando en la carpeta raíz del
 proyecto:
