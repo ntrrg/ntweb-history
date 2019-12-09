@@ -12,10 +12,9 @@ tags:
   - tag4
   - tag5
 math: true
+toc: true
 draft: true
 ---
-
-{{< toc >}}
 
 # Paragraphs
 

@@ -12,6 +12,7 @@ tags:
   - go
   - contribuir-a-un-proyecto
 comments: true
+toc: true
 ---
 
 Además de intimidante, hacer una contribución por primera vez en cualquier
@@ -27,8 +28,6 @@ oficial que se enfoca en explicar los pasos para realizar contribuciones y
 hacer de este trabajo una tarea más amigable, por lo que gran parte de las
 instrucciones que se encuentran aquí son extraídas o están inspiradas en
 ella.
-
-{{< toc >}}
 
 # Requisitos
 

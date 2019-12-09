@@ -10,6 +10,7 @@ oembed: https://example.com/oembed?format=json&url=%s
 script: <script async src="https://example.com/widget.js" data-url="%s"></script>
 tags:
   - tag1
+comments: true
 draft: true
 ---
 

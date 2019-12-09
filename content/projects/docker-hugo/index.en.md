@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2019-11-14T11:56:24-04:00
+date: 2019-12-08T20:35:10-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -11,6 +11,7 @@ tags:
   - containers
   - docker
   - hugo
+toc: true
 ---
 
 [![Docker Build Status](https://img.shields.io/docker/build/ntrrg/hugo.svg)](https://hub.docker.com/r/ntrrg/hugo)
@@ -21,12 +22,11 @@ tags:
 
 | Tag | Dockerfile |
 | --: | :-- |
-| `latest`, `0.59.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.1/Dockerfile) |
+| `latest`, `0.60.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.60.1/Dockerfile) |
+| `0.59.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.1/Dockerfile) |
 | `0.59.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.0/Dockerfile) |
 
 <br/>
-
-{{< toc >}}
 
 # Usage
 

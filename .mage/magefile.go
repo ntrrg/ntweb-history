@@ -215,7 +215,7 @@ var (
 type Gen mg.Namespace
 
 func (Gen) Default() {
-	mg.Deps(Gen.GoPkgs, Gen.Projects)
+	mg.SerialDeps(Gen.GoPkgs, Gen.Projects)
 }
 
 // Go packages

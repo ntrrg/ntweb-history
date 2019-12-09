@@ -12,6 +12,7 @@ tags:
   - frontend
   - generador-de-sitios-estáticos
   - hugo
+toc: true
 draft: true
 ---
 
@@ -63,8 +64,6 @@ son:
   [Netlify CMS][] y [Forestry][] que le facilitan la vida a los editores.
 
 * Un montón más que pueden verse [aquí][Hugo features].
-
-{{< toc >}}
 
 # Herramientas necesarias
 

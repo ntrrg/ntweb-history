@@ -13,6 +13,7 @@ content:
 tags:
   - tag1
 comments: true
+toc: true
 draft: true
 ---
 

@@ -13,6 +13,7 @@ tags:
   - programación-de-sistemas
   - programación-web
   - backend
+toc: true
 ---
 
 [Go license]: https://golang.org/LICENSE
@@ -53,8 +54,6 @@ Algunas de sus características más resaltantes son:
 
 * Minimalista, la mayoría de las utilidades que faltan en el lenguaje fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
-
-{{< toc >}}
 
 # Funcionalidades excluidas
 

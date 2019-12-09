@@ -1,8 +1,7 @@
 ---
 title: Payment methods
+toc: true
 ---
-
-{{< toc false >}}
 
 # Bolívares
 
@@ -14,6 +13,7 @@ Corriente
 20850363
 Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
+04247484276
 ```
 
 ## Banco Mercantil
@@ -24,6 +24,7 @@ Ahorro
 20850363
 Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
+04247484276
 ```
 
 # Crypto
@@ -48,10 +49,34 @@ ntrrgx@gmail.com
 ntrrgx@gmail.com
 ```
 
+## Chase
+
+```
+512699585
+122100024
+Checking
+Miguel Rivera Notararigo
+ntrrgx@gmail.com
+```
+
+## Google Pay
+
+```
+ntrrgx@gmail.com
++15203130363
+```
+
 ## Uphold
 
 ```
 ntrrg
+ntrrgx@gmail.com
+```
+
+## Zelle
+
+```
+Miguel Rivera Notararigo
 ntrrgx@gmail.com
 ```
 

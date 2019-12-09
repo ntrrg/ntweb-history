@@ -14,6 +14,7 @@ techs:
   - live-boot
   - travis-ci
   - make
+toc: true
 draft: true
 ---
 
@@ -25,8 +26,6 @@ nor release names, just weekly builds.
 
 * Debian GNU/Linux 10 (Buster)
 * GNU Make
-
-{{< toc >}}
 
 ```text
 ROOTFS
