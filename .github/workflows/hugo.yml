@@ -17,14 +17,14 @@ jobs:
     steps:
       - name: Set up Hugo
         run: |
-          wget -O /tmp/hugo.tar.gz "https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo_version }}/hugo_extended_${{ matrix.hugo_version }}_Linux-64bit.tar.gz"
-          tar -xf /tmp/hugo.tar.gz -C /usr/bin/
+          wget -qO /tmp/hugo.tar.gz "https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo_version }}/hugo_extended_${{ matrix.hugo_version }}_Linux-64bit.tar.gz"
+          tar -xf /tmp/hugo.tar.gz -C /tmp/
 
       - name: Get source code
         uses: actions/checkout@v1
 
       - name: Build
-        run: hugo
+        run: /tmp/hugo
 
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
