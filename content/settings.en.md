@@ -2,16 +2,23 @@
 title: Settings
 type: custom
 layout: settings
+commentsToggler:
+  text: Comments
+  options:
+    - text: Enable
+      value: true
+    - text: Disable
+      value: false
 theme:
   text: Theme
-  themes:
+  options:
     - text: Dark
       value: dark
     - text: Light
       value: light
 codetheme:
   text: Code theme
-  themes:
+  options:
     - text: Monokai
       value: monokai
     - text: Monokai Light
@@ -22,7 +29,7 @@ codetheme:
 
 Inline `code`.
 
-```go
+```go {linenos=true,hl_lines=["1", "5-7"],linenostart=0}
 package main
 
 import "fmt"

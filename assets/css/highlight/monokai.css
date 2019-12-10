@@ -8,7 +8,7 @@ body[data-code-theme="monokai"] {
   --code-err-color: #1e0010;
 
   /* LineHighlight */
-  --code-hl-background: #ffffcc;
+  --code-hl-background: #555;
 
   /* Keyword */
   --code-k-color: #66d9ef;

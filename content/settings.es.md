@@ -2,16 +2,23 @@
 title: Ajustes
 type: custom
 layout: settings
+commentsToggler:
+  text: Comentarios
+  options:
+    - text: Habilitar
+      value: true
+    - text: Deshabilitar
+      value: false
 theme:
   text: Tema
-  themes:
+  options:
     - text: Claro
       value: light
     - text: Oscuro
       value: dark
 codetheme:
   text: Tema de código
-  themes:
+  options:
     - text: Monokai
       value: monokai
     - text: Monokai Light
@@ -22,7 +29,7 @@ codetheme:
 
 Este es `código` de línea.
 
-```go
+```go {linenos=true,hl_lines=["1", "5-7"],linenostart=0}
 package main
 
 import "fmt"

@@ -1,13 +1,13 @@
 // Theme
 
 window.addEventListener('DOMContentLoaded', () => {
-  const theme = localStorage.getItem('ntweb-theme')
+  const theme = localStorage.getItem('general-theme')
 
   if (theme) {
     setTheme(theme)
   }
 
-  const codeTheme = localStorage.getItem('ntweb-code-theme')
+  const codeTheme = localStorage.getItem('code-theme')
 
   if (codeTheme) {
     setCodeTheme(codeTheme)
@@ -16,12 +16,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function setTheme(theme) {
   document.body.dataset.theme = theme
-  localStorage.setItem('ntweb-theme', theme)
+  localStorage.setItem('general-theme', theme)
 }
 
 function setCodeTheme(theme) {
   document.body.dataset.codeTheme = theme
-  localStorage.setItem('ntweb-code-theme', theme)
+  localStorage.setItem('code-theme', theme)
 }
 
 // Image lazy loading
