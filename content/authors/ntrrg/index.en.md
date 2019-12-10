@@ -87,9 +87,9 @@ have basic knoledge of C.
 * **VCS:** Git.
 
 * **QA:** linting, unit testing, CI (Drone, Travis, GitLab CI, Bitbucket
-  Pipelines, GolangCI), CD.
+  Pipelines, GolangCI, GitHub Actions), CD.
 
-* **Cloud:** GitHub Pages, Netlify, Heroku, GCP.
+* **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
 
 * **Systems administration:** Linux (Debian, Alpine), Shell Scripting,
   Containers (Docker, systemd-nspawn), Containers orchestration (Docker Swarm).

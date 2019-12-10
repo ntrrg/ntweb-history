@@ -71,9 +71,9 @@ languages:
   en:
     languageName: English
     params:
-      description: A small site with great intentions.
+      description: I am Miguel Angel, just another developer working hard to don't be just another developer.
   es:
     languageName: Español
     params:
-      description: Un pequeño sitio web con grandes intenciones.
+      description: Soy Miguel Angel, solo otro desarrollador más trabajando duro para no ser solo otro desarrollador más.
 

@@ -83,10 +83,10 @@ Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe q
 
 * **VCS:** Git.
 
-* **QA:** linting, unit testing, CI (Drone, Travis, GitLab CI, Bitbucket
-  Pipelines, GolangCI), CD.
+* **QA:** linting, pruebas unitarias, CI (Drone, Travis, GitLab CI, Bitbucket
+  Pipelines, GolangCI, GitHub Actions), CD.
 
-* **Cloud:** GitHub Pages, Netlify, Heroku, GCP.
+* **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
 
 * **Administración de sistemas:** Linux (Debian, Alpine), Shell Scripting,
   Contenedores (Docker, systemd-nspawn), Orquestación de contenedores (Docker

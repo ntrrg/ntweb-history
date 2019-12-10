@@ -10,10 +10,10 @@ tags:
   - html5
   - css3
   - javascript
+  - website
   - hugo
   - mage
   - docker
-  - website
   - github-actions
   - netlify
 ---
