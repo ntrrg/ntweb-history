@@ -11,12 +11,6 @@
 {{ else if gt (len .Pages) 0 }}
   {{ $suffix = printf "%v-list" $suffix  }}
   {{ $sheets = $sheets | append "css/list.css" }}
-
-  {{ if eq .Type "gallery" }}
-    {{ $suffix = printf "%v-gallery" $suffix  }}
-    {{ $sheets = $sheets | append "css/gallery.css" }}
-  {{ end }}
-
   {{ $sheets = $sheets | append "css/markdown.css" }}
   {{ $sheets = $sheets | append "css/highlight/_main.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokailight.css" }}
@@ -28,6 +22,7 @@
   {{ if eq .Type "gallery" }}
     {{ $suffix = printf "%v-album" $suffix  }}
     {{ $sheets = $sheets | append "css/album.css" }}
+    {{ $sheets = $sheets | append "css/gallery.css" }}
   {{ end }}
 
   {{ $sheets = $sheets | append "css/markdown.css" }}

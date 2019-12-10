@@ -11,6 +11,11 @@
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = $scripts | append "js/article.js" }}
+
+  {{ if eq .Type "gallery" }}
+    {{ $suffix = printf "%v-album" $suffix  }}
+    {{ $scripts = $scripts | append "js/gallery.js" }}
+  {{ end }}
 {{ end }}
 
 {{ with .Params.math }}
