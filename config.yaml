@@ -18,6 +18,9 @@ markup:
   tableOfContents:
     startLevel: 1
     endLevel: 6
+  goldmark:
+    renderer:
+      unsafe: true
 outputs:
   home:
     - HTML

@@ -11,7 +11,6 @@ tags:
   - backend
   - devops
   - sysadmin
-math: true
 comments: true
 ---
 
@@ -160,10 +159,10 @@ más ligeros y fáciles de compartir con el equipo de trabajo.
 
 No se debe confundir sistema operativo con distribuciones. El sistema operativo
 es Linux (el kernel) y Alpine, Arch, CentOS, Debian, Deepin, Elementary,
-Fedora, Mind, Ubuntu, \\(etc \times 10e^\infty\\) 😂 son distribuciones, que
-se encargan de agregar aplicaciones sobre Linux para facilitar su uso. Todos
-los contenedores corren el mismo sistema operativo, pero pueden tener
-diferentes distribuciones.
+Fedora, Mind, Ubuntu, etc x 10e<sup>∞</sup> 😂 son distribuciones, que se
+encargan de agregar aplicaciones sobre Linux para facilitar su uso. Todos los
+contenedores corren el mismo sistema operativo, pero pueden tener diferentes
+distribuciones.
 
 {{< img src="images/os-definition-es.jpg" alt="Sistema operativo" class="block" >}}
 
