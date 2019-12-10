@@ -79,7 +79,7 @@ mismo entorno (o muy parecido) para evitar problemas de compatibilidad.
 
 El resultado, una estructura parecida a:
 
-{{< img src="images/architectures-bare-metal-es.svg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
+{{< img src="images/architectures-bare-metal-es.jpg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
 
 # Con máquinas virtuales
 
@@ -134,7 +134,7 @@ El resultado, una estructura parecida a:
 Se generan dos estructuras, la primera para el entorno de producción y la otra
 en la computadora de cada programador:
 
-{{< img src="images/architectures-vm-es.svg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
+{{< img src="images/architectures-vm-es.jpg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
 
 # Contenedores (¡¡POR FIN!!)
 
@@ -165,7 +165,7 @@ se encargan de agregar aplicaciones sobre Linux para facilitar su uso. Todos
 los contenedores corren el mismo sistema operativo, pero pueden tener
 diferentes distribuciones.
 
-{{< img src="images/os-definition-es.svg" alt="Sistema operativo" class="block" >}}
+{{< img src="images/os-definition-es.jpg" alt="Sistema operativo" class="block" >}}
 
 Existen muchas herramientas para manipular contenedores y cada una tiene
 métodos específicos de trabajar con ellos, pero normalmente todas tienen un
@@ -252,7 +252,7 @@ iguales, con la excepción de los programadores que usen Windows o macOS, pero
 dudo que les importe el consumo desproporcionado de recursos, normalmente
 tienen un hardware potente, por algo usan Windows o macOS no? 😅.
 
-{{< img src="images/architectures-container-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
+{{< img src="images/architectures-container-es.jpg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # En conclusión
 
@@ -264,7 +264,9 @@ y dónde deben, pueden mitigarse sus desventajas y obtener más ventajas que
 usando contenedores. Lo importante es siempre aplicar la arquitectura correcta,
 y conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 
-{{< img src="images/architectures-es.svg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
+{{< img src="images/architectures-bare-metal-es.jpg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
+{{< img src="images/architectures-vm-es.jpg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
+{{< img src="images/architectures-container-es.jpg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # Atribuciones
 
