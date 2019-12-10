@@ -22,7 +22,7 @@
     <a href="{{ $.Page.Site.Params.goPlayground }}/p/{{ . }}"
        target="_blank" class="go-playground-link">
   {{ else }}
-    <a target="_blank" class="go-playground-link"
+    <a href="#" target="_blank" class="go-playground-link"
        data-code="{{ base64Encode $playground }}">
   {{ end }}
     {{ i18n "GO_PLAYGROUND_RUN" }}

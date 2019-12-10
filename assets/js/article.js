@@ -32,9 +32,14 @@ function setupGoPlaygroundLinks(baseURL, content) {
 async function getGoPlaygroundLink(e) {
   const link = e.target
   const code = link.dataset.code
+  const isRunnable = link.href[link.href.length - 1] === "#"
 
-  if (code === undefined) {
+  if (code === undefined || !isRunnable) {
     return
+  }
+
+  if (isRunnable) {
+    e.preventDefault()
   }
 
   link.innerText = i18n.GO_PLAYGROUND_SENDING
