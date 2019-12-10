@@ -138,7 +138,7 @@ en la computadora de cada programador:
 
 # Contenedores (¡¡POR FIN!!)
 
-{{% note %}}
+{{< note >}}
 
 Ya se que todo lo que escribí arriba depende de la técnica de trabajo de cada
 equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒😂, imaginen que
@@ -147,7 +147,7 @@ aspiradora que también lava, hace la comida y le canta canciones de cuna»*,
 igual que ellos, yo también tengo que vender mí producto 😄 (en este caso, el
 uso de los contenedores, porque yo no inventé los contenedores 😂).
 
-{{% /note %}}
+{{< /note >}}
 
 Ahora que ya hay algo de contexto, los contenedores pueden definirse como
 entornos aislados y previamente configurados en los que se ejecutará

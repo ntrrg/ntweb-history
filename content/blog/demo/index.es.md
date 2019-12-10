@@ -205,19 +205,19 @@ func main() {
 
 ## Notas
 
-{{% note %}}
+{{< note >}}
 Esta es una nota
-{{% /note %}}
+{{< /note >}}
 
-{{% note "Mi título" %}}
+{{< note "Mi título" >}}
 Esta es una nota con título personalizado.
-{{% /note %}}
+{{< /note >}}
 
 ## Enlaces de interés
 
-{{% loi %}}
+{{< loi >}}
 * <https://nt.web.ve>
 * <https://nt.web.ve/en>
 * <https://nt.web.ve/es>
-{{% /loi %}}
+{{< /loi >}}
 
