@@ -41,7 +41,42 @@
           "title": {{ jsonify .Title }}
         }
       {{ end }}
+    ],
+    "searchIndex": [
+      {{ $i := 0 }}
+
+      {{ range .Sections }}
+        {{ if in "blog projects" .Type }}
+          {{ range .Pages }}
+            {{ if ne $i 0 }},{{ end }}
+            {{ template "document" . }}
+            {{ $i = add $i 1 }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
     ]
+  }
+{{ end }}
+
+{{ define "document" }}
+  {
+    "url": {{ jsonify .Permalink }},
+    "lang": {{ jsonify .Language.Lang }},
+    "title": {{ jsonify .Title }},
+    "author": {{ jsonify .Params.author }},
+    "date": {{ jsonify .Date }},
+    "publihsDate": {{ jsonify .PublishDate }},
+    "description": {{ jsonify .Description }},
+    "content": {{- with .Params.content -}}
+      {{ $content := getJSON .url }}
+
+      {{- if eq .api "github" -}}
+        "{{ replace $content.content "\n" "\\n" }}"
+      {{- end -}}
+    {{- else -}}
+      "{{ base64Encode .Content }}"
+    {{- end }},
+    "tags": {{ jsonify .Params.tags }}
   }
 {{ end }}
 

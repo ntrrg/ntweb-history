@@ -1,4 +1,5 @@
 {
+  "url": {{ jsonify .Permalink }},
   "lang": {{ jsonify .Language.Lang }},
   "title": {{ jsonify .Title }},
   "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},

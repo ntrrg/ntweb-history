@@ -67,7 +67,6 @@ params:
     - url: "/blog"
     - url: "/projects"
     - url: "/gallery"
-    - url: "/settings"
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 languages:

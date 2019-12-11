@@ -4,10 +4,16 @@
 {{ $externalsAsync := slice }}
 
 {{ $suffix := "" }}
+{{ $suffixAsync := "" }}
 {{ $scripts = $scripts | append "js/main.js" }}
 
 {{ if .IsHome }}
 {{ else if gt (len .Pages) 0 }}
+{{ else if eq .Params.layout "search" }}
+  {{ $suffix = printf "%v-search" $suffix  }}
+  {{ $scripts = $scripts | append "js/search.js" }}
+
+  {{ $externals = $externals | append "vendor/lunr-v2.3.8.js" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $scripts = $scripts | append "js/article.js" }}
@@ -19,7 +25,7 @@
 {{ end }}
 
 {{ with .Params.math }}
-  {{ $externals = $externals | append "vendor/mathjax-v3.0.0.js" }}
+  {{ $externalsAsync = $externalsAsync | append "vendor/mathjax-v3.0.0.js" }}
 {{ end }}
 
 {{ range $externals }}
@@ -49,13 +55,31 @@
     {{ $script := resources.Get . }}
     <script defer src="{{ $script.Permalink }}"></script>
   {{ end }}
+
+  {{ range $scriptsAsync }}
+    {{ $script := resources.Get . }}
+    <script async src="{{ $script.Permalink }}"></script>
+  {{ end }}
 {{ else }}
   {{ $res := slice }}
-  {{ range $scripts }}{{ $res = $res | append (resources.Get .) }}{{ end }}
+
+  {{ range $scripts }}
+    {{ $res = $res | append (resources.Get .) }}
+  {{ end }}
 
   {{ $script := resources.Concat (printf "js/bundle%v.js" $suffix) $res | minify | fingerprint }}
 
   <script defer src="{{ $script.Permalink }}"
+          integrity="{{ $script.Data.Integrity }}"></script>
+
+  {{ $resAsync := slice }}
+  {{ range $scriptsAsync }}
+    {{ $resAsync = $resAsync | append (resources.Get .) }}
+  {{ end }}
+
+  {{ $script := resources.Concat (printf "js/bundle-async%v.js" $suffixAsync) $res | minify | fingerprint }}
+
+  <script async src="{{ $script.Permalink }}"
           integrity="{{ $script.Data.Integrity }}"></script>
 {{ end }}
 

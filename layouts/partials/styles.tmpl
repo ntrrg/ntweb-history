@@ -15,6 +15,9 @@
   {{ $sheets = $sheets | append "css/highlight/_main.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokailight.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokai.css" }}
+{{ else if eq .Params.layout "search" }}
+  {{ $suffix = printf "%v-search" $suffix  }}
+  {{ $sheets = $sheets | append "css/list.css" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
   {{ $sheets = $sheets | append "css/article.css" }}

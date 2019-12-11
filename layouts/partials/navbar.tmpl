@@ -4,5 +4,15 @@
   </strong>
 
   {{ partial "menu-items.tmpl" . }}
+
+  <div>
+    {{ with $.Site.GetPage "/search" }}
+      [<a href="{{ .Permalink }}">{{ .Title }}</a>]
+    {{ end }}
+
+    {{ with $.Site.GetPage "/settings" }}
+      [<a href="{{ .Permalink }}">{{ .Title }}</a>]
+    {{ end }}
+  </div>
 </nav>
 
