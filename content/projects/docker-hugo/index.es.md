@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2019-12-08T20:35:10-04:00
+date: 2019-12-11T17:00:10-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -22,7 +22,8 @@ toc: true
 
 | Etiqueta | Dockerfile |
 | --: | :-- |
-| `latest`, `0.60.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.60.1/Dockerfile) |
+| `latest`, `0.61.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.61.0/Dockerfile) |
+| `0.60.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.60.1/Dockerfile) |
 | `0.59.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.1/Dockerfile) |
 | `0.59.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.0/Dockerfile) |
 
@@ -38,7 +39,7 @@ $ docker run --rm -v /ruta/a/mi/sitio/:/site/ \
 Puede usarse cualquier comando del CLI de Hugo, para más información ejecutar `docker run --rm ntrrg/hugo help`
 o ver la [documentación oficial](https://gohugo.io/commands/).
 
-{{% note %}}
+{{< note >}}
 Como el binario de Hugo del contenedor es ejecutado por `root`, es recomendable
 agregar la opción `-u` de Docker.
 
@@ -48,7 +49,7 @@ $ docker run --rm -v /ruta/a/mi/sitio/:/site/ \
   -v ${TMPDIR:-/tmp/}:/tmp/ \
   ntrrg/hugo [OPCIONES] [COMANDO]
 ```
-{{% /note %}}
+{{< /note >}}
 
 ## Ejemplos
 

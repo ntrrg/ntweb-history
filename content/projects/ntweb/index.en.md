@@ -29,7 +29,7 @@ portfolio, a blogging platform and Go packages vanity URLs.
 
 **Requirements:**
 
-* Hugo >= 0.60.1
+* Hugo >= 0.61.0
 
 Get the source code and run the following command in the project root
 directory:

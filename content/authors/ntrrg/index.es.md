@@ -71,7 +71,7 @@ Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe q
 
 ### Habilidades:
 
-* **Lenguajes de programación:** Go, JavaScript, Python, C, PHP.
+* **Lenguajes de programación:** Go, C, JavaScript, Python, PHP.
 
 * **Interfaces de usuario:** Web (HTML, CSS, JavaScript).
 
@@ -92,7 +92,7 @@ Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe q
   Contenedores (Docker, systemd-nspawn), Orquestación de contenedores (Docker
   Swarm).
 
-* **Frameworks y bibliotecas:** Hugo.
+* **Frameworks y bibliotecas:** Badger, Bleve, Hugo.
 
 Dele un vistazo a mi [CV](https://docs.google.com/document/d/1bpNTpgJaeQeQHOCwvgACP91DUgfQ1NUo-ZhFe8EMH3U/edit?usp=sharing) ([PDF](/cv/es.pdf)).
 

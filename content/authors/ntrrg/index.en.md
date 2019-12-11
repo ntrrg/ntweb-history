@@ -74,7 +74,7 @@ have basic knoledge of C.
 
 ### Skills
 
-* **Programming languages:** Go, JavaScript, Python, C, PHP.
+* **Programming languages:** Go, C, JavaScript, Python, PHP.
 
 * **User interfaces:** Web (HTML, CSS, JavaScript).
 
@@ -94,7 +94,7 @@ have basic knoledge of C.
 * **Systems administration:** Linux (Debian, Alpine), Shell Scripting,
   Containers (Docker, systemd-nspawn), Containers orchestration (Docker Swarm).
 
-* **Frameworks and libs:** Hugo.
+* **Frameworks and libs:** Badger, Bleve, Hugo.
 
 Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/cv/en.pdf)).
 
