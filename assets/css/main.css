@@ -106,8 +106,9 @@ a {
   grid-area: header;
 }
 
-#body > header > div {
-  margin-top: 0.5em;
+#body > header nav a.is-active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 #body > header form {
