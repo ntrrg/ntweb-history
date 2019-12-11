@@ -8,7 +8,10 @@
     {{ end }}
 
     {{ partial "metadata-box.tmpl" . }}
-    {{ partial "share-buttons.tmpl" . }}
+
+    {{ if in "blog gallery projects" .Type }}
+      {{ partial "share-buttons.tmpl" . }}
+    {{ end }}
 
     {{ if eq .Params.toc true }}
       <details class="toc">

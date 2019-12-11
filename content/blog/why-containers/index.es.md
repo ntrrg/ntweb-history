@@ -264,7 +264,9 @@ usando contenedores. Lo importante es siempre aplicar la arquitectura correcta,
 y conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
 
 {{< img src="images/architectures-bare-metal-es.jpg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
+
 {{< img src="images/architectures-vm-es.jpg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
+
 {{< img src="images/architectures-container-es.jpg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # Atribuciones
