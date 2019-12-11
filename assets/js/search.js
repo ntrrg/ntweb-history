@@ -5,7 +5,6 @@ async function buildSearchIndex() {
   window.idx = lunr(function () {
     this.ref('url')
     this.field('title')
-    this.field('author')
     this.field('description')
     this.field('content')
 
@@ -23,8 +22,8 @@ async function search(q) {
     await buildSearchIndex()
   }
 
-  const results = idx.search(q)
   const resultsEl = document.querySelector('#search-results')
+  const results = idx.search(q)
 
   resultsEl.innerHTML = ''
 
@@ -54,14 +53,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (q) {
     search(q)
+    document.querySelector('#search-box input').value = q
   }
 })
 
-document.querySelector('#search-box').addEventListener('keyup', (e) => {
-  const q = e.target.value
+document.querySelector('#search-box').addEventListener('submit', (e) => {
+  const q = e.target.querySelector('input').value
 
   if (!window.searching && q) {
     search(q)
   }
+
+  e.preventDefault()
 })
 

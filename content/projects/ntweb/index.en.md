@@ -110,3 +110,5 @@ Working on this project I use/used:
 
 * [GitHub Actions](https://github.com/features/actions)
 
+* [Lunr](https://lunrjs.com)
+

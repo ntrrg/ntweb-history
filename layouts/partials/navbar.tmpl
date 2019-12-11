@@ -7,7 +7,8 @@
 
   <div>
     {{ with $.Site.GetPage "/search" }}
-      [<a href="{{ .Permalink }}">{{ .Title }}</a>]
+      [<form method="GET" action="{{ .Permalink }}">
+        <input type="search" placeholder="{{ .Title }}..." name="q"/></form>]
     {{ end }}
 
     {{ with $.Site.GetPage "/settings" }}

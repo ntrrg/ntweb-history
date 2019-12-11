@@ -110,6 +110,17 @@ a {
   margin-top: 0.5em;
 }
 
+#body > header form {
+  display: inline-block;
+}
+
+#body > header form input {
+  width: 20ex;
+
+  border: none;
+  border-bottom: 0.1em solid;
+}
+
 #body > main {
   max-width: 100vw;
 

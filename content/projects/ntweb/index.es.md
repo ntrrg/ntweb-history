@@ -110,3 +110,5 @@ Trabando en este proyecto uso/usé:
 
 * [GitHub Actions](https://github.com/features/actions)
 
+* [Lunr](https://lunrjs.com)
+

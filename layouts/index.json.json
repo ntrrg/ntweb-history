@@ -63,10 +63,7 @@
     "url": {{ jsonify .Permalink }},
     "lang": {{ jsonify .Language.Lang }},
     "title": {{ jsonify .Title }},
-    "author": {{ jsonify .Params.author }},
     "date": {{ jsonify .Date }},
-    "publihsDate": {{ jsonify .PublishDate }},
-    "description": {{ jsonify .Description }},
     "content": {{- with .Params.content -}}
       {{ $content := getJSON .url }}
 
@@ -75,8 +72,7 @@
       {{- end -}}
     {{- else -}}
       "{{ base64Encode .Content }}"
-    {{- end }},
-    "tags": {{ jsonify .Params.tags }}
+    {{- end }}
   }
 {{ end }}
 
