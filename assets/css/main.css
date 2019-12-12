@@ -111,15 +111,35 @@ a {
   text-decoration: underline;
 }
 
-#body > header form {
+#body > header .navbar-search,
+#body > header .navbar-search form {
   display: inline-block;
+
+  position: relative;
 }
 
-#body > header form input {
-  width: 20ex;
+#body > header .navbar-search form input {
+  width: 0ex;
 
   border: none;
+}
+
+#body > header .navbar-search:hover form input,
+#body > header .navbar-search form input:focus {
+  width: 20ex;
+
   border-bottom: 0.1em solid;
+
+  margin-right: 1ex;
+}
+
+#body > header .navbar-search svg {
+  height: 1em;
+
+  color: var(--accent-color);
+
+  position: relative;
+  top: 0.15em;
 }
 
 #body > main {
