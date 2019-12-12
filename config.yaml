@@ -58,7 +58,6 @@ params:
     - https://github.com/ntrrg/docker-hugo
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/sdb
-    - https://github.com/ntrrg/usersd
   goPackages:
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/sdb

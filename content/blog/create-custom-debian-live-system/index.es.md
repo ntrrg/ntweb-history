@@ -2,9 +2,8 @@
 title: Crear un sistema Debian live personalizado
 date: 2018-08-15T23:41:00-04:00
 description: Crear un sistema Debian live personalizado
-categories:
-  - tecnología
 tags:
+  - tecnología
   - sistemas-operativos
   - sysadmin
   - debian

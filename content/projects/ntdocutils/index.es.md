@@ -1,7 +1,7 @@
 ---
 title: ntDocutils
 publishdate: 2017-03-06T01:49:00-04:00
-date: 2019-11-15T06:09:00-04:00
+date: 2018-06-21T13:27:00-04:00
 description: Gestor de temas para Docutils.
 metadata:
   source-code: https://github.com/ntrrg/ntdocutils
@@ -13,6 +13,7 @@ tags:
   - docutils
   - pygments
 toc: true
+comments: true
 ---
 
 [![pypi](https://img.shields.io/pypi/v/NtDocutils.svg)](https://pypi.python.org/pypi/NtDocutils)

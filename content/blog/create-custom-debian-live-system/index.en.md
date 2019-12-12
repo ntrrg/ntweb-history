@@ -4,19 +4,11 @@ description: Debian live system with encrypted persistence.
 metadata:
   source-code: https://github.com/ntrrg/ntos
   license: MIT
-labels:
-  - "[![Travis build btatus](https://travis-ci.com/ntrrg/ntos.svg?branch=master)](https://travis-ci.com/ntrrg/ntos)"
-kinds:
-  - operative-system
-techs:
-  - debian
-  - shell-script
-  - live-boot
-  - travis-ci
-  - make
 toc: true
 draft: true
 ---
+
+[![Travis build btatus](https://travis-ci.com/ntrrg/ntos.svg?branch=master)](https://travis-ci.com/ntrrg/ntos)
 
 **ntos** is a Debian live system with encrypted persistence by default. It is
 attached at the Debian testing release cycle, so there are no version numbers

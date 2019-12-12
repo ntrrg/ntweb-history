@@ -16,6 +16,7 @@ tags:
   - docker
   - github-actions
   - netlify
+comments: true
 ---
 
 [![GitHub Actions](https://github.com/ntrrg/ntweb/workflows/Go/badge.svg)](https://github.com/ntrrg/ntweb/actions?query=workflow:Go)
