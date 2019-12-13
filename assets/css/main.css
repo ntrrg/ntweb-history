@@ -60,6 +60,15 @@ a {
   text-decoration: none;
 }
 
+input, select, textarea {
+  background: transparent;
+  color: var(--font-color);
+}
+
+select {
+  padding: 0.25em 0.5em;
+}
+
 /* Classes */
 
 .center {

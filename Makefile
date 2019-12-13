@@ -13,7 +13,7 @@ bump-version-hugo:
 	@grep -lR "$(hugo_version)" . | \
 		grep -v "^\./\.git/" | \
 		grep -v "\.swp\$$" | \
-		grep -v "^\./go\.sum" | \
+		grep -v "go\.sum\$$" | \
 		grep -v "^\./assets/" | \
 		grep -v "^\./content/"
 

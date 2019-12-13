@@ -72,7 +72,7 @@ languages:
   en:
     languageName: English
     params:
-      description: I am Miguel Angel, just another developer working hard to don't be just another developer.
+      description: I am Miguel Angel, just another developer working hard to not be just another developer.
   es:
     languageName: Español
     params:

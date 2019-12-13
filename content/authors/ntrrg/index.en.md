@@ -56,7 +56,7 @@ social:
 authortype: Person
 ---
 
-Hi! I am Miguel Angel, just another developer working hard to don't be just
+Hi! I am Miguel Angel, just another developer working hard to not be just
 another developer.
 
 ## What can I do for you?
