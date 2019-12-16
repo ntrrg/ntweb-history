@@ -2,8 +2,9 @@
   {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
   {{ $author := .Site.GetPage $authorURL }}
 
-  <img src="{{ relURL $author.Params.image }}"
-       alt="{{ $author.Params.name }}" class="site-img"/>
+  <div class="site-image">
+    {{ readFile "/static/images/logo.svg" | safeHTML }}
+  </div>
 
   {{ $author.Content }}
 

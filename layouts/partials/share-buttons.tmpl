@@ -1,22 +1,22 @@
 <div class="share-buttons">
   <a href="https://www.addtoany.com/add_to/facebook?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" target="_blank">
-    {{ readFile "static/images/social/fa-facebook.svg" | safeHTML }}
+    {{ readFile "/static/images/fa/facebook.svg" | safeHTML }}
   </a>
 
   <a href="https://www.addtoany.com/add_to/twitter?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" target="_blank">
-    {{ readFile "static/images/social/fa-twitter.svg" | safeHTML }}
+    {{ readFile "/static/images/fa/twitter.svg" | safeHTML }}
   </a>
 
   <a href="https://www.addtoany.com/add_to/linkedin?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" target="_blank">
-    {{ readFile "static/images/social/fa-linkedin.svg" | safeHTML }}
+    {{ readFile "/static/images/fa/linkedin.svg" | safeHTML }}
   </a>
 
   <a href="https://www.addtoany.com/add_to/telegram?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" target="_blank">
-    {{ readFile "static/images/social/fa-telegram.svg" | safeHTML }}
+    {{ readFile "/static/images/fa/telegram.svg" | safeHTML }}
   </a>
 
   <a href="https://www.addtoany.com/share#url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank">
-    {{ readFile "static/images/social/fa-share-alt.svg" | safeHTML }}
+    {{ readFile "/static/images/fa/share-alt.svg" | safeHTML }}
   </a>
 </div>
 
