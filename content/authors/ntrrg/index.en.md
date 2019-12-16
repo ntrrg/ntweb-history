@@ -3,7 +3,7 @@ id: ntrrg
 title: Miguel Angel
 name: Miguel Angel Rivera Notararigo
 position: Backend Developer
-image: /images/logo.png
+image: /images/logo-bg-rounded.png
 social:
   website:
     label: Website
