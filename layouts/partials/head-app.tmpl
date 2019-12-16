@@ -1,4 +1,8 @@
-<meta name="theme-color" content="#fff"/>
+{{ with $.Site.GetPage "/manifest" }}
+  <link rel="manifest" href="{{ .Permalink }}">
+{{ end }}
+
+<meta name="theme-color" content="#000"/>
 
   <!-- Chrome on Android (192x192) -->
 <meta name="mobile-web-app-capable" content="yes"/>
