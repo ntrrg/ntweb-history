@@ -1,7 +1,7 @@
 {{ define "data" }}
   {
     "pages": [
-      {{ range $i, $val := .Pages }}
+      {{ range $i, $val := .Paginator.Pages }}
         {{ if ne $i 0 }},{{ end }}
         {
           "url": {{ jsonify .Permalink }},
@@ -9,7 +9,10 @@
           "description": {{ jsonify .Description }}
         }
       {{ end }}
-    ]
+    ],
+    "paginationFormat": "{{ .Permalink }}page/%d/index.json",
+    "prev": "{{ with .Paginator.Prev }}{{ .URL }}{{ end }}",
+    "next": "{{ with .Paginator.Next }}{{ .URL }}{{ end }}"
   }
 {{ end }}
 
