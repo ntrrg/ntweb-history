@@ -15,9 +15,8 @@
 {{ define "document" }}
   {
     "url": {{ jsonify .Permalink }},
-    "lang": {{ jsonify .Language.Lang }},
     "title": {{ jsonify .Title }},
-    "date": {{ jsonify .Date }},
+    "description": {{ jsonify .Description }},
     "content": {{- with .Params.content -}}
       {{ $content := getJSON .url }}
 
