@@ -45,21 +45,3 @@
   }
 {{ end }}
 
-{{ define "document" }}
-  {
-    "url": {{ jsonify .Permalink }},
-    "lang": {{ jsonify .Language.Lang }},
-    "title": {{ jsonify .Title }},
-    "date": {{ jsonify .Date }},
-    "content": {{- with .Params.content -}}
-      {{ $content := getJSON .url }}
-
-      {{- if eq .api "github" -}}
-        "{{ replace $content.content "\n" "\\n" }}"
-      {{- end -}}
-    {{- else -}}
-      "{{ base64Encode .Content }}"
-    {{- end }}
-  }
-{{ end }}
-

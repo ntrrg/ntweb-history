@@ -1,5 +1,7 @@
 {
   "url": {{ jsonify .Permalink }},
+  "kind": {{ jsonify .Kind }},
+  "type": {{ jsonify .Type }},
   "lang": {{ jsonify .Language.Lang }},
   "title": {{ jsonify .Title }},
   "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
