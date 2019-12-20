@@ -1,5 +1,5 @@
 async function buildSearchIndex() {
-  const res = await fetch('../index.json')
+  const res = await fetch('../search-index/index.json')
   const data = await res.json()
 
   window.idx = lunr(function () {
@@ -8,7 +8,7 @@ async function buildSearchIndex() {
     this.field('description')
     this.field('content')
 
-    data.data.searchIndex.forEach(function (doc) {
+    data.forEach(function (doc) {
       doc.content = atob(doc.content)
       this.add(doc)
     }, this)

@@ -41,19 +41,6 @@
           "title": {{ jsonify .Title }}
         }
       {{ end }}
-    ],
-    "searchIndex": [
-      {{ $i := 0 }}
-
-      {{ range .Sections }}
-        {{ if in "blog projects" .Type }}
-          {{ range .Pages }}
-            {{ if ne $i 0 }},{{ end }}
-            {{ template "document" . }}
-            {{ $i = add $i 1 }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
     ]
   }
 {{ end }}

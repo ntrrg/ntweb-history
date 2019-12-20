@@ -1,0 +1,32 @@
+[
+  {{ $i := 0 }}
+
+  {{ range $.Site.Sections }}
+    {{ if in "blog projects" .Type }}
+      {{ range .Pages }}
+        {{ if ne $i 0 }},{{ end }}
+        {{ template "document" . }}
+        {{ $i = add $i 1 }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+]
+
+{{ define "document" }}
+  {
+    "url": {{ jsonify .Permalink }},
+    "lang": {{ jsonify .Language.Lang }},
+    "title": {{ jsonify .Title }},
+    "date": {{ jsonify .Date }},
+    "content": {{- with .Params.content -}}
+      {{ $content := getJSON .url }}
+
+      {{- if eq .api "github" -}}
+        "{{ replace $content.content "\n" "\\n" }}"
+      {{- end -}}
+    {{- else -}}
+      "{{ base64Encode .Content }}"
+    {{- end }}
+  }
+{{ end }}
+
