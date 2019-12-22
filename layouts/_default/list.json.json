@@ -10,9 +10,9 @@
         }
       {{ end }}
     ],
-    "paginationFormat": "{{ .Permalink }}page/%d/index.json",
-    "prev": "{{ with .Paginator.Prev }}{{ .URL }}{{ end }}",
-    "next": "{{ with .Paginator.Next }}{{ .URL }}{{ end }}"
+    "paginationPrefix": "{{ .Permalink }}page/",
+    "prev": "{{ with .Paginator.Prev }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}",
+    "next": "{{ with .Paginator.Next }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}"
   }
 {{ end }}
 
