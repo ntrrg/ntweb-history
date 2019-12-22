@@ -11,8 +11,12 @@
       {{ end }}
     ],
     "paginationPrefix": "{{ .Permalink }}page/",
-    "prev": "{{ with .Paginator.Prev }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}",
-    "next": "{{ with .Paginator.Next }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}"
+    "fist": "{{ template "pagination-item" .Paginator.First }}",
+    "prev": "{{ template "pagination-item" .Paginator.Prev }}",
+    "next": "{{ template "pagination-item" .Paginator.Next }}",
+    "last": "{{ template "pagination-item" .Paginator.Last }}"
   }
 {{ end }}
+
+{{ define "pagination-item" }}{{ with . }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}{{ end }}
 
