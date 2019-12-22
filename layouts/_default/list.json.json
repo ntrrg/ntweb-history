@@ -18,5 +18,5 @@
   }
 {{ end }}
 
-{{ define "pagination-item" }}{{ with . }}{{ strings.TrimSuffix "index.json" .URL }}{{ end }}{{ end }}
+{{ define "pagination-item" }}{{ with . }}{{ strings.TrimSuffix "index.json" .URL | absURL }}{{ end }}{{ end }}
 
