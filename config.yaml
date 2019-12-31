@@ -48,7 +48,7 @@ params:
   titleSeparator: ☮
   author: ntrrg
   singleAuthor: true
-  image: /images/isologo-bg.png
+  image: /images/logo-bg-square.png
   ampImage: /images/isologo-amp.png
   # googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
