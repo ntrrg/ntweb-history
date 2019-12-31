@@ -8,7 +8,8 @@ function resizeWideImages() {
   if (bodyWidth !== mainWidth) {
     leftMargin = 'calc(' + (bodyWidth - mainWidth) / 2 * -1 + 'px - 1em)'
   } 
-  const images = document.querySelectorAll('img.wide')
+
+  const images = document.querySelectorAll('img.wide, figure.wide img')
 
   for (const img of images) {
     img.style.width = bodyWidth + 'px'

@@ -27,9 +27,9 @@ function setCodeTheme(theme) {
 // Image lazy loading
 
 window.addEventListener('DOMContentLoaded', () => {
-  let images = document.querySelectorAll('img.lazy-load')
+  const images = document.querySelectorAll('img.lazy-load')
 
-  for (let img of images) {
+  for (const img of images) {
     img.src = img.dataset.src 
   }
 })

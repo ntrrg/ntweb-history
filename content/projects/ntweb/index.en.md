@@ -11,11 +11,13 @@ tags:
   - css3
   - javascript
   - website
+  - json-api
   - hugo
   - mage
   - docker
   - github-actions
   - netlify
+toc: true
 comments: true
 ---
 
@@ -24,7 +26,7 @@ comments: true
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2f18cd17-5e78-45fa-a95d-0ae120ffc603/deploy-status)](https://app.netlify.com/sites/ntweb/deploys)
 
 **ntWeb** is a small site with great intentions. It provides a personal
-portfolio, a blogging platform and Go packages vanity URLs.
+portfolio, a blogging platform, Go packages vanity URLs and a JSON API.
 
 # Usage
 

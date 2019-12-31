@@ -189,6 +189,38 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+## Figures
+
+### Wide
+
+{{< figure src="images/merida.jpg" class="wide" title="Title" caption="Figure caption. Supports **Markdown**." >}}
+
+### Block (center aligned)
+
+{{< figure src="images/merida.jpg" class="block" title="Title" caption="Figure caption. Supports **Markdown**." >}}
+
+{{< figure src="images/ntrrg.png" class="align-left" title="Title" caption="Figure caption. Supports **Markdown**." >}}
+
+### Left aligned
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+{{< figure src="images/ntrrg.png" class="align-right" title="Title" caption="Figure caption. Supports **Markdown**." >}}
+
+### Right aligned
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 ## Go Playground
 
 {{< go-playground >}}

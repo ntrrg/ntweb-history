@@ -1,3 +1,7 @@
+.article {
+  hyphens: auto;
+}
+
 .article .article-title {
   font-size: 2.5em;
 }
@@ -114,6 +118,58 @@ img.shortcode.align-left {
 }
 
 img.shortcode.align-right {
+  float: right;
+  margin-left: 1em;
+}
+
+  /* Figures shortcode */
+
+figure {
+  position: relative;
+  margin-left: 0em;
+  margin-right: 0em;
+}
+
+figure figcaption {
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-align: center;
+}
+
+figure figcaption h4 {
+  margin: 0em !important;
+}
+
+figure figcaption h4::before {
+  content: "" !important;
+}
+
+figure figcaption p:not(:first-child) {
+  margin: 0em !important;
+}
+
+figure.block img {
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure.wide img {
+  max-width: none;
+  width: calc(100% + 2em);
+
+  display: block;
+
+  margin-left: -1em;
+}
+
+figure.align-left {
+  float: left;
+  margin-right: 1em;
+}
+
+figure.align-right {
   float: right;
   margin-left: 1em;
 }

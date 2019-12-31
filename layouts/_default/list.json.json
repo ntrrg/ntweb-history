@@ -6,7 +6,11 @@
         {
           "url": {{ jsonify .Permalink }},
           "title": {{ jsonify .Title }},
-          "description": {{ jsonify .Description }}
+          "author": {{ jsonify .Params.author }},
+          "publishdate": {{ jsonify .Date }},
+          "date": {{ jsonify .Date }},
+          "description": {{ jsonify .Description }},
+          "tags": {{ jsonify .Params.tags }}
         }
       {{ end }}
     ],
