@@ -7,7 +7,7 @@
           "url": {{ jsonify .Permalink }},
           "title": {{ jsonify .Title }},
           "author": {{ jsonify .Params.author }},
-          "publishdate": {{ jsonify .Date }},
+          "publishdate": {{ jsonify .PublishDate }},
           "date": {{ jsonify .Date }},
           "description": {{ jsonify .Description }},
           "tags": {{ jsonify .Params.tags }}
