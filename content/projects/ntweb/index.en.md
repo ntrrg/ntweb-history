@@ -46,7 +46,7 @@ the favicons), a blog article downloads ~215 KB (including its images, the
 favicons and disabling the comments). It is functional even without JavaScript
 and can be visualized on TUI web browsers.
 
-{{< figure src="images/elinks-home-es.png" class="block" caption="Home page on TUI" >}}
+{{< figure src="images/elinks-home-en.png" class="block" caption="Home page on TUI" >}}
 
 {{< figure src="images/elinks-blog-es.png" class="block" caption="Blog on TUI" >}}
 
