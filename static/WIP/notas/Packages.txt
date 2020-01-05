@@ -1,0 +1,18 @@
+Dockerfile Syntax Highlighting
+EditorConfig
+FileDiffs
+GitGutter
+Ghost​Text
+Language - Spanish
+Print to HTML
+TerminalView
+
+JavaScript:
+  DocBlockr
+
+Markdown
+  Markdown Preview
+
+Python:
+  Anaconda
+  LineProfiler

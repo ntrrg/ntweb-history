@@ -1,0 +1,14 @@
+*.exe
+*.msi
+*.dll
+*.tmp
+*.lnk
+*.part
+*.bat
+*.dat
+*.rdp
+Thumbs.db
+_PAlbTN
+AlbumA
+desktop.ini
+~

@@ -1,0 +1,214 @@
+mkdir <nombre>
+cd <nombre>
+
+
+
+sudo apt update
+sudo apt install btrfs-tools cryptsetup dosfstools lvm2 syslinux syslinux-efi
+lsblk
+sudo dd if=/dev/zero of=<unidad> bs=1048576 count=1
+sudo fdisk <unidad>
+
+    p - Asegurarse de que es la unidad
+    g - Crear tabla de particiones GPT
+    n - Crear partición ESP
+        [Enter] - Asignar número de partición
+        [Enter] - Especificar sector inicial
+        +500M - Asignar 500MB
+    t - Cambiar el tipo de partición
+        1 - Seleccionar el tipo "EFI System"
+    x - Entrar en modo experto
+        n - Cambiar nombre de la partición
+            ESP-Live - Asignar nombre de la partición
+        r - Regresar al menú normal
+    n - Crear partición para el sistema Live
+        [Enter] - Asignar número de partición
+        [Enter] - Especificar sector inicial
+        +4G - Asignar 4GB
+    x - Entrar en modo experto
+        A - Activar flag de boot para soporte a MBR
+            [Enter] - Seleccionar la segunda partición
+        r - Regresar al menú normal
+    n - Crear partición para LVM
+        [Enter] - Asignar número de partición
+        [Enter] - Especificar sector inicial
+        [Enter] - Asignar el espacio restante
+    t - Cambiar el tipo de partición
+        [Enter] - Seleccionar la segunda partición
+        31 - Seleccionar el tipo "Linux LVM"
+    w - Guardar y salir
+
+
+
+Manual:
+    sudo apt install debootstrap squashfs-tools systemd-container
+
+    sudo debootstrap --variant=minbase --include=locales,systemd-sysv buster src/ http://httpredir.debian.org/debian
+    sudo systemd-nspawn --directory src/ passwd
+    sudo systemd-nspawn --boot --register=no --directory src/
+
+        dpkg-reconfigure locales
+        reboot
+        echo "deb http://httpredir.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list
+        apt update
+        apt upgrade -y
+        apt install alsa-utils btrfs-tools cryptsetup debootstrap dosfstools elinks git htop iftop linux-image-amd64 live-boot live-config lvm2 nano netselect ntfs-3g p7zip-full p7zip-rar pciutils pv qemu rsync screen siege sshfs systemd-container usbutils wicd-curses zsh
+        poweroff
+
+    sudo <editor> src/etc/cryptsetup-initramfs/conf-hook
+
+        CRYPTSETUP=y
+
+    sudo systemd-nspawn --boot --register=no --directory src/
+
+        live-update-initramfs -u
+
+        # En caso de que no se active cryptsetup se debe crear una entrada falsa a la raiz de sistema de archivos en /etc/fstab: "/dev/sda1    /    btfs    defaults    0    1"
+
+        apt autoremove
+        rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+
+        rm -f /etc/hostname
+
+        mv /usr/share/i18n/locales/en_US /tmp/
+        rm -f /usr/share/i18n/locales/??_* /usr/share/i18n/locales/???_* /usr/share/i18n/locales/eo /usr/share/i18n/locales/iso*
+        mv /tmp/en_US /usr/share/i18n/locales/
+        mv /usr/share/locale/en_US /tmp/
+        rm -rf /usr/share/locale/*
+        mv /tmp/en_US /usr/share/locale/
+        rm -rf /usr/share/man/?? /usr/share/man/??_*
+
+        poweroff
+
+    sudo rm -rf src/root/.bash_history src/var/log/*
+
+    mkdir -p image/live/
+    sudo mksquashfs src/ image/live/filesystem.squashfs
+    cp src/boot/vmlinuz* image/live/vmlinuz
+    cp src/boot/initrd* image/live/initrd.img
+
+
+
+    mkdir image/syslinux/
+    (cd /usr/lib/syslinux/modules/bios/; cp libutil.c32 menu.c32 $OLDPWD/image/syslinux/)
+    (cd /usr/lib/syslinux/modules/bios/; cp hdt.c32 libcom32.c32 libgpl.c32 libmenu.c32 $OLDPWD/image/syslinux/)
+    wget -O image/syslinux/pci.ids http://pciids.sourceforge.net/v2.2/pci.ids
+    wget -O image/syslinux/modules.pcimap https://gist.githubusercontent.com/ntrrg/4fbff37c24f52304519f7ad207984cc7/raw/modules.pcimap
+    wget -qO - http://memtest.org/download/5.01/memtest86+-5.01.bin.gz | gzip -dc > image/syslinux/memtest86+-5.01.bin
+    <editor> image/syslinux/syslinux.cfg
+
+        UI menu.c32
+        prompt 0
+        timeout 0
+        menu title <Título>
+
+        label Start
+            menu default
+            kernel /live/vmlinuz
+            initrd /live/initrd.img
+            append boot=live swap=true components noroot noautologin hostname=<nombre del equipo> username=<nombre de usuario> timezone=<zona horaria> quiet
+
+        label Hardware Detection Tool
+            kernel /syslinux/hdt.c32
+            append modules=modules.pcimap pciids=pci.ids memtest=Memtest86+
+
+        label Memtest86+
+            linux /syslinux/memtest86+-5.01.bin
+
+
+
+    sudo mkdir src/boot/efi/
+    sudo <editor> src/etc/fstab
+
+        PARTLABEL=ESP-Live    /boot/efi    vfat    defaults    0    0
+
+    mkdir esp
+    mkdir -p esp/EFI/boot
+    (cd /usr/lib/SYSLINUX.EFI/efi64/; cp syslinux.efi $OLDPWD/esp/EFI/boot/bootx64.efi)
+    (cd /usr/lib/syslinux/modules/efi64/; cp ldlinux.e64 libutil.c32 menu.c32 $OLDPWD/esp/EFI/boot/)
+    (cd /usr/lib/syslinux/modules/efi64/; cp hdt.c32 libcom32.c32 libgpl.c32 libmenu.c32 $OLDPWD/esp/EFI/boot/)
+    wget -O esp/EFI/boot/pci.ids http://pciids.sourceforge.net/v2.2/pci.ids
+    wget -O esp/EFI/boot/modules.pcimap https://gist.githubusercontent.com/ntrrg/4fbff37c24f52304519f7ad207984cc7/raw/modules.pcimap
+    wget -qO - http://memtest.org/download/5.01/memtest86+-5.01.bin.gz | gzip -dc > esp/EFI/boot/memtest86+-5.01.bin
+    cp src/boot/vmlinuz* esp/EFI/boot/vmlinuz
+    cp src/boot/initrd* esp/EFI/boot/initrd.img
+    <editor> esp/EFI/boot/syslinux.cfg
+
+        UI menu.c32
+        prompt 0
+        timeout 0
+        menu title <Título>
+
+        label Start
+            menu default
+            kernel vmlinuz
+            initrd initrd.img
+            append boot=live swap=true components noroot noautologin hostname=<nombre del equipo> username=<nombre de usuario> timezone=<zona horaria> quiet
+
+        label Hardware Detection Tool
+            kernel hdt.c32
+            append modules=modules.pcimap pciids=pci.ids memtest=Memtest86+
+
+        label Memtest86+
+            linux memtest86+-5.01.bin
+
+    sudo mkfs.fat -F 32 -n "ESP" <primera partición>
+    sudo mount <primera partición> /mnt/
+    sudo rsync -rh --progress esp/ /mnt/
+    sudo umount /mnt/
+    # sudo efibootmgr --create --disk <unidad> --part <número de partición> --loader \\EFI\\boot\\bootx64.efi --label "<Título>"
+
+ISO Live:
+
+    sudo apt install p7zip
+
+    mkdir image
+    cd image
+    sudo 7z x <iso live>
+
+    sudo mv isolinux/isolinux.bin isolinux/syslinux.bin
+    sudo mv isolinux/isolinux.cfg isolinux/syslinux.cfg
+    sudo mv isolinux syslinux
+
+    cd ..
+
+sudo mkfs.fat -F 32 -n OS <segunda partición>
+sudo mount <segunda partición> /mnt/
+sudo rsync -rh --progress image/ /mnt/
+sudo umount /mnt/
+sudo syslinux --directory syslinux --install <segunda partición>
+sudo dd if=/usr/lib/SYSLINUX/gptmbr.bin of=<unidad> bs=440 count=1
+
+
+
+sudo vgcreate <nombre VG> <tercera partición>
+sudo lvcreate --size <tamaño> --name <nombre LV> <VG>
+
+sudo cryptsetup --verify-passphrase luksFormat /dev/<VG>/<LV>
+sudo cryptsetup luksOpen /dev/<VG>/<LV> <nombre dispostivo cifrado>
+
+sudo mkfs.btrfs -L persistence /dev/mapper/<nombre dispostivo cifrado>
+sudo mount /dev/mapper/<nombre dispostivo cifrado> /mnt/
+echo "/ union" | sudo tee /mnt/persistence.conf
+
+sudo umount /mnt
+sudo cryptsetup luksClose /dev/mapper/<nombre dispostivo cifrado>
+sudo vgchange -a n <VG>
+
+
+
+man live-boot
+man live-config
+man persistence.conf
+
+http://cosmolinux.no-ip.org/raconetlinux2/persistence.html
+http://docs.kali.org/downloading/kali-linux-live-usb-persistence
+http://willhaley.com/blog/create-a-custom-debian-live-environment/
+https://wiki.debian.org/ReduceDebian
+https://debian-live.alioth.debian.org/live-manual/stable/manual/html/live-manual.en.html
+http://willhaley.com/blog/install-debian-usb/
+https://wiki.archlinux.org/index.php/syslinux
+http://www.syslinux.org/wiki/index.php
+
+https://phenobarbital.wordpress.com/2011/05/13/linux-debiancanaima-en-soneview-n110-mini-laptop-classmate/
+https://phenobarbital.wordpress.com/2011/07/13/debian-se-puede-tener-un-gnome-minimo/

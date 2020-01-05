@@ -1,0 +1,27 @@
+Live boot:
+
+* swap=true: activa las particiones de swap que se encuentren
+* persistence: busca imagenes de discos o particiones con la etiqueta especificada en 'persistence-label' (por defecto es 'persistence') para guardar los cambios que se realicen.
+* persistence-encryption=luks: permite activar el modo de persistencia en dispositivos cifrados
+* persistence-media={removable|removable-usb}: restringe la busqueda de dispositivos para el modo persistencia a solo unidades extraibles o a solo unidades USB extraibles respectivamente
+* persistence-read-only: permite restaurar los archivos en los dispositivos de persistencia pero no guardara cambios para esa sesion
+* persistence-storage=<tipo>[,...]: define que tipo de dispositivos de persistencia seran analizados, 'file' busca imagenes de discos, 'filesystem' busca particiones, por defecto es 'file,filesystem'
+* persistence-label=<etiqueta>: define la etiqueta de las particiones o el nombre de las imagenes de discos que seran usadas para el modo persistencia, se puede repitir esta opcion, por defecto es 'persistence'
+* toram: copia el sistema live a la ram para no leer desde el dispositivo.
+
+Live config:
+
+components[=<componente>[,...]]: carga los componentes de configuracion del sistema live (/lib/live/config/), se puede obtener mas informacion de los componentes en la seccion 'COMPONENTS' de 'man live-config'
+nocomponents[=<componente>[,...]]: desactiva la carga de los componentes de configuracion del sistema live
+hostname=<nombre del host>: nombre del equipo, por defecto es 'debian'.
+username=<nombre de usuario>: nombre del usuario que se crea para el sistema live
+user-default-groups=<grupo>[,...]: grupos asignados al usuario, por defecto se asignan los grupos 'audio cdrom dip floppy video plugdev netdev powerdev scanner bluetooth'
+user-fullname=<nombre completo del usuario>: nombre completo del usuario, por defecto es 'Debian Live User'
+locales=<codigo de localidad>: codigo de localidad a aplicar al sistema live, por defecto es 'en_US.UTF-8'
+timezone=<zona horaria>: zona horaria a usar por el sistema live, por defecto es 'UTC'
+keyboard-model=<modelo de teclado>: modelo de teclado a usar por el sistema live
+keyboard-layout=<distribucion del teclado>[,...]: distribucion del teclado a usar por el sistema live
+keyboard-variants=<variantes del teclado>[,...]
+keyboard-options=<opciones>
+utc={yes|no}: determina si el reloj de hardware esta en UTC, por defecto es 'yes'
+xorg-resolution=<resolucion de pantalla>

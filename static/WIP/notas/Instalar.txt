@@ -1,0 +1,240 @@
+# apt install \
+  apt-transport-https \
+  btrfs-tools \
+  cryptsetup \
+  dosfstools \
+  elinks \
+  git \
+  htop \
+  iftop \
+  lvm2 \
+  netselect \
+  ntfs-3g \
+  p7zip-full \
+  p7zip-rar \
+  pciutils \
+  pv \
+  rsync \
+  screen \
+  siege \
+  sshfs \
+  usbutils \
+  zsh
+
+SSH:
+
+  # apt install dropbear
+
+  # apt install ssh
+
+Wireless:
+
+  # apt install wicd-curses wpasupplicant
+
+NoIP:
+
+  $ tar -xvf noip-duc-2.1.9-linux.tar.gz
+
+  # cp noip-2.1.9-1/binaries/noip2-x86_64 /usr/local/bin/noip2
+
+  # echo '#!/bin/sh
+### BEGIN INIT INFO
+# Provides: noip2
+# Required-Start: $local_fs $remote_fs $network $syslog $named
+# Required-Stop: $local_fs $remote_fs $network $syslog $named
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: NoIP dynamic client
+### END INIT INFO
+
+DAEMON=/usr/local/bin/noip2
+NAME=noip2
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+    start)
+    echo -n "Starting dynamic address update: "
+    start-stop-daemon --start --exec $DAEMON
+    echo "noip2."
+    ;;
+
+    stop)
+    echo -n "Shutting down dynamic address update:"
+    start-stop-daemon --stop --oknodo --retry 30 --exec $DAEMON
+    echo "noip2."
+    ;;
+
+    restart)
+    echo -n "Restarting dynamic address update: "
+    start-stop-daemon --stop --oknodo --retry 30 --exec $DAEMON
+    start-stop-daemon --start --exec $DAEMON
+    echo "noip2."
+    ;;
+
+    *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+exit 0' > /etc/init.d/noip2
+
+  # chmod +x /etc/init.d/noip2
+
+  # update-rc.d noip2 defaults
+
+Containers:
+
+  Docker:
+
+    # dpkg -i \
+      docker-ce_18.03.1~ce-0~debian_amd64.deb \
+      libltdl7_2.4.6-2.1_amd64.deb
+
+    # cp \
+      docker-compose.1.21.2-Linux-x86_64 \
+      /usr/bin/docker-compose
+
+    # cp \
+      docker-compose.1.21.2-completion-zsh \
+      /usr/share/zsh/vendor-completions/_docker-compose
+
+    # cp \
+      docker-compose.1.21.2-completion-bash \
+      /etc/bash_completion.d/docker-compose
+
+  Systemd-nspawn:
+
+    # apt install debootstrap systemd-container
+
+Virtual machines:
+
+  # apt install qemu
+
+Programming languages:
+
+  Go:
+
+  C:
+
+    # apt install gcc libc6-dev make
+
+  JavaScript:
+
+Vim:
+
+  # apt install gcc libncurses-dev make
+
+  $ ./configure [--prefix=/path] --with-features=tiny
+
+  $ make
+
+  # make install
+
+Android:
+
+  # apt install android-tools-adb android-tools-fastboot
+
+Graphical:
+
+  # apt install \
+    alsa-utils \
+    conky \
+    cups \
+    evince \
+    gimp \
+    inkscape \
+    simple-scan \
+    system-config-printer \
+    vlc \
+    xfce4 \
+    xfce4-goodies
+
+  # dpkg -i \
+    dropbox_2015.10.28_amd64.deb \
+    google-chrome-stable_66.0.3359.139-1_amd64.deb \
+    megasync_3.6.5-2.1_amd64.deb
+
+  # apt install -f
+
+  $ tar -xvf dropbox-lnx.x86_64-49.4.68.tar.gz -C "${HOME}/"
+
+  # tar -xvf tsetup.1.2.17.tar.xz -C /opt/
+
+  st:
+
+    # apt install \
+      gcc \
+      libx11-dev \
+      libxft-dev \
+      libxext-dev \
+      make
+
+    # make clean install
+
+    # echo '[Desktop Entry]
+Name=st
+GenericName=Terminal
+Comment=Simple terminal emulator for the X window system
+Exec=st
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=terminal
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;' \
+      > /usr/share/applications/simple-terminal.desktop
+      
+
+  Vim:
+
+    # apt install \
+      gcc \
+      libncurses-dev \
+      libx11-dev \
+      libxpm-dev \
+      libxt-dev \
+      libxtst-dev \
+      make
+
+    $ ./configure [--prefix=/path] --with-features=huge
+
+    $ make
+
+    # make install
+
+    # echo '[Desktop Entry]
+Name=Vim
+GenericName=Text Editor
+Comment=Edit text files
+Exec=st vim %F
+Terminal=false
+Type=Application
+Encoding=UTF-8
+MimeType=text/plain;
+Icon=gvim
+Categories=Utility;TextEditor;Development;
+Keywords=Text;editor;' \
+      > /usr/share/applications/vim.desktop
+
+  Paper Theme:
+
+    # apt install dh-autoreconf
+
+    $ ./autogen.sh
+
+    $ make
+
+    # make install
+
+  Paper Icons:
+
+    # apt install dh-autoreconf
+
+    $ ./autogen.sh
+
+    $ make
+
+    # make install
+
+  $ tar -xvf xfce-v4.12.tar.gz -C "${HOME}/.config/"
+

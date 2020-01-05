@@ -1,0 +1,77 @@
+Samba:
+	1. Instalar los paquetes:
+		.samba
+		.smbfs
+		.smbclient
+		.smb4k
+		
+	2. Crear un usuario con la linea de comando:
+		adduser nombre_usuario
+		
+	3. Agregarlo al samba y crearle una contraseña con la linea de comando:
+		smbpasswd -a nombre_usuario (-d para deshabilitar un usuario de Samba, -n para agregar un suario sin password (Debe agregarse el parametro "null passwords = yes" en "Global Settings" despues de "workgroup" preferiblemente), -e para habilitar un usuario)
+		
+	4. Crear una carpeta y asignarle un propietario con las siguiente lineas de comando:
+		mkdir /home/nombre_usuario
+		chown usuario ruta/directorio
+		
+	5. Configurar samba con la linea de comandos:
+		gedit /etc/samba/smb.conf
+		
+		. Buscar en la parte de "Global Settings" y agregar el nombre del grupo de trabajo en "workgroup = "
+		. Buscar en la parte de "Authentication" y cambiar "#   security = user" por "security = SHARE"
+		. Ir al final del archivo y agregar la carpeta a compartir:
+		
+			[Nombre de la carpeta en la red]
+			comment = Comentario para la carpeta
+			path = /ruta/carpeta
+			browseable = yes
+			writable = yes
+			public = yes (da acceso publico)
+			create mask = 7777 (Habilita todos los permisos)
+			directory mask = 7777 (Habilita todos los permisos)
+			
+			Otros parametros:
+			read only = yes
+			valid users= usuario, usuario2
+			force user = nobody (para que cualquier usuario ingrese)
+			force group = nogroup (para que cualquier grupo ingrese)
+			guest ok = yes (sinonimo de public)
+			available = yes/no (Habilita o deshabilita un servicio)
+	
+	6. Reinicar samba con la siguiente linea de comando:
+		/etc/init.d/samba restart
+	
+NFS:
+	Instalar los siguientes paquetes del Synaptic:
+		En el servidor:
+			.nfs-kernel-server
+			.nfs-common
+			.portmap
+			
+		En el  cliente:
+			.nfs-common
+			.portmap
+		
+	Configuracion:
+	
+	Servidor:
+		1. Crear una carpeta donde se desee compartir archivos y modificar los permisos a gusto (Tambien puede ser una carpeta existente)
+		2. Editar el archivo de configuracion de NFS escribiendo la siguente linea de comando:
+			gedit /etc/exports
+		
+			Y escribir la direccion de la carpeta a compartir y el IP de la red:
+			/ruta/unidad_red IP_Red (opciones) (ejemplo: "/home/UnidadRed 192.168.1.0 (rw,sync,no_root_squash)")
+		3. Editar el archivo "/etc/host.allow" con la siguiente linea de comando:
+			gedit /etc/host.allow
+		
+			Y escribir:
+				portmap:ALL
+				nfs:ALL
+				
+	Cliente:
+		1. Crear una carpeta donde se van a almacenar lo archivos del servidor y modificar los permisos a gusto (Tambien puede ser una carpeta existente)
+		2. Para ver cual es la carpeta del servidor escribir la siguiente linea de comando:
+			showmount -c IP_Server (ejemplo: "showmount -c 192.168.1.100")
+		3. Montar la carpeta con la siguiente linea de comando:
+			mount -t nfs IP_Server:/ruta/unidad_red /ruta/carpeta_creada_usuario (ejemplo: "mount -t nfs 192.168.1.100:/ruta/unidad_red /home/CarpetaCompartida")

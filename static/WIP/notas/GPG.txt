@@ -1,0 +1,52 @@
+Generate:
+
+  $ gpg --gen-key
+    [Enter]
+    4096
+    [Enter]
+    y
+    FULLNAME
+    EMAIL
+    COMMENT
+    O
+
+Listing:
+
+  $ gpg --list-keys EMAIL
+
+Exporting:
+
+  $ gpg --armor --export EMAIL > pub.gpg
+
+  $ gpg --armor --export-secret-keys EMAIL > priv.gpg
+
+  $ gpg --gen-revoke EMAIL > revoke.crt
+
+  $ gpg --fingerprint EMAIL
+
+  $ gpg --send-keys ID
+
+Importing:
+
+  $ gpg --import pub.gpg
+
+  $ gpg --allow-secret-key-import --import priv.gpg
+
+  $ gpg --receive-keys ID
+
+  $ gpg --refresh-keys
+
+Signing:
+
+  $ gpg --sign-key EMAIL
+
+Encrypting:
+
+  $ gpg -c FILE
+
+  $ gpg [--armor] -es -r RECEIVER [-r RECEIVER ...] FILE
+
+Decrypting:
+
+  $ gpg FILE
+

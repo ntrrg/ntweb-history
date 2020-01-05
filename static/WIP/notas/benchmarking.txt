@@ -1,0 +1,1 @@
+chrt -f 99 path/to/time [-v] path/to/program

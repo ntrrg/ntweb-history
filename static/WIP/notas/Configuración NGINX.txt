@@ -1,0 +1,45 @@
+proxy_cache_path /tmp keys_zone=<zona de cache>:10m max_size=256 inactive=12h;
+
+server {
+	listen <puerto>;
+	listen [::]:<puerto> ipv6only=on;
+
+	server_name <nombre del sitio>;
+	root <ruta al proyecto>/static/;
+	charset utf-8;
+
+	# Configuración de cache recomendada por H5BP con algunos arreglos
+
+	location ~* \.(?:manifest|appcache|html?|xml|json)$ {
+		expires 1M;
+		add_header Cache-Control "public";
+	}
+
+	location ~* \.(?:rss|atom)$ {
+		expires 1h;
+		add_header Cache-Control "public";
+	}
+
+	location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+		expires 1M;
+		add_header Cache-Control "public";
+	}
+
+	location ~* \.(?:css|js)$ {
+		expires 1M;
+		add_header Cache-Control "public";
+	}
+
+	location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
+		expires 1M;
+		add_header Cache-Control "public";
+	}
+
+	# ------------------------------------------
+
+	location / {
+		proxy_cache <zona de cache>;
+		include proxy_params;
+		proxy_pass <URL del socket>;
+	}
+}
