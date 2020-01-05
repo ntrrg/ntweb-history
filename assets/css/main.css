@@ -65,6 +65,10 @@ input, select, textarea {
   color: var(--font-color);
 }
 
+p {
+  hyphens: auto;
+}
+
 select {
   padding: 0.25em 0.5em;
 }

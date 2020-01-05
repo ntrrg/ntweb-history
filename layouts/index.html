@@ -6,7 +6,9 @@
     {{ readFile "/static/images/logo.svg" | safeHTML }}
   </div>
 
-  {{ $author.Content }}
+  <div class="content">
+    {{ $author.Content }}
+  </div>
 
   <h2>{{ i18n "CONTACT" }}</h2>
 
