@@ -3,15 +3,23 @@
     "pages": [
       {{ range $i, $val := .Paginator.Pages }}
         {{ if ne $i 0 }},{{ end }}
-        {
-          "url": {{ jsonify .Permalink }},
-          "title": {{ jsonify .Title }},
-          "author": {{ jsonify .Params.author }},
-          "publishdate": {{ jsonify .PublishDate }},
-          "date": {{ jsonify .Date }},
-          "description": {{ jsonify .Description }},
-          "tags": {{ jsonify .Params.tags }}
-        }
+        {{ if gt (len .Pages) 0 }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+            "pages": {{ len .Pages }}
+          }
+        {{ else }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+            "author": {{ jsonify .Params.author }},
+            "publishdate": {{ jsonify .PublishDate }},
+            "date": {{ jsonify .Date }},
+            "description": {{ jsonify .Description }},
+            "tags": {{ jsonify .Params.tags }}
+          }
+        {{ end }}
       {{ end }}
     ],
     "paginationPrefix": "{{ .Permalink }}page/",

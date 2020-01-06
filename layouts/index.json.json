@@ -17,18 +17,7 @@
         {
           "name": {{ jsonify $name }},
           "url": {{ absLangURL $name | jsonify }},
-          "terms": [
-            {{ $j := 0 }}
-            {{ range $termName, $pages := $terms }}
-              {{ if ne $j 0 }},{{ end }}
-              {
-                "name": {{ jsonify $termName }},
-                "url": {{ printf "%s/%s" $name $termName | absLangURL | jsonify }},
-                "pages": {{ len .Pages }}
-              }
-              {{ $j = add $j 1 }}
-            {{ end }}
-          ]
+          "terms": {{ len $terms }}
         }
         {{ $i = add $i 1 }}
       {{ end }}
