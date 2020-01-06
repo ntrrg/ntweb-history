@@ -59,200 +59,200 @@ realiza ningún computo extra al de leer el archivo, es bastante segura porque
 no hay servidor de base de datos que pueda ser atacado y puede hospedarse en
 cualquier servicio que soporte archivos estáticos.
 
+# API
+
+Casi todas las páginas HTML tienen JSON como formato alternativo, que puede ser
+obtenido agregando `index.json` al final de su URL. Por ejemplo, para esta
+página, la URL de su formato JSON sería `https://nt.web.ve/es/projects/ntweb/index.json`.
+
+Cada página tiene los siguientes atributos:
+
+`url` (cadena):
+: URL del recurso.
+
+`kind` (cadena):
+: Tipo de recurso. Puede ser `home`, `section`, `taxonomyTerm`, `taxonomy` o
+`page`.
+
+`type` (cadena):
+: Tipo de contenido. Puede ser `blog`, `gallery`, `projects`, `tag` o `page`.
+
+`lang` (cadena):
+: Idioma del recurso.
+
+`title` (cadena):
+: Título del recurso.
+
+`params` (cadena):
+: Parámetros del frontmatter del recurso. Puede variar segur el tipo del
+contenido.
+
+`content` (cadena codificada en base64):
+: Contenido Markdown procesado del recurso.
+
+`data` (objeto):
+: Datos específicos del recurso. Para la página principal, contiene todos los
+elementos de primer nivel; para colecciones, contiene sus elementos e
+información sobre la paginación; y para recursos comunes, es un objeto vacío.
+
+`altLang` (arreglo de objetos):
+: Traducciones del recurso. Cada objeto tiene las propiedades `lang` y `url`.
+
+`altMediaType` (arreglo de objetos):
+: Formatos alternativos del recurso. Cada objeto tiene las propiedades
+`mediaType` y `url`.
+
 ```shell-session
-$ wget -qO - https://nt.web.ve/es/blog/index.json | jq
+$ wget -qO - https://nt.web.ve/es/projects/ntweb/index.json | jq
 {
-  "url": "https://nt.web.ve/es/blog/",
-  "kind": "section",
-  "type": "blog",
+  "url": "https://nt.web.ve/es/projects/ntweb/",
+  "kind": "page",
+  "type": "projects",
   "lang": "es",
-  "title": "Blog",
+  "title": "ntWeb",
   "params": {
+    "comments": true,
+    "description": "Un pequeño sitio web con grandes intenciones.",
     "draft": false,
     "iscjklanguage": false,
-    "title": "Blog"
-  },
-  "content": "",
-  "data": {
-    "pages": [
-      {
-        "url": "https://nt.web.ve/es/blog/por-qu%C3%A9-usar-contenedores/",
-        "title": "¿Por qué usar contenedores?",
-        "author": "ntrrg",
-        "publishdate": "2019-05-14T22:54:00-07:00",
-        "date": "2019-11-14T11:35:00-04:00",
-        "description": "La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.",
-        "tags": [
-          "tecnología",
-          "entornos-de-desarrollo",
-          "contenedores",
-          "backend",
-          "devops",
-          "sysadmin"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/instalar-go-1.13/",
-        "title": "Instalar Go 1.13",
-        "author": "ntrrg",
-        "publishdate": "2019-11-12T10:10:00-04:00",
-        "date": "2019-11-12T10:10:00-04:00",
-        "description": "Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.",
-        "tags": [
-          "tecnología",
-          "guías",
-          "instalaciones",
-          "lenguajes-de-programación",
-          "go"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/instalar-go-1.12/",
-        "title": "Instalar Go 1.12",
-        "author": "ntrrg",
-        "publishdate": "2019-06-01T10:10:00-07:00",
-        "date": "2019-11-12T09:00:00-04:00",
-        "description": "Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.",
-        "tags": [
-          "tecnología",
-          "guías",
-          "instalaciones",
-          "lenguajes-de-programación",
-          "go"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/instalar-go-1.11/",
-        "title": "Instalar Go 1.11",
-        "author": "ntrrg",
-        "publishdate": "2019-06-01T10:00:00-07:00",
-        "date": "2019-11-12T06:30:00-04:00",
-        "description": "Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.",
-        "tags": [
-          "tecnología",
-          "guías",
-          "instalaciones",
-          "lenguajes-de-programación",
-          "go"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/lista-de-anime/",
-        "title": "Lista de Anime",
-        "author": null,
-        "publishdate": "2019-05-31T11:30:00-07:00",
-        "date": "2019-05-31T11:30:00-07:00",
-        "description": "Una lista de anime que ya vi, estoy viendo o tal vez veré.",
-        "tags": [
-          "anime"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/nombre-de-punto-de-acceso-apn/",
-        "title": "Nombre de Punto de Acceso (APN)",
-        "author": null,
-        "publishdate": "2019-05-31T10:30:00-07:00",
-        "date": "2019-05-31T10:30:00-07:00",
-        "description": "En caso de No Internet en su dispositivo móvil, rompa el vidrio.",
-        "tags": [
-          "redes",
-          "android"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/go-golang/",
-        "title": "Go (Golang)",
-        "author": null,
-        "publishdate": "2018-09-23T16:40:00-04:00",
-        "date": "2018-09-23T16:40:00-04:00",
-        "description": "Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.",
-        "tags": [
-          "referencias",
-          "programación",
-          "lenguajes-de-programación",
-          "go",
-          "programación-de-sistemas",
-          "programación-web",
-          "backend"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/instalar-go-1.10/",
-        "title": "Instalar Go 1.10",
-        "author": "ntrrg",
-        "publishdate": "2018-09-09T18:15:47-04:00",
-        "date": "2018-09-09T18:15:47-04:00",
-        "description": "Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.",
-        "tags": [
-          "tecnología",
-          "guías",
-          "instalaciones",
-          "lenguajes-de-programación",
-          "go"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/c%C3%B3mo-hacer-contribuciones-a-go/",
-        "title": "Cómo hacer contribuciones a Go",
-        "author": null,
-        "publishdate": "2018-07-06T12:42:47-04:00",
-        "date": "2018-07-06T12:42:47-04:00",
-        "description": "Cómo contribuir a Go sin morir en el intento.",
-        "tags": [
-          "guías",
-          "programación",
-          "lenguajes-de-programación",
-          "go",
-          "contribuir-a-un-proyecto"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/es/blog/representaci%C3%B3n-de-n%C3%BAmeros-de-punto-flotante/",
-        "title": "Representación de números de punto flotante",
-        "author": null,
-        "publishdate": "2018-06-25T23:15:14-04:00",
-        "date": "2018-06-25T23:15:14-04:00",
-        "description": "La conversión de números de punto flotante decimales a binarios es algo compleja, para llevarla acabo se debe seguir el estándar IEEE 754.",
-        "tags": [
-          "aritmética",
-          "ciencia-de-la-computación",
-          "números-binarios"
-        ]
-      }
+    "metadata": {
+      "license": "MIT",
+      "source-code": "https://github.com/ntrrg/ntweb"
+    },
+    "tags": [
+      "go",
+      "go-templates",
+      "html",
+      "css",
+      "javascript",
+      "sitio-web",
+      "json-api",
+      "hugo",
+      "mage",
+      "docker",
+      "github-actions",
+      "netlify"
     ],
-    "paginationPrefix": "https://nt.web.ve/es/blog/page/",
-    "fist": "1",
-    "prev": "",
-    "next": "2",
-    "last": "2"
+    "title": "ntWeb",
+    "toc": true
   },
+  "content": "...",
+  "data": {},
   "altLang": [
     {
       "lang": "en",
-      "url": "https://nt.web.ve/en/blog/"
+      "url": "https://nt.web.ve/en/projects/ntweb/"
     }
   ],
   "altMediaType": [
     {
       "mediaType": "text/html",
-      "url": "https://nt.web.ve/es/blog/"
-    },
-    {
-      "mediaType": "application/rss+xml",
-      "url": "https://nt.web.ve/es/blog/index.xml"
+      "url": "https://nt.web.ve/es/projects/ntweb/"
     }
   ]
 }
 ```
 
-# Uso
+## Endpoints
+
+### Principal
+
+<https://nt.web.ve/es/index.json>
+
+Obtiene todos los elementos de primer nivel. Ver [API](#api) para mas
+información sobre las propiedades en común.
+
+`data.sections` (arreglo de objetos):
+: Secciones. Cada objeto tiene las propiedades `url`, `title` y `pages`. La
+propiedad `pages` es la cantidad de páginas dentro de la sección.
+
+`data.taxonomies` (arreglo de objetos):
+: Taxonomías. Cada objeto tiene las propiedades `url`, `title` y `terms`. La
+propiedad `terms` es la cantidad de términos dentro de la taxonomía.
+
+`data.pages` (arreglo de objetos):
+: Páginas de primer nivel. Cada objeto tiene las propiedades `url` y `title`.
+
+### Colecciones
+
+<https://nt.web.ve/es/:section/index.json>
+
+<https://nt.web.ve/es/:section/page/:pageNumber/index.json>
+
+<https://nt.web.ve/es/tags/:tag/index.json>
+
+<https://nt.web.ve/es/tags/:tag/page/:pageNumber/index.json>
+
+{{< note "Parámetros" >}}
+
+`section`:
+: Nombre de la sección. Puede ser `blog`, `gallery` o `projects`.
+
+`tag`:
+: Nombre de la etiqueta. Debe ser [una etiqueta existente](/es/tags).
+
+`pageNumber`:
+: Número de página. La primera página es obtenida sin `page/:pageNumber/`.
+
+{{< /note >}}
+
+Obtiene la lista de elementos de una colección específica. Ver [API](#api) para
+mas información sobre las propiedades en común.
+
+`data.pages` (arreglo de objetos):
+: Lista de elementos. Cada página tiene las propiedades `url`, `title`,
+`publishDate`, `date`, `description` y `tags`. La propiedad `tags` es un
+arreglo de etiquetas asignadas al elemento.
+
+`data.pagination` (objeto):
+: Información de paginación. Contiene las propiedades `prefix`, `first`,
+`prev`, `next` y `last`.
+
+### Elementos
+
+<https://nt.web.ve/es/:section/:title/index.json>
+
+{{< note "Parámetros" >}}
+
+`section`:
+: Sección. Puede ser `blog`, `gallery` o `projects`.
+
+`title`:
+: Título codificado en URL del recurso.
+
+{{< /note >}}
+
+Obtiene un elemento. Ver [API](#api) para mas información sobre las propiedades
+en común.
+
+### Índice de búsqueda
+
+<https://nt.web.ve/es/search-index/index.json>
+
+Obtiene todos los elementos que pueden ser procesados por motores de búsqueda.
+Es un arreglo de objetos, cada objeto tiene las propiedades `url`, `title`,
+`description` y `content`. El valor de la propiedad `content` esta codificado
+con base64.
+
+**Nota:** este recurso no tiene las propiedades comunes de otros recursos
+
+# Modo sin conexión
 
 **Requerimientos:**
 
 * Hugo >= 0.61.0
 
-Descargar el código fuente y ejecutar el siguiente comando en la carpeta raíz
-del proyecto:
+Descargar el código fuente
+
+```shell-session
+$ # Paquete
+$ wget https://github.com/ntrrg/ntweb/archive/master.tar.gz
+$
+$ # Repositorio Git
+$ git clone --depth 1 https://github.com/ntrrg/ntweb.git
+```
+
+Ejecutar el servidor de Hugo en la carpeta raíz del proyecto:
 
 ```shell-session
 $ hugo server

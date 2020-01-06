@@ -70,34 +70,35 @@ Every page has the following properties:
 : Resource URL.
 
 `kind` (string):
-: Page kind, it may be one of `home`, `section`, `taxonomyTerm`, `taxonomy` or
-`page`.
+: Resource type. It may be one of `home`, `section`, `taxonomyTerm`, `taxonomy`
+or `page`.
 
 `type` (string):
-: Page type, it may be one of `blog`, `gallery`, `projects`, `tag` or `page`.
+: Content type. It may be one of `blog`, `gallery`, `projects`, `tag` or
+`page`.
 
 `lang` (string):
-: Page language.
+: Resource language.
 
 `title` (string):
-: Page title.
+: Resource title.
 
 `params` (string):
-: Page frontmatter parameters. This may be different from page types.
+: Resource frontmatter parameters. This may be different from page types.
 
 `content` (base64 encoded string):
-: Page rendered Markdown content.
+: Resource rendered Markdown content.
 
 `data` (object):
-: Page specific data. For the main page, this contains all the sections,
+: Resource specific data. For the main page, this contains all the sections,
 taxonomies and top-level pages; for collections this contains its elements and
 pagination information; and for single elements this is an empty object.
 
 `altLang` (array of objects):
-: Page translations. Every object has the `lang` and `url` properties.
+: Resource translations. Every object has the `lang` and `url` properties.
 
 `altMediaType` (array of objects):
-: Page alternative formats. Every object has the `mediaType` and `url`
+: Resource alternative formats. Every object has the `mediaType` and `url`
 properties.
 
 ```shell-session
@@ -157,8 +158,8 @@ $ wget -qO - https://nt.web.ve/en/projects/ntweb/index.json | jq
 
 <https://nt.web.ve/en/index.json>
 
-This retrieves all the top-level elements. See [API](#api) for more details
-about common properties.
+Retrieves all the top-level elements. See [API](#api) for more details about
+common properties.
 
 `data.sections` (array of objects):
 : Website sections. Every object has the `url`, `title` and `pages`
@@ -187,15 +188,15 @@ properties. The `terms` property is the count of terms inside the taxonomy.
 : Section name. This could be one of `blog`, `gallery` or `projects`.
 
 `tag`:
-: Tag name. This should be an [existent tag](/en/tags).
+: Tag name. This should be [an existent tag](/en/tags).
 
 `pageNumber`:
-: Page number, the first page is retrieved without `page/:pageNumber/`.
+: Page number. The first page is retrieved without `page/:pageNumber/`.
 
 {{< /note >}}
 
-This retrieves the list of elements from the given collection. See [API](#api)
-for more details about common properties.
+Retrieves the list of elements from the given collection. See [API](#api) for
+more details about common properties.
 
 `data.pages` (array of objects):
 : List of elements. Every object has the `url`, `title`, `publishDate`, `date`,
@@ -220,14 +221,14 @@ is an array of tags assigned to the element.
 
 {{< /note >}}
 
-This retrieves a single element. See [API](#api) for more details about common
+Retrieves a single element. See [API](#api) for more details about common
 properties.
 
 ### Search index
 
 <https://nt.web.ve/en/search-index/index.json>
 
-This retrieves all the indexable elements for search engines. It is an array of
+Retrieves all the indexable elements for search engines. It is an array of
 objects, and every object has the `url`, `title`, `description` and `content`
 properties. The value of the `content` property is base64 encoded.
 
