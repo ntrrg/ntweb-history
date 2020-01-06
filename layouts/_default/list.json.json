@@ -22,11 +22,14 @@
         {{ end }}
       {{ end }}
     ],
-    "paginationPrefix": "{{ .Permalink }}page/",
-    "fist": "{{ with .Paginator.First }}{{ .PageNumber }}{{ end }}",
-    "prev": "{{ with .Paginator.Prev }}{{ .PageNumber }}{{ end }}",
-    "next": "{{ with .Paginator.Next }}{{ .PageNumber }}{{ end }}",
-    "last": "{{ with .Paginator.Last }}{{ .PageNumber }}{{ end }}"
+    {{ $prefix := printf "%spage/" .Permalink }}
+    "pagination": {
+      "prefix": "{{ $prefix }}",
+      "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
+    }
   }
 {{ end }}
 
