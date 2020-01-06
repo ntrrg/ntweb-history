@@ -58,143 +58,198 @@ has good performance because of the lack of computing complexity (just reading
 a file), it is more resistant to cyber-attacks because there is no database
 server and it can be hosted in any service supporting static files.
 
+# API
+
+Almost any HTML page has a JSON output format, it could be fetched by appending
+`index.json` to its URL, so the JSON URL of this page should be
+`https://nt.web.ve/en/projects/ntweb/index.json`.
+
+Every page has the following properties:
+
+`url` (string):
+: Resource URL.
+
+`kind` (string):
+: Page kind, it may be one of `home`, `section`, `taxonomyTerm`, `taxonomy` or
+`page`.
+
+`type` (string):
+: Page type, it may be one of `blog`, `gallery`, `projects`, `tag` or `page`.
+
+`lang` (string):
+: Page language.
+
+`title` (string):
+: Page title.
+
+`params` (string):
+: Page frontmatter parameters. This may be different from page types.
+
+`content` (base64 encoded string):
+: Page rendered Markdown content.
+
+`data` (object):
+: Page specific data. For the main page, this contains all the sections,
+taxonomies and top-level pages; for collections this contains its elements and
+pagination information; and for single elements this is an empty object.
+
+`altLang` (array of objects):
+: Page translations. Every object has the `lang` and `url` properties.
+
+`altMediaType` (array of objects):
+: Page alternative formats. Every object has the `mediaType` and `url`
+properties.
+
 ```shell-session
-$ wget -qO - https://nt.web.ve/en/projects/index.json | jq
+$ wget -qO - https://nt.web.ve/en/projects/ntweb/index.json | jq
 {
-  "url": "https://nt.web.ve/en/projects/",
-  "kind": "section",
+  "url": "https://nt.web.ve/en/projects/ntweb/",
+  "kind": "page",
   "type": "projects",
   "lang": "en",
-  "title": "Projects",
+  "title": "ntWeb",
   "params": {
+    "comments": true,
+    "description": "A small site with great intentions.",
     "draft": false,
     "iscjklanguage": false,
-    "title": "Projects"
-  },
-  "content": "",
-  "data": {
-    "pages": [
-      {
-        "url": "https://nt.web.ve/en/projects/docker-hugo/",
-        "title": "docker-hugo",
-        "author": null,
-        "publishdate": "2018-05-06T22:07:39-04:00",
-        "date": "2019-12-11T17:00:10-04:00",
-        "description": "Dockerized Hugo CLI.",
-        "tags": [
-          "cli",
-          "containers",
-          "docker",
-          "hugo"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/en/projects/sdb/",
-        "title": "sdb",
-        "author": null,
-        "publishdate": "2019-11-28T10:31:22-04:00",
-        "date": "2019-12-04T05:50:01-04:00",
-        "description": "Simple and embeddable database with full text search support.",
-        "tags": [
-          "go",
-          "make",
-          "database",
-          "key-value-store",
-          "library",
-          "golangci",
-          "badgerdb",
-          "blevesearch"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/en/projects/ntgo/",
-        "title": "ntgo",
-        "author": null,
-        "publishdate": "2018-07-08T21:29:39-04:00",
-        "date": "2019-10-29T10:46:23-04:00",
-        "description": "A collection of Go packages.",
-        "tags": null
-      },
-      {
-        "url": "https://nt.web.ve/en/projects/pish/",
-        "title": "pish",
-        "author": null,
-        "publishdate": "2019-09-24T10:14:00-04:00",
-        "date": "2019-10-23T17:01:12-04:00",
-        "description": "Environments replicator.",
-        "tags": null
-      },
-      {
-        "url": "https://nt.web.ve/en/projects/ntdocutils/",
-        "title": "ntDocutils",
-        "author": null,
-        "publishdate": "2017-03-06T01:49:00-04:00",
-        "date": "2018-06-21T13:27:00-04:00",
-        "description": "Docutils theme manager.",
-        "tags": [
-          "python",
-          "cli",
-          "documentation",
-          "docutils",
-          "pygments"
-        ]
-      },
-      {
-        "url": "https://nt.web.ve/en/projects/ntweb/",
-        "title": "ntWeb",
-        "author": null,
-        "publishdate": "0001-01-01T00:00:00Z",
-        "date": "0001-01-01T00:00:00Z",
-        "description": "A small site with great intentions.",
-        "tags": [
-          "go",
-          "go-templates",
-          "html5",
-          "css3",
-          "javascript",
-          "website",
-          "json-api",
-          "hugo",
-          "mage",
-          "docker",
-          "github-actions",
-          "netlify"
-        ]
-      }
+    "metadata": {
+      "license": "MIT",
+      "source-code": "https://github.com/ntrrg/ntweb"
+    },
+    "tags": [
+      "go",
+      "go-templates",
+      "html",
+      "css",
+      "javascript",
+      "website",
+      "json-api",
+      "hugo",
+      "mage",
+      "docker",
+      "github-actions",
+      "netlify"
     ],
-    "paginationPrefix": "https://nt.web.ve/en/projects/page/",
-    "fist": "1",
-    "prev": "",
-    "next": "",
-    "last": "1"
+    "title": "ntWeb",
+    "toc": true
   },
+  "content": "...",
+  "data": {},
   "altLang": [
     {
       "lang": "es",
-      "url": "https://nt.web.ve/es/projects/"
+      "url": "https://nt.web.ve/es/projects/ntweb/"
     }
   ],
   "altMediaType": [
     {
       "mediaType": "text/html",
-      "url": "https://nt.web.ve/en/projects/"
-    },
-    {
-      "mediaType": "application/rss+xml",
-      "url": "https://nt.web.ve/en/projects/index.xml"
+      "url": "https://nt.web.ve/en/projects/ntweb/"
     }
   ]
 }
 ```
 
-# Usage
+## Endpoints
+
+### Main
+
+<https://nt.web.ve/en/index.json>
+
+This retrieves all the top-level elements. See [API](#api) for more details
+about common properties.
+
+`data.sections` (array of objects):
+: Website sections. Every object has the `url`, `title` and `pages`
+properties. The `pages` property is the count of pages inside the section.
+
+`data.taxonomies` (array of objects):
+: Website taxonomies. Every object has the `url`, `title` and `terms`
+properties. The `terms` property is the count of terms inside the taxonomy.
+
+`data.pages` (array of objects):
+: Top-level pages. Every object has the `url` and `title` properties.
+
+### Collections
+
+<https://nt.web.ve/en/:section/index.json>
+
+<https://nt.web.ve/en/:section/page/:pageNumber/index.json>
+
+<https://nt.web.ve/en/tags/:tag/index.json>
+
+<https://nt.web.ve/en/tags/:tag/page/:pageNumber/index.json>
+
+{{< note "Parameters" >}}
+
+`section`:
+: Section name. This could be one of `blog`, `gallery` or `projects`.
+
+`tag`:
+: Tag name. This should be an [existent tag](/en/tags).
+
+`pageNumber`:
+: Page number, the first page is retrieved without `page/:pageNumber/`.
+
+{{< /note >}}
+
+This retrieves the list of elements from the given collection. See [API](#api)
+for more details about common properties.
+
+`data.pages` (array of objects):
+: List of elements. Every object has the `url`, `title`, `publishDate`, `date`,
+`description` and `tags` properties. The `tags` property
+is an array of tags assigned to the element.
+
+`data.pagination` (object):
+: Pagination object. It contains the `prefix`, `first`, `prev`, `next` and
+`last` properties.
+
+### Elements
+
+<https://nt.web.ve/en/:section/:title/index.json>
+
+{{< note "Parameters" >}}
+
+`section`:
+: Section name. This could be one of `blog`, `gallery` or `projects`.
+
+`title`:
+: URL encoded element title.
+
+{{< /note >}}
+
+This retrieves a single element. See [API](#api) for more details about common
+properties.
+
+### Search index
+
+<https://nt.web.ve/en/search-index/index.json>
+
+This retrieves all the indexable elements for search engines. It is an array of
+objects, and every object has the `url`, `title`, `description` and `content`
+properties. The value of the `content` property is base64 encoded.
+
+**Note:** this doesn't have the common properties.
+
+# Offline mode
 
 **Requirements:**
 
 * Hugo >= 0.61.0
 
-Get the source code and run the following command in the project root
-directory:
+Get the source code
+
+```shell-session
+$ # Package
+$ wget https://github.com/ntrrg/ntweb/archive/master.tar.gz
+$
+$ # Git repository
+$ git clone --depth 1 https://github.com/ntrrg/ntweb.git
+```
+
+Run the Hugo server in the project root directory
 
 ```shell-session
 $ hugo server

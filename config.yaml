@@ -2,6 +2,7 @@ baseURL: https://nt.web.ve/
 permalinks:
   blog: /:sections/:slug/
   gallery: /:sections/:slug/
+  projects: /:sections/:slug/
 taxonomies:
   tag: tags
   serie: series
