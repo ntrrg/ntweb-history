@@ -13,7 +13,6 @@
           {
             "url": {{ jsonify .Permalink }},
             "title": {{ jsonify .Title }},
-            "author": {{ jsonify .Params.author }},
             "publishdate": {{ jsonify .PublishDate }},
             "date": {{ jsonify .Date }},
             "description": {{ jsonify .Description }},
