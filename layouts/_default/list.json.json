@@ -13,6 +13,17 @@
           {
             "url": {{ jsonify .Permalink }},
             "title": {{ jsonify .Title }},
+            "image": "{{ if isset .Params "image" -}}
+              {{ $image := $.Param "image" }}
+
+              {{- if findRE "^https?://" .Params.image 1 }}
+                {{- $image -}}
+              {{- else if hasPrefix $image "/" }}
+                {{- absURL $image -}}
+              {{- else }}
+                {{- printf "%s/%s" .Permalink $image | absURL -}}
+              {{ end }}
+            {{- end }}",
             "publishdate": {{ jsonify .PublishDate }},
             "date": {{ jsonify .Date }},
             "description": {{ jsonify .Description }},

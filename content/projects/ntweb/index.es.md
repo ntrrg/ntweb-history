@@ -83,6 +83,9 @@ Cada página tiene los siguientes atributos:
 `title` (cadena):
 : Título del recurso.
 
+`image` (string):
+: URL de la imagen del recurso.
+
 `params` (cadena):
 : Parámetros del frontmatter del recurso. Puede variar segur el tipo del
 contenido.
@@ -201,8 +204,8 @@ mas información sobre las propiedades en común.
 
 `data.pages` (arreglo de objetos):
 : Lista de elementos. Cada página tiene las propiedades `url`, `title`,
-`publishDate`, `date`, `description` y `tags`. La propiedad `tags` es un
-arreglo de etiquetas asignadas al elemento.
+`image`, `publishDate`, `date`, `description` y `tags`. La propiedad `tags` es
+un arreglo de etiquetas asignadas al elemento.
 
 `data.pagination` (objeto):
 : Información de paginación. Contiene las propiedades `prefix`, `first`,

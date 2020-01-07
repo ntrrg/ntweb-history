@@ -83,6 +83,9 @@ or `page`.
 `title` (string):
 : Resource title.
 
+`image` (string):
+: Resource image URL.
+
 `params` (string):
 : Resource frontmatter parameters. This may be different from page types.
 
@@ -199,8 +202,8 @@ Retrieves the list of elements from the given collection. See [API](#api) for
 more details about common properties.
 
 `data.pages` (array of objects):
-: List of elements. Every object has the `url`, `title`, `publishDate`, `date`,
-`description` and `tags` properties. The `tags` property
+: List of elements. Every object has the `url`, `title`, `image`,
+`publishDate`, `date`, `description` and `tags` properties. The `tags` property
 is an array of tags assigned to the element.
 
 `data.pagination` (object):
