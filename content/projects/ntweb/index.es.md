@@ -39,7 +39,7 @@ intencional (y está escrito con tecnologías web modernas).
 [Mage]: https://magefile.org
 
 El sitio web es creado con [Hugo][] y parte de su contenido es generado con
-[Go][] y [Mage][] (los proyectos y las URLs personalizadas de los paquetes Go).
+[Go][] y [Mage][] (los proyectos y los URLs personalizadas de los paquetes Go).
 
 Para mostrar la pagina principal solo se descargan ~28 KB (incluyendo los
 favicons), para un artículo del blog se descargan ~215 KB (incluyendo sus
@@ -63,7 +63,7 @@ cualquier servicio que soporte archivos estáticos.
 
 Casi todas las páginas HTML tienen JSON como formato alternativo, que puede ser
 obtenido agregando `index.json` al final de su URL. Por ejemplo, para esta
-página, la URL de su formato JSON sería `https://nt.web.ve/es/projects/ntweb/index.json`.
+página, el URL de su formato JSON sería `https://nt.web.ve/es/projects/ntweb/index.json`.
 
 Cada página tiene los siguientes atributos:
 
