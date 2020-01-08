@@ -76,12 +76,14 @@
   padding-left: 0em;
 }
 
-.markdown .task-list {
-  list-style: none;
-}
-
 .markdown dt {
   font-weight: bold;
+}
+
+.markdown .task-list {
+  list-style: none;
+
+  margin: 0.5em;
 }
 
 .markdown ul li input[type="checkbox"] {

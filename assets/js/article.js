@@ -1,3 +1,15 @@
+// Task list
+
+window.addEventListener('DOMContentLoaded', () => {
+  let selector = '.markdown ul li input[type="checkbox"]'
+  const inputs = document.querySelectorAll(selector)
+
+  for (const input of inputs) {
+    const list = input.parentNode.parentNode
+    list.classList.add('task-list')
+  }
+})
+
 // Wide images
 
 function resizeWideImages() {
@@ -21,14 +33,6 @@ window.addEventListener('DOMContentLoaded', resizeWideImages)
 window.addEventListener('resize', resizeWideImages)
 
 // Go Playground
-
-function setupGoPlaygroundLinks(baseURL, content) {
-  const links = document.querySelectorAll('a.go-playground-link')
-
-  for (const link of links) {
-    link.addEventListener('click', getGoPlaygroundLink)
-  }
-}
 
 async function getGoPlaygroundLink(e) {
   const link = e.target
@@ -59,4 +63,11 @@ async function getGoPlaygroundLink(e) {
   }
 }
 
-window.addEventListener('DOMContentLoaded', setupGoPlaygroundLinks)
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a.go-playground-link')
+
+  for (const link of links) {
+    link.addEventListener('click', getGoPlaygroundLink)
+  }
+})
+

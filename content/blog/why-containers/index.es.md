@@ -2,15 +2,15 @@
 title: ¿Por qué usar contenedores?
 author: ntrrg
 publishdate: 2019-05-14T22:54:00-0700
-date: 2019-11-14T11:35:00-0400
+date: 2020-01-07T14:57:00-0400
 description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
   - tecnología
   - entornos-de-desarrollo
   - contenedores
   - backend
-  - devops
   - sysadmin
+  - devops
 comments: true
 ---
 
@@ -74,9 +74,10 @@ mismo entorno (o muy parecido) para evitar problemas de compatibilidad.
    hacer, solo es en el caso de que logre hacerlo), tendrá acceso directo al
    servidor y no es que haga falta ser super usuario o {{< img  src="images/mr-robot.png" alt="Mr. Robot" style="height: 1.25em;" >}}
    para afectarlo, con solo correr un `while true; do; echo 'Muajaja! 😈'; done`
-   ya habrá un consumo relevante de CPU que podría aumentar su temperatura.
+   ya habrá un consumo relevante de CPU que podría ser aprovechado en otra
+   tarea.
 
-El resultado, una estructura parecida a:
+El resultado, una estructura parecida a esto:
 
 {{< img src="images/architectures-bare-metal-es.jpg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
 
@@ -126,12 +127,12 @@ El resultado, una estructura parecida a:
    esto puede ser irrelevante e incluso una ventaja), según el software de
    virtualización que se use, pueden hacerse algunas configuraciones especiales
    que le otorguen acceso, pero en este caso sería mucho mejor usar otra
-   alternativa para implementar la aplicación, si quieren acceso al hardware
-   para que virtualizarlo 😒😂 (a menos que se necesite exclusivamente un
-   sistema operativo diferente al del host).
+   alternativa para implementar la aplicación, si requiere acceso al hardware
+   para que virtualizarlo 😂 (a menos que se necesite exclusivamente un sistema
+   operativo diferente al del host).
 
 Se generan dos estructuras, la primera para el entorno de producción y la otra
-en la computadora de cada programador:
+en la computadora de cada programador respectivamente:
 
 {{< img src="images/architectures-vm-es.jpg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
 
@@ -140,7 +141,7 @@ en la computadora de cada programador:
 {{< note >}}
 
 Ya se que todo lo que escribí arriba depende de la técnica de trabajo de cada
-equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒😂, imaginen que
+equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒 😂, imaginen que
 están viendo una de esas publicidades exageradas de productos como *«La
 aspiradora que también lava, hace la comida y le canta canciones de cuna»*,
 igual que ellos, yo también tengo que vender mí producto 😄 (en este caso, el
@@ -262,12 +263,6 @@ de ejemplo tienen propósitos y enfoques diferentes, por lo que al usarlos cómo
 y dónde deben, pueden mitigarse sus desventajas y obtener más ventajas que
 usando contenedores. Lo importante es siempre aplicar la arquitectura correcta,
 y conocer una nueva que hace muy bien su trabajo nunca está de más 😄.
-
-{{< img src="images/architectures-bare-metal-es.jpg" alt="Arquitectura de una aplicación en un servidor físico" class="block" >}}
-
-{{< img src="images/architectures-vm-es.jpg" alt="Arquitectura de una aplicación en máquinas virtuales" class="block" >}}
-
-{{< img src="images/architectures-container-es.jpg" alt="Arquitectura de una aplicación en contenedores" class="block" >}}
 
 # Atribuciones
 

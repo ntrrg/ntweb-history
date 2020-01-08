@@ -1,15 +1,24 @@
 ---
 title: Lista de Anime
-date: 2019-05-31T11:30:00-07:00
+publishdate: 2019-05-31T11:30:00-07:00
+date: 2022-01-07T15:00:00-04:00
 description: Una lista de anime que ya vi, estoy viendo o tal vez veré.
-categories:
-  - entretenimiento
 tags:
+  - entretenimiento
   - anime
 comments: true
 ---
 
-* [x] 91 Days
+[Crunchyroll]: https://crunchyroll.com/
+
+Ver anime es uno de mis pasatiempos favorito, ahora que he dejado el lado
+oscuro de la fuerza uso [Crunchyroll][] para verlos (por eso probablemente
+algunos de la lista que ya están marcados no se puedan ver en esa plataforma).
+
+Las lista tiene un montón de anime del que no tengo ni idea de que trata, así
+que tengan cuidado si van a ver alguno con su hermanito o sus hijas 😂.
+
+* [x] **91 Days** - acción, drama, crimen, adultos.
 * [ ] Afro Samurai
 * [ ] Akame Ga Kiru!
 * [ ] Akatsuki no Yona
@@ -26,7 +35,7 @@ comments: true
 * [ ] Black Clover
 * [ ] Blade Runner
 * [ ] Bladedance of Elementalers
-* [x] Bleach
+* [x] **Bleach** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Blood+
 * [ ] Blood-C
 * [ ] Blood: The Last Vampire
@@ -45,12 +54,12 @@ comments: true
 * [ ] Corpse Party
 * [ ] Cowboy Bebop
 * [ ] Darker than Black
-* [x] Deadman Wonderland
+* [x] **Deadman Wonderland** - acción, drama, fantasía, sangriento, adolecentes, inconsluso.
 * [ ] Death March to the Parallel World Rhapsody
-* [x] Death Note
+* [x] **Death Note** - acción, drama, crimen, fantasía, adolecentes.
 * [ ] Denpa teki na Kanojo
-* [x] Dragon Ball
-* [x] Dragon Ball Z
+* [x] **Dragon Ball** - acción, aventura, fantasía, comedia, adolecentes.
+* [x] **Dragon Ball Z** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Dragon Ball Super
 * [ ] Dramatical Murder
 * [ ] Elfen Lied
@@ -59,9 +68,9 @@ comments: true
 * [ ] Evil or Live
 * [ ] FLCL
 * [ ] Fairy Tail
-* [x] Fate/stay night
-* [x] Fate/Zero
-* [x] Fullmetal Alchemist: Brotherhood
+* [x] **Fate/stay night** - acción, aventura, fantasía, adolecentes.
+* [x] **Fate/Zero** - acción, aventura, fantasía, adolecentes.
+* [x] **Fullmetal Alchemist: Brotherhood** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Ga-rei
 * [ ] Gantz
 * [ ] Genocyber
@@ -75,15 +84,15 @@ comments: true
 * [ ] Hakata Tonkotsu Ramens
 * [ ] Hakuōki
 * [ ] Hataraku Maō-sama!
-* [x] Hellsing
-* [x] Highschool of the Death
+* [x] **Hellsing** - acción, fantasía, sangriento, adultos.
+* [x] **Highschool of the Death** - acción, fantasía, comedia, sangriento, adultos.
 * [ ] Higurashi no Naku Koro ni
 * [ ] Hotaru no Haka
 * [ ] Hunter x Hunter
 * [ ] Hyakka Ryōran Samurai Girls
 * [ ] Hyōka
-* [x] InuYasha
-* [x] InuYasha: Kanketsu-Hen
+* [x] **InuYasha** - acción, aventura, fantasía, comedia, adolecentes.
+* [x] **InuYasha: Kanketsu-Hen** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] JoJo no Kimyō na Bōken
 * [ ] Jocker Game
 * [ ] Juni Taisen Zodiac War
@@ -91,7 +100,7 @@ comments: true
 * [ ] Kage Shadow
 * [ ] Kill la Kill
 * [ ] Kimetsu no Yaiba
-* [x] Kimi no Na wa
+* [x] **Kimi no Na wa** - drama, romance, fantasía, adolecentes, película.
 * [ ] Kino's Journey
 * [ ] Kite
 * [ ] Knights of Sidonia
@@ -107,25 +116,26 @@ comments: true
 * [ ] Monthly Girls' Nozaki-kun
 * [ ] Mushishi
 * [ ] Nanatsu no Taizai
-* [x] Naruto
+* [x] **Naruto** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Naruto Shippuden
 * [ ] Natsume Yūjin-Chō
 * [ ] Nichijou
 * [ ] Nodame Cantabile
 * [ ] Noragami
-* [x] Omamori Himari
+* [ ] Omamori Himari
 * [ ] One Piece
 * [ ] One Punch Man
 * [ ] Owari no Seraph
 * [ ] Parasyte
 * [ ] Planetes
-* [x] Psycho-Pass
-* [x] Psycho-Pass 2
+* [x] **Psycho-Pass** - acción, crimen, fantasía, adolecentes.
+* [x] **Psycho-Pass 2** - acción, crimen, fantasía, adolecentes.
+* [ ] Psycho-Pass 3
 * [ ] Ranma
 * [ ] Rakudai Kishi no Cavalry
 * [ ] Re:zero
 * [ ] Rokka no Yusha
-* [x] Rurouni Kenshin
+* [x] **Rurouni Kenshin** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Saikano
 * [ ] Saint Seiya
 * [ ] Saiyuuki
@@ -160,7 +170,7 @@ comments: true
 * [ ] Tokyo Ghoul
 * [ ] Toradora!
 * [ ] Triage X
-* [x] Trigun
+* [x] **Trigun** - acción, aventura, fantasía, comedia, adolecentes.
 * [ ] Twin Star Exorcists
 * [ ] Umineko no Naku Koro ni
 * [ ] Yu-Gi-Oh!
