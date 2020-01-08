@@ -46,7 +46,7 @@ enableRobotsTXT: true
 params:
   name: ntrrg
   title: ntrrg
-  titleSeparator: ☮
+  titleSeparator: "-"
   author: ntrrg
   singleAuthor: true
   image: /images/logo-bg-square.png
