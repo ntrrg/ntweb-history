@@ -1,7 +1,7 @@
 ---
 title: Lista de Anime
 publishdate: 2019-05-31T11:30:00-07:00
-date: 2022-01-07T15:00:00-04:00
+date: 2020-01-07T15:00:00-04:00
 description: Una lista de anime que ya vi, estoy viendo o tal vez veré.
 tags:
   - entretenimiento

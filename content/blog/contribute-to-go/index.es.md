@@ -1,11 +1,11 @@
 ---
 title: Cómo hacer contribuciones a Go
-date: 2018-07-06T12:42:47-04:00
+publishdate: 2018-07-06T12:42:47-04:00
+date: 2020-01-08T11:45:00-04:00
 description: Cómo contribuir a Go sin morir en el intento.
 image: images/go.png
-categories:
-  - tecnología
 tags:
+  - tecnología
   - guías
   - programación
   - lenguajes-de-programación
@@ -98,7 +98,7 @@ $ git codereview help
 **go-contrib-init:**
 
 Verifica el entorno de desarrollo y determina si hacen falta algunas
-configuraciones. Solo es útil para el código fuente de Go.
+configuraciones. No es relevante si se pretende modificar un subrepositorio.
 
 ```shell-session
 $ go get -u -v golang.org/x/tools/cmd/go-contrib-init
@@ -109,7 +109,7 @@ $ go get -u -v golang.org/x/tools/cmd/go-contrib-init
 1\. Ir al código fuente de Go o al del subrepositorio.
 
 ```shell-session
-$ cd path/to/go                        # Go
+$ cd go                                # Go
 $ cd "$GOPATH/src/golang.org/x/oauth2" # Subrepositorio
 ```
 
@@ -140,9 +140,7 @@ $ EDITOR src/net/http/server.go # Go
 $ EDITOR oauth2.go              # Subrepositorio
 ```
 
-**Código:**
-
-Todo archivo creado debe tener el texto de licencia.
+Si se modifica el código, todo archivo creado debe tener el texto de licencia.
 
 ```go
 // Copyright YYYY The Go Authors. All rights reserved.
@@ -159,23 +157,19 @@ $ export GOROOT_BOOTSTRAP="$(go env GOROOT)"
 $ go-contrib-init
 $ cd src
 $
-$ # Para ejecutar solo algunas pruebas
+$   # Para ejecutar solo algunas pruebas
 $ export OLD_GOPATH="$(go env GOPATH)"
 $ export GOPATH="$(dirname "$PWD")"
 $ ./make.bash
 $ "$GOPATH/bin/go" test -run '^TestHostHandlers$' -v net/http
 $
-$ # Para ejecutar todas las pruebas
+$   # Para ejecutar todas las pruebas
 $ ./all.bash
 
 $ # Subrepositorio
 $ go test -run '^TestAuthCodeURL$' -v ./... # Específica
 $ go test -v ./...                          # Todas
 ```
-
-**Documentación:**
-
-Es suficiente con solo modificar los archivos.
 
 5\. Confirmar los cambios.
 
@@ -198,7 +192,7 @@ como:
 PAQUETE: descripción corta que complete "This change modifies Go to ___."
 
 Descripción detallada que responda "¿Por qué se hace la
-modificación?" y que no sobrepase los 72 caracteres.
+modificación?" y que no sobrepase los 72 caracteres por línea.
 
 Fixes: #123
 ```
@@ -221,7 +215,7 @@ $ git codereview mail
 ```
 
 Si se debe hacer una modificación después de la auditoria, simplemente se
-repiten los pasos desde el 5.
+repiten los pasos desde el número 4.
 
 # Atribuciones
 

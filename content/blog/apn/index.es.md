@@ -1,10 +1,10 @@
 ---
 title: Nombre de Punto de Acceso (APN)
-date: 2019-05-31T10:30:00-07:00
+publishdate: 2019-05-31T10:30:00-07:00
+date: 2020-01-08T10:30:00-04:00
 description: En caso de No Internet en su dispositivo móvil, rompa el vidrio.
-categories:
-  - tecnología
 tags:
+  - tecnología
   - redes
   - android
 comments: true
@@ -19,11 +19,11 @@ configuraciones bastante complejas (que la verdad no entiendo 😅).
 
 En la mayoría de los casos, el APN es configurado automáticamente con solo
 conectarse a la red del proveedor (encender el teléfono con una SIM, por
-ejemplo). Si a pesar de estar conectado el dispositivo no tiene conexión a
+ejemplo). Si a pesar de estar activo el dispositivo no tiene conexión a
 Internet, es posible que haga falta configurarlo manualmente, y para ello se
 necesitarán datos específicos de cada proveedor.
 
-Esta es una lista de datos necesarios de los APNs por país y proveedor:
+Esta es una lista de datos necesarios de los APNs por país y proveedor.
 
 # Estados Unidos
 

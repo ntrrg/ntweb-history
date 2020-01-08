@@ -2,7 +2,7 @@
 title: Instalar Go 1.12
 author: ntrrg
 publishdate: 2019-06-01T10:10:00-0700
-date: 2019-11-12T09:00:00-0400
+date: 2020-01-08T11:50:00-0400
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
 tags:
@@ -21,20 +21,20 @@ explico el procedimiento para hacerlo.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.12.13.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.12.14.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ sha256sum go1.12.13.linux-amd64.tar.gz
-da036454cb3353f9f507f0ceed4048feac611065e4e1818b434365eb32ac9bdc  go1.12.13.linux-amd64.tar.gz
+$ sha256sum go1.12.14.linux-amd64.tar.gz
+925a1a9d8b31c2425d7313fe73d3342288968a66e26cd8bf1b6b5656f4603fcb  go1.12.14.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo en `/usr/local`
 
 ```shell-session
-# tar -xvf go1.12.13.linux-amd64.tar.gz -C /usr/local
+# tar -xvf go1.12.14.linux-amd64.tar.gz -C /usr/local
 ```
 
 4\. Agregar los binarios a la lista de comandos del sistema
@@ -47,13 +47,13 @@ da036454cb3353f9f507f0ceed4048feac611065e4e1818b434365eb32ac9bdc  go1.12.13.linu
 
 ```shell-session
 $ go version
-go version go1.12.13 linux/amd64
+go version go1.12.14 linux/amd64
 ```
 
 6\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm go1.12.13.linux-amd64.tar.gz
+$ rm go1.12.14.linux-amd64.tar.gz
 ```
 
 {{< note >}}
@@ -98,20 +98,20 @@ de como se realice la instalación.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.12.13.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.12.14.linux-amd64.tar.gz
 ```
 
 2\. Verificar que se haya descargado correctamente
 
 ```shell-session
-$ sha256sum go1.12.13.linux-amd64.tar.gz
-da036454cb3353f9f507f0ceed4048feac611065e4e1818b434365eb32ac9bdc  go1.12.13.linux-amd64.tar.gz
+$ sha256sum go1.12.14.linux-amd64.tar.gz
+925a1a9d8b31c2425d7313fe73d3342288968a66e26cd8bf1b6b5656f4603fcb  go1.12.14.linux-amd64.tar.gz
 ```
 
 3\. Descomprimirlo
 
 ```shell-session
-$ tar -xvf go1.12.13.linux-amd64.tar.gz
+$ tar -xvf go1.12.14.linux-amd64.tar.gz
 ```
 
 4\. Renombrar la carpeta de Go (para evitar cualquier conflicto)
@@ -132,22 +132,22 @@ $ export GOROOT_BOOTSTRAP="$PWD/toolchain"
 **Paquete:**
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.12.13.src.tar.gz
+$ wget https://dl.google.com/go/go1.12.14.src.tar.gz
 ```
 
 ```shell-session
-$ sha256sum go1.12.13.src.tar.gz
-5383d3b8db4baa48284ffcb14606d9cad6f03e9db843fa6d835b94d63cccf5a7  go1.12.13.src.tar.gz
+$ sha256sum go1.12.14.src.tar.gz
+39dbf05f7e2ffcb19b08f07d53dcc96feadeb1987fef9e279e7ff0c598213064  go1.12.14.src.tar.gz
 ```
 
 ```shell-session
-$ tar -xvf go1.12.13.src.tar.gz
+$ tar -xvf go1.12.14.src.tar.gz
 ```
 
 **Git:**
 
 ```shell-session
-$ git clone -b go1.12.13--depth 1 https://go.googlesource.com/go
+$ git clone -b go1.12.14 --depth 1 https://go.googlesource.com/go
 ```
 
 7\. ¡Compilar!
@@ -189,13 +189,13 @@ $ cd ../../
 
 ```shell-session
 $ go version
-go version go1.12.13 linux/amd64
+go version go1.12.14 linux/amd64
 ```
 
 11\. Eliminar los archivos necesarios para la instalación
 
 ```shell-session
-$ rm -r go1.12.13.*.tar.gz toolchain
+$ rm -r go1.12.14.*.tar.gz toolchain
 ```
 
 Para instalar algunas utilidades más (como **godoc**, que permite visualizar la

@@ -147,7 +147,7 @@ $ tar -xvf go1.11.13.src.tar.gz
 **Git:**
 
 ```shell-session
-$ git clone -b go1.11.13--depth 1 https://go.googlesource.com/go
+$ git clone -b go1.11.13 --depth 1 https://go.googlesource.com/go
 ```
 
 7\. ¡Compilar!
