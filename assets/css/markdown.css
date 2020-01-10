@@ -153,7 +153,8 @@
 }
 
 .markdown pre > code {
-  padding: 0;
+  padding: 0em;
+  padding-right: 1em;
 }
 
 .markdown .lntable tbody tr td.lntd:last-child {
