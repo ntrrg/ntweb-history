@@ -13,4 +13,4 @@
 
     {{ with .Title}} title="{{ . }}"{{ end }}
   {{ end }}
->{{ .Text }}</a>
+>{{ markdownify .Text }}</a>
