@@ -241,7 +241,7 @@ properties. The value of the `content` property is base64 encoded.
 
 **Requirements:**
 
-* Hugo >= 0.61.0
+* Hugo >= 0.62
 
 Get the source code
 

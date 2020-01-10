@@ -189,7 +189,7 @@ Para empezar a programar solo hacen falta dos cosas:
 
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 
-[Instalar Go]: {{< relref "/blog/install-go-1.12/index.es.md" >}}
+[Instalar Go]: ./../install-go-1.13/index.es.md
 [Install Go]: https://golang.org/doc/install
 
 * El compilador (se pueden ver las instrucciones para instalarlo en la

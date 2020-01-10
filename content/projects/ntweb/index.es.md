@@ -243,7 +243,7 @@ con base64.
 
 **Requerimientos:**
 
-* Hugo >= 0.61.0
+* Hugo >= 0.62
 
 Descargar el código fuente
 

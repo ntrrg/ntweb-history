@@ -87,7 +87,7 @@ $ echo "export GOROOT=\"$GOROOT\"" >> ~/.profile
 Para este método también es necesario tener los binarios, pues desde la
 versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo
 tiene sentido usar este procedimiento si se tiene pensado [modificar el código
-fuente]({{< relref "/blog/contribute-to-go/index.es.md" >}}).
+fuente](./../contribute-to-go/index.es.md).
 
 {{< note >}}
 Puede que se necesite [Git](https://git-scm.com/) en algunas ocasiones, depende

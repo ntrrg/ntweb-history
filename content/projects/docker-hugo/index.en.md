@@ -1,17 +1,17 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2019-12-11T17:00:10-04:00
+date: 2020-01-09T10:19:38-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
 title: docker-hugo
 description: Dockerized Hugo CLI.
 tags:
-  - cli
   - containers
   - docker
   - hugo
 toc: true
+comments: true
 ---
 
 [![Docker Build Status](https://img.shields.io/docker/build/ntrrg/hugo.svg)](https://hub.docker.com/r/ntrrg/hugo)
@@ -22,7 +22,8 @@ toc: true
 
 | Tag | Dockerfile |
 | --: | :-- |
-| `latest`, `0.61.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.61.0/Dockerfile) |
+| `latest`, `0.62.2` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.62.2/Dockerfile) |
+| `0.61.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.61.0/Dockerfile) |
 | `0.60.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.60.1/Dockerfile) |
 | `0.59.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.1/Dockerfile) |
 | `0.59.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.59.0/Dockerfile) |
