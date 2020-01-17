@@ -45,3 +45,9 @@
   to = "/es/404/"
   status = 404
 
+[[headers]]
+  for = "/favicon.ico"
+
+[headers.values]
+  Content-Type = "image/x-icon"
+
