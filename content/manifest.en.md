@@ -1,6 +1,6 @@
 ---
 data:
-  theme_color: #000
+  theme_color: "#000"
   background_color: white
   description: A small site with great intentions.
   display: standalone
