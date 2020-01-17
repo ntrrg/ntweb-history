@@ -62,15 +62,3 @@
 [headers.values]
   Content-Type = "application/json; charset=utf-8"
 
-[[headers]]
-  for = "/*.html"
-
-[headers.values]
-  X-XSS-Protection = "1; mode=block"
-
-[[headers]]
-  for = "/*/"
-
-[headers.values]
-  X-XSS-Protection = "1; mode=block"
-
