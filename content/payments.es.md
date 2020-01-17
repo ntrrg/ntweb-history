@@ -1,5 +1,5 @@
 ---
-title: Métodos de pago
+title: Pagos y donaciones
 toc: true
 ---
 

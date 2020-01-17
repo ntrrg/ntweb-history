@@ -1,5 +1,5 @@
 ---
-title: Payment methods
+title: Payments and donations
 toc: true
 ---
 
