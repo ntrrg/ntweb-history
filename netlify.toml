@@ -51,3 +51,15 @@
 [headers.values]
   Content-Type = "image/x-icon"
 
+[[headers]]
+  for = "/*.js"
+
+[headers.values]
+  Content-Type = "text/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/*.json"
+
+[headers.values]
+  Content-Type = "application/json; charset=utf-8"
+
