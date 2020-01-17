@@ -6,7 +6,6 @@ date: 2020-01-07T14:57:00-0400
 description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
   - tecnología
-  - entornos-de-desarrollo
   - contenedores
   - backend
   - sysadmin

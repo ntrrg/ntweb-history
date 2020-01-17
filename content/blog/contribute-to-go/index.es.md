@@ -10,7 +10,6 @@ tags:
   - programación
   - lenguajes-de-programación
   - go
-  - contribuir-a-un-proyecto
 comments: true
 toc: true
 ---
