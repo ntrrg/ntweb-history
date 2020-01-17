@@ -9,6 +9,7 @@
 
     {{ if strings.HasPrefix .Destination "http" }}
       target="_blank"
+      rel="noopener noreferrer"
     {{ end }}
 
     {{ with .Title}} title="{{ . }}"{{ end }}
