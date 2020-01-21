@@ -2,7 +2,7 @@
 title: Instalar Go 1.13 en Linux
 author: ntrrg
 publishdate: 2019-11-12T10:10:00-0400
-date: 2020-01-08T11:57:00-0400
+date: 2020-01-21T10:20:00-0400
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
 tags:
