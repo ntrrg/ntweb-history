@@ -30,23 +30,23 @@ serán iguales a las de este artículo.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz
 ```
 
 ```shell-session
-$ sha256sum -c <(echo "512103d7ad296467814a6e3f635631bd35574cab3369a97a323c9a585ccaa569  go1.13.5.linux-amd64.tar.gz")
-go1.13.5.linux-amd64.tar.gz: OK
+$ sha256sum -c <(echo "a1bc06deb070155c4f67c579f896a45eeda5a8fa54f35ba233304074c4abbbbd  go1.13.6.linux-amd64.tar.gz")
+go1.13.6.linux-amd64.tar.gz: OK
 ```
 
 ```shell-session
-$ tar -xf go1.13.5.linux-amd64.tar.gz
+$ tar -xf go1.13.6.linux-amd64.tar.gz
 ```
 
 2\. Verificar que funciona correctamente
 
 ```shell-session
 $ go/bin/go version
-go version go1.13.5 linux/amd64
+go version go1.13.6 linux/amd64
 ```
 
 3\. Mover a `/usr/local`
@@ -127,28 +127,28 @@ o más de las circunstancias de arriba aplican.
 El código fuente se puede descargar como paquete desde el sitio oficial de Go
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.13.5.src.tar.gz
+$ wget https://dl.google.com/go/go1.13.6.src.tar.gz
 ```
 
 ```shell-session
-$ sha256sum -c <(echo "27d356e2a0b30d9983b60a788cf225da5f914066b37a6b4f69d457ba55a626ff  go1.13.5.src.tar.gz")
-go1.13.5.src.tar.gz: OK
+$ sha256sum -c <(echo "aae5be954bdc40bcf8006eb77e8d8a5dde412722bc8effcdaf9772620d06420c  go1.13.6.src.tar.gz")
+go1.13.6.src.tar.gz: OK
 ```
 
 ```shell-session
-$ tar -xf go1.13.5.src.tar.gz
+$ tar -xf go1.13.6.src.tar.gz
 ```
 
 O usando Git
 
 ```shell-session
 $ # Desde Google
-$ git clone -b go1.13.5 https://go.googlesource.com/go
+$ git clone -b go1.13.6 https://go.googlesource.com/go
 ```
 
 ```shell-session
 $ # Desde GitHub
-$ git clone -b go1.13.5 https://github.com/golang/go
+$ git clone -b go1.13.6 https://github.com/golang/go
 ```
 
 ## Bootstrap
@@ -288,7 +288,7 @@ hacerlo). Para evitar esto y solo compilar, se puede usar el script `make.bash`.
 
 ```shell-session
 $ go/bin/go version
-go version go1.13.5 linux/amd64
+go version go1.13.6 linux/amd64
 ```
 
 ## Instalación
