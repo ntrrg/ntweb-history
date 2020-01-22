@@ -13,6 +13,11 @@
           {
             "url": {{ jsonify .Permalink }},
             "title": {{ jsonify .Title }},
+            {{ if ne .Site.Params.singleAuthor true -}}
+              {{- with .Params.author -}}
+            "author": {{ jsonify . }},
+              {{- end -}}
+            {{- end }}
             "image": "{{ if isset .Params "image" -}}
               {{ $image := $.Param "image" }}
 

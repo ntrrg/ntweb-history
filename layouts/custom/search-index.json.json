@@ -15,7 +15,13 @@
 {{ define "document" }}
   {
     "url": {{ jsonify .Permalink }},
+    "type": {{ jsonify .Type }},
     "title": {{ jsonify .Title }},
+    {{ if ne .Site.Params.singleAuthor true -}}
+      {{- with .Params.author -}}
+    "author": {{ jsonify . }},
+      {{- end -}}
+    {{- end }}
     "description": {{ jsonify .Description }},
     "content": {{- with .Params.content -}}
       {{ $content := getJSON .url }}
