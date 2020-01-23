@@ -1,5 +1,6 @@
 ---
 title: Go (Golang)
+author: ntrrg
 date: 2018-09-23T16:40:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento; su fuerte es la concurrencia.

@@ -233,9 +233,9 @@ en común.
 <https://nt.web.ve/es/search-index/index.json>
 
 Obtiene todos los elementos que pueden ser procesados por motores de búsqueda.
-Es un arreglo de objetos, cada objeto tiene las propiedades `url`, `title`,
-`description` y `content`. El valor de la propiedad `content` esta codificado
-con base64.
+Es un arreglo de objetos, cada objeto tiene las propiedades `url`, `type`,
+`title`, `description` y `content`. El valor de la propiedad `content` esta
+codificado con base64.
 
 **Nota:** este recurso no tiene las propiedades comunes de otros recursos
 

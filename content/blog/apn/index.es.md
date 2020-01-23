@@ -1,5 +1,6 @@
 ---
 title: Nombre de Punto de Acceso (APN)
+author: ntrrg
 publishdate: 2019-05-31T10:30:00-07:00
 date: 2020-01-08T10:30:00-04:00
 description: En caso de No Internet en su dispositivo móvil, rompa el vidrio.

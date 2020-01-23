@@ -1,5 +1,6 @@
 ---
 title: Cómo hacer contribuciones a Go
+author: ntrrg
 publishdate: 2018-07-06T12:42:47-04:00
 date: 2020-01-08T11:45:00-04:00
 description: Cómo contribuir a Go sin morir en el intento.
