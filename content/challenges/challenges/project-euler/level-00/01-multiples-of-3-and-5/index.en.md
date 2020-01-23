@@ -6,6 +6,7 @@ metadata:
   platform: Project Euler
   url: https://projecteuler.net/problem=1
 tags:
+  - challenges
   - go
 comments: true
 ---
