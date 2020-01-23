@@ -1,5 +1,11 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  <h1>
+    {{ if eq .Kind "taxonomy" }}
+      {{ replace .Type "-" "_" | upper | i18n }}:
+    {{ end }}
+
+    {{ .Title }}
+  </h1>
 
   {{ .Content }}
 
