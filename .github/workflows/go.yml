@@ -36,3 +36,6 @@ jobs:
       - name: Content generation - Projects
         run: ./mage -v gen:projects
 
+      - name: Challenges
+        run: ./mage -v challenges:default
+

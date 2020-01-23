@@ -78,6 +78,8 @@ func (BumpVersion) Hugo() error {
 }
 
 func Clean() error {
+	mg.Deps(Challenges.Clean)
+
 	for _, dst := range []string{gitRepos, "public", "resources"} {
 		if err := sh.Rm(dst); err != nil {
 			return err
@@ -89,7 +91,11 @@ func Clean() error {
 
 type Lint mg.Namespace
 
-func (Lint) Go() error {
+func (Lint) Default() {
+	mg.Deps(Lint.Mage, Challenges.Lint)
+}
+
+func (Lint) Mage() error {
 	return sh.RunV("gofmt", "-d", "-e", "-s", ".mage/magefile.go")
 }
 
@@ -139,7 +145,7 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 	return hc.FromConfigString(string(cfgData), filepath.Ext(cfgFile))
 }
 
-func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
+func writeMultiLangFile(path string, content map[string][]byte, mode os.FileMode) error {
 	i := strings.LastIndex(path, ".")
 	if i < 0 {
 		i = len(path) - 1
@@ -147,7 +153,7 @@ func writeMultiLangFile(path string, content []byte, mode os.FileMode) error {
 
 	ext := filepath.Ext(path)
 
-	for lang := range cfg.GetStringMap("languages") {
+	for lang, content := range content {
 		path := path[:i] + "." + lang + ext
 
 		err := ioutil.WriteFile(path, content, mode)
@@ -296,9 +302,11 @@ url: /go/%s
 }
 
 func writeGoPkgPage(src, mod, pkg, doc string) error {
+	content := []byte(genGoPkgPage(src, mod, pkg, doc))
+
 	return writeMultiLangFile(
 		filepath.Join(goPkgsDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
-		[]byte(genGoPkgPage(src, mod, pkg, doc)), 0644,
+		map[string][]byte{"en": content, "es": content}, 0644,
 	)
 }
 
@@ -418,4 +426,59 @@ func getLincense(path string) (string, error) {
 	}
 
 	return "", s.Err()
+}
+
+////////////////
+// Challenges //
+////////////////
+
+var (
+	challengesDir = filepath.Clean("content/challenges")
+)
+
+type Challenges mg.Namespace
+
+func (Challenges) Default() {
+	mg.SerialDeps(Challenges.Lint, Challenges.Run)
+}
+
+func (Challenges) Clean() error {
+	fn := func(path string, info os.FileInfo, err error) error {
+		if filepath.Base(path) != "solution" {
+			return nil
+		}
+
+		return sh.Rm(path)
+	}
+
+	return filepath.Walk(challengesDir, fn)
+}
+
+func (Challenges) Lint() error {
+	var files []string
+
+	fn := func(path string, info os.FileInfo, err error) error {
+		if !strings.HasSuffix(path, ".go") {
+			return nil
+		}
+
+		files = append(files, path)
+		return nil
+	}
+
+	if err := filepath.Walk(challengesDir, fn); err != nil {
+		return err
+	}
+
+	args := []string{"-d", "-e", "-s"}
+	args = append(args, files...)
+	return sh.RunV("gofmt", args...)
+}
+
+func (Challenges) Run() error {
+	c := exec.Command("./run.sh")
+	c.Stdout = os.Stdout
+	c.Dir = challengesDir
+
+	return c.Run()
 }

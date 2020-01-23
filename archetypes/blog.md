@@ -10,6 +10,7 @@ content:
   api: github
 tags:
   - tag1
+math: false
 comments: true
 toc: true
 draft: true

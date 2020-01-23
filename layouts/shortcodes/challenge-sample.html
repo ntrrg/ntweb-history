@@ -1,0 +1,12 @@
+<code>input{{ (.Get 0) }}.txt</code>
+
+<pre><code>
+  {{- printf "content/%s/input/input%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+</code></pre>
+
+<code>output{{ (.Get 0) }}.txt</code>
+
+<pre><code>
+  {{- printf "content/%s/output/output%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+</code></pre>
+

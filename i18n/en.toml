@@ -10,6 +10,9 @@ other = "Links of interest"
 [DEFAULT_NOTE_TITLE]
 other = "Note"
 
+[DIFFICULTY]
+other = "Difficulty"
+
 [GO_PLAYGROUND_ERROR]
 other = "Couldn't send the code, try again"
 
@@ -31,6 +34,9 @@ other = "Modified"
 [NO_CONTENT]
 other = "[WIP] There is no content in this section yet."
 
+[PLATFORM]
+other = "Platform"
+
 [PUBLISHED]
 other = "Published"
 
@@ -45,6 +51,9 @@ other = "Tags"
 
 [TOC_TITLE]
 other = "Table of Contents"
+
+[URL]
+other = "URL"
 
 [WEBSITE]
 other = "Website"

@@ -30,13 +30,8 @@
 
   {{ range $key, $value := .Params.metadata }}
     <div>
-      <strong>{{ i18n (replace ($key | upper) "-" "_") }}:</strong>
-
-      {{ if findRE "^https?://" $value 1 }}
-        <a href="{{ $value }}">{{ $value }}</a>
-      {{ else }}
-        {{ $value }}
-      {{ end }}
+      <strong>{{ replace $key "-" "_" | upper | i18n }}:</strong>
+      {{ markdownify $value }}
     </div>
   {{ end }}
 
