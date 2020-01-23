@@ -1,8 +1,5 @@
-<div class="note loi">
-  <header>
-    {{ i18n "DEFAULT_LOI_TITLE" }}
-  </header>
-
-  <main>{{ markdownify .Inner }}</main>
-</div>
+<details>
+  <summary>{{ i18n "DEFAULT_LOI_TITLE" }}</summary>
+  {{ markdownify .Inner }}
+</details>
 
