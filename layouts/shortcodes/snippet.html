@@ -1,1 +1,13 @@
-<pre><code{{ with .Get 1}} class="language-{{ . }}"{{ end }}>{{- readFile (.Get 0) -}}</code></pre>
+{{ $content := "```" }}
+
+{{ with .Get 1 }}
+  {{ $content = printf "%s%s" $content . }}
+{{ end }}
+
+{{ $content = printf "%s\n" $content }}
+
+{{ $content = printf "%s%s" $content (printf "content/%s/%s" $.Page.File.Dir (.Get 0) | readFile) }}
+
+{{ $content = printf "%s```" $content }}
+{{ replace $content "\t" "  " | markdownify }}
+
