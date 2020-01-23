@@ -104,7 +104,7 @@ select {
 
 @media (min-width: 1024px) {
   #body {
-    grid-template-columns: auto 120ex auto;
+    grid-template-columns: auto 90ex auto;
     grid-template-areas: 
       ". header ."
       ".  main  ."
