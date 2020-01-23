@@ -28,7 +28,7 @@ jobs:
           .mage/compile.sh
 
       - name: Lint
-        run: ./mage -v lint:go
+        run: ./mage -v lint:mage
 
       - name: Content generation - Go packages
         run: ./mage -v gen:gopkgs
