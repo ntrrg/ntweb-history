@@ -247,11 +247,11 @@ This is a note with a custom title.
 
 ## Links of interest
 
-{{< loi >}}
+{{% loi %}}
 * <https://nt.web.ve>
-* <https://nt.web.ve/en>
-* <https://nt.web.ve/es>
-{{< /loi >}}
+* <https://nt.web.ve/en/>
+* <https://nt.web.ve/es/>
+{{% /loi %}}
 
 ## Details
 

@@ -58,10 +58,10 @@ Algunas de sus características más resaltantes son:
 
 # Funcionalidades excluidas
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/doc/faq#Design>
 * <https://www.youtube.com/watch?v=k9Zbuuo51go>
-{{< /loi >}}
+{{% /loi %}}
 
 * Genéricos. Aunque es posible que en alguna futura versión se agregue, por
   ahora no se ha logrado obtener una solución que compense su complejidad con
@@ -315,9 +315,9 @@ sección del [Compilador](#compilador).
 
 # Comentarios
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/ref/spec#Comments>
-{{< /loi >}}
+{{% /loi %}}
 
 Los comentarios son texto ignorado por el compilador, su función principal es
 documentar ciertas secciones de código que sean un poco difíciles de entender
@@ -353,9 +353,9 @@ fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
 
 ## Documentación
 
-{{< loi >}}
+{{% loi %}}
 * <https://blog.golang.org/godoc-documenting-go-code>
-{{< /loi >}}
+{{% /loi %}}
 
 [GoDoc]: https://godoc.org
 [Docutils]: http://docutils.sourceforge.net/
@@ -501,9 +501,9 @@ son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
 
 ## Booleanos
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/ref/spec#Boolean_types>
-{{< /loi >}}
+{{% /loi %}}
 
 [George Boole]: https://es.wikipedia.org/wiki/George_Boole
 
@@ -542,7 +542,7 @@ Existen tres grupos de datos numéricos:
 
 ### Enteros
 
-{{< loi >}}
+{{% loi %}}
 <!--lint disable no-undefined-references no-shortcut-reference-link-->
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
@@ -551,7 +551,7 @@ Existen tres grupos de datos numéricos:
 * [Números hexadecimales](./../hex-numbers.es.md)
 * [Complemento a dos](./../twos-complement.es.md)
 <!--lint enable no-undefined-references no-shortcut-reference-link-->
-{{< /loi >}}
+{{% /loi %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
@@ -656,15 +656,13 @@ uintptr // Permite almacenar direcciones de memoria
 
 ### Punto flotante
 
-{{< loi >}}
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
+{{% loi %}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <http://www.oxfordmathcenter.com/drupal7/node/43>
 * [Números binarios](./../binary-numbers.es.md)
 * [Representación de números de punto flotante](./../ieee-754.es.md)
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-{{< /loi >}}
+{{% /loi %}}
 
 Representan al conjunto matemático de los números fraccionarios, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
@@ -716,12 +714,12 @@ float64
 
 ### Complejos
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Imaginary_literals>
 * <https://golang.org/ref/spec#Constant_expressions>
 * <https://golang.org/ref/spec#Complex_numbers>
-{{< /loi >}}
+{{% /loi %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
@@ -776,7 +774,7 @@ complex128
 
 ## Arreglos
 
-{{< loi >}}
+{{% loi %}}
 * <https://tour.golang.org/moretypes/6>
 * <https://golang.org/ref/spec#Array_types>
 * <https://golang.org/ref/spec#Composite_literals>
@@ -784,7 +782,7 @@ complex128
 * <https://blog.golang.org/go-slices-usage-and-internals>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
-{{< /loi >}}
+{{% /loi %}}
 
 Son un conjunto de elementos de algún tipo de dato asignado arbitrariamente, la
 cantidad debe ser una constante y no puede cambiar después de su creación.
@@ -916,7 +914,7 @@ len(x)) // 3
 
 ## Porciones
 
-{{< loi >}}
+{{% loi %}}
 * <https://tour.golang.org/moretypes/7>
 * <https://tour.golang.org/moretypes/8>
 * <https://tour.golang.org/moretypes/9>
@@ -935,7 +933,7 @@ len(x)) // 3
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
 * <https://github.com/golang/go/wiki/SliceTricks>
-{{< /loi >}}
+{{% /loi %}}
 
 Al igual que los arreglos, son un conjunto de elementos de un tipo de dato
 asignado arbitrariamente, pero con algunas diferencias importantes, entre las
@@ -1206,8 +1204,7 @@ nil
 
 ## Cadenas
 
-{{< loi >}}
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
+{{% loi %}}
 * <https://golang.org/ref/spec#String_types>
 * <https://golang.org/ref/spec#String_literals>
 * <https://golang.org/ref/spec#Rune_literals>
@@ -1215,8 +1212,7 @@ nil
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
 * [Codificación de texto](./../text-encoding.es.md)
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
-{{< /loi >}}
+{{% /loi %}}
 
 Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
 de una runa (un punto de código Unicode codificado en UTF-8), que no es más
@@ -1418,7 +1414,7 @@ multilineal`
 
 ## Mapas
 
-{{< loi >}}
+{{% loi %}}
 * <https://tour.golang.org/moretypes/19>
 * <https://tour.golang.org/moretypes/20>
 * <https://tour.golang.org/moretypes/21>
@@ -1430,7 +1426,7 @@ multilineal`
 * <https://golang.org/ref/spec#Making_slices_maps_and_channels>
 * <https://blog.golang.org/go-maps-in-action>
 * <https://golang.org/ref/spec#Comparison_operators>
-{{< /loi >}}
+{{% /loi %}}
 
 **Nota:** cada vez que mencione a los arreglos, también hago referencia a los
 demás tipos que derivan de ellos, como las porciones y las cadenas.
@@ -1657,9 +1653,9 @@ x + y // (2+3i)
 
 ## Ejemplos (pruebas)
 
-{{< loi >}}
+{{% loi %}}
 * <https://blog.golang.org/examples>
-{{< /loi >}}
+{{% /loi %}}
 
 Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
 ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
@@ -1870,9 +1866,9 @@ ok  	local/arithmetic
 
 ## Compilador
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/pkg/go/build/>
-{{< /loi >}}
+{{% /loi %}}
 
 GOPATH
 
@@ -1882,11 +1878,10 @@ GOTPMDIR
 
 ## Condiciones de compilación
 
-{{< loi >}}
+{{% loi %}}
 * <https://golang.org/pkg/go/build/#hdr-Build_Constraints>
-
 * <https://www.youtube.com/watch?v=COCUqAwAbD0&t=0s&index=31&list=PL5MnW0XCND7IjWv810mg4H81BxYN8BPQh>
-{{< /loi >}}
+{{% /loi %}}
 
 Permiten establecer condiciones para el compilador, como usar el archivo para
 ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Para usarlas, solo hace falta un comentario
@@ -1896,9 +1891,9 @@ como este `// +build CONDICION [...]`
 
 # Filosofía, proverbios y citas
 
-{{< loi >}}
+{{% loi %}}
 * <https://www.youtube.com/watch?v=PAAkCSZUG1c>
-{{< /loi >}}
+{{% /loi %}}
 
 > Don't communicate by sharing memory, share memory by communicating.
 

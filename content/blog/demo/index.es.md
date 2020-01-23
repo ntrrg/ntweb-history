@@ -247,11 +247,11 @@ Esta es una nota con título personalizado.
 
 ## Enlaces de interés
 
-{{< loi >}}
+{{% loi %}}
 * <https://nt.web.ve>
-* <https://nt.web.ve/en>
-* <https://nt.web.ve/es>
-{{< /loi >}}
+* <https://nt.web.ve/en/>
+* <https://nt.web.ve/es/>
+{{% /loi %}}
 
 ## Detalles
 
