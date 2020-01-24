@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2020-01-09T10:19:38-04:00
+date: 2020-01-24T05:40:03-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -40,7 +40,7 @@ $ docker run --rm -v /ruta/a/mi/sitio/:/site/ \
 Puede usarse cualquier comando del CLI de Hugo, para más información ejecutar `docker run --rm ntrrg/hugo help`
 o ver la [documentación oficial](https://gohugo.io/commands/).
 
-{{< note >}}
+{{% note %}}
 Como el binario de Hugo del contenedor es ejecutado por `root`, es recomendable
 agregar la opción `-u` de Docker.
 
@@ -50,7 +50,7 @@ $ docker run --rm -v /ruta/a/mi/sitio/:/site/ \
   -v ${TMPDIR:-/tmp/}:/tmp/ \
   ntrrg/hugo [OPCIONES] [COMANDO]
 ```
-{{< /note >}}
+{{% /note %}}
 
 ## Ejemplos
 

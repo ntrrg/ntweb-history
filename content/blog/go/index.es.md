@@ -188,15 +188,11 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 
 Para empezar a programar solo hacen falta dos cosas:
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
-
 [Instalar Go]: ./../install-go-1.13/index.es.md
 [Install Go]: https://golang.org/doc/install
 
 * El compilador (se pueden ver las instrucciones para instalarlo en la
   [documentación oficial][Install Go] o en este [artículo][Instalar Go]).
-
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
 
 * Un editor de texto.
 
@@ -543,14 +539,12 @@ Existen tres grupos de datos numéricos:
 ### Enteros
 
 {{% loi %}}
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
 * [Números binarios](./../binary-numbers.es.md)
 * [Números octales](./../octal-numbers.es.md)
 * [Números hexadecimales](./../hex-numbers.es.md)
 * [Complemento a dos](./../twos-complement.es.md)
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
 {{% /loi %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque

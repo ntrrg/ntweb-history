@@ -241,9 +241,9 @@ func main() {
 This is a note.
 {{< /note >}}
 
-{{< note "My title" >}}
-This is a note with a custom title.
-{{< /note >}}
+{{% note "My title" %}}
+This is a **note** with a custom title.
+{{% /note %}}
 
 ## Links of interest
 

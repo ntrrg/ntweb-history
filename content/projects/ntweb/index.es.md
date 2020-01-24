@@ -186,7 +186,7 @@ propiedad `terms` es la cantidad de términos dentro de la taxonomía.
 
 <https://nt.web.ve/es/tags/:tag/page/:pageNumber/index.json>
 
-{{< note "Parámetros" >}}
+{{% note "Parámetros" %}}
 
 `section`:
 : Nombre de la sección. Puede ser `blog`, `gallery` o `projects`.
@@ -197,7 +197,7 @@ propiedad `terms` es la cantidad de términos dentro de la taxonomía.
 `pageNumber`:
 : Número de página. La primera página es obtenida sin `page/:pageNumber/`.
 
-{{< /note >}}
+{{% /note %}}
 
 Obtiene la lista de elementos de una colección específica. Ver [API](#api) para
 mas información sobre las propiedades en común.
@@ -215,7 +215,7 @@ un arreglo de etiquetas asignadas al elemento.
 
 <https://nt.web.ve/es/:section/:title/index.json>
 
-{{< note "Parámetros" >}}
+{{% note "Parámetros" %}}
 
 `section`:
 : Sección. Puede ser `blog`, `gallery` o `projects`.
@@ -223,7 +223,7 @@ un arreglo de etiquetas asignadas al elemento.
 `title`:
 : Título codificado en URL del recurso.
 
-{{< /note >}}
+{{% /note %}}
 
 Obtiene un elemento. Ver [API](#api) para mas información sobre las propiedades
 en común.

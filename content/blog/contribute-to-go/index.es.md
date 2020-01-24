@@ -31,7 +31,7 @@ ella.
 
 # Requisitos
 
-{{< note "Proceso de contribución" >}}
+{{% note "Proceso de contribución" %}}
 
 Antes de empezar a trabajar, es bueno tener una idea de como se desarrolla el
 proceso de contribución para no sentir que todo funciona por arte de magia y
@@ -53,7 +53,7 @@ una vez auditado, dependiendo de la fecha y de cuanto afecten al lenguaje, los
 nuevos cambios son mezclados y esperan para ser liberados al final del ciclo de
 desarrollo activo; el estado actual del proyecto puede verse desde <https://build.golang.org>.
 
-{{< /note >}}
+{{% /note %}}
 
 * [Una cuenta de Google](https://www.google.com/accounts/NewAccount).
 
