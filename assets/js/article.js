@@ -71,3 +71,33 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 })
 
+// Mermaid
+
+window.addEventListener('load', () => {
+  mermaid.mermaidAPI.initialize({
+    startOnLoad: false,
+    fontFamily: 'monospace',
+    theme: 'forest',
+    flowchart: {
+      useMaxWidth: false
+    },
+    sequence: {
+      useMaxWidth: false
+    },
+    gantt: {
+      useMaxWidth: false
+    }
+  })
+
+  const charts = document.querySelectorAll('.mermaid-chart code')
+
+  for (const chart of charts) {
+    const id = 'mermaid-' + Math.floor(Math.random() * 1000)
+
+    mermaid.mermaidAPI.render(id, chart.innerText, (data) => {
+      const target = chart.parentNode.parentNode.querySelector('.mermaid')
+      target.innerHTML = data
+    })
+  }
+})
+

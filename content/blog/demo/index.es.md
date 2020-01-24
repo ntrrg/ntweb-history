@@ -12,6 +12,7 @@ tags:
   - tag4
   - tag5
 math: true
+mermaid: true
 toc: true
 draft: true
 ---
@@ -132,6 +133,19 @@ Esta es una fracción inteligente 1/2, este texto tiene una fórmula de línea
 $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
 $$
+
+# Gráficos
+
+{{% mermaid "Título del gráfico. Soporta **Markdown**." %}}
+```mermaid
+graph TD
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C{Let me think}
+  C -->|One| D[Laptop]
+  C -->|Two| E[Phone]
+  C -->|Three| F[fa:fa-car Car]
+```
+{{% /mermaid %}}
 
 # Código
 

@@ -12,6 +12,7 @@ tags:
   - tag4
   - tag5
 math: true
+mermaid: true
 toc: true
 draft: true
 ---
@@ -132,6 +133,19 @@ This is a smart fraction 1/2, this is text with inline math
 $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
 $$
+
+# Charts
+
+{{% mermaid "Chart caption. Supports **Markdown**." %}}
+```mermaid
+graph TD
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C{Let me think}
+  C -->|One| D[Laptop]
+  C -->|Two| E[Phone]
+  C -->|Three| F[fa:fa-car Car]
+```
+{{% /mermaid %}}
 
 # Code
 

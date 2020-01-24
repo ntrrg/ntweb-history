@@ -11,6 +11,7 @@ content:
 tags:
   - tag1
 math: false
+mermaid: false
 comments: true
 toc: true
 draft: true

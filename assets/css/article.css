@@ -84,6 +84,18 @@
   content: "###### ";
 }
 
+/* Mermaid */
+
+.mermaid-chart .mermaid {
+  text-align: center;
+
+  margin-top: 1em;
+}
+
+.mermaid-chart .mermaid svg {
+  background: #fff;
+}
+
 /* Shortcodes */
 
   /* Images shortcode */

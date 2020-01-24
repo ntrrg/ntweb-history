@@ -7,7 +7,9 @@ metadata:
 tags:
   - tag1
 math: false
+mermaid: false
 comments: true
+toc: false
 draft: true
 ---
 
