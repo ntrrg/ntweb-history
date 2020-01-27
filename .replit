@@ -1,2 +1,0 @@
-language = "go"
-run = "(test -f mage || .mage/compile.sh) && ./mage challenges:run"
