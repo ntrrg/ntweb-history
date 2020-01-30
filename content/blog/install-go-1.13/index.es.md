@@ -12,6 +12,8 @@ tags:
   - lenguajes-de-programación
   - go
   - linux
+  - alpine
+  - debian
 comments: true
 aliases:
   - /es/blog/instalar-go-1.13/

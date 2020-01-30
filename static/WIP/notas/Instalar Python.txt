@@ -1,8 +1,0 @@
-./configure --prefix=/home/ntrrg/.local/share/python/python-v3.6.4 --exec-prefix=/home/ntrrg/.local
-
-# Production
-
-./configure --prefix=/home/ntrrg/.local/share/python/python-v3.6.4 --exec-prefix=/home/ntrrg/.local --enable-optimizations
-
-make
-make altinstall

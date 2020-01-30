@@ -1,1 +1,0 @@
-sed, grep, tr, cut, sort, awk, and map/reduce
