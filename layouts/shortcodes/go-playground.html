@@ -1,0 +1,31 @@
+{{ $id := .Get "id" }}
+{{ $hide := .Get "hide" }}
+
+{{ $content := split .Inner "\n--- PLAYGROUND ---\n" }}
+{{ $display := index $content 0 }}
+{{ $playground := $display }}
+
+{{ if eq (len $content) 2 }}
+  {{ $playground = index $content 1 }}
+{{ end }}
+
+{{ if ne $hide "true" }}
+  {{ markdownify $display }}
+{{ end }}
+
+{{ $playground = trim $playground "\n" }}
+{{ $playground = strings.TrimPrefix "```go\n" $playground }}
+{{ $playground = strings.TrimSuffix "\n```" $playground }}
+
+<p>
+  {{ with $id }}
+    <a href="{{ $.Page.Site.Params.goPlayground }}/p/{{ . }}"
+       target="_blank" class="go-playground-link">
+  {{ else }}
+    <a href="#" target="_blank" class="go-playground-link"
+       data-code="{{ base64Encode $playground }}">
+  {{ end }}
+    {{ i18n "GO_PLAYGROUND_RUN" }}
+  </a>
+</p>
+

@@ -1,0 +1,22 @@
+<nav>
+  <strong>
+    <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.name }}</a>
+  </strong>
+
+  {{ partial "menu-items.tmpl" . }}
+
+  <div>
+    {{ with $.Site.GetPage "/search" }}
+      <label class="navbar-search" title="{{ .Title }}">
+        [<form method="GET" action="{{ .Permalink }}">
+          <input type="search" placeholder="{{ .Title }}..." name="q"/>
+        </form>{{ readFile "/static/images/fa/search.svg" | safeHTML }}]
+      </label>
+    {{ end }}
+
+    {{ with $.Site.GetPage "/settings" }}
+      [<a href="{{ .Permalink }}">{{ .Title }}</a>]
+    {{ end }}
+  </div>
+</nav>
+

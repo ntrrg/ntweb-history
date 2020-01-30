@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+
+  <div class="site-image">
+    {{ readFile "/static/images/logo.svg" | safeHTML }}
+  </div>
+
+  <div class="content">
+    {{ $author.Content }}
+  </div>
+
+  <h2>{{ i18n "CONTACT" }}</h2>
+
+  <ul class="contact">
+    {{ range sort $author.Params.social "weight" }}
+      {{ if gt .weight 1 }}
+        <li title="{{ .label }}">
+          {{ readFile .icon | safeHTML }}
+          <a href="{{ .url | safeURL }}">{{ .text }}</a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}
+

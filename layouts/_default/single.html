@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <article class="article">
+    {{ $title := .Title }}
+    <h1 class="article-title">{{ $title }}</h1>
+
+    {{ with .Params.image }}
+      <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
+    {{ end }}
+
+    {{ partial "metadata-box.tmpl" . }}
+
+    {{ if in "blog gallery projects" .Type }}
+      {{ partial "share-buttons.tmpl" . }}
+    {{ end }}
+
+    {{ if eq .Params.toc true }}
+      <details class="toc">
+        <summary class="toc-title">
+          <strong>{{ i18n "TOC_TITLE" }}:</strong>
+        </summary>
+
+        {{ .TableOfContents }}
+      </details>
+    {{ end }}
+
+    <div class="markdown">
+      {{ with .Params.content }}
+        {{ $content := getJSON .url }}
+
+        {{ if eq .api "github" }}
+          {{ base64Decode $content.content | markdownify }}
+        {{ end }}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+

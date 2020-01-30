@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{ $src := index .Params "source-code" }}
+  {{ $mod := .Params.Module }}
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <meta name="go-import"
+        content="{{ printf "%s git %s" $mod $src }}"/>
+
+  {{ $dirPath := printf "%s/tree/master{/dir}" $src }}
+  {{ $filePath := printf "%s/blob/master{/dir}/{file}#L{line}" $src }}
+
+  <meta name="go-source"
+        content="{{ printf "%s %s %s %s" $mod $src $dirPath $filePath }}"/>
+</head>
+<body>
+  <h1>{{ .Title }}</h1>
+  <p>{{ .Description }}</p>
+<p><a href="https://godoc.org/{{ path.Dir $mod }}/{{ .Title }}/">See the package on godoc.</a></p>
+</body>
+</html>
+

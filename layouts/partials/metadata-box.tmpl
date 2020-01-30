@@ -1,0 +1,49 @@
+<div class="metadata small">
+  {{ if ne .Site.Params.singleAuthor true }}
+    {{ $authorURL := printf "/authors/%s" ($.Param "author") }}
+    {{ $author := .Site.GetPage $authorURL }}
+
+    <div>
+      <strong>{{ i18n "AUTHOR" }}:</strong>
+
+      <span>
+        <a href="{{ $author.Permalink }}">
+          {{ $author.Params.id }}
+        </a>
+      </span>
+    </div>
+  {{ end }}
+
+  {{ if isset .Params "date" }}
+    <div>
+      <strong>{{ i18n "PUBLISHED" }}:</strong>
+      <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -0700" }}</span>
+    </div>
+
+    {{ if ne .Params.date .Params.publishdate }}
+      <div>
+        <strong>{{ i18n "MODIFIED" }}:</strong>
+        <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+      </div>
+    {{ end }}
+  {{ end }}
+
+  {{ range $key, $value := .Params.metadata }}
+    <div>
+      <strong>{{ replace $key "-" "_" | upper | i18n }}:</strong>
+      {{ markdownify $value }}
+    </div>
+  {{ end }}
+
+  {{ if isset .Params "tags" }}
+    <div>
+      <strong>{{ i18n "TAGS" }}:</strong>
+
+      {{ range .Params.tags }}
+        <a href="{{ absLangURL "tags" }}/{{ . | urlize }}">
+          #{{ . }}</a>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+

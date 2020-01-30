@@ -1,0 +1,60 @@
+[AUTHOR]
+other = "Autor"
+
+[CONTACT]
+other = "Contacto"
+
+[DEFAULT_LOI_TITLE]
+other = "Enlaces de interés"
+
+[DEFAULT_NOTE_TITLE]
+other = "Nota"
+
+[DIFFICULTY]
+other = "Dificultad"
+
+[GO_PLAYGROUND_ERROR]
+other = "No se pudo enviar el código, intente de nuevo"
+
+[GO_PLAYGROUND_OPEN]
+other = "Abrir en el Playground de Go"
+
+[GO_PLAYGROUND_RUN]
+other = "Correr en el Playground de Go"
+
+[GO_PLAYGROUND_SENDING]
+other = "Enviando el código.."
+
+[LICENSE]
+other = "Lincencia"
+
+[MODIFIED]
+other = "Modificado"
+
+[NO_CONTENT]
+other = "[WIP] Todavía no hay contenido en esta sección."
+
+[PLATFORM]
+other = "Plataforma"
+
+[PUBLISHED]
+other = "Publicado"
+
+[SETTINGS]
+other = "Ajustes"
+
+[SOURCE_CODE]
+other = "Código fuente"
+
+[TAGS]
+other = "Etiquetas"
+
+[TOC_TITLE]
+other = "Tabla de Contenido"
+
+[URL]
+other = "URL"
+
+[WEBSITE]
+other = "Sitio web"
+

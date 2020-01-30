@@ -1,0 +1,7 @@
+{
+  "url": "https://www.facebook.com/plugins/post/oembed.json/?url=%s",
+  "patterns": [
+    "^https://(www\\.)?facebook\\.com/"
+  ]
+}
+

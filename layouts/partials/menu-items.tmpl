@@ -1,0 +1,21 @@
+{{ range .Site.Params.menu }}
+  {{ if findRE "^https?://" .url 1 }}
+    | <a href="{{ .url }}">{{ .text }}</a>
+  {{ else }}
+    {{ $page := $.Site.GetPage (strings.TrimRight "/" .url) }}
+    {{ $active := "" }}
+
+    {{ if and (eq .url "/") $.IsHome }}
+      {{ $active = "is-active" }}
+    {{ else if and (ne .url "/") (hasPrefix $.Permalink $page.Permalink) }}
+      {{ $active = "is-active" }}
+    {{ end }}
+
+    | <a href="{{ $page.Permalink }}" class="{{ $active }}">
+      {{ .text | default $page.Title }}</a>
+
+    {{- $l := len $page.Pages }}
+    {{- if gt $l 0 }}<sup>({{ $l }})</sup>{{ end }}
+  {{ end }}
+{{ end }}
+

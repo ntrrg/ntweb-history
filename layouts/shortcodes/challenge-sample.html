@@ -1,0 +1,16 @@
+<a href="input/input{{ .Get 0 }}.txt" download="">
+  input{{ .Get 0 }}.txt
+</a>
+
+<pre><code>
+  {{- printf "content/%s/input/input%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+</code></pre>
+
+<a href="output/output{{ .Get 0 }}.txt" download="">
+  output{{ .Get 0 }}.txt
+</a>
+
+<pre><code>
+  {{- printf "content/%s/output/output%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+</code></pre>
+

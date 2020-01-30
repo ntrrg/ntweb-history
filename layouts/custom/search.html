@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  <form id="search-box">
+    <input type="search" placeholder="{{ .Title }}..." required=""/>
+  </form>
+
+  <details class="markdown small muted">
+    {{ .Content }}
+  </details>
+  <ul id="search-results" class="pages-list"></ul>
+{{ end }}
+

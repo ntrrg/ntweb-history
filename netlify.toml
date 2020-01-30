@@ -1,0 +1,64 @@
+[build]
+  publish = "public"
+  command = "hugo"
+
+[build.environment]
+  HUGO_VERSION = "0.62.2"
+
+[context.deploy-preview]
+  command = "hugo -DEF --baseURL=/"
+
+[[headers]]
+  for = "/*"
+
+[headers.values]
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "origin-when-cross-origin"
+
+[[redirects]]
+  from = "https://www.nt.web.ve/*"
+  to = "https://nt.web.ve/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "https://blog.nt.web.ve/*"
+  to = "https://nt.web.ve/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "https://ntweb.netlify.com/*"
+  to = "https://nt.web.ve/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404/"
+  status = 404
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/404/"
+  status = 404
+
+[[headers]]
+  for = "/favicon.ico"
+
+[headers.values]
+  Content-Type = "image/x-icon"
+
+[[headers]]
+  for = "/*.js"
+
+[headers.values]
+  Content-Type = "text/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/*.json"
+
+[headers.values]
+  Content-Type = "application/json; charset=utf-8"
+

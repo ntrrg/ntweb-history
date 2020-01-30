@@ -1,0 +1,36 @@
+name: Hugo
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  ci:
+    name: CI
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        hugo_version: ["0.62.2"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Hugo
+        run: |
+          wget -qO /tmp/hugo.tar.gz "https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo_version }}/hugo_extended_${{ matrix.hugo_version }}_Linux-64bit.tar.gz"
+          tar -xf /tmp/hugo.tar.gz -C /tmp/
+
+      - name: Get source code
+        uses: actions/checkout@v1
+
+      - name: Build
+        run: /tmp/hugo
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir public
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+

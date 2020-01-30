@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <h1>
+    {{ if eq .Kind "taxonomy" }}
+      {{ replace .Type "-" "_" | upper | i18n }}:
+    {{ end }}
+
+    {{ .Title }}
+  </h1>
+
+  {{ .Content }}
+
+  {{ if gt (len .Paginator.Pages) 0 }}
+    {{ partial "pagination.tmpl" . }}
+
+    <ul class="pages-list">
+      {{ range .Paginator.Pages }}
+        <li>{{ partial "card.tmpl" . }}</li>
+      {{ end }}
+    </ul>
+
+    {{ partial "pagination.tmpl" . }}
+  {{ else }}
+    <p>{{ i18n "NO_CONTENT" }}</p>
+  {{ end }}
+{{ end }}
+

@@ -1,0 +1,5 @@
+<figure class="mermaid-chart">
+  <div class="mermaid"></div>
+  {{ with .Get 0 }}<figcaption>{{ markdownify . }}</figcaption>{{ end }}
+  {{ .Inner }}
+</figure>

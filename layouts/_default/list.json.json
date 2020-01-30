@@ -1,0 +1,50 @@
+{{ define "data" }}
+  {
+    "pages": [
+      {{ range $i, $val := .Paginator.Pages }}
+        {{ if ne $i 0 }},{{ end }}
+        {{ if gt (len .Pages) 0 }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+            "pages": {{ len .Pages }}
+          }
+        {{ else }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+            {{ if ne .Site.Params.singleAuthor true -}}
+              {{- with .Params.author -}}
+            "author": {{ jsonify . }},
+              {{- end -}}
+            {{- end }}
+            "image": "{{ if isset .Params "image" -}}
+              {{ $image := $.Param "image" }}
+
+              {{- if findRE "^https?://" .Params.image 1 }}
+                {{- $image -}}
+              {{- else if hasPrefix $image "/" }}
+                {{- absURL $image -}}
+              {{- else }}
+                {{- printf "%s/%s" .Permalink $image | absURL -}}
+              {{ end }}
+            {{- end }}",
+            "publishdate": {{ jsonify .PublishDate }},
+            "date": {{ jsonify .Date }},
+            "description": {{ jsonify .Description }},
+            "tags": {{ jsonify .Params.tags }}
+          }
+        {{ end }}
+      {{ end }}
+    ],
+    {{ $prefix := printf "%spage/" .Permalink }}
+    "pagination": {
+      "prefix": "{{ $prefix }}",
+      "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+      "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
+    }
+  }
+{{ end }}
+

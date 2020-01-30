@@ -1,0 +1,19 @@
+@media print {
+  body {
+    line-height: 1.5;
+  }
+
+  #body > header,
+  #body > footer {
+    display: none;
+  }
+
+  .markdown code,
+  .markdown pre,
+  .markdown pre > code,
+  .markdown pre code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+}
+
