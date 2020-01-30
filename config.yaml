@@ -49,7 +49,7 @@ params:
   titleSeparator: "-"
   author: ntrrg
   singleAuthor: true
-  image: /images/logo-bg-square.png
+  image: /images/logo-bg.png
   ampImage: /images/isologo-amp.png
   # googleTagManager: GTM-NZ2R3W7
   # disqus: ntweb
