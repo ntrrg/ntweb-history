@@ -6,9 +6,17 @@
   {{ else }}
     {{ if isset .Params "image" }}
       {{ if eq .Type "gallery" }}
+        {{ $image := .Params.image }}
+
+        {{ if hasPrefix $image "/" }}
+          {{ $image = absURL $image }}
+        {{ else if not (findRE "^https?://" $image 1) }}
+          {{ $image = printf "%s/%s" .Permalink $image | absURL }}
+        {{ end }}
+
         <a href="{{ .Permalink }}">
           <img alt="{{ .Title }}" class="lazy-load"
-               data-src="{{ .Params.image }}"/>
+               data-src="{{ $image }}"/>
         </a>
       {{ end }}
     {{ end }}
