@@ -26,10 +26,10 @@
   {{ if eq .Type "gallery" }}
     {{ $suffix = printf "%v-album" $suffix  }}
     {{ $sheets = $sheets | append "css/album.css" }}
-    {{ $sheets = $sheets | append "css/gallery.css" }}
   {{ end }}
 
   {{ $sheets = $sheets | append "css/markdown.css" }}
+  {{ $sheets = $sheets | append "css/gallery.css" }}
   {{ $sheets = $sheets | append "css/highlight/_main.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokailight.css" }}
   {{ $sheets = $sheets | append "css/highlight/monokai.css" }}

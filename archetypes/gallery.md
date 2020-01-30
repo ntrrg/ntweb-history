@@ -4,7 +4,7 @@ author: userid
 date: {{ .Date }}
 description: Short description.
 image: https://via.placeholder.com/350x350
-mode: local | oembed | script
+mode: regular | oembed | script
 images:
   - src: https://via.placeholder.com/500x500
   - src: https://via.placeholder.com/350x350

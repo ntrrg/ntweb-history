@@ -9,11 +9,17 @@
     <div class="markdown">
       {{ .Content }}
 
-      <div class="gallery">
-        {{ if eq .Params.mode "local" }}
+      <div class="album">
+        {{ if eq .Params.mode "regular" }}
           {{ range .Params.images }}
             <figure>
+              {{ with .ref }}
+                <a src="{{ . }}" rel="noopener noreferrer" target="_blank">
+              {{ end }}
+
               <img alt="" class="" src="{{ .src }}">
+
+              {{ with .ref }}</a>{{ end }}
 
               {{ with .caption }}
                 <figcaption>{{ markdownify . }}</figcaption>
