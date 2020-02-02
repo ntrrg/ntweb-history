@@ -10,56 +10,68 @@ tags:
   - programación
   - programación-de-sistemas
   - programación-web
+  - sysadmin
 comments: true
 draft: true
 ---
 
 ```
-1. Hardware:
-  .1. Tarjeta madre
-  .2. Procesador
-    .1. Arquitecturas
-  .3. RAM
-  .4. Almacenamiento
-    .1. Tipos
-      .1. Magnéticos
-      .2. Flash
-    .2. Particiones
+1. Hardware
+  1. Tarjeta madre
+  2. CPU
+    1. Arquitecturas
+  3. RAM
+  4. Almacenamiento
+    1. Tipos
+      1. Magnéticos
+      2. Flash
+    2. Tablas de particiones
+  5. Fuente de poder
+  6. GPU
+  7. Periféricos
 
-2. Sistemas operativos:
-  * Linux
-    .1. Kernel
-    .2. Distribuciones
-      .1. Particiones
-      .2. Sistemas de archivo compatibles
-      .3. Instalación
-        .1. Obtener la distribución
-        .2. Medios de instalación
-    .3. Protocolos y puertos
-  * macOS
-  * Windows
-
-Terminal básico:
-  1. Prompt
-  2. Comandos
-    .1. pwd y ls
-    .2. mkdir
-    .3. cd
-    .4. touch y nano
-    .5. echo, >, >>
-    .6. more, less y cat
-    .7. cp
-    .8. mv
-    .9. tar
-    .10. find
-    .11. chmod y chown
-    .12. rm
-    .13. aptitude
-    .14. dpkg
-  3. Patrones GLOB
-  4. Ejecutar varios comandos en una linea y operadores lógicos
-  5. Redireccionar salidas de comandos a comandos
-  6. Leyenda de comandos
+2. Sistemas operativos
+  1. Tipos
+    * Linux
+      1. Distribuciones
+        1. Alpine
+          1. Instalación
+            1. Medios de instalación
+            2. Particiones
+            3. Sistemas de archivo compatibles
+        2. Debian
+          1. Instalación
+            1. Medios de instalación
+            2. Particiones
+            3. Sistemas de archivo compatibles
+      2. Terminal
+        1. Shells
+          * sh
+          * bash
+          * zsh
+        2. Comandos
+          1. pwd y ls
+          2. mkdir
+          3. cd
+          4. touch y nano
+          5. echo, >, >>
+          6. more, less y cat
+          7. cp
+          8. mv
+          9. tar
+          10. find
+          11. chmod y chown
+          12. rm
+          13. aptitude
+          14. dpkg
+        3. Patrones GLOB
+        4. Ejecutar varios comandos en una linea y operadores lógicos
+        5. Redireccionar salidas de comandos a comandos
+        6. Leyenda de comandos
+    * Windows
+    * MacOS
+  2. Puertos
+  3. Protocolos
 
 Terminal avanzado:
   1. Variables de entorno

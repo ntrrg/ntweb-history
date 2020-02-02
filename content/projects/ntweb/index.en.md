@@ -241,7 +241,7 @@ objects, and every object has the `url`, `type`, `title`, `description` and
 
 **Requirements:**
 
-* Hugo >= 0.62
+* Hugo >= 0.63
 
 Get the source code
 
