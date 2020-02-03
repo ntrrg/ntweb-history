@@ -86,11 +86,9 @@ Term:
 
 # Quotes
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
 This paragraph has a footnote[^1].
 
 [^1]: And here is the footnote.
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
 
 > Block quotes are
 > written like so.

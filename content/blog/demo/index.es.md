@@ -86,11 +86,9 @@ Término:
 
 # Citas
 
-<!--lint disable no-undefined-references no-shortcut-reference-link-->
 Este párrafo tiene una nota de pie[^1].
 
 [^1]: Y aquí está la nota de pie.
-<!--lint enable no-undefined-references no-shortcut-reference-link-->
 
 > Las citas de bloque
 > son escritas así.
