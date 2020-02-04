@@ -43,8 +43,8 @@ El sitio web es creado con [Hugo][] y parte de su contenido es generado con
 
 Para mostrar la pagina principal solo se descargan ~28 KB (incluyendo los
 favicons), para un artículo del blog se descargan ~215 KB (incluyendo sus
-imágenes, los favicons y desactivando los comentarios). Es usable incluso sin
-JavaScript y puede visualizarse en navegadores web TUI.
+imágenes y los favicons). Es usable incluso sin JavaScript y puede visualizarse
+en navegadores web TUI.
 
 {{< figure src="images/elinks-home-es.png" class="block" caption="Página principal en TUI" >}}
 

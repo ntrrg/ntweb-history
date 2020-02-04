@@ -42,9 +42,9 @@ by [Go][] and [Mage][] (specifically the projects and the Go packages vanity
 URLs).
 
 For been printed in the web browser, the home page downloads ~28 KB (including
-the favicons), a blog article downloads ~215 KB (including its images, the
-favicons and disabling the comments). It is functional even without JavaScript
-and can be visualized on TUI web browsers.
+the favicons), a blog article downloads ~215 KB (including its images and the
+favicons). It is functional even without JavaScript and can be visualized on
+TUI web browsers.
 
 {{< figure src="images/elinks-home-en.png" class="block" caption="Home page on TUI" >}}
 

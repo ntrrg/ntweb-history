@@ -2,13 +2,6 @@
 title: Ajustes
 type: custom
 layout: settings
-commentsToggler:
-  text: Comentarios
-  options:
-    - text: Habilitar
-      value: true
-    - text: Deshabilitar
-      value: false
 theme:
   text: Tema
   options:

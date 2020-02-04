@@ -85,38 +85,7 @@
 
   <main>
     {{ block "main" . }}{{ end }}
-
-    {{ if and (eq .Params.comments true) (not .Site.IsServer) }}
-      {{ $page := . }}
-
-      {{ with .Site.Params.disqus }}
-        <br/>
-        <link rel="preconnect" href="https://disqus.com">
-        <div id="disqus_thread"></div>
-
-        <script>
-          const comments = localStorage.getItem('comments-enabled')
-
-          if (!comments || comments === "true") {
-            var disqus_config = function () {
-              this.page.url = '{{ absURL $page.Permalink }}';
-              this.page.identifier = '{{ $page.Permalink }}';
-            };
-
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = 'https://{{ . }}.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
-          }
-        </script>
-
-        <noscript>
-          Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      {{ end }}
-    {{ end }}
+    {{ partial "comments.tmpl" . }}
   </main>
 
   {{ partialCached "footer.tmpl" .Site }}

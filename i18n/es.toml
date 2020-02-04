@@ -43,6 +43,9 @@ other = "Publicado"
 [SETTINGS]
 other = "Ajustes"
 
+[SHOW_COMMENTS]
+other = "Mostrar comentarios"
+
 [SOURCE_CODE]
 other = "Código fuente"
 

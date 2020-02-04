@@ -43,6 +43,9 @@ other = "Published"
 [SETTINGS]
 other = "Settings"
 
+[SHOW_COMMENTS]
+other = "Show comments"
+
 [SOURCE_CODE]
 other = "Source code"
 

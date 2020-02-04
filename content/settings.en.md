@@ -2,13 +2,6 @@
 title: Settings
 type: custom
 layout: settings
-commentsToggler:
-  text: Comments
-  options:
-    - text: Enable
-      value: true
-    - text: Disable
-      value: false
 theme:
   text: Theme
   options:

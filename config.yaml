@@ -52,7 +52,7 @@ params:
   image: /images/logo-bg.png
   ampImage: /images/isologo-amp.png
   # googleTagManager: GTM-NZ2R3W7
-  # disqus: ntweb
+  disqus: ntweb
   goPlayground: https://play.golang.org
   projects:
     - https://github.com/ntrrg/docker-hugo
