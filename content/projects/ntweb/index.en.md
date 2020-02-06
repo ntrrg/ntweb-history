@@ -90,7 +90,8 @@ or `page`.
 : Resource frontmatter parameters. This may be different from page types.
 
 `content` (base64 encoded string):
-: Resource rendered Markdown content.
+: Resource rendered Markdown content. Notice that this contains a UTF-8 string
+and JavaScript strings are UTF-16.
 
 `data` (object):
 : Resource specific data. For the main page, this contains all the sections,
@@ -233,7 +234,8 @@ properties.
 
 Retrieves all the indexable elements for search engines. It is an array of
 objects, and every object has the `url`, `type`, `title`, `description` and
-`content` properties. The value of the `content` property is base64 encoded.
+`content` properties. The value of the `content` property is base64 encoded,
+notice that this contains a UTF-8 string and JavaScript strings are UTF-16.
 
 **Note:** this doesn't have the common properties.
 

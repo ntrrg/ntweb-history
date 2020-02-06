@@ -91,7 +91,8 @@ Cada página tiene los siguientes atributos:
 contenido.
 
 `content` (cadena codificada en base64):
-: Contenido Markdown procesado del recurso.
+: Contenido Markdown procesado del recurso. Se debe tener en cuenta que esta
+propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 
 `data` (objeto):
 : Datos específicos del recurso. Para la página principal, contiene todos los
@@ -235,7 +236,8 @@ en común.
 Obtiene todos los elementos que pueden ser procesados por motores de búsqueda.
 Es un arreglo de objetos, cada objeto tiene las propiedades `url`, `type`,
 `title`, `description` y `content`. El valor de la propiedad `content` esta
-codificado con base64.
+codificado con base64, se debe tener en cuenta que esta propiedad contiene una
+cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 
 **Nota:** este recurso no tiene las propiedades comunes de otros recursos
 

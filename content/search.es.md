@@ -22,7 +22,7 @@ una palabra que termine con `oo`.
 
 También es posible restringir cada término a un campo, por ejemplo, `title:go`
 mostrará cualquier documento con `go` en su título. Los campos soportados son:
-`title`, `description` y `content`.
+`type`, `title`, `description` y `content`.
 
 [Documentación de Lunr]: https://lunrjs.com/guides/searching.html
 

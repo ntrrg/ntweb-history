@@ -1,16 +1,29 @@
+function Base64Encode(str) {
+  const encoder = new TextEncoder()
+  return base64js.fromByteArray(encoder.encode(str))
+}
+
+function Base64Decode(str) {
+  const decoder = new TextDecoder()
+  return decoder.decode(base64js.toByteArray(str));
+}
+
 async function buildSearchIndex() {
   const res = await fetch('../search-index/index.json')
   const data = await res.json()
+  window.idxData = new Map()
 
   window.idx = lunr(function () {
     this.ref('url')
+    this.field('type')
     this.field('title')
     this.field('description')
     this.field('content')
 
     data.forEach(function (doc) {
-      doc.content = atob(doc.content)
+      doc.content = Base64Decode(doc.content)
       this.add(doc)
+      window.idxData.set(doc.url, doc)
     }, this)
   })
 }
@@ -28,8 +41,7 @@ async function search(q) {
   resultsEl.innerHTML = ''
 
   for (const result of results) {
-    const res = await fetch(result.ref + '/index.json')
-    const page = await res.json()
+    const page = window.idxData.get(result.ref)
     let html = ''
 
     html += '<li>'
@@ -37,7 +49,7 @@ async function search(q) {
     html += '<a href="' + page.url + '">'
     html += '<h3>' + page.title + '</h3>'
     html += '</a>'
-    html += '<p>' + page.params.description + '</p>'
+    html += '<p>' + page.description + '</p>'
     html += '</div>'
     html += '</li>'
 

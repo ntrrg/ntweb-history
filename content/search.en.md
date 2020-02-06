@@ -19,8 +19,8 @@ will print any document that contains a word starting with `foo`, and `*oo`
 will print any document with a word ending with `oo`.
 
 It is possible to restrict every term by field, e.g. `title:go` will print
-any document containing `go` in its title. The supported fields are: `title`,
-`description` and `content`.
+any document containing `go` in its title. The supported fields are: `type`,
+`title`, `description` and `content`.
 
 [Lunr documentation]: https://lunrjs.com/guides/searching.html
 

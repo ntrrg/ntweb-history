@@ -13,6 +13,7 @@
   {{ $suffix = printf "%v-search" $suffix  }}
   {{ $scripts = $scripts | append "js/search.js" }}
 
+  {{ $externals = $externals | append "vendor/base64js-v1.3.1.min.js" }}
   {{ $externals = $externals | append "vendor/lunr-v2.3.8.js" }}
 {{ else if eq .Kind "page" }}
   {{ $suffix = printf "%v-page" $suffix  }}
