@@ -31,7 +31,8 @@
       {{- end -}}
     {{- else -}}
       "{{ base64Encode .Content }}"
-    {{- end }}
+    {{- end }},
+    "tags": "{{ if isset .Params "tags" }}{{ delimit .Params.tags ", " }}{{ end }}"
   }
 {{ end }}
 

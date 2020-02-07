@@ -20,7 +20,7 @@ will print any document with a word ending with `oo`.
 
 It is possible to restrict every term by field, e.g. `title:go` will print
 any document containing `go` in its title. The supported fields are: `type`,
-`title`, `description` and `content`.
+`title`, `description`, `content` and `tags`.
 
 [Lunr documentation]: https://lunrjs.com/guides/searching.html
 

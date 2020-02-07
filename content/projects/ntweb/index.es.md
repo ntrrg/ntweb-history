@@ -234,9 +234,9 @@ en común.
 
 Obtiene todos los elementos que pueden ser procesados por motores de búsqueda.
 Es un arreglo de objetos, cada objeto tiene las propiedades `url`, `type`,
-`title`, `description` y `content`. El valor de la propiedad `content` esta
-codificado con base64, se debe tener en cuenta que esta propiedad contiene una
-cadena UTF-8 y las cadenas de JavaScript son UTF-16.
+`title`, `description`, `content` y `tags`. El valor de la propiedad `content`
+esta codificado con base64, se debe tener en cuenta que esta propiedad contiene
+una cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 
 **Nota:** este recurso no tiene las propiedades comunes de otros recursos
 

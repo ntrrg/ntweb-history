@@ -64,6 +64,7 @@ async function buildSearchIndex() {
     this.field('title')
     this.field('description')
     this.field('content')
+    this.field('tags')
 
     data.forEach(function (doc) {
       doc.content = base64Decode(doc.content)
