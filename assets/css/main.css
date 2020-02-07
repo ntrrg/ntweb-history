@@ -91,7 +91,7 @@ select {
 
 /* Page structure */
 
-#body {
+body {
   min-height: 100vh;
 
   display: grid;
@@ -103,7 +103,7 @@ select {
 }
 
 @media (min-width: 1024px) {
-  #body {
+  body {
     grid-template-columns: auto 90ex auto;
     grid-template-areas: 
       ". header ."
@@ -112,33 +112,33 @@ select {
   }
 }
 
-#body > header {
+body > header {
   padding: 0em 1em;
   text-align: center;
 
   grid-area: header;
 }
 
-#body > header nav a.is-active {
+body > header nav a.is-active {
   font-weight: bold;
   text-decoration: underline;
 }
 
-#body > header .navbar-search,
-#body > header .navbar-search form {
+body > header .navbar-search,
+body > header .navbar-search form {
   display: inline-block;
 
   position: relative;
 }
 
-#body > header .navbar-search form input {
+body > header .navbar-search form input {
   width: 0ex;
 
   border: none;
 }
 
-#body > header .navbar-search:hover form input,
-#body > header .navbar-search form input:focus {
+body > header .navbar-search:hover form input,
+body > header .navbar-search form input:focus {
   width: 20ex;
 
   border-bottom: 0.1em solid;
@@ -146,7 +146,7 @@ select {
   margin-right: 1ex;
 }
 
-#body > header .navbar-search svg {
+body > header .navbar-search svg {
   height: 1em;
 
   color: var(--accent-color);
@@ -155,7 +155,7 @@ select {
   top: 0.2em;
 }
 
-#body > main {
+body > main {
   max-width: 100vw;
 
   box-sizing: border-box;
@@ -165,7 +165,7 @@ select {
   grid-area: main;
 }
 
-#body > footer {
+body > footer {
   grid-area: footer;
 
   border-top: 0.05em solid;

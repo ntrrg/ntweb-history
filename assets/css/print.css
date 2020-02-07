@@ -1,11 +1,18 @@
 @media print {
   body {
+    background: transparent;
+    color: #212121;
+    display: block;
     line-height: 1.5;
   }
 
-  #body > header,
-  #body > footer {
+  body > header,
+  body > footer {
     display: none;
+  }
+
+  body > main {
+    width: 100%;
   }
 
   .markdown code,

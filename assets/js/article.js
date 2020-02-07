@@ -14,8 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function resizeWideImages() {
   let leftMargin = '-1em'
-  const bodyWidth = document.querySelector('#body').offsetWidth
-  const mainWidth = document.querySelector('#body > main').offsetWidth
+  const bodyWidth = document.querySelector('body').offsetWidth
+  const mainWidth = document.querySelector('body > main').offsetWidth
 
   if (bodyWidth !== mainWidth) {
     leftMargin = 'calc(' + (bodyWidth - mainWidth) / 2 * -1 + 'px - 1em)'
