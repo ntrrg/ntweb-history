@@ -1,6 +1,9 @@
 [AUTHOR]
 other = "Autor"
 
+[CLIENT]
+other = "Cliente"
+
 [CONTACT]
 other = "Contacto"
 
@@ -39,6 +42,9 @@ other = "Plataforma"
 
 [PUBLISHED]
 other = "Publicado"
+
+[ROLE]
+other = "Rol"
 
 [SETTINGS]
 other = "Ajustes"
