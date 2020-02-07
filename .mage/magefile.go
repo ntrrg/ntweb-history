@@ -178,6 +178,10 @@ func init() {
 // Docker //
 ////////////
 
+var (
+	dockerOpts []string
+)
+
 type Docker mg.Namespace
 
 func (Docker) Build() error {
@@ -192,26 +196,40 @@ func (Docker) Run() error {
 	)
 }
 
+func (Docker) Shell() error {
+	for i, v := range dockerOpts {
+		if v == "-p" || v == "--publish" {
+			dockerOpts[i] = "--entrypoint"
+			dockerOpts[i+1] = "sh"
+		}
+	}
+
+	return runHugoDocker()
+}
+
 func runHugoDocker(args ...string) error {
+	opts := append(dockerOpts, "ntrrg/hugo:"+hugoVersion)
+
+	return sh.RunV("docker", append(opts, args...)...)
+}
+
+func init() {
 	u, err := user.Current()
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	wd, err := os.Getwd()
 	if err != nil {
-		return err
+		panic(err)
 	}
 
-	args = append([]string{
+	dockerOpts = []string{
 		"run", "--rm", "-i", "-t",
 		"-u", u.Uid,
 		"-v", wd + ":/site/",
 		"-p", hugoPort + ":" + hugoPort,
-		"ntrrg/hugo:" + hugoVersion,
-	}, args...)
-
-	return sh.RunV("docker", args...)
+	}
 }
 
 ////////////////////////

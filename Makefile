@@ -47,3 +47,12 @@ docker-run:
 		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --i18n-warnings \
 			--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
 
+.PHONY: docker-shell
+docker-shell:
+	@docker run --rm -it \
+		-u $$(id -u $$USER) \
+		-v "$${TMPDIR:-/tmp}":/tmp/ \
+		-v "$$PWD":/site/ \
+		--entrypoint sh \
+		ntrrg/hugo:$(hugo_version)
+
