@@ -7,6 +7,8 @@ theme:
   options:
     - text: Claro
       value: light
+    - text: Negro
+      value: black
     - text: Oscuro
       value: dark
 codetheme:

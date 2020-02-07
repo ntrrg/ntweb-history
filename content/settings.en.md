@@ -5,6 +5,8 @@ layout: settings
 theme:
   text: Theme
   options:
+    - text: Black
+      value: black
     - text: Dark
       value: dark
     - text: Light
