@@ -74,6 +74,10 @@ window.addEventListener('DOMContentLoaded', () => {
 // Mermaid
 
 window.addEventListener('load', () => {
+  if (typeof mermaid === 'undefined') {
+    return
+  }
+
   mermaid.mermaidAPI.initialize({
     startOnLoad: false,
     fontFamily: 'monospace',
