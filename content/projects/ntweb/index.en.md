@@ -6,7 +6,6 @@ metadata:
   license: MIT
 tags:
   - go
-  - go-templates
   - html
   - css
   - javascript
