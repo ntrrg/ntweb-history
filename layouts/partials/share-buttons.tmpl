@@ -1,22 +1,17 @@
 <div class="share-buttons">
-  <a href="https://www.addtoany.com/add_to/facebook?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" rel="noopener noreferrer" target="_blank">
-    {{ readFile "/static/images/fa/facebook.svg" | safeHTML }}
-  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlize }}" rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/facebook.svg" | safeHTML }}</a>
 
-  <a href="https://www.addtoany.com/add_to/twitter?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" rel="noopener noreferrer" target="_blank">
-    {{ readFile "/static/images/fa/twitter.svg" | safeHTML }}
-  </a>
+  <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink | urlize }}{{ if isset .Params "tags" }}&hashtags={{ delimit .Params.tags "," }}{{ end }}&via=ntrrg" rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/twitter.svg" | safeHTML }}</a>
 
-  <a href="https://www.addtoany.com/add_to/linkedin?linkurl={{ .Permalink }}&amp;linkname={{ .Title }}" rel="noopener noreferrer" target="_blank">
-    {{ readFile "/static/images/fa/linkedin.svg" | safeHTML }}
-  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlize }}" rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/linkedin.svg" | safeHTML }}</a>
 
-  <a href="https://www.addtoany.com/add_to/telegram?linkurl=https://t.me/iv?rhash=a902dc91fb93b6%26url={{ .Permalink }}" rel="noopener noreferrer" target="_blank">
-    {{ readFile "/static/images/fa/telegram.svg" | safeHTML }}
-  </a>
+  <a href="https://telegram.me/share/url?url=https%3A%2F%2Ft.me%2Fiv%3Frhash%3Da902dc91fb93b6%26url%3D{{ .Permalink | urlize }}" rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/telegram.svg" | safeHTML }}</a>
 
   <a href="https://www.addtoany.com/share#url={{ .Permalink }}&amp;title={{ .Title }}" rel="noopener noreferrer" target="_blank">
-    {{ readFile "/static/images/fa/share-alt.svg" | safeHTML }}
-  </a>
+    {{ readFile "/static/images/fa/share-alt.svg" | safeHTML }}</a>
 </div>
 
