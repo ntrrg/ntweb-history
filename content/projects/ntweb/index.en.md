@@ -243,7 +243,7 @@ notice that this contains a UTF-8 string and JavaScript strings are UTF-16.
 
 **Requirements:**
 
-* Hugo >= 0.63
+* Hugo >= 0.62
 
 Get the source code
 
