@@ -2,7 +2,8 @@
   <h1>{{ .Title }}</h1>
 
   <form id="search-box">
-    <input type="search" placeholder="{{ .Title }}..." required=""/>
+    <input type="search" name="q" placeholder="{{ .Title }}..." required=""/>
+    <span class="loader"></span>
   </form>
 
   <details class="markdown small muted">
