@@ -12,11 +12,18 @@ tags:
   - programación-web
   - sysadmin
 comments: true
+toc: true
 draft: true
 ---
 
+# Introducción a la Informática
+
 ```
-1. Hardware
+1. Informática (Ciencia de la Computación)
+  1. Información
+  2. Computadoras
+
+2. Hardware
   1. Tarjeta madre
   2. CPU
     1. Arquitecturas
@@ -29,7 +36,9 @@ draft: true
   5. Fuente de poder
   6. GPU
   7. Periféricos
+```
 
+```
 2. Sistemas operativos
   1. Tipos
     * Linux
@@ -147,4 +156,8 @@ Git:
 
 Paradigmas de programación:
 ```
+
+# Atribuciones
+
+**Prakhar Srivastav.** *Awesome CS Courses.* <https://github.com/prakhar1989/awesome-courses>
 

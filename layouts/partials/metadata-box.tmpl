@@ -17,13 +17,13 @@
   {{ if isset .Params "date" }}
     <div>
       <strong>{{ i18n "PUBLISHED" }}:</strong>
-      <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -0700" }}</span>
+      <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -07:00" }}</span>
     </div>
 
     {{ if ne .Params.date .Params.publishdate }}
       <div>
         <strong>{{ i18n "MODIFIED" }}:</strong>
-        <span>{{ .Date.Format "2006/01/02 15:04:05 -0700" }}</span>
+        <span>{{ .Date.Format "2006/01/02 15:04:05 -07:00" }}</span>
       </div>
     {{ end }}
   {{ end }}

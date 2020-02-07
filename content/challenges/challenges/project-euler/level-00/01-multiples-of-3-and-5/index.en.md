@@ -1,6 +1,6 @@
 ---
 title: "Problem 1: Multiples of 3 and 5"
-date: 2020-01-22T20:45:00-0400
+date: 2020-01-22T20:45:00-04:00
 metadata:
   difficulty: Easy
   platform: Project Euler

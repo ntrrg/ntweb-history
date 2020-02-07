@@ -1,8 +1,8 @@
 ---
 title: Demo page
 author: ntrrg
-publishdate: 2028-07-05T18:35:00-0400
-date: 2028-07-05T18:35:00-0400
+publishdate: 2028-07-05T18:35:00-04:00
+date: 2028-07-05T18:35:00-04:00
 image: images/ntrrg.png
 description: This is a demo page to see the Markdown styles.
 tags:

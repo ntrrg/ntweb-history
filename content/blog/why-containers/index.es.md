@@ -1,8 +1,8 @@
 ---
 title: ¿Por qué usar contenedores?
 author: ntrrg
-publishdate: 2019-05-14T22:54:00-0700
-date: 2020-01-07T14:57:00-0400
+publishdate: 2019-05-14T22:54:00-07:00
+date: 2020-01-07T14:57:00-04:00
 description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
   - tecnología

@@ -1,8 +1,8 @@
 ---
 title: Instalar Go 1.12
 author: ntrrg
-publishdate: 2019-06-01T10:10:00-0700
-date: 2020-01-08T11:50:00-0400
+publishdate: 2019-06-01T10:10:00-07:00
+date: 2020-01-08T11:50:00-04:00
 description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
 tags:
