@@ -293,3 +293,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 {{< import "files/imports.es.md" >}}
 
+## Tarjetas
+
+{{< card "/blog/demo/" >}}
+
