@@ -25,7 +25,7 @@ comments: true
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2f18cd17-5e78-45fa-a95d-0ae120ffc603/deploy-status)](https://app.netlify.com/sites/ntweb/deploys)
 
 **ntWeb** es un pequeño sitio web con grandes intenciones. Provee un
-portafolio, una plataforma de blog, URLs personalizadas para paquetes Go y una
+portafolio, una plataforma de blog, URLs personalizados para paquetes Go y una
 API JSON.
 
 Probablemente cualquiera podría pensar que este proyecto es muy sencillo y que
@@ -38,7 +38,7 @@ intencional (y está escrito con tecnologías web modernas).
 [Mage]: https://magefile.org
 
 El sitio web es creado con [Hugo][] y parte de su contenido es generado con
-[Go][] y [Mage][] (los proyectos y los URLs personalizadas de los paquetes Go).
+[Go][] y [Mage][] (los proyectos y los URLs personalizados de los paquetes Go).
 
 Para mostrar la pagina principal solo se descargan ~28 KB (incluyendo los
 favicons), para un artículo del blog se descargan ~215 KB (incluyendo sus

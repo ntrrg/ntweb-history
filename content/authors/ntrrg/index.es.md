@@ -59,6 +59,8 @@ authortype: Person
 Hola! soy Miguel Angel, solo otro desarrollador más trabajando duro para no ser
 solo otro desarrollador más.
 
+Antes de subestimar este sitio web por su apariencia, vea [cómo funciona](./../../projects/ntweb/index.es.md).
+
 ## ¿Qué puedo hacer por usted?
 
 Soy un Desarrollador de Software apasionado por crear soluciones de alto

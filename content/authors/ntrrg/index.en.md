@@ -59,6 +59,8 @@ authortype: Person
 Hi! I am Miguel Angel, just another developer working hard to not be just
 another developer.
 
+Before underestimating this website because its simplicity, see [how it works](./../../projects/ntweb/index.en.md).
+
 ## What can I do for you?
 
 I am a Software Developer passionate about creating high performance solutions
