@@ -1,5 +1,10 @@
 <footer>
   <div>
+    {{ $page := .Site.GetPage "/payments" }}
+    [<a href="{{ $page.Permalink }}">{{ $page.Title }}</a>]
+  </div>
+
+  <div>
     Powered by
     <a href="https://gohugo.io">Hugo</a>,
     <a href="https://fontawesome.com/license">FontAwesome</a>
