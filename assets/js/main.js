@@ -24,6 +24,24 @@ function setCodeTheme(theme) {
   localStorage.setItem('code-theme', theme)
 }
 
+// Cookies
+
+function checkCookiesAlert() {
+  const cookiesAlert = localStorage.getItem('cookies-alert')
+
+  if (cookiesAlert === 'agree') {
+    const el = document.querySelector('#cookies')
+    el.parentNode.removeChild(el)
+  }
+}
+
+document.querySelector('#cookies').addEventListener('click', (e) => {
+  localStorage.setItem('cookies-alert', 'agree')
+  checkCookiesAlert()
+})
+
+window.addEventListener('DOMContentLoaded', checkCookiesAlert)
+
 // Image lazy loading
 
 window.addEventListener('DOMContentLoaded', () => {

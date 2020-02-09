@@ -88,6 +88,20 @@
   </main>
 
   {{ partialCached "footer.tmpl" .Site }}
+
+  <div id="cookies">
+    {{ $page := .Site.GetPage "/cookies" }}
+    <h3>{{ $page.Title }}</h3>
+    {{ $page.Content }}
+
+    <noscript>
+      <style>
+        #cookies {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </div>
 </body>
 </html>
 

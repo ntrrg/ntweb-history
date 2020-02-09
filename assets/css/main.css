@@ -192,3 +192,19 @@ body > footer {
   text-align: center;
 }
 
+/* Cookies */
+
+#cookies {
+  width: 90vw;
+
+  background: var(--font-color);
+  border: 0.5em dashed;
+  box-sizing: border-box;
+  color: var(--background);
+  padding: 1em 2em;
+
+  position: fixed;
+  left: 5vw;
+  bottom: 1em;
+}
+
