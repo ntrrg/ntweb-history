@@ -156,7 +156,7 @@ más ligeros y fáciles de compartir con el equipo de trabajo.
 
 No se debe confundir sistema operativo con distribuciones. El sistema operativo
 es Linux (el kernel) y Alpine, Arch, CentOS, Debian, Deepin, Elementary,
-Fedora, Mind, Ubuntu, etc x 10e<sup>∞</sup> 😂 son distribuciones, que se
+Fedora, Mind, Ubuntu, etc x 10e^∞ 😂 son distribuciones, que se
 encargan de agregar aplicaciones sobre Linux para facilitar su uso. Todos los
 contenedores corren el mismo sistema operativo, pero pueden tener diferentes
 distribuciones.
