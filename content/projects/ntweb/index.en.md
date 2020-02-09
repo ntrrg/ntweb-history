@@ -185,7 +185,7 @@ properties. The `terms` property is the count of terms inside the taxonomy.
 
 <https://nt.web.ve/en/tags/:tag/page/:pageNumber/index.json>
 
-{{% note "Parameters" %}}
+{{< note "Parameters" >}}
 
 `section`:
 : Section name. This could be one of `blog`, `gallery` or `projects`.
@@ -196,7 +196,7 @@ properties. The `terms` property is the count of terms inside the taxonomy.
 `pageNumber`:
 : Page number. The first page is retrieved without `page/:pageNumber/`.
 
-{{% /note %}}
+{{< /note >}}
 
 Retrieves the list of elements from the given collection. See [API](#api) for
 more details about common properties.
@@ -214,7 +214,7 @@ is an array of tags assigned to the element.
 
 <https://nt.web.ve/en/:section/:title/index.json>
 
-{{% note "Parameters" %}}
+{{< note "Parameters" >}}
 
 `section`:
 : Section name. This could be one of `blog`, `gallery` or `projects`.
@@ -222,7 +222,7 @@ is an array of tags assigned to the element.
 `title`:
 : URL encoded element title.
 
-{{% /note %}}
+{{< /note >}}
 
 Retrieves a single element. See [API](#api) for more details about common
 properties.

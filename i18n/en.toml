@@ -28,6 +28,9 @@ other = "Run in Go Playground"
 [GO_PLAYGROUND_SENDING]
 other = "Sending the code.."
 
+[HELP]
+other = "Help"
+
 [LICENSE]
 other = "Lincense"
 

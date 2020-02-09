@@ -4,8 +4,6 @@ type: custom
 layout: search
 ---
 
-<summary>Help:</summary>
-
 Every word in the search query is a term, which is comparison element, if
 `containers` is given, all the documents containing this term in its title,
 description or content will be printed. If more term are given, all the

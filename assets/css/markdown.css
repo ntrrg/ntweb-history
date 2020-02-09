@@ -26,6 +26,8 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
+  clear: both;
+
   margin: 0.5em 0em;
 }
 
@@ -168,19 +170,5 @@
 
 .markdown .lntable .lntd pre > code {
   padding-right: 0em;
-}
-
-/* Keyboard */
-
-.markdown kbd {
-  background: var(--kbd-background);
-  border-color: lightgrey;
-  border-radius: 0.2em;
-  border-style: outset;
-  border-width: 0.1em;
-  color: var(--kbd-color);
-  display: inline-block;
-  font-family: monospace;
-  padding: 0em 0.5em;
 }
 

@@ -132,19 +132,6 @@ $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
 $$
 
-# Gráficos
-
-{{% mermaid "Título del gráfico. Soporta **Markdown**." %}}
-```mermaid
-graph TD
-  A[Christmas] -->|Get money| B(Go shopping)
-  B --> C{Let me think}
-  C -->|One| D[Laptop]
-  C -->|Two| E[Phone]
-  C -->|Three| F[fa:fa-car Car]
-```
-{{% /mermaid %}}
-
 # Código
 
 Este es `código` de línea.
@@ -159,11 +146,11 @@ func main() {
 }
 ```
 
+# Shortcodes
+
 ## Teclado
 
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Supr</kbd>
-
-# Shortcodes
+{{< kbd "Ctrl" >}} + {{< kbd "Alt" >}} + {{< kbd "Supr" >}}
 
 ## Imágenes
 
@@ -179,9 +166,9 @@ Imágenes de línea con {{< img src="images/hugo.png" style="height: 1em;" >}}
 
 {{< img src="images/merida.jpg" class="block" >}}
 
-{{< img src="images/ntrrg.png" class="align-left" >}}
-
 ### Alineadas a la izquierda
+
+{{< img src="images/ntrrg.png" class="align-left" >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -190,9 +177,9 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{{< img src="images/ntrrg.png" class="align-right" >}}
-
 ### Alineadas a la derecha
+
+{{< img src="images/ntrrg.png" class="align-right" >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -211,9 +198,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 {{< figure src="images/merida.jpg" class="block" title="Título" caption="Cuerpo de la figura. Soporta **Markdown**." >}}
 
-{{< figure src="images/ntrrg.png" class="align-left" title="Título" caption="Cuerpo de la figura. Soporta **Markdown**." >}}
-
 ### Alineadas a la izquierda
+
+{{< figure src="images/ntrrg.png" class="align-left" title="Título" caption="Cuerpo de la figura. Soporta **Markdown**." >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -222,9 +209,9 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{{< figure src="images/ntrrg.png" class="align-right" title="Título" caption="Cuerpo de la figura. Soporta **Markdown**." >}}
-
 ### Alineadas a la derecha
+
+{{< figure src="images/ntrrg.png" class="align-right" title="Título" caption="Cuerpo de la figura. Soporta **Markdown**." >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -253,17 +240,17 @@ func main() {
 Esta es una nota
 {{< /note >}}
 
-{{% note "Mi título" %}}
+{{< note "Mi título" >}}
 Esta es una **nota** con título personalizado.
-{{% /note %}}
+{{< /note >}}
 
 ## Enlaces de interés
 
-{{% loi %}}
+{{< loi >}}
 * <https://nt.web.ve>
 * <https://nt.web.ve/en/>
 * <https://nt.web.ve/es/>
-{{% /loi %}}
+{{< /loi >}}
 
 ## Detalles
 
@@ -276,14 +263,27 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 {{< /details >}}
 
-{{% details summary="Texto personalizado" open=true %}}
+{{< details summary="Texto personalizado" open=true >}}
 **Lorem ipsum** dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-{{% /details %}}
+{{< /details >}}
+
+# Gráficos
+
+{{< mermaid "Título del gráfico. Soporta **Markdown**." >}}
+```mermaid
+graph TD
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C{Let me think}
+  C -->|One| D[Laptop]
+  C -->|Two| E[Phone]
+  C -->|Three| F[fa:fa-car Car]
+```
+{{< /mermaid >}}
 
 ## Snippets
 

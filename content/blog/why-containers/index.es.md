@@ -2,7 +2,7 @@
 title: ¿Por qué usar contenedores?
 author: ntrrg
 publishdate: 2019-05-14T22:54:00-07:00
-date: 2020-01-07T14:57:00-04:00
+date: 2020-02-09T11:00:00-04:00
 description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
   - tecnología
@@ -126,7 +126,7 @@ El resultado, una estructura parecida a esto:
    virtualización que se use, pueden hacerse algunas configuraciones especiales
    que le otorguen acceso, pero en este caso sería mucho mejor usar otra
    alternativa para implementar la aplicación, si requiere acceso al hardware
-   para que virtualizarlo 😂 (a menos que se necesite exclusivamente un sistema
+   para qué virtualizarlo 😂 (a menos que se necesite exclusivamente un sistema
    operativo diferente al del host).
 
 Se generan dos estructuras, la primera para el entorno de producción y la otra
@@ -136,16 +136,14 @@ en la computadora de cada programador respectivamente:
 
 # Contenedores (¡¡POR FIN!!)
 
-{{% note %}}
-
+{{< note >}}
 Ya se que todo lo que escribí arriba depende de la técnica de trabajo de cada
-equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒 😂, imaginen que
-están viendo una de esas publicidades exageradas de productos como *«La
-aspiradora que también lava, hace la comida y le canta canciones de cuna»*,
-igual que ellos, yo también tengo que vender mí producto 😄 (en este caso, el
-uso de los contenedores, porque yo no inventé los contenedores 😂).
-
-{{% /note %}}
+equipo, pero es un ejemplo.. no hay que ser fastidiosos 😒 😂, es como ver una
+de esas publicidades exageradas de productos como *«La aspiradora que también
+lava, hace la comida y le canta canciones de cuna»*, igual que ellos, yo
+también tengo que vender mí producto 😄 (en este caso, el uso de los
+contenedores, porque yo no inventé los contenedores 😂).
+{{< /note >}}
 
 Ahora que ya hay algo de contexto, los contenedores pueden definirse como
 entornos aislados y previamente configurados en los que se ejecutará

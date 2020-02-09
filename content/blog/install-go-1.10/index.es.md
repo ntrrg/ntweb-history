@@ -55,7 +55,7 @@ go version go1.10.8 linux/amd64
 $ rm go1.10.8.linux-amd64.tar.gz
 ```
 
-{{% note %}}
+{{< note >}}
 Es posible instalar Go en una ruta personalizada e incluso sin permisos de
 super usuario, los pasos serían muy parecidos a los anteriores, solo que hay
 que cambiar las rutas y opcionalmente (si se quieren usar algunas utilidades
@@ -80,7 +80,7 @@ $ echo "export GOROOT=\"$GOROOT\"" >> ~/.zshenv
 ```shell-session
 $ echo "export GOROOT=\"$GOROOT\"" >> ~/.profile
 ```
-{{% /note %}}
+{{< /note >}}
 
 # Desde el código fuente
 
@@ -89,10 +89,10 @@ versión 1.5, el compilador de Go está escrito en Go 😅, por lo que solo
 tiene sentido usar este procedimiento si se tiene pensado [modificar el código
 fuente](./../contribute-to-go/index.es.md).
 
-{{% note %}}
+{{< note >}}
 Puede que se necesite [Git](https://git-scm.com/) en algunas ocasiones, depende
 de como se realice la instalación.
-{{% /note %}}
+{{< /note >}}
 
 1\. Descargar el paquete con los binarios
 
@@ -159,11 +159,11 @@ $ cd go/src
 $ ./all.bash
 ```
 
-{{% note %}}
+{{< note >}}
 El script `all.bash` también ejecuta todas las pruebas (que es recomendable
 hacerlo), para saltarse las pruebas y solo compilar, se debe usar el script
 `make.bash`.
-{{% /note %}}
+{{< /note >}}
 
 Al terminar, deberían existir nuevos recursos (entre esos, los binarios) en la
 carpeta del código fuente.

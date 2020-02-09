@@ -98,6 +98,20 @@
 
 /* Shortcodes */
 
+  /* Keyboard */
+
+.markdown kbd {
+  background: var(--kbd-background);
+  border-color: lightgrey;
+  border-radius: 0.2em;
+  border-style: outset;
+  border-width: 0.1em;
+  color: var(--kbd-color);
+  display: inline-block;
+  font-family: monospace;
+  padding: 0em 0.5em;
+}
+
   /* Images shortcode */
 
 img.shortcode {

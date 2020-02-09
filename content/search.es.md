@@ -4,8 +4,6 @@ type: custom
 layout: search
 ---
 
-<summary>Ayuda:</summary>
-
 Cada palabra de la búsqueda representa un termino, que es un elemento de
 comparación, si se escribe la palabra `contenedores`, el resultado será todos
 los documentos que contengan este término en su título, descripción o

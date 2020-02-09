@@ -132,19 +132,6 @@ $$
 \sum\_{n=1}^{\infty} 2^{-n} = 1
 $$
 
-# Charts
-
-{{% mermaid "Chart caption. Supports **Markdown**." %}}
-```mermaid
-graph TD
-  A[Christmas] -->|Get money| B(Go shopping)
-  B --> C{Let me think}
-  C -->|One| D[Laptop]
-  C -->|Two| E[Phone]
-  C -->|Three| F[fa:fa-car Car]
-```
-{{% /mermaid %}}
-
 # Code
 
 Inline `code`.
@@ -159,11 +146,11 @@ func main() {
 }
 ```
 
+# Shortcodes
+
 ## Keyboard
 
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
-
-# Shortcodes
+{{< kbd "Ctrl" >}} + {{< kbd "Alt" >}} + {{< kbd "Del" >}}
 
 ## Images
 
@@ -179,9 +166,9 @@ Inline image with {{< img src="images/hugo.png" style="height: 1em;" >}}
 
 {{< img src="images/merida.jpg" class="block" >}}
 
-{{< img src="images/ntrrg.png" class="align-left" >}}
-
 ### Left aligned
+
+{{< img src="images/ntrrg.png" class="align-left" >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -190,9 +177,9 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{{< img src="images/ntrrg.png" class="align-right" >}}
-
 ### Right aligned
+
+{{< img src="images/ntrrg.png" class="align-right" >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -211,9 +198,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 {{< figure src="images/merida.jpg" class="block" title="Title" caption="Figure caption. Supports **Markdown**." >}}
 
-{{< figure src="images/ntrrg.png" class="align-left" title="Title" caption="Figure caption. Supports **Markdown**." >}}
-
 ### Left aligned
+
+{{< figure src="images/ntrrg.png" class="align-left" title="Title" caption="Figure caption. Supports **Markdown**." >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -222,9 +209,9 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{{< figure src="images/ntrrg.png" class="align-right" title="Title" caption="Figure caption. Supports **Markdown**." >}}
-
 ### Right aligned
+
+{{< figure src="images/ntrrg.png" class="align-right" title="Title" caption="Figure caption. Supports **Markdown**." >}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -253,17 +240,17 @@ func main() {
 This is a note.
 {{< /note >}}
 
-{{% note "My title" %}}
+{{< note "My title" >}}
 This is a **note** with a custom title.
-{{% /note %}}
+{{< /note >}}
 
 ## Links of interest
 
-{{% loi %}}
+{{< loi >}}
 * <https://nt.web.ve>
 * <https://nt.web.ve/en/>
 * <https://nt.web.ve/es/>
-{{% /loi %}}
+{{< /loi >}}
 
 ## Details
 
@@ -276,14 +263,27 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 {{< /details >}}
 
-{{% details summary="Custom text" open=true %}}
+{{< details summary="Custom text" open=true >}}
 **Lorem ipsum** dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-{{% /details %}}
+{{< /details >}}
+
+# Charts
+
+{{< mermaid "Chart caption. Supports **Markdown**." >}}
+```mermaid
+graph TD
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C{Let me think}
+  C -->|One| D[Laptop]
+  C -->|Two| E[Phone]
+  C -->|Three| F[fa:fa-car Car]
+```
+{{< /mermaid >}}
 
 ## Snippets
 

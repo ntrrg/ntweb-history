@@ -21,7 +21,7 @@ markup:
     endLevel: 6
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: false
 outputs:
   home:
     - HTML
