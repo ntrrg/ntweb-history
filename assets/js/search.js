@@ -78,8 +78,6 @@ async function buildSearchIndex() {
 }
 
 async function search(q) {
-  startLoader()
-
   if (window.idx === undefined) {
     await buildSearchIndex()
   }
@@ -104,8 +102,6 @@ async function search(q) {
 
     resultsEl.innerHTML += html
   }
-
-  stopLoader()
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -113,8 +109,16 @@ window.addEventListener('DOMContentLoaded', () => {
   const q = params.get('q')
 
   if (q) {
-    search(q)
     document.querySelector('#search-box input').value = q
+    search(q)
+  }
+})
+
+document.querySelector('#search-box input').addEventListener('keyup', (e) => {
+  const q = e.target.value
+
+  if (q) {
+    search(q)
   }
 })
 
