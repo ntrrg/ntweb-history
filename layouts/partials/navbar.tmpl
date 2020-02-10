@@ -3,6 +3,7 @@
     <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.name }}</a>
   </strong>
 
+  {{ .Scratch.Set "menuItems" "menu" }}
   {{ partial "menu-items.tmpl" . }}
 
   <div>
@@ -14,9 +15,8 @@
       </label>
     {{ end }}
 
-    {{ with $.Site.GetPage "/settings" }}
-      [<a href="{{ .Permalink }}">{{ .Title }}</a>]
-    {{ end }}
+    {{ .Scratch.Set "menuItems" "secundaryMenu" }}
+    {{ partial "menu-items.tmpl" . }}
   </div>
 </nav>
 

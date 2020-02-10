@@ -64,9 +64,21 @@ params:
     - https://github.com/ntrrg/sdb
     - https://github.com/ntrrg/usersd
   menu:
-    - url: "/blog"
-    - url: "/projects"
-    - url: "/gallery"
+    items:
+      - url: "/blog/"
+      - url: "/projects/"
+      - url: "/gallery/"
+    before: "| "
+  secundaryMenu:
+    items:
+      - url: "/settings/"
+    before: "["
+    after: "]"
+  footerMenu:
+    items:
+      - url: "/payments/"
+    before: "["
+    after: "]"
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 languages:

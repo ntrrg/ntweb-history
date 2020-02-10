@@ -1,8 +1,6 @@
 <footer>
-  <div>
-    {{ $page := .Site.GetPage "/payments" }}
-    [<a href="{{ $page.Permalink }}">{{ $page.Title }}</a>]
-  </div>
+  {{ .Scratch.Set "menuItems" "footerMenu" }}
+  {{ partial "menu-items.tmpl" . }}
 
   <div>
     Powered by

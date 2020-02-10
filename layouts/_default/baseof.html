@@ -87,7 +87,7 @@
     {{ partial "comments.tmpl" . }}
   </main>
 
-  {{ partialCached "footer.tmpl" .Site }}
+  {{ partial "footer.tmpl" . }}
 
   <div id="cookies">
     {{ $page := .Site.GetPage "/cookies" }}
