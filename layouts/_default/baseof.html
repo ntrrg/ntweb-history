@@ -89,19 +89,21 @@
 
   {{ partial "footer.tmpl" . }}
 
-  <div id="cookies">
-    {{ $page := .Site.GetPage "/cookies" }}
-    <h3>{{ $page.Title }}</h3>
-    {{ $page.Content }}
+  {{ if and (eq .Params.cookiesAlert true) (not .Site.IsServer) }}
+    <div id="cookies">
+      {{ $page := .Site.GetPage "/cookies" }}
+      <h3>{{ $page.Title }}</h3>
+      {{ $page.Content }}
 
-    <noscript>
-      <style>
-        #cookies {
-          display: none;
-        }
-      </style>
-    </noscript>
-  </div>
+      <noscript>
+        <style>
+          #cookies {
+            display: none;
+          }
+        </style>
+      </noscript>
+    </div>
+  {{ end }}
 </body>
 </html>
 

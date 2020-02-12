@@ -196,15 +196,28 @@ body > footer {
 
 #cookies {
   width: 90vw;
+  max-height: 40vh;
 
   background: var(--font-color);
   border: 0.5em dashed;
   box-sizing: border-box;
   color: var(--background);
+  overflow: auto;
   padding: 1em 2em;
 
   position: fixed;
   left: 5vw;
   bottom: 1em;
+}
+
+#cookies::after {
+  content: "X";
+
+  cursor: pointer;
+  opacity: 0.8;
+
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
 

@@ -2,10 +2,10 @@
 title: ¿Cómo ser un desarrollador? (o al menos intentarlo)
 author: ntrrg
 date: 2020-01-30T09:00:00-04:00
-description: Esta es una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la tecnología, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde comenzar o qué hacer después 😂.
+description: Esta es una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde comenzar o qué hacer después 😂.
 tags:
   - tecnología
-  - guías
+  - cursos
   - aprendizaje
   - fundamentos
   - programación
@@ -17,16 +17,17 @@ toc: true
 draft: true
 ---
 
+Esta es una compilación de artículos ordenados con la intención de hacer más
+sencillo familiarizarse con la informática, e incluso profundizar en diferentes
+temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por
+donde comenzar o qué hacer después 😂.
+
 # Introducción
 
 {{< card "/blog/introduction-to-cs/" >}}
 
 ```
-1. Informática (Ciencia de la Computación)
-  1. Información
-  2. Computadoras
-
-2. Hardware
+1. Hardware
   1. Tarjeta madre
   2. CPU
     1. Arquitecturas
@@ -39,9 +40,7 @@ draft: true
   5. Fuente de poder
   6. GPU
   7. Periféricos
-```
 
-```
 2. Sistemas operativos
   1. Tipos
     * Linux
