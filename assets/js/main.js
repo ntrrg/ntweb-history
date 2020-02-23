@@ -31,7 +31,7 @@ function checkCookiesAlert() {
 
   if (cookiesAlert === 'agree') {
     const el = document.querySelector('#cookies')
-    el.parentNode.removeChild(el)
+    if (el !== null) el.parentNode.removeChild(el)
   }
 }
 
