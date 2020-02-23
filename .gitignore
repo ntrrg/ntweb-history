@@ -28,7 +28,7 @@ Session.vim
 .screenrc
 
 # Mage
-/mage
+.mage/output/
 
 #######################
 # Frameworks and libs #

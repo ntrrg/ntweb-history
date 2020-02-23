@@ -35,12 +35,14 @@ function checkCookiesAlert() {
   }
 }
 
-document.querySelector('#cookies').addEventListener('click', (e) => {
-  localStorage.setItem('cookies-alert', 'agree')
-  checkCookiesAlert()
-})
+if (document.querySelector('#cookies') !== null) {
+  document.querySelector('#cookies').addEventListener('click', (e) => {
+    localStorage.setItem('cookies-alert', 'agree')
+    checkCookiesAlert()
+  })
 
-window.addEventListener('DOMContentLoaded', checkCookiesAlert)
+  window.addEventListener('DOMContentLoaded', checkCookiesAlert)
+}
 
 // Image lazy loading
 

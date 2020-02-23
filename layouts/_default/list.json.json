@@ -1,7 +1,8 @@
 {{ define "data" }}
   {
     "pages": [
-      {{ range $i, $val := .Paginator.Pages }}
+      {{/* range $i, $val := .Paginator.Pages */}}
+      {{ range $i, $val := .Pages }}
         {{ if ne $i 0 }},{{ end }}
         {{ if gt (len .Pages) 0 }}
           {
@@ -39,11 +40,13 @@
     ],
     {{ $prefix := printf "%spage/" .Permalink }}
     "pagination": {
-      "prefix": "{{ $prefix }}",
+      "prefix": "{{ $prefix }}"
+      {{/*
       "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
       "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
       "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
       "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
+      */}}
     }
   }
 {{ end }}

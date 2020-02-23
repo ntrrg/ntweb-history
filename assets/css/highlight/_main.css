@@ -320,6 +320,17 @@
   color: var(--code-p-color);
 }
 
+/* Comments */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf {
+  font-style: italic;
+}
+
 /* Comment */
 .chroma .c {
   color: var(--code-c-color);

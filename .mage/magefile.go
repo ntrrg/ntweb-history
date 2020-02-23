@@ -23,7 +23,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion = "0.62.2"
+	hugoVersion = "0.65.2"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
@@ -42,7 +42,8 @@ func (BumpVersion) Hugo() error {
 			return err
 		}
 
-		if path == ".git" || path == "assets" || path == "content" {
+		if path == ".git" || path == "assets" || path == "content" ||
+			path == ".mage/output" || strings.HasSuffix(path, "vendor") {
 			return filepath.SkipDir
 		}
 
@@ -68,7 +69,7 @@ func (BumpVersion) Hugo() error {
 		}
 
 		if err := s.Err(); err != nil {
-			return err
+			return fmt.Errorf("%s: %w", path, err)
 		}
 
 		return nil
