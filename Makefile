@@ -23,7 +23,7 @@ clean:
 
 .PHONY: run
 run:
-	hugo server -DEF --noHTTPCache --i18n-warnings \
+	hugo server -DEF --noHTTPCache --i18n-warnings --disableFastRender \
 		--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
 
 # Docker
@@ -45,6 +45,7 @@ docker-run:
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
 		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --i18n-warnings \
+			--disableFastRender \
 			--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
 
 .PHONY: docker-shell

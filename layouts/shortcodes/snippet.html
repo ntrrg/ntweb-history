@@ -1,3 +1,4 @@
+{{ $path := .Get 0 }}
 {{ $content := "```" }}
 
 {{ with .Get 1 }}
@@ -6,8 +7,17 @@
 
 {{ $content = printf "%s\n" $content }}
 
-{{ $content = printf "%s%s" $content (printf "content/%s/%s" $.Page.File.Dir (.Get 0) | readFile) }}
+{{ $content = printf "%s%s" $content (printf "content/%s/%s" $.Page.File.Dir $path | readFile) }}
 
+{{ $content = replace $content "\t" "  " }}
 {{ $content = printf "%s```" $content }}
-{{ replace $content "\t" "  " | markdownify }}
+
+{{ if eq (.Get 2) true }}
+  <details>
+    <summary><code>{{ $path }}</code></summary>
+    {{ markdownify $content }}
+  </details>
+{{ else }}
+  {{ markdownify $content }}
+{{ end }}
 

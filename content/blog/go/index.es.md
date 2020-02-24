@@ -55,120 +55,6 @@ Algunas de sus características más resaltantes son:
 * Minimalista, la mayoría de las utilidades que faltan en el lenguaje fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
 
-# Funcionalidades excluidas
-
-{{< loi >}}
-* <https://golang.org/doc/faq#Design>
-* <https://www.youtube.com/watch?v=k9Zbuuo51go>
-{{< /loi >}}
-
-* Genéricos. Aunque es posible que en alguna futura versión se agregue, por
-  ahora no se ha logrado obtener una solución que compense su complejidad con
-  su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
-  ofrecen abstracción de una manera muy elegante.
-
-* Conjuntos. Por ahora no se cuenta con esta estructura de datos, pero pueden
-  implementarse usando otras estructuras como los mapas.
-
-{{< go-playground >}}
-```go
-x := make(map[int]struct{})
-
-x[1] = struct{}{}
-x[2] = struct{}{}
-x[1] = struct{}{}
-
-len(x) // 2
-```
-
---- PLAYGROUND ---
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  x := make(map[int]struct{})
-
-  x[1] = struct{}{}
-  x[2] = struct{}{}
-  x[1] = struct{}{}
-
-  fmt.Println(len(x))
-}
-```
-{{< /go-playground >}}
-
-* `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
-  parezca limitado, es una ventaja para los programadores no tener que pensar
-  en cuál usar. Tal vez suene a exagerar, pero en Internet es muy fácil
-  encontrar discusiones largas de otros lenguajes sobre cuál de todas es la más
-  rápida, que por cierto se repiten en cada nueva versión del lenguaje.
-
-* La familia de funciones favoritas de los programadores funcionales. Por la
-  falta de tipos genéricos aumentaría la complejidad de la sintaxis del
-  lenguaje, pero además, ¿por qué llamar 100 funciones para sumar los elementos
-  de un arreglo si puede usarse una estructura de repetición muy sencilla?, si
-  la reacción a esto es *«No me importa el rendimiento, quiero mis funciones
-  😒»*, no hay problema, es muy fácil implementarlas.
-
-{{< go-playground id="oNGlnMctzXv" >}}
-```go
-func ForEach(s []int, f func(int, int, []int)) {
-  for i, v := range s {
-    f(v, i, s)
-  }
-}
-
-func Map(s []int, f func(int) int) (ns []int) {
-  for _, v := range s {
-    ns = append(ns, f(v))
-  }
-
-  return ns
-}
-
-func Filter(s []int, f func(int) bool) (ns []int) {
-  for _, v := range s {
-    if f(v) {
-      ns = append(ns, v)
-    }
-  }
-
-  return ns
-}
-
-func Reduce(s []int, f func(int, int) int, a int) int {
-  for _, v := range s {
-    a = f(a, v)
-  }
-
-  return a
-}
-```
-{{< /go-playground >}}
-
-* Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
-  errores inesperados si no sabe manejar, además que es un comportamiento muy
-  confuso para los programadores con menos experiencia.
-
-* Hilos de procesos (threads), una de las tareas que suele agregar muchísima
-  complejidad al código fuente es la programación multithreading, aunque claro,
-  si se pretende programar una aplicación que se usará en computadoras potentes
-  (como servidores o computadores personales con procesadores de múltiples
-  núcleos) y se hará toda la computación en un solo hilo, sería un descaro
-  decir que Go es un lenguaje de alto rendimiento. La verdad es que no hacen
-  falta, ya se que suena a locura y probablemente se pueda pensar *«Claaaro, un
-  programa con gran demanda de cómputo que corre en un hilo puede ser tan
-  rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
-  que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
-  son funciones que se ejecutan independientemente del hilo principal y son
-  automáticamente distribuidas entre más hilos para evitar el bloqueo de las
-  operaciones, esto genera una abstracción de más alto nivel para este tipo de
-  tareas, por lo que el programador no debe lidiar directamente con hilos (ver
-  la sección de [Goroutines](#goroutines)).
-
 # Herramientas necesarias
 
 Para empezar a programar solo hacen falta dos cosas:
@@ -191,64 +77,68 @@ algunas de las que conozco son:
 
 * [Herramientas para mejorar el código](https://github.com/golang/go/wiki/CodeTools).
 
-* [Mage](https://magefile.org/) para automatizar tareas repetitivas.
+* [Mage](https://magefile.org/) para automatizar tareas (muy parecido a Make).
 
-* [godog](https://github.com/DATA-DOG/godog) para aplicar BDD.
+* [reflex](https://github.com/cespare/reflex) para ejecutar comandos cuando se
+  modifique un archivo.
 
-* [GoDoc](https://godoc.org/golang.org/x/tools/cmd/godoc) para generar la
+* [GoDoc](https://godoc.org/golang.org/x/tools/cmd/godoc) para ver la
   [documentación](#documentación) de los paquetes.
 
 * [GolangCI](https://golangci.com) para hacer análisis estático del código.
 
+* [Delve](https://github.com/go-delve/delve) para debugging.
+
 * [Go Playground][Playground] que permite probar código directamente en el
   navegador.
 
-# Archivos Go
+# Archivos
 
-Todos los archivos escritos en Go forman parte de un paquete, que es la unidad
-de distribución de código en este lenguaje, por esto, todos los archivos
-deben iniciar con una línea que contenga `package NOMBRE`, donde `NOMBRE` es
-un valor asignado por el desarrollador y es el identificador con el que otros
-podrán utilizarlo dentro de sus programas. Cuando se pretende desarrollar
-algún comando o alguna aplicación se usa `package main`, `main` es un nombre
-especial que le dice al compilador que la intención del paquete no es servir
-como biblioteca, sino como un ejecutable.
+Un archivo escrito en Go debe contener texto codificado en UTF-8, lo que
+permite usar un amplio rango de caracteres naturalmente (como `á`, `ñ`, `β`,
+`本` y `😂`).  Cada caracter es único, es decir que `a`, `á`, `à` y `A` son
+identificados independientemente.
+
+Algunas de las extensiones usadas son:
+
+[Go Templates]: https://golang.org/pkg/text/template/
+
+* `.go`: para código fuente escrito en Go.
+* `.tmpl`, `.gotxt`, `.gohtml`: para código fuente que use [Go Templates][].
+
+La primera línea de código de cualquier archivo Go debe ser la definición del
+paquete (ver [Paquetes](#paquetes)).
 
 ```go
-package main // -> Nombre del paquete
+package main // -> Definición del paquete
 ```
 
-Después de una línea en blanco, se hace el llamado a los paquetes que se usarán
-en el programa (solo si hace falta), por ejemplo, si se quiere escribir algo en
-la pantalla se debe importar el paquete `fmt`.
+Después de una línea en blanco, se hace el llamado a los paquetes externos, por
+ejemplo, para escribir algo en la salida estándar se debe importar el paquete
+`fmt`.
 
 ```go
 import "fmt" // -> Paquetes importados
 ```
 
-Luego se escriben todas las instrucciones que el programador quiera darle a la
-computadora, en el caso de usar `main` como nombre del paquete, se debe crear
-una [función](#funciones) identificada con el mismo nombre para comunicarle al
-compilador cuál es el código que debe ser invocado al usar el ejecutable.
+Luego de otra línea en blanco, se escriben todas las instrucciones.
 
 ```go
-func main() {                 // ┐
-  fmt.Println("hello, world") // │-> Bloque de código
-}                             // ┘
+func main() {                // ┐
+  fmt.Println("hola, mundo") // │-> Cuerpo del archivo
+}                            // ┘
 ```
 
 [hello, world]: https://es.wikipedia.org/wiki/Hola_mundo
 
 En resumen, todo archivo escrito en Go tendrá la siguiente estructura:
 
-1. Nombre del paquete.
-2. Llamados a paquetes externos (opcional).
-3. Cuerpo del paquete.
+1. Definición del paquete.
+2. Llamado a otros paquetes (opcional).
+3. Cuerpo del archivo (opcional).
 
 Siguiendo estas reglas, el programa más famoso ([hello, world][]) escrito en
 Go se vería algo así:
-
-`hola_mundo.go`:
 
 {{< go-playground id="hR9ZBMz-Pst" >}}
 ```go
@@ -262,34 +152,31 @@ func main() {
 ```
 {{< /go-playground >}}
 
-El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
-usando el comando `go run`.
+## Paquetes
 
-```shell-session
-$ go run hola_mundo.go
-hola, mundo
-```
+En Go, la unidad mínima con sentido es el paquete, que es un conjunto de
+archivos `.go` con el mismo nombre de paquete y están en la misma carpeta. 
 
-El segundo método es compilar el código fuente y ejecutar el archivo binario
-que se genere.
+Para definir el nombre del paquete, los archivos deben iniciar con una línea
+que contenga `package NOMBRE`, donde `NOMBRE` es un valor arbitrario y es el
+identificador con el que otros desarrolladores podrán utilizarlo dentro de sus
+programas (ver [Paquetes externos](#paquetes-externos)).
 
-```shell-session
-$ go build -o hola hola_mundo.go
-$ ./hola
-hola, mundo
-```
+Todos los archivos de un paquete comparten el ambito global, por lo que al
+declarar un indentificador global en un archivo, este podrá ser utilizado en
+cualquier otro archivo (ver [Ámbito](#ámbito)).
 
-El comando `go run` hace esto mismo, solo que crea un archivo temporal y lo
-ejecuta automáticamente.
+Cuando se pretende desarrollar un programa, se debe usar `main` como nombre del
+paquete. `main` es un valor especial que le dice al compilador que la intención
+del paquete es crear un archivo ejecutable y no una biblioteca. También deberá
+definirse una función que tenga `main` como nombre, esta función será llamada
+cuando se ejecute que programa.
 
-Aunque en algunos casos baste con un archivo para crear un paquete útil, en
-otras ocasiones la cantidad de código tiende a expandirse y tener muchas líneas
-en un solo lugar puede generar algunos problemas, por lo que es recomendable
-leer la sección sobre [Modularización](#paquetes). Para obtener más información
-sobre el comando `go` y como usarlo con múltiples archivos, se debe leer la
-sección del [Toolchain](#toolchain).
+## Módulos
 
-# Comentarios
+# Sintaxis
+
+## Comentarios
 
 {{< loi >}}
 * <https://golang.org/ref/spec#Comments>
@@ -327,152 +214,8 @@ fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
 ```
 {{< /go-playground >}}
 
-## Documentación
-
-{{< loi >}}
-* <https://blog.golang.org/godoc-documenting-go-code>
-{{< /loi >}}
-
-[GoDoc]: https://godoc.org
-[Docutils]: http://docutils.sourceforge.net/
-
-[GoDoc][] es una herramienta que permite usar los comentarios para generar
-documentación, algo parecida a [Docutils][] en Python, solo que un poco más
-sencilla, pues no requiere de un lenguaje de marcas para generar buena
-documentación, sino que usa texto plano.
-
-El objetivo principal de la documentación son las definiciones (`package`,
-`const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
-aquellas precedidas directamente por una o más líneas de comentarios.
-
-`arithmetic/go.mod`:
-
-```
-module arithmetic
-
-go 1.13
-```
-
-`arithmetic/arithmetic.go`:
-
-```go
-// Package arithmetic provides arithmetic operations for any type.
-package arithmetic
-
-// Identity constants
-const (
-  AdditiveIdentity       = 0
-  MultiplicativeIdentity = 1
-)
-
-// Operander is the interface that wraps the arithmetic representation
-// methods.
-//
-// Val returns the variable's arithmetic representation (float64).
-type Operander interface {
-  Val() float64
-}
-
-// Add gets any number of Operander and returns their addition.
-func Add(operands ...Operander) float64 {
-  result := operands[0].Val()
-
-  for _, v := range operands[1:] {
-    if v.Val() == AdditiveIdentity {
-      continue
-    }
-
-    result += v.Val()
-  }
-
-  return result
-}
-```
-
-Para ver el resultado se debe iniciar GoDoc e ir a la ruta <http://localhost:6060/pkg/arithmetic/>
-con un navegador web.
-
-```shell-session
-$ godoc -http :6060
-```
-
-Es común (y una buena práctica) que cada comentario inicie con el
-identificador del elemento que se quiere documentar, con la excepción de:
-
-* El nombre del paquete, que debería iniciar con la palabra `Package` y luego
-  sí el nombre del paquete.
-
-* Las constantes y variables agrupadas, que suele ser suficiente con documentar
-  el grupo y no cada una de ellas.
-
-Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
-si:
-
-* Tiene el formato de un URL, será convertido a un enlace HTML.
-
-* Tiene una indentación, será convertido a un bloque de código.
-
-* Tiene el formato `IDENTIFICADOR(USUARIO): DESCRIPCIÓN.`, será agregado a la
-  lista de notas del paquete. `IDENTIFICADOR` puede ser cualquier combinación
-  de más de dos letras mayúsculas. El idenficador `BUG` tiene el comportamiento
-  especial de crear una lista de bugs en la página del paquete.
-
-Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
-sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
-el comentario del paquete en cada archivo, en realidad basta con que uno de los
-archivos lo tenga.
-
-Si la documentación es algo extensa, se recomienda crear un archivo `doc.go`
-que contenga solo en nombre del paquete y su comentario de documentación.
-
-```go
-/*
-Package arithmetic provides arithmetic operations for any type.
-
-This is a long description of the Arithmetic package.
-
-	type Operand string
-
-	func (o Operand) Val() float64 {
-		return float64(len(o))
-	}
-
-	func main() {
-		var x, y Operand = "a", "b"
-
-		r := Add(x, y)
-		fmt.Println(r)
-	}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-euismod egestas elit sed viverra. Nunc tincidunt lacinia orci in
-mattis. Praesent cursus neque et dapibus faucibus. Maecenas at
-sem ut arcu ornare commodo. Morbi laoreet diam sit amet est
-ultricies imperdiet. Proin ullamcorper ac massa a accumsan.
-Praesent quis bibendum tellus. Sed id velit libero. Fusce dapibus
-purus neque, sit amet sollicitudin odio porttitor posuere. Mauris
-eu dui elementum, fermentum ante vitae, porttitor nunc. Duis mi
-elit, viverra at turpis vitae, sollicitudin aliquet velit.
-Pellentesque nisl turpis, pulvinar et consectetur et, iaculis vel
-leo. Suspendisse euismod sem at vehicula fermentum. Duis viverra
-eget ante a accumsan.
-
-Aenean dui lectus, ultrices at elit id, pellentesque faucibus
-dolor. Duis blandit vulputate est, eget sollicitudin ipsum
-pellentesque quis. Cras sed nibh sed sapien suscipit tincidunt
-venenatis id eros. Praesent laoreet, erat quis hendrerit
-dignissim, justo diam semper elit, sit amet commodo lacus ipsum
-eget nisl. In a mi tellus. In hac habitasse platea dictumst.
-Aliquam et neque a quam mollis molestie. Etiam tempor arcu quis
-justo molestie congue.
-*/
-package arithmetic
-```
-
-Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
-ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
-interfaz web. Para más información sobre este tema ver la sección de
-[Ejempos](#ejemplos-pruebas).
+**Nota:** ningún tipo de comentario puede usarse dentro de runas o cadenas
+literales.
 
 # Tipos de datos
 
@@ -482,11 +225,9 @@ definida en cuanto a tipos de datos, pero también permite crear nuevos según
 las necesidades del programador.
 
 Todos los tipos de datos cuentan con un valor cero, que no quiere decir que
-sean literalmente `0`, sino que los identifica como "vacío" en su contexto,
-por ejemplo: cuando se habla de números, su valor cero sería `0`; cuando se
-habla de personas, su valor cero sería `nadie`; cuando se habla de objetos, su
-valor cero sería `nada`; y así dependiendo del contexto, por supuesto, estos
-son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
+sean literalmente 0, sino que los identifica como *vacío* en su contexto. En
+analogía, cuando se habla de personas, su valor cero sería *nadie*; cuando se
+habla de objetos, su valor cero sería *nada*; y así dependiendo del contexto.
 
 ## Booleanos
 
@@ -496,11 +237,14 @@ son **ejemplos**, no es que Go tenga un tipo de dato `person` o algo así 😂.
 
 [George Boole]: https://es.wikipedia.org/wiki/George_Boole
 
-Nombrados así en honor a [George Boole][], también son conocidos como
-lógicos, representan valores de verdad (verdadero o falso) que normalmente son
-usados para controlar el flujo de los programas.
+Nombrados así en honor a [George Boole][], también son conocidos como lógicos,
+representan valores de verdad (verdadero o falso) que normalmente son usados
+para controlar el flujo de los programas.
 
-**TODO:** ¿Cómo son implementados?
+Aunque en teoría se pueden representar con 1 bit, su tamaño depende de la
+implementación del compilador y de la arquitectura donde trabaje. Generalmente
+ocupará 1 byte, que por ahora es la unidad mínima de almacenamiento y el
+estándar dice que son 8 bits.
 
 ### Representación sintáctica
 
@@ -534,59 +278,58 @@ Existen tres grupos de datos numéricos:
 {{< loi >}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
-* [Números binarios](./../binary-numbers.es.md)
-* [Números octales](./../octal-numbers.es.md)
-* [Números hexadecimales](./../hex-numbers.es.md)
-* [Complemento a dos](./../twos-complement.es.md)
+* [Números binarios](./../binary-numbers/)
+* [Números octales](./../octal-numbers/)
+* [Números hexadecimales](./../hex-numbers/)
+* [Complemento a dos](./../twos-complement/)
 {{< /loi >}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
 espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
-`N` puede ser `8`, `16`, `32` o `64` debido a las especificaciones de los CPUs.
+`N` puede ser 8, 16, 32 o 64 (1, 2, 4 y 8 bytes respectivamente).
 
 Existen dos tipos de números enteros, o mejor dicho, dos métodos de
 representación: el primero es la conversión binaria tradicional, pero solo
-puede ser usado para procesar números positivos; el segundo es llamado
+puede ser usada para procesar números positivos; el segundo es llamado
 *Complemento a dos* y permite representar tanto números positivos como
-negativos de una manera bastante ingeniosa, solo que se pierde una cantidad
-considerable de números positivos.
+negativos de una manera bastante ingeniosa, pero la máxima cantidad
+representable se reduce a la mitad.
 
 ```
 10101010 -> 170
 ⬑ 8 bits -> 0 - 255
 
-1010101010101010 -> 43690
-⬑ 16 bits -> 0 - 65535
-
-10101010101010101010101010101010 -> 2863311530
-⬑ 32 bits -> 0 - 4294967295
-
-1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
-⬑ 64 bits -> 0 - 18446744073709551615
-```
-
-```
 ⬐ Signo
 10101010 -> -86
  ⬑ Números, 7 bits -> -128 - 127
+
+1010101010101010 -> 43690
+⬑ 16 bits -> 0 - 65535
 
 ⬐ Signo
 0101010101010101 -> 21845
  ⬑ Números, 15 bits -> -32768 - 32767
 
+10101010101010101010101010101010 -> 2863311530
+⬑ 32 bits -> 0 - 4294967295
+
 ⬐ Signo
 10101010101010101010101010101010 -> -1431655766
  ⬑ Números, 31 bits -> -2147483648 - 2147483647
+
+1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
+⬑ 64 bits -> 0 - 18446744073709551615
 
 ⬐ Signo
 0101010101010101010101010101010101010101010101010101010101010101 -> 6148914691236517205
  ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
 ```
 
-Además de números decimales, es posible usar otras notaciones como  octales y
-hexadecimales para expresar enteros literales.
+Además de números decimales, es posible usar otras notaciones como binarios,
+octales y hexadecimales para expresar enteros literales. Se puede usar el guión
+bajo (`_`) para separar los números y mejorar su legibilidad.
 
 #### Representación sintáctica
 
@@ -608,9 +351,9 @@ int64
 // Alias
 
 byte // Equivale a uint8
-rune // Equivale a uint32
+rune // Equivale a uint32, ver Cadenas para más detalles
 
-// Según la arquitectura del sistema operativo
+// Dependientes de la arquitectura del sistema operativo
 
 uint    // Equivale a uint32 o uint64
 int     // Equivale a int32 o int64
@@ -620,19 +363,50 @@ uintptr // Permite almacenar direcciones de memoria
 #### Ejemplos
 
 ```go
-5   // Decimal
-05  // Octal (tienen el prefijo `0`)
-0x5 // Hexadecimal (tienen el prefijo `0x`)
+5     // Decimal
+0b101 // Binario
+05    // Octal
+0x5   // Hexadecimal
 
 // Con signo
++10
++0b1010
++012
++0xa
+-10
+-0b1010
+-012
+-0xa
 
-+10  // ┐
-+012 // │-> Optimistas 😄
-+0xa // ┘
+// Binarios (`0b`,`0B`)
+0b101
+0b_101
+0B101
+0B_101
 
--10  // ┐
--012 // │-> Pesimistas 😞
--0xa // ┘
+// Octal (`0`, `0o`, `0O`)
+05
+0o5
+0o_5
+0O5
+0O_5
+
+// Hexadecimal (`0x`, `0X`)
+0x5
+0x_5
+0X5
+0X_5
+
+// Con separadores (_)
+5_000_000           // Separador de miles
++58_123_456_7890    // Teléfono
+1234_5678_9012_3456 // Tarjeta de crédito/débito
+
+1_23_4 // SemVer
+
+0x_C1_86_05_48_DC_6C                       // MAC Address
+0b_11000000_10101000_00000000_00000001     // Dirección IPv4
+0x_2001_0db8_0000_0000_0000_ff00_0042_8329 // Dirección IPv6
 ```
 
 #### Valor cero
@@ -647,8 +421,9 @@ uintptr // Permite almacenar direcciones de memoria
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <http://www.oxfordmathcenter.com/drupal7/node/43>
-* [Números binarios](./../binary-numbers.es.md)
-* [Representación de números de punto flotante](./../ieee-754.es.md)
+* [Números binarios](./../binary-numbers/)
+* [Números hexadecimales](./../hex-numbers/)
+* [Representación de números de punto flotante](./../ieee-754/)
 {{< /loi >}}
 
 Representan al conjunto matemático de los números fraccionarios, aunque
@@ -757,6 +532,216 @@ complex128
 
 ```go
 0
+```
+
+## Cadenas
+
+{{< loi >}}
+* <https://golang.org/ref/spec#String_types>
+* <https://golang.org/ref/spec#String_literals>
+* <https://golang.org/ref/spec#Rune_literals>
+* <https://blog.golang.org/slices>
+* <https://blog.golang.org/strings>
+* <https://research.swtch.com/godata>
+* [Codificación de texto](./../text-encoding.es.md)
+{{< /loi >}}
+
+Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
+de una runa (un punto de código Unicode codificado en UTF-8), que no es más
+que un caracter/símbolo para el ojo humano; aunque los bytes y las runas sean
+datos numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos
+como texto, es decir, si se intenta representar el número `77` como una cadena,
+Go seleccionará el punto de código Unicode `U+004d` (`77` es `4d` en números
+hexadecimales), lo codificará con UTF-8 y obtendrá la letra `M`.
+
+Para la definición de cadenas literales interpretadas se usan las comillas
+(`"`) y para las cadenas sin formato los acentos graves (<code>\`</code>); a
+diferencia de otros lenguajes, el apóstrofo (`'`) se usa para representar runas
+literales, no cadenas.
+
+{{< go-playground id="M0lvf5r9D8p" >}}
+```go
+"Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
+// Soy una cadena interpretada
+// y puedo procesar secuencias de escape 😎
+
+`Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+
+Pero puedo tener varias líneas,
+quien es mejor ahora 😒`
+// Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+//
+// Pero puedo tener varias líneas,
+// quien es mejor ahora 😒
+```
+{{< /go-playground >}}
+
+Las cadenas interpretadas y las runas tienen la capacidad de procesar
+secuencias de escape, estas secuencias son caracteres precedidos por una barra
+invertida (`\`) que les permite alterar su comportamiento.
+
+```go
+"\a" // Bell character
+"\b" // Backspace
+"\t" // Horizontal tab
+"\n" // Line feed
+"\v" // Vertical tab
+"\f" // Form feed
+"\r" // Carriage return
+"\"" // Quotation mark
+"\\" // Backslash
+
+'\a' // 7
+'\b' // 8
+'\t' // 9
+'\n' // 10
+'\v' // 11
+'\f' // 12
+'\r' // 13
+'\'' // 39
+'\\' // 92
+
+// Unicode
+
+  // Versión corta (u y 4 dígitos)
+
+"\u004d" // "M"
+'\u004d' // 77
+
+  // Versión larga (U y 8 dígitos)
+
+"\U0000004d" // "M"
+'\U0000004d' // 77
+"\U00f1f064" // "😄"
+'\U00f1f064' // 128516
+
+// Bytes (UTF-8)
+
+  // Octales (3 dígitos)
+
+"\115"                // "M"
+'\115'                // 77
+"\360\237\230\204"    // "😄"
+// '\360\237\230\204' // No soporta más de un byte escapado
+
+  // Hexadecimales (x y 2 dígitos)
+
+"\x4d"                // "M"
+'\x4d'                // 77
+"\xf0\x9f\x98\x84"    // "😄"
+// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
+```
+
+Internamente, Go implementa las cadenas como porciones de bytes (`[]byte`), por
+lo que cuentan con casi todas las cualidades de las porciones, solo que son
+inmutables y por esta misma razón no tienen capacidad.
+
+{{< go-playground id="yHrBgqgfqE9" >}}
+```go
+x := "Hola"
+
+x[2] = 'L' // Error
+cap(x)     // Error
+```
+{{< /go-playground >}}
+
+Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y
+`😂` tengan la misma longitud.
+
+{{< go-playground id="oCaft33c5jj" >}}
+```go
+len("Hola") // 4
+// "Hola" es una cadena compuesta por cuatro bytes, cada uno
+// representa una runa.
+// 'H' ->  72 -> U+0048 -> 1001000
+// 'o' -> 111 -> U+006f -> 1101111
+// 'l' -> 108 -> U+006c -> 1101100
+// 'a' ->  92 -> U+0061 -> 1100001
+
+len("😂") // 4
+// "😂" es una cadena compuesta por cuatro bytes, todos
+// representan una runa
+// '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
+```
+{{< /go-playground >}}
+
+Por lo que al iterar sobre ellas no se obtendrán caracteres/símbolos sino su
+representación en UTF-8.
+
+{{< go-playground id="y0O2H_Y91Tc" >}}
+```go
+x := "😂"
+
+for i := 0; i < len(x); i++ {
+  fmt.Println(x[i])
+}
+
+// 240 -> 11110000
+// 159 -> 10011111
+// 152 -> 10011000
+// 130 -> 10000010
+```
+{{< /go-playground >}}
+
+Para evitar este comportamiento se puede usar `range`, que extrae runa a runa.
+
+{{< go-playground id="CcnClPYtrEn" >}}
+```go
+for _,  v := range "😂" {
+  fmt.Println(v)
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+O [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
+en los casos que no se quiera iterar sobre la cadena.
+
+{{< go-playground id="cStYBcRb9ZX" >}}
+```go
+x := "😂"
+
+// Sin iteración, extrae solo la primera runa y retorna la cantidad de
+// bytes que se leyeron.
+utf8.DecodeRuneInString(x) // 128514 4
+
+// Equivale a usar range
+for i := 0; i < len(x); {
+  v, w := utf8.DecodeRuneInString(x[i:])
+  fmt.Println(v)
+  i += w
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+### Representación sintáctica
+
+```go
+string
+```
+
+### Ejemplos
+
+```go
+'M'  // 74 -> U+004d -> 1001101 (7 bits)
+'😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
+
+"C"
+"Cadena de caracteres"
+
+`Cadena
+de
+caracteres
+multilineal`
+```
+
+### Valor cero
+
+```go
+""
 ```
 
 ## Arreglos
@@ -1189,216 +1174,6 @@ porción a una nueva con un arreglo propio.
 nil
 ```
 
-## Cadenas
-
-{{< loi >}}
-* <https://golang.org/ref/spec#String_types>
-* <https://golang.org/ref/spec#String_literals>
-* <https://golang.org/ref/spec#Rune_literals>
-* <https://blog.golang.org/slices>
-* <https://blog.golang.org/strings>
-* <https://research.swtch.com/godata>
-* [Codificación de texto](./../text-encoding.es.md)
-{{< /loi >}}
-
-Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
-de una runa (un punto de código Unicode codificado en UTF-8), que no es más
-que un caracter/símbolo para el ojo humano; aunque los bytes y las runas sean
-datos numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos
-como texto, es decir, si se intenta representar el número `77` como una cadena,
-Go seleccionará el punto de código Unicode `U+004d` (`77` es `4d` en números
-hexadecimales), lo codificará con UTF-8 y obtendrá la letra `M`.
-
-Para la definición de cadenas literales interpretadas se usan las comillas
-(`"`) y para las cadenas sin formato los acentos graves (<code>\`</code>); a
-diferencia de otros lenguajes, el apóstrofo (`'`) se usa para representar runas
-literales, no cadenas.
-
-{{< go-playground id="M0lvf5r9D8p" >}}
-```go
-"Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
-// Soy una cadena interpretada
-// y puedo procesar secuencias de escape 😎
-
-`Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
-
-Pero puedo tener varias líneas,
-quien es mejor ahora 😒`
-// Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
-//
-// Pero puedo tener varias líneas,
-// quien es mejor ahora 😒
-```
-{{< /go-playground >}}
-
-Las cadenas interpretadas y las runas tienen la capacidad de procesar
-secuencias de escape, estas secuencias son caracteres precedidos por una barra
-invertida (`\`) que les permite alterar su comportamiento.
-
-```go
-"\a" // Bell character
-"\b" // Backspace
-"\t" // Horizontal tab
-"\n" // Line feed
-"\v" // Vertical tab
-"\f" // Form feed
-"\r" // Carriage return
-"\"" // Quotation mark
-"\\" // Backslash
-
-'\a' // 7
-'\b' // 8
-'\t' // 9
-'\n' // 10
-'\v' // 11
-'\f' // 12
-'\r' // 13
-'\'' // 39
-'\\' // 92
-
-// Unicode
-
-  // Versión corta (u y 4 dígitos)
-
-"\u004d" // "M"
-'\u004d' // 77
-
-  // Versión larga (U y 8 dígitos)
-
-"\U0000004d" // "M"
-'\U0000004d' // 77
-"\U00f1f064" // "😄"
-'\U00f1f064' // 128516
-
-// Bytes (UTF-8)
-
-  // Octales (3 dígitos)
-
-"\115"                // "M"
-'\115'                // 77
-"\360\237\230\204"    // "😄"
-// '\360\237\230\204' // No soporta más de un byte escapado
-
-  // Hexadecimales (x y 2 dígitos)
-
-"\x4d"                // "M"
-'\x4d'                // 77
-"\xf0\x9f\x98\x84"    // "😄"
-// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
-```
-
-Internamente, Go implementa las cadenas como porciones de bytes (`[]byte`), por
-lo que cuentan con casi todas las cualidades de las porciones, solo que son
-inmutables y por esta misma razón no tienen capacidad.
-
-{{< go-playground id="yHrBgqgfqE9" >}}
-```go
-x := "Hola"
-
-x[2] = 'L' // Error
-cap(x)     // Error
-```
-{{< /go-playground >}}
-
-Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y
-`😂` tengan la misma longitud.
-
-{{< go-playground id="oCaft33c5jj" >}}
-```go
-len("Hola") // 4
-// "Hola" es una cadena compuesta por cuatro bytes, cada uno
-// representa una runa.
-// 'H' ->  72 -> U+0048 -> 1001000
-// 'o' -> 111 -> U+006f -> 1101111
-// 'l' -> 108 -> U+006c -> 1101100
-// 'a' ->  92 -> U+0061 -> 1100001
-
-len("😂") // 4
-// "😂" es una cadena compuesta por cuatro bytes, todos
-// representan una runa
-// '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
-```
-{{< /go-playground >}}
-
-Por lo que al iterar sobre ellas no se obtendrán caracteres/símbolos sino su
-representación en UTF-8.
-
-{{< go-playground id="y0O2H_Y91Tc" >}}
-```go
-x := "😂"
-
-for i := 0; i < len(x); i++ {
-  fmt.Println(x[i])
-}
-
-// 240 -> 11110000
-// 159 -> 10011111
-// 152 -> 10011000
-// 130 -> 10000010
-```
-{{< /go-playground >}}
-
-Para evitar este comportamiento se puede usar `range`, que extrae runa a runa.
-
-{{< go-playground id="CcnClPYtrEn" >}}
-```go
-for _,  v := range "😂" {
-  fmt.Println(v)
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-O [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
-en los casos que no se quiera iterar sobre la cadena.
-
-{{< go-playground id="cStYBcRb9ZX" >}}
-```go
-x := "😂"
-
-// Sin iteración, extrae solo la primera runa y retorna la cantidad de
-// bytes que se leyeron.
-utf8.DecodeRuneInString(x) // 128514 4
-
-// Equivale a usar range
-for i := 0; i < len(x); {
-  v, w := utf8.DecodeRuneInString(x[i:])
-  fmt.Println(v)
-  i += w
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-### Representación sintáctica
-
-```go
-string
-```
-
-### Ejemplos
-
-```go
-'M'  // 74 -> U+004d -> 1001101 (7 bits)
-'😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
-
-"C"
-"Cadena de caracteres"
-
-`Cadena
-de
-caracteres
-multilineal`
-```
-
-### Valor cero
-
-```go
-""
-```
-
 ## Mapas
 
 {{< loi >}}
@@ -1581,17 +1356,21 @@ map[string]struct{ X, Y float64 }{
 nil
 ```
 
-## Estructuras
-
-<https://tour.golang.org/moretypes/2>
-<https://tour.golang.org/moretypes/3>
-* <https://research.swtch.com/godata>
-
 ## Punteros
 
 <https://tour.golang.org/moretypes/1>
 <https://tour.golang.org/moretypes/4>
 <https://tour.golang.org/moretypes/5>
+
+## Funciones
+
+## Interfaces
+
+## Estructuras
+
+<https://tour.golang.org/moretypes/2>
+<https://tour.golang.org/moretypes/3>
+* <https://research.swtch.com/godata>
 
 ## Cambios de tipos
 
@@ -1616,19 +1395,13 @@ const (
 x + y // (2+3i)
 ```
 
+# Variables
+
 # Estructuras de repetición
 
 ## `for`
 
-# Funciones
-
-## Predefinidas
-
-### `complex`
-
-### `real`
-
-### `imag`
+# Ámbito
 
 # Manejo de errores
 
@@ -1645,9 +1418,158 @@ x + y // (2+3i)
   se manejan por medio del mecanismo de retorno múltiple en las funciones. Go
   cuenta con .
 
+# Concurrencia
+
 # Pruebas
 
-## Ejemplos (pruebas)
+# Documentación
+
+{{< loi >}}
+* <https://blog.golang.org/godoc-documenting-go-code>
+{{< /loi >}}
+
+[GoDoc]: https://godoc.org
+[Docutils]: http://docutils.sourceforge.net/
+
+[GoDoc][] es una herramienta que permite usar los comentarios para generar
+documentación, algo parecida a [Docutils][] en Python, solo que un poco más
+sencilla, pues no requiere de un lenguaje de marcas para generar buena
+documentación, sino que usa texto plano.
+
+El objetivo principal de la documentación son las definiciones (`package`,
+`const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
+aquellas precedidas directamente por una o más líneas de comentarios.
+
+`arithmetic/go.mod`:
+
+```
+module arithmetic
+
+go 1.13
+```
+
+`arithmetic/arithmetic.go`:
+
+```go
+// Package arithmetic provides arithmetic operations for any type.
+package arithmetic
+
+// Identity constants
+const (
+  AdditiveIdentity       = 0
+  MultiplicativeIdentity = 1
+)
+
+// Operander is the interface that wraps the arithmetic representation
+// methods.
+//
+// Val returns the variable's arithmetic representation (float64).
+type Operander interface {
+  Val() float64
+}
+
+// Add gets any number of Operander and returns their addition.
+func Add(operands ...Operander) float64 {
+  result := operands[0].Val()
+
+  for _, v := range operands[1:] {
+    if v.Val() == AdditiveIdentity {
+      continue
+    }
+
+    result += v.Val()
+  }
+
+  return result
+}
+```
+
+Para ver el resultado se debe iniciar GoDoc e ir a la ruta <http://localhost:6060/pkg/arithmetic/>
+con un navegador web.
+
+```shell-session
+$ godoc -http :6060
+```
+
+Es común (y una buena práctica) que cada comentario inicie con el
+identificador del elemento que se quiere documentar, con la excepción de:
+
+* El nombre del paquete, que debería iniciar con la palabra `Package` y luego
+  sí el nombre del paquete.
+
+* Las constantes y variables agrupadas, que suele ser suficiente con documentar
+  el grupo y no cada una de ellas.
+
+Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
+si tiene:
+
+* Formato de un URL, será convertido a un enlace HTML.
+
+* Indentación, será convertido a un bloque de código.
+
+* El formato `IDENTIFICADOR(USUARIO): DESCRIPCIÓN.`, será agregado a la lista
+  de notas del paquete. `IDENTIFICADOR` puede ser cualquier combinación de más
+  de dos letras mayúsculas. El identificador `BUG` tiene el comportamiento
+  especial de crear una lista de bugs en la página del paquete.
+
+Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
+sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
+el comentario del paquete en cada archivo, en realidad basta con que uno de los
+archivos lo tenga.
+
+Si la documentación es algo extensa, se recomienda crear un archivo `doc.go`
+que contenga solo en nombre del paquete y su comentario de documentación.
+
+```go
+/*
+Package arithmetic provides arithmetic operations for any type.
+
+This is a long description of the Arithmetic package.
+
+	type Operand string
+
+	func (o Operand) Val() float64 {
+		return float64(len(o))
+	}
+
+	func main() {
+		var x, y Operand = "a", "b"
+
+		r := Add(x, y)
+		fmt.Println(r)
+	}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+euismod egestas elit sed viverra. Nunc tincidunt lacinia orci in
+mattis. Praesent cursus neque et dapibus faucibus. Maecenas at
+sem ut arcu ornare commodo. Morbi laoreet diam sit amet est
+ultricies imperdiet. Proin ullamcorper ac massa a accumsan.
+Praesent quis bibendum tellus. Sed id velit libero. Fusce dapibus
+purus neque, sit amet sollicitudin odio porttitor posuere. Mauris
+eu dui elementum, fermentum ante vitae, porttitor nunc. Duis mi
+elit, viverra at turpis vitae, sollicitudin aliquet velit.
+Pellentesque nisl turpis, pulvinar et consectetur et, iaculis vel
+leo. Suspendisse euismod sem at vehicula fermentum. Duis viverra
+eget ante a accumsan.
+
+Aenean dui lectus, ultrices at elit id, pellentesque faucibus
+dolor. Duis blandit vulputate est, eget sollicitudin ipsum
+pellentesque quis. Cras sed nibh sed sapien suscipit tincidunt
+venenatis id eros. Praesent laoreet, erat quis hendrerit
+dignissim, justo diam semper elit, sit amet commodo lacus ipsum
+eget nisl. In a mi tellus. In hac habitasse platea dictumst.
+Aliquam et neque a quam mollis molestie. Etiam tempor arcu quis
+justo molestie congue.
+*/
+package arithmetic
+```
+
+Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
+ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
+interfaz web. Para más información sobre este tema ver la sección de
+[Ejemplos](#ejemplos-documentación).
+
+## Ejemplos (documentación)
 
 {{< loi >}}
 * <https://blog.golang.org/examples>
@@ -1877,9 +1799,11 @@ PASS
 ok  	arithmetic
 ```
 
-# Go tool
+# Paquetes externos
 
-## Toolchain
+# Buenas prácticas
+
+# Toolchain
 
 {{< loi >}}
 * <https://golang.org/pkg/go/build/>
@@ -1890,6 +1814,26 @@ GOPATH
 GOROOT
 
 GOTPMDIR
+
+El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
+usando el comando `go run`.
+
+```shell-session
+$ go run hola_mundo.go
+hola, mundo
+```
+
+El segundo método es compilar el código fuente y ejecutar el archivo binario
+que se genere.
+
+```shell-session
+$ go build -o hola hola_mundo.go
+$ ./hola
+hola, mundo
+```
+
+El comando `go run` hace esto mismo, solo que crea un archivo temporal y lo
+ejecuta automáticamente.
 
 ## Condiciones de compilación
 
@@ -1902,7 +1846,119 @@ Permiten establecer condiciones para el compilador, como usar el archivo para
 ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Para usarlas, solo hace falta un comentario
 como este `// +build CONDICION [...]`
 
-# Buenas prácticas
+# Funcionalidades excluidas
+
+{{< loi >}}
+* <https://golang.org/doc/faq#Design>
+* <https://www.youtube.com/watch?v=k9Zbuuo51go>
+{{< /loi >}}
+
+* Genéricos. Aunque es posible que en alguna futura versión se agregue, por
+  ahora no se ha logrado obtener una solución que compense su complejidad con
+  su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
+  ofrecen abstracción de una manera muy elegante.
+
+* Conjuntos. Por ahora no se cuenta con esta estructura de datos, pero pueden
+  implementarse usando otras estructuras como los mapas.
+
+{{< go-playground >}}
+```go
+x := make(map[int]struct{})
+
+x[1] = struct{}{}
+x[2] = struct{}{}
+x[1] = struct{}{}
+
+len(x) // 2
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := make(map[int]struct{})
+
+  x[1] = struct{}{}
+  x[2] = struct{}{}
+  x[1] = struct{}{}
+
+  fmt.Println(len(x))
+}
+```
+{{< /go-playground >}}
+
+* `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
+  parezca limitado, es una ventaja para los programadores no tener que pensar
+  en cuál usar. Tal vez suene a exagerar, pero en Internet es muy fácil
+  encontrar discusiones largas de otros lenguajes sobre cuál de todas es la más
+  rápida, que por cierto se repiten en cada nueva versión del lenguaje.
+
+* La familia de funciones favoritas de los programadores funcionales. Por la
+  falta de tipos genéricos aumentaría la complejidad de la sintaxis del
+  lenguaje, pero además, ¿por qué llamar 100 funciones para sumar los elementos
+  de un arreglo si puede usarse una estructura de repetición muy sencilla?, si
+  la reacción a esto es *«No me importa el rendimiento, quiero mis funciones
+  😒»*, no hay problema, es muy fácil implementarlas.
+
+{{< go-playground id="oNGlnMctzXv" >}}
+```go
+func ForEach(s []int, f func(int, int, []int)) {
+  for i, v := range s {
+    f(v, i, s)
+  }
+}
+
+func Map(s []int, f func(int) int) (ns []int) {
+  for _, v := range s {
+    ns = append(ns, f(v))
+  }
+
+  return ns
+}
+
+func Filter(s []int, f func(int) bool) (ns []int) {
+  for _, v := range s {
+    if f(v) {
+      ns = append(ns, v)
+    }
+  }
+
+  return ns
+}
+
+func Reduce(s []int, f func(int, int) int, a int) int {
+  for _, v := range s {
+    a = f(a, v)
+  }
+
+  return a
+}
+```
+{{< /go-playground >}}
+
+* Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
+  errores inesperados si no sabe manejar, además que es un comportamiento muy
+  confuso para los programadores con menos experiencia.
+
+* Hilos de procesos (threads), una de las tareas que suele agregar muchísima
+  complejidad al código fuente es la programación multithreading, aunque claro,
+  si se pretende programar una aplicación que se usará en computadoras potentes
+  (como servidores o computadores personales con procesadores de múltiples
+  núcleos) y se hará toda la computación en un solo hilo, sería un descaro
+  decir que Go es un lenguaje de alto rendimiento. La verdad es que no hacen
+  falta, ya se que suena a locura y probablemente se pueda pensar *«Claaaro, un
+  programa con gran demanda de cómputo que corre en un hilo puede ser tan
+  rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
+  que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
+  son funciones que se ejecutan independientemente del hilo principal y son
+  automáticamente distribuidas entre más hilos para evitar el bloqueo de las
+  operaciones, esto genera una abstracción de más alto nivel para este tipo de
+  tareas, por lo que el programador no debe lidiar directamente con hilos (ver
+  la sección de [Concurrencia](#concurrencia)).
 
 # Filosofía, proverbios y citas
 

@@ -103,7 +103,7 @@ func (Lint) Mage() error {
 func Run() error {
 	return sh.RunV(
 		"hugo", "server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
-		"--bind", "0.0.0.0", "--port", hugoPort,
+		"--disableFastRender", "--bind", "0.0.0.0", "--port", hugoPort,
 		"--baseUrl", "/", "--appendPort=false",
 	)
 }
@@ -192,7 +192,7 @@ func (Docker) Build() error {
 func (Docker) Run() error {
 	return runHugoDocker(
 		"server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
-		"--bind", "0.0.0.0", "--port", hugoPort,
+		"--disableFastRender", "--bind", "0.0.0.0", "--port", hugoPort,
 		"--baseUrl", "/", "--appendPort=false",
 	)
 }
