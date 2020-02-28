@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        go_version: ["1.13"]
+        go_version: ["1.14", "1.13"]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Go
@@ -22,10 +22,6 @@ jobs:
 
       - name: Get source code
         uses: actions/checkout@v1
-
-      - name: Get dependencies
-        run: |
-          .mage/compile.sh
 
       - name: Lint
         run: ./mage -v lint:mage
