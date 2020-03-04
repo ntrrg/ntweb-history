@@ -70,8 +70,8 @@ fácil explicar su funcionamiento otros humanos.
 
 Por esta razón, es común que un algoritmo sea expresado en múltiples lenguajes
 que estarán orientados a un público específico y tendrán diferentes niveles
-descriptivos. Los niveles descriptivos de un algoritmo no están estrictamente
-estandarizados, pero podrían agruparse en:
+descriptivos. Los niveles descriptivos no están estrictamente estandarizados,
+pero podrían agruparse en:
 
 * Alto nivel: cuando se quiere hablar sobre qué hace y para qué es útil un
   algoritmo, el lenguaje natural es la mejor forma de hacerlo gracias a su alto
@@ -83,17 +83,20 @@ Algoritmo para calcular el factorial de un número:
 
 Para obtener el factorial de un número positivo n, se deben
 multiplicar todos los números enteros desde 1 hasta n (inclusivo).
-Por ejemplo:
 
   4! = 4 x 3 x 2 x 1 = 24
-```
 
-* Formal: cuando se quiere explicar su funcionamiento, el pseudocódigo es la
-  mejor herramienta para hacerlo gracias a que usa términos técnicos
-  estandarizados, pero aún así puede ser entendido por personas sin mucho
-  conocimiento previo. Es ideal para la academia y el Software Libre.
+Pseudocódigo:
 
-```
+  1. Inicializar un acumulador r en 1
+  
+  2. Mientras n sea mayor que 1, repetir:
+  
+     2.1. Multiplicar r por n
+  
+     2.2. Restar 1 a n
+  
+  3. El factorial de n es r
 ```
 
 * Implementación: cuando se quiere que un autómata ejecute el proceso, los
