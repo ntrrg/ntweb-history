@@ -2,12 +2,24 @@
 
 set -e
 
+COMPILE=0
 OUTPUT="output/mage-$(go env GOOS)-$(go env GOARCH)"
 
 cd ".mage"
 
-if [ "magefile.go" -nt "$OUTPUT" ]; then
-  go run "mage.go" -compile "$OUTPUT"
+if [ ! -x "$OUTPUT" ]; then
+  COMPILE=1
+else
+  for FILE in $(grep -l "^// *+build mage" *.go); do
+    if [ "$FILE" -nt "$OUTPUT" ]; then
+      COMPILE=1
+      break
+    fi
+  done
+fi
+
+if [ "$COMPILE" -eq 1 ]; then
+  mage -compile "$OUTPUT"
 fi
 
 cd ..
