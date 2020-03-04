@@ -190,6 +190,8 @@ func (Docker) Build() error {
 }
 
 func (Docker) Run() error {
+	dockerOpts = append(dockerOpts, "-p", hugoPort + ":" + hugoPort)
+
 	return runHugoDocker(
 		"server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
 		"--disableFastRender", "--bind", "0.0.0.0", "--port", hugoPort,
@@ -198,12 +200,7 @@ func (Docker) Run() error {
 }
 
 func (Docker) Shell() error {
-	for i, v := range dockerOpts {
-		if v == "-p" || v == "--publish" {
-			dockerOpts[i] = "--entrypoint"
-			dockerOpts[i+1] = "sh"
-		}
-	}
+	dockerOpts = append(dockerOpts, "--entrypoint", "sh")
 
 	return runHugoDocker()
 }
@@ -229,7 +226,6 @@ func init() {
 		"run", "--rm", "-i", "-t",
 		"-u", u.Uid,
 		"-v", wd + ":/site/",
-		"-p", hugoPort + ":" + hugoPort,
 	}
 }
 
