@@ -30,6 +30,7 @@ type: custom
 layout: manifest
 outputs:
   - JSON
+_build:
+  list: false
 ---
-
 

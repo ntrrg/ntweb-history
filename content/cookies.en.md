@@ -1,5 +1,7 @@
 ---
 title: Cookies
+_build:
+  list: false
 ---
 
 This site uses cookies when:
