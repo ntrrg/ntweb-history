@@ -23,6 +23,7 @@ jobs:
       - name: Set up tools
         run: |
           go get github.com/magefile/mage/mage
+          export PATH="$PATH:$(go env GOPATH)/bin"
 
       - name: Get source code
         uses: actions/checkout@v1
