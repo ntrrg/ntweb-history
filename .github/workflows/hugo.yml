@@ -26,16 +26,7 @@ jobs:
       - name: Build
         run: /tmp/hugo
 
-      - name: Netlify - Deploy to staging
-        uses: netlify/actions/cli@master
-        if: ${{ github.ref != 'master' }}
-        with:
-          args: deploy --dir public
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Netlify - Deploy to production
+      - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         if: ${{ github.ref == 'master' }}
         with:
