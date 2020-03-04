@@ -57,7 +57,10 @@ información.
 
 Son un conjunto de instrucciones para realizar una tarea. Estas deben ser
 suficientemente explícitas para evitar ambigüedad y deben manejar casos
-inesperados.
+inesperados. La palabra algoritmo proviene de la latinización del nombre del
+matemático persa Muhammad ibn Musa al-Khwarizmi (en el mundo hispano-hablante
+es muy conocido, pero poco reconocido por aparecer en la portada del libro
+Álgebra de Baldor).
 
 Aunque el público de un algoritmo puede ser cualquier entidad, tanto seres
 vivos como autómatas, por lo general serán autómatas quienes lo lleven acabo,
