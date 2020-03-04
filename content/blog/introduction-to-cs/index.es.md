@@ -160,15 +160,23 @@ autómata que lo siga e incluso el lenguaje de programación que se use.
 
 # Máquinas (Hardware)
 
+La tecnología es la característica más importante del ser humano, tanto para
+bien cómo para mal, ha sido el principal elemento de nuestra evolución y
+probablemente lo seguirá siendo.
+
+Dentro del conjunto de herramientas que el humano ha ido desarrollando a través
+de su historia, tristemente las armas son las que más han marcado su futuro,
+pero no muy lejos de estas, están las máquinas. Las máquinas son 
+
 * Relojes
 * Calculadoras
 * Electrodomésticos
-* Vehículos
 * Computadoras personales
 * Teléfonos
 * Tabletas
 * Computadoras de una tarjeta
 * Microcontroladores
+* Servidores
 
 ## Representación de los datos
 
