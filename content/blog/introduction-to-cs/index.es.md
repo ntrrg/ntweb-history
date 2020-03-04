@@ -48,14 +48,14 @@ unos pasos para obtener el resultado esperado.
 En la actualidad, los autómatas son máquinas, debido a esto todo el proceso de
 automatización está orientado a la representación de la información como
 electricidad, que es su medio de comunicación. Esto puede cambiar en el futuro
-si se crean otro tipo de autómatas, como computadoras biológicas, pero no sería
-un problema para la informática pues aunque está bastante relacionada a las
-máquinas, lo que cambiaría sería la forma en la que se representa la
+si se crean otros tipos de autómatas, como computadoras biológicas, pero no
+sería un problema para la informática pues aunque está bastante relacionada a
+las máquinas, lo que cambiaría sería la forma en la que se representa la
 información.
 
 # Algoritmos (Software)
 
-Son un conjunto de instrucciones para realizar una tarea. Estas deben ser
+Son un conjunto de instrucciones para realizar una tarea, estas deben ser
 suficientemente explícitas para evitar ambigüedad y deben manejar casos
 inesperados. La palabra algoritmo proviene de la latinización del nombre del
 matemático persa Muhammad ibn Musa al-Khwarizmi (en el mundo hispano-hablante
@@ -69,7 +69,7 @@ pues estos pueden realizar dichas tareas con mayor rapidez.
 Expresar algoritmos en lenguaje natural sin ambigüedad es una tarea compleja,
 pues nuestro modo de comunicación es muy amplio y los autómatas todavía no son
 capaces de entenderlo completamente, pero a su vez permite que sea mucho más
-fácil explicar su funcionamiento otros humanos.
+fácil explicar su funcionamiento a otros humanos.
 
 Por esta razón, es común que un algoritmo sea expresado en múltiples lenguajes
 que estarán orientados a un público específico y tendrán diferentes niveles
@@ -92,13 +92,9 @@ multiplicar todos los números enteros desde 1 hasta n (inclusivo).
 Pseudocódigo:
 
   1. Inicializar un acumulador r en 1
-  
   2. Mientras n sea mayor que 1, repetir:
-  
      2.1. Multiplicar r por n
-  
      2.2. Restar 1 a n
-  
   3. El factorial de n es r
 ```
 
@@ -139,7 +135,7 @@ int fact(int n) {
 {{< details summary="JavaScript:" >}}
 ```js
 /**
- * Calculates the factorial of the given number.
+ * Computes the factorial of the given number.
  *
  * @param {Number} n - Initial number.
  * @return {Number}

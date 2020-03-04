@@ -2,25 +2,18 @@
 
 set -e
 
-COMPILE=0
 OUTPUT="output/mage-$(go env GOOS)-$(go env GOARCH)"
 
 cd ".mage"
 
-if [ ! -x "$OUTPUT" ]; then
-  COMPILE=1
-else
-  for FILE in $(grep -l "^// *+build mage" *.go); do
-    if [ "$FILE" -nt "$OUTPUT" ]; then
-      COMPILE=1
-      break
-    fi
-  done
-fi
+FILES="$(go list -tags mage -f '{{ .GoFiles }}' | tr -d '[]')"
 
-if [ "$COMPILE" -eq 1 ]; then
-  mage -compile "$OUTPUT"
-fi
+for FILE in FILES; do
+  if [ ! -e "$OUTPUT" ] || [ "$FILE" -nt "$OUTPUT" ]; then
+    mage -compile "$OUTPUT"
+    break
+  fi
+done
 
 cd ..
 exec ".mage/$OUTPUT" "$@"
