@@ -45,13 +45,73 @@ que hoy se conocen como computadoras. Por ejemplo:
 Todas estas aplicaciones tienen algo en común, deben seguirse metódicamente
 unos pasos para obtener el resultado esperado.
 
-En la actualidad, los autómatas son máquinas, debido a esto todo el proceso de
-automatización está orientado a la representación de la información como
-electricidad, que es su medio de comunicación. Esto puede cambiar en el futuro
-si se crean otros tipos de autómatas, como computadoras biológicas, pero no
-sería un problema para la informática pues aunque está bastante relacionada a
-las máquinas, lo que cambiaría sería la forma en la que se representa la
-información.
+# Máquinas (Hardware)
+
+La tecnología es la característica más importante del ser humano, tanto para
+bien cómo para mal, ha sido el principal elemento de la evolución humana y
+probablemente lo seguirá siendo.
+
+Dentro de la gran variedad de herramientas que se han desarrollando a través de
+la historia, tristemente las armas son las que más importancia han tenido, pero
+no muy lejos de ellas están las máquinas. Las máquinas son objetos que permiten
+aprovechar la energía de los elementos que las componen para realizar tareas
+específicas. 
+
+En sus inicios, las máquinas tenían como función principal realizar tareas
+físicas, pero a algunos intelectuales se les ocurrió que también podrían ser de
+ayuda para realizar cálculos matemáticos complejos y analizar grandes
+cantidades de información eficientemente. Luego de varias décadas de estudio y
+mucha evolución, se crearon las computadoras.
+
+Las computadoras son un conjunto de elementos electrónicos que pueden recibir,
+procesar, almacenar y transmitir información. Pueden ser programadas para
+realizar una gran variedad de tareas por medio de secuencias de instrucciones
+llamadas algoritmos.
+
+Su nombre proviene de una ocupación que existía desde el siglo XVII, una
+persona con este cargo tenía como función realizar cálculos matemáticos. La
+palabra computadora en sí, proviene del latín *computare*, que significa
+calcular.
+
+Algunas de las computadoras que se usan a diario son:
+
+* Relojes digitales
+* Calculadoras
+* Teléfonos
+* Tabletas
+* Computadoras personales
+
+Otros objetos que usualmente contienen computadoras son:
+
+* Electrodomésticos
+* Vehículos
+
+## Representación de la información
+
+Actualmente todos los autómatas programables son máquinas electrónicas, debido
+a esto todo el proceso de automatización está orientado a la representación de
+la información como electricidad.
+
+Hasta ahora, la forma más confiable para esta tarea es la digitalización, que
+consiste en transformar la electricidad en ceros y unos, es decir, números
+binarios. En teoría, esto es bastante sencillo pues se puede interpretar la
+existencia de electricidad como un 1 y su ausencia como un 0, pero implementar
+esta idea no es tan fácil como parece.
+
+¿Cómo es posible escribir libros, capturar imágenes del mundo real, grabar
+sonidos, jugar videojuegos y tener todas las utilidades que se tienen en las
+computadoras con solo ceros y unos?. Para lograr realizar todas estas
+actividades en una computadora, los profesionales de la electrónica y la
+informática han ido desarrollando métodos de representación que se
+establecieron como estándares de la industria.
+
+* Números
+* Texto
+* Colores
+* Imágenes
+* Sonidos
+* Videos
+* Sensores
 
 # Algoritmos (Software)
 
@@ -60,7 +120,7 @@ suficientemente explícitas para evitar ambigüedad y deben manejar casos
 inesperados. La palabra algoritmo proviene de la latinización del nombre del
 matemático persa Muhammad ibn Musa al-Khwarizmi (en el mundo hispano-hablante
 es muy conocido, pero poco reconocido por aparecer en la portada del libro
-Álgebra de Baldor).
+*Álgebra de Baldor*).
 
 Aunque el público de un algoritmo puede ser cualquier entidad, tanto seres
 vivos como autómatas, por lo general serán autómatas quienes lo lleven acabo,
@@ -99,9 +159,10 @@ Pseudocódigo:
 ```
 
 * Implementación: cuando se quiere que un autómata ejecute el proceso, los
-  lenguajes de programación permiten traducir algoritmos a lenguaje máquina.
-  Existe una gran cantidad de lenguajes de programación, que al igual que el
-  lenguaje natural, cada uno tiene una sintaxis específica.
+  lenguajes de programación permiten traducir los algoritmos a instrucciones
+  que el autómata puede entender. Existe una gran cantidad de lenguajes de
+  programación, que al igual que el lenguaje natural, cada uno tiene una
+  sintaxis específica.
 
 {{< details summary="Go:" open=true >}}
 ```go
@@ -157,38 +218,6 @@ porque asegura su comportamiento, pero también puede ser una desventaja ya que
 asume que quienes lo ejecuten tienen las mismas características, por lo que
 en algunas ocasiones, la implementación de un algoritmo puede variar según el
 autómata que lo siga e incluso el lenguaje de programación que se use.
-
-# Máquinas (Hardware)
-
-La tecnología es la característica más importante del ser humano, tanto para
-bien cómo para mal, ha sido el principal elemento de nuestra evolución y
-probablemente lo seguirá siendo.
-
-Dentro del conjunto de herramientas que el humano ha ido desarrollando a través
-de su historia, tristemente las armas son las que más han marcado su futuro,
-pero no muy lejos de estas, están las máquinas. Las máquinas son 
-
-* Relojes
-* Calculadoras
-* Electrodomésticos
-* Computadoras personales
-* Teléfonos
-* Tabletas
-* Computadoras de una tarjeta
-* Microcontroladores
-* Servidores
-
-## Representación de los datos
-
-Números binarios
-
-* Números
-* Texto
-* Colores
-* Imágenes
-* Sonidos
-* Videos
-* Sensores
 
 # Atribuciones
 
