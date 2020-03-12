@@ -14,10 +14,9 @@ draft: true
 ---
 
 El término informática fue usado académicamente por primera vez en el libro
-*«Informatik: Automatische Informationsverarbeitung»* (Informática:
-procesamiento automático de información) por Karl Steinbuch en 1957. Proviene
-de la unión de las palabras alemanas *Informationen* (información) y
-*Automatik* (automática).
+*Informatik: Automatische Informationsverarbeitung* (Informática: procesamiento
+automático de información) por Karl Steinbuch en 1957. Proviene de la unión de
+las palabras alemanas *Informationen* (información) y *Automatik* (automática).
 
 Consiste en estudiar los métodos para el almacenamiento, procesamiento y
 transmisión de la información, con el fin de sistematizar y/o automatizar
@@ -52,7 +51,7 @@ bien cómo para mal, ha sido el principal elemento de la evolución humana y
 probablemente lo seguirá siendo.
 
 Dentro de la gran variedad de herramientas que se han desarrollando a través de
-la historia, tristemente las armas son las que más importancia han tenido, pero
+la historia, tristemente las armas son las que han tenido más importancia, pero
 no muy lejos de ellas están las máquinas. Las máquinas son objetos que permiten
 aprovechar la energía de los elementos que las componen para realizar tareas
 específicas. 
@@ -64,9 +63,9 @@ cantidades de información eficientemente. Luego de varias décadas de estudio y
 mucha evolución, se crearon las computadoras.
 
 Las computadoras son un conjunto de elementos electrónicos que pueden recibir,
-procesar, almacenar y transmitir información. Pueden ser programadas para
+procesar, almacenar y transmitir información. Pueden ser configuradas para
 realizar una gran variedad de tareas por medio de secuencias de instrucciones
-llamadas algoritmos.
+llamadas programas.
 
 Su nombre proviene de una ocupación que existía desde el siglo XVII, una
 persona con este cargo tenía como función realizar cálculos matemáticos. La
@@ -90,23 +89,39 @@ Otros objetos que usualmente contienen computadoras son:
 
 Actualmente todos los autómatas programables son máquinas electrónicas, debido
 a esto todo el proceso de automatización está orientado a la representación de
-la información como electricidad.
+la información como electricidad o magnetismo.
 
 Hasta ahora, la forma más confiable para esta tarea es la digitalización, que
-consiste en transformar la electricidad en ceros y unos, es decir, números
-binarios. En teoría, esto es bastante sencillo pues se puede interpretar la
-existencia de electricidad como un 1 y su ausencia como un 0, pero implementar
-esta idea no es tan fácil como parece.
+consiste en transformar frecuencias y señales en ceros y unos. Esto no quiere
+decir que la computadora literalmente usa los símbolos 0 y 1, en realidad es
+solo una abstracción que permite al humano entender con mayor facilidad su
+funcionamiento.
 
-¿Cómo es posible escribir libros, capturar imágenes del mundo real, grabar
+Dentro de las computadoras hay millones de canales, cada canal puede (1) o no
+(0) tener un flujo de electricidad, la interpretación de este estado representa
+la unidad mínima de información, el bit. Aunque en teoría esto es cierto, las
+computadoras trabajan procesando secuencias de bits pues un bit no contiene
+suficiente información para realizar tareas complejas. A estas secuencias se
+les llama bytes y su tamaño puede variar, pero por ahora equivale a 8 bits.
+
+¿Pero cómo es posible escribir libros, capturar imágenes del mundo real, grabar
 sonidos, jugar videojuegos y tener todas las utilidades que se tienen en las
-computadoras con solo ceros y unos?. Para lograr realizar todas estas
+computadoras con solo ceros y unos? Para lograr realizar todas estas
 actividades en una computadora, los profesionales de la electrónica y la
 informática han ido desarrollando métodos de representación que se
 establecieron como estándares de la industria.
 
-* Números
-* Texto
+* Números: para representar números sin signo la computadora almacena su
+  equivalente en números binarios, por ejemplo, el símbolo `9` es equivalente a
+  `00001001`; para números con signo se usa un método llamado *Complemento a
+  dos*; para números racionales se usa el estándar *IEEE 754*.
+
+* Texto: las letras, los símbolos, los emojis e incluso los números usados como
+  texto tienen secuencias de números binarios asignados según el estándar
+  *Unicode*, por ejemplo, la letra `M` es almacenada como `01001101`, el emoji
+  `😄` como `11110000 10011111 10011000 10000100` (4 bytes) y el número `2`
+  como `00110010`.
+
 * Colores
 * Imágenes
 * Sonidos
@@ -160,9 +175,9 @@ Pseudocódigo:
 
 * Implementación: cuando se quiere que un autómata ejecute el proceso, los
   lenguajes de programación permiten traducir los algoritmos a instrucciones
-  que el autómata puede entender. Existe una gran cantidad de lenguajes de
-  programación, que al igual que el lenguaje natural, cada uno tiene una
-  sintaxis específica.
+  que el autómata puede entender, al resultado de esta traducción se le llama
+  programa. Existe una gran cantidad de lenguajes de programación, que al igual
+  que el lenguaje natural, cada uno tiene una sintaxis específica.
 
 {{< details summary="Go:" open=true >}}
 ```go
@@ -224,8 +239,6 @@ autómata que lo siga e incluso el lenguaje de programación que se use.
 **HarvardX.** *CS50's Introduction to Computer Science.* <https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/>
 
 **Khan Acedemy.** *Computer science.* <https://www.khanacademy.org/computing/computer-science>
-
-**Khan Acedemy.** *AP®︎ Computer Science Principles.* <https://www.khanacademy.org/computing/ap-computer-science-principles/>
 
 **Wikipedia.** *Informática.* <https://es.wikipedia.org/wiki/Inform%C3%A1tica>
 
