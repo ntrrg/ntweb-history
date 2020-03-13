@@ -89,20 +89,9 @@ Otros objetos que usualmente contienen computadoras son:
 
 Actualmente todos los autómatas programables son máquinas electrónicas, debido
 a esto todo el proceso de automatización está orientado a la representación de
-la información como electricidad o magnetismo.
-
-Hasta ahora, la forma más confiable para esta tarea es la digitalización, que
-consiste en transformar frecuencias y señales en ceros y unos. Esto no quiere
-decir que la computadora literalmente usa los símbolos 0 y 1, en realidad es
-solo una abstracción que permite al humano entender con mayor facilidad su
-funcionamiento.
-
-Dentro de las computadoras hay millones de canales, cada canal puede (1) o no
-(0) tener un flujo de electricidad, la interpretación de este estado representa
-la unidad mínima de información, el bit. Aunque en teoría esto es cierto, las
-computadoras trabajan procesando secuencias de bits pues un bit no contiene
-suficiente información para realizar tareas complejas. A estas secuencias se
-les llama bytes y su tamaño puede variar, pero por ahora equivale a 8 bits.
+la información como electricidad o magnetismo. Hasta ahora, la forma más
+confiable para esta tarea es la digitalización, que consiste en transformar
+frecuencias y señales en ceros y unos.
 
 ¿Pero cómo es posible escribir libros, capturar imágenes del mundo real, grabar
 sonidos, jugar videojuegos y tener todas las utilidades que se tienen en las
@@ -110,24 +99,24 @@ computadoras con solo ceros y unos? Para lograr realizar todas estas
 actividades en una computadora, los profesionales de la electrónica y la
 informática han ido desarrollando métodos de representación que se
 establecieron como estándares de la industria, por lo que la mayoría de las
-computadoras actuales funcionan respetando estos estándares.
+computadoras son fabricadas respetando estos estándares.
 
-* Números: para representar números sin signo la computadora almacena su
-  equivalente en números binarios, por ejemplo, el símbolo `9` es equivalente a
-  `00001001`; para números con signo se usa un método llamado *Complemento a
-  dos*; para números racionales se usa el estándar *IEEE 754*.
+Las computadoras no usan literalmente los símbolos 0 y 1, en realidad es solo
+una abstracción que permite al humano entender con mayor facilidad su
+funcionamiento. Dentro de ellas hay millones de canales, cada canal puede (1) o
+no (0) tener un flujo de electricidad, y la interpretación de este estado
+representa la unidad mínima de información, conocida como el bit.
 
-* Texto: las letras, los símbolos, los emojis e incluso los números usados como
-  texto tienen secuencias de números binarios asignados según el estándar
-  *Unicode*, por ejemplo, la letra `M` es almacenada como `01001101`, el emoji
-  `😄` como `11110000 10011111 10011000 10000100` (4 bytes) y el número `2`
-  como `00110010`.
+Aunque en teoría esto es cierto, las computadoras trabajan procesando
+secuencias de bits pues un bit no contiene suficiente información para realizar
+tareas complejas. A estas secuencias se les llama bytes y de hecho es la unidad
+mínima de almacenamiento.
 
-* Colores
-* Imágenes
-* Sonidos
-* Videos
-* Sensores
+El tamaño de un byte es arbitrario, pero por conveniencia se usan 8 bits, pues
+las computadoras actuales son la evolución de las primeras máquinas que
+decidieron usar este valor para realizar sus cálculos. Cambiar el tamaño de un
+byte en estos tiempos, significa redefinir el proceso de representación de la
+información que se conoce hasta hoy.
 
 # Algoritmos (Software)
 
@@ -234,9 +223,15 @@ function fact(n) {
 Los algoritmos son escritos de manera generalizada, es decir, sus instrucciones
 deben ser seguidas sin importar quién o qué los ejecute. Esto es beneficioso
 porque asegura su comportamiento, pero también puede ser una desventaja ya que
-asume que quienes lo ejecuten tienen las mismas características, por lo que
+asume que quienes los ejecuten tienen las mismas características, por lo que
 en algunas ocasiones, la implementación de un algoritmo puede variar según el
 autómata que lo siga e incluso el lenguaje de programación que se use.
+
+En pocas palabras, para una persona muy alta, cambiar un bombillo puede ser una
+tarea muy sencilla, pero para una persona de estatura promedio probablemente
+hagan falta unos pasos extras donde se necesitará una escalera, por lo que el
+algoritmo deberá ser un poco diferente dependiendo de la estatura de la persona
+que lo ejecute.
 
 # Atribuciones
 
