@@ -109,7 +109,8 @@ sonidos, jugar videojuegos y tener todas las utilidades que se tienen en las
 computadoras con solo ceros y unos? Para lograr realizar todas estas
 actividades en una computadora, los profesionales de la electrónica y la
 informática han ido desarrollando métodos de representación que se
-establecieron como estándares de la industria.
+establecieron como estándares de la industria, por lo que la mayoría de las
+computadoras actuales funcionan respetando estos estándares.
 
 * Números: para representar números sin signo la computadora almacena su
   equivalente en números binarios, por ejemplo, el símbolo `9` es equivalente a
@@ -130,16 +131,19 @@ establecieron como estándares de la industria.
 
 # Algoritmos (Software)
 
-Son un conjunto de instrucciones para realizar una tarea, estas deben ser
-suficientemente explícitas para evitar ambigüedad y deben manejar casos
-inesperados. La palabra algoritmo proviene de la latinización del nombre del
-matemático persa Muhammad ibn Musa al-Khwarizmi (en el mundo hispano-hablante
-es muy conocido, pero poco reconocido por aparecer en la portada del libro
-*Álgebra de Baldor*).
+La palabra algoritmo proviene de la latinización del nombre del matemático
+persa Muhammad ibn Musa al-Khwarizmi, que en el mundo hispano-hablante es muy
+conocido, pero poco reconocido por aparecer en la portada del libro *Álgebra de
+Baldor*.
 
-Aunque el público de un algoritmo puede ser cualquier entidad, tanto seres
+Por su nombre, puede parecer que hace falta estudiar matemática avanzada para
+entenderlos, pero la verdad es que son simplemente un conjunto de instrucciones
+para realizar una tarea. Los pasos a seguir para cambiar un bombillo o la
+receta para preparar una pizza son buenos ejemplos de lo que es un algoritmo.
+
+Aunque un algoritmo puede ser ejecutado por cualquier entidad, tanto seres
 vivos como autómatas, por lo general serán autómatas quienes lo lleven acabo,
-pues estos pueden realizar dichas tareas con mayor rapidez.
+pues estos pueden realizar cálculos matemáticos y análisis con mayor rapidez.
 
 Expresar algoritmos en lenguaje natural sin ambigüedad es una tarea compleja,
 pues nuestro modo de comunicación es muy amplio y los autómatas todavía no son
