@@ -1,24 +1,13 @@
 nogit-*
 /content/challenges/**/solution
 
-######
-# OS #
-######
+#######################
+# Frameworks and libs #
+#######################
 
-# MacOS
-.DS_Store
-
-###########
-# Editors #
-###########
-
-# Sublime Text
-*.sublime*
-
-# Vim
-*.sw[op]
-Session.vim
-*~
+# Hugo
+/public/
+/resources/
 
 #########
 # Tools #
@@ -30,11 +19,18 @@ Session.vim
 # Mage
 .mage/output/
 
-#######################
-# Frameworks and libs #
-#######################
+# Sublime Text
+*.sublime*
 
-# Hugo
-/public/
-/resources/
+# Vim
+*.sw[op]
+Session.vim
+*~
+
+######
+# OS #
+######
+
+# MacOS
+.DS_Store
 
