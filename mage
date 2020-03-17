@@ -8,8 +8,8 @@ cd ".mage"
 
 FILES="$(go list -tags mage -f '{{ .GoFiles }}' | tr -d '[]')"
 
-for FILE in FILES; do
-  if [ ! -e "$OUTPUT" ] || [ "$FILE" -nt "$OUTPUT" ]; then
+for FILE in $FILES; do
+  if [ ! -x "$OUTPUT" ] || [ "$FILE" -nt "$OUTPUT" ]; then
     mage -compile "$OUTPUT"
     break
   fi

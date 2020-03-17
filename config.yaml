@@ -60,10 +60,6 @@ params:
     - https://github.com/ntrrg/pish
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/sdb
-  goPackages:
-    - https://github.com/ntrrg/ntgo
-    - https://github.com/ntrrg/sdb
-    - https://github.com/ntrrg/usersd
   menu:
     items:
       - url: "/blog/"

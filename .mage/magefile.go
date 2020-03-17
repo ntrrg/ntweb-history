@@ -190,7 +190,7 @@ func (Docker) Build() error {
 }
 
 func (Docker) Run() error {
-	dockerOpts = append(dockerOpts, "-p", hugoPort + ":" + hugoPort)
+	dockerOpts = append(dockerOpts, "-p", hugoPort+":"+hugoPort)
 
 	return runHugoDocker(
 		"server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
@@ -240,89 +240,7 @@ var (
 type Gen mg.Namespace
 
 func (Gen) Default() {
-	mg.SerialDeps(Gen.GoPkgs, Gen.Projects)
-}
-
-// Go packages
-
-var (
-	goPkgsDir = filepath.Clean("content/go")
-)
-
-func (Gen) GoPkgs() error {
-	if err := os.MkdirAll(gitRepos, 0755); err != nil {
-		return err
-	}
-
-	for _, repoUrl := range cfg.GetStringSlice("params.goPackages") {
-		name := path.Base(repoUrl)
-		dst := filepath.Join(gitRepos, name)
-
-		if err := cloneRepo(dst, repoUrl); err != nil {
-			return err
-		}
-
-		c := exec.Command("go", "list", "-m")
-		c.Dir = dst
-		output, err := c.Output()
-		if err != nil {
-			return err
-		}
-
-		mod := string(bytes.TrimSpace(output))
-		if err := writeGoPkgPage(repoUrl, mod, mod, ""); err != nil {
-			return err
-		}
-
-		c = exec.Command(
-			"go", "list",
-			"-f", "{{ .ImportPath }} {{ .Doc }}",
-			"./...",
-		)
-
-		c.Dir = dst
-		output, err = c.Output()
-		if err != nil {
-			return err
-		}
-
-		for _, entry := range bytes.Split(bytes.TrimSpace(output), []byte{'\n'}) {
-			elms := bytes.SplitN(entry, []byte{' '}, 2)
-			pkg, doc := string(elms[0]), string(elms[1])
-
-			if err := writeGoPkgPage(repoUrl, mod, pkg, doc); err != nil {
-				return err
-			}
-		}
-	}
-
-	return nil
-}
-
-func genGoPkgPage(src, mod, pkg, doc string) string {
-	prefix := path.Dir(mod) + "/"
-	pkg = strings.TrimPrefix(string(pkg), prefix)
-
-	content := `
----
-title: %s
-source-code: %s
-module: %s
-description: %s
-url: /go/%s
----
-`[1:]
-
-	return fmt.Sprintf(content, pkg, src, mod, doc, pkg)
-}
-
-func writeGoPkgPage(src, mod, pkg, doc string) error {
-	content := []byte(genGoPkgPage(src, mod, pkg, doc))
-
-	return writeMultiLangFile(
-		filepath.Join(goPkgsDir, strings.ReplaceAll(pkg, "/", "-")+".md"),
-		map[string][]byte{"en": content, "es": content}, 0644,
-	)
+	mg.SerialDeps(Gen.Projects)
 }
 
 // Projects
