@@ -28,6 +28,7 @@ jobs:
 
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
+        if: ${{ github.ref == 'master' }}
         with:
           args: deploy --prod --dir public
         env:
