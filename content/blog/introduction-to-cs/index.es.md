@@ -1,7 +1,7 @@
 ---
 title: Introducción a la Informática
 author: ntrrg
-date: 2020-03-03T09:00:00-04:00
+date: 2020-03-17T11:00:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
 tags:
   - tecnología
@@ -10,7 +10,6 @@ tags:
   - programación
 comments: true
 toc: true
-draft: true
 ---
 
 El término informática fue usado académicamente por primera vez en el libro
@@ -108,9 +107,9 @@ no (0) tener un flujo de electricidad, y la interpretación de este estado
 representa la unidad mínima de información, conocida como el bit.
 
 Aunque en teoría esto es cierto, las computadoras trabajan procesando
-secuencias de bits pues un bit no contiene suficiente información para realizar
-tareas complejas. A estas secuencias se les llama bytes y de hecho es la unidad
-mínima de almacenamiento.
+secuencias de bits, pues un bit no contiene suficiente información para
+realizar tareas complejas. A estas secuencias se les llama bytes y de hecho es
+la unidad mínima de almacenamiento.
 
 El tamaño de un byte es arbitrario, pero por conveniencia se usan 8 bits, pues
 las computadoras actuales son la evolución de las primeras máquinas que
