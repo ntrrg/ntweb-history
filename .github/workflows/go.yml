@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        go_version: ["1.14", "1.13"]
+        go_version: ["1.14"]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Go
@@ -22,8 +22,9 @@ jobs:
 
       - name: Set up tools
         run: |
-          go get github.com/magefile/mage/mage
-          export PATH="$PATH:$(go env GOPATH)/bin"
+          wget -O "/tmp/mage.tar.gz" 'https://github.com/magefile/mage/releases/download/v1.9.0/mage_1.9.0_Linux-64bit.tar.gz'
+          tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
+          sudo mv "/tmp/mage" "/usr/bin/"
 
       - name: Get source code
         uses: actions/checkout@v1
