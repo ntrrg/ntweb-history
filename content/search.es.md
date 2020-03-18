@@ -2,6 +2,8 @@
 title: Buscar
 type: custom
 layout: search
+_build:
+  list: false
 ---
 
 Cada palabra de la búsqueda representa un termino, que es un elemento de

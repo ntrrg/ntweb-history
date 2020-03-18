@@ -2,6 +2,8 @@
 title: Search
 type: custom
 layout: search
+_build:
+  list: false
 ---
 
 Every word in the search query is a term, which is comparison element, if

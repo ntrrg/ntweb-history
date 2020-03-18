@@ -18,6 +18,8 @@ codetheme:
       value: monokai
     - text: Monokai Light
       value: monokailight
+_build:
+  list: false
 ---
 
 ### Muestra
