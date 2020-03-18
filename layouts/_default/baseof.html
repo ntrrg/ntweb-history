@@ -94,15 +94,15 @@
       {{ $page := .Site.GetPage "/cookies" }}
       <h3>{{ $page.Title }}</h3>
       {{ $page.Content }}
-
-      <noscript>
-        <style>
-          #cookies {
-            display: none;
-          }
-        </style>
-      </noscript>
     </div>
+
+    <noscript>
+      <style>
+        #cookies {
+          display: none;
+        }
+      </style>
+    </noscript>
   {{ end }}
 </body>
 </html>

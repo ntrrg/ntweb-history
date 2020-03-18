@@ -101,6 +101,9 @@
   /* Keyboard */
 
 .markdown kbd {
+  background: #eee;
+  color: #333;
+
   background: var(--kbd-background);
   border-color: lightgrey;
   border-radius: 0.2em;
