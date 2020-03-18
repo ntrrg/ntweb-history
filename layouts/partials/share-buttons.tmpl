@@ -2,7 +2,7 @@
   <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" rel="noopener noreferrer" target="_blank">
     {{ readFile "/static/images/fa/facebook.svg" | safeHTML }}</a>
 
-  <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}{{ if isset .Params "tags" }}&hashtags={{ delimit .Params.tags "," }}{{ end }}&via=ntrrg" rel="noopener noreferrer" target="_blank">
+  <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}{{ if isset .Params "tags" }}&hashtags={{ replace (delimit .Params.tags ",") "-" "_" }}{{ end }}&via=ntrrg" rel="noopener noreferrer" target="_blank">
     {{ readFile "/static/images/fa/twitter.svg" | safeHTML }}</a>
 
   <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" rel="noopener noreferrer" target="_blank">
