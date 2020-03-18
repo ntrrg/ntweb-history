@@ -32,9 +32,6 @@ jobs:
       - name: Lint
         run: ./mage -v lint:mage
 
-      - name: Content generation - Go packages
-        run: ./mage -v gen:gopkgs
-
       - name: Content generation - Projects
         run: ./mage -v gen:projects
 
