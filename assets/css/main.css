@@ -228,6 +228,7 @@ body > footer {
   border: 0.5em dashed;
   box-sizing: border-box;
   color: var(--background);
+  display: none;
   overflow: auto;
   padding: 1em 2em;
 

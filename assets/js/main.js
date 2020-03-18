@@ -28,21 +28,20 @@ function setCodeTheme(theme) {
 
 function checkCookiesAlert() {
   const cookiesAlert = localStorage.getItem('cookies-alert')
+  const el = document.querySelector('#cookies')
 
-  if (cookiesAlert === 'agree') {
-    const el = document.querySelector('#cookies')
-    if (el !== null) el.parentNode.removeChild(el)
-  }
+  if (cookiesAlert === 'agree')
+    el.style.display = 'none'
+  else
+    el.style.display = 'block'
 }
 
-if (document.querySelector('#cookies') !== null) {
-  document.querySelector('#cookies').addEventListener('click', (e) => {
-    localStorage.setItem('cookies-alert', 'agree')
-    checkCookiesAlert()
-  })
+document.querySelector('#cookies').addEventListener('click', (e) => {
+  localStorage.setItem('cookies-alert', 'agree')
+  checkCookiesAlert()
+})
 
-  window.addEventListener('DOMContentLoaded', checkCookiesAlert)
-}
+window.addEventListener('DOMContentLoaded', checkCookiesAlert)
 
 // Image lazy loading
 
