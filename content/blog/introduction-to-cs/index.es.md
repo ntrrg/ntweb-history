@@ -1,7 +1,8 @@
 ---
 title: Introducción a la Informática
 author: ntrrg
-date: 2020-03-17T11:00:00-04:00
+publishdate: 2020-03-17T11:00:00-04:00
+date: 2020-03-20T05:00:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
 tags:
   - tecnología
@@ -49,7 +50,7 @@ La tecnología es la característica más importante del ser humano, tanto para
 bien cómo para mal, ha sido el principal elemento de la evolución humana y
 probablemente lo seguirá siendo.
 
-Dentro de la gran variedad de herramientas que se han desarrollando a través de
+Dentro de la gran variedad de herramientas que se han desarrollado a través de
 la historia, tristemente las armas son las que han tenido más importancia, pero
 no muy lejos de ellas están las máquinas. Las máquinas son objetos que permiten
 aprovechar la energía de los elementos que las componen para realizar tareas
