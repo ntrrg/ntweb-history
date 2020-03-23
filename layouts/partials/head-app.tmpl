@@ -1,6 +1,5 @@
-{{ with $.Site.GetPage "/manifest" }}
-  <link rel="manifest" href="{{ .Permalink }}">
-{{ end }}
+<link rel="manifest"
+      href="/{{ .Site.Language | default "en" }}/manifest.webmanifest"/>
 
 <meta name="theme-color" content="#000"/>
 
