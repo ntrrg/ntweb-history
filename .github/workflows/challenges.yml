@@ -1,4 +1,4 @@
-name: Go
+name: Challenges
 on:
   push:
     branches:
@@ -11,8 +11,10 @@ jobs:
     name: CI
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        go_version: ["1.14"]
+        os:
+          - ubuntu-latest
+        go_version:
+          - "1.14"
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Go
@@ -27,14 +29,11 @@ jobs:
           sudo mv "/tmp/mage" "/usr/bin/"
 
       - name: Get source code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Lint
-        run: ./mage -v lint:mage
+        run: ./mage -v challenges:lint
 
-      - name: Content generation - Projects
-        run: ./mage -v gen:projects
-
-      - name: Challenges
-        run: ./mage -v challenges:default
+      - name: Run
+        run: ./mage -v challenges:run
 
