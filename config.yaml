@@ -61,12 +61,6 @@ params:
     - https://github.com/ntrrg/pish
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/sdb
-  menu:
-    items:
-      - url: "/blog/"
-      - url: "/projects/"
-      - url: "/gallery/"
-    before: "| "
   secundaryMenu:
     items:
       - url: "/settings/"
@@ -84,8 +78,20 @@ languages:
     languageName: English
     params:
       description: I am Miguel Angel, just another developer working hard to not be just another developer.
+      menu:
+        items:
+          - url: "/challenges/"
+          - url: "/projects/"
+          - url: "/gallery/"
+        before: "| "
   es:
     languageName: Español
     params:
       description: Soy Miguel Angel, solo otro desarrollador más trabajando duro para no ser solo otro desarrollador más.
+      menu:
+        items:
+          - url: "/blog/"
+          - url: "/projects/"
+          - url: "/gallery/"
+        before: "| "
 

@@ -411,6 +411,7 @@ func (Challenges) Lint() error {
 func (Challenges) Run() error {
 	c := exec.Command("./run.sh")
 	c.Stdout = os.Stdout
+	c.Stderr = os.Stderr
 	c.Dir = challengesDir
 
 	return c.Run()

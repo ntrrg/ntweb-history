@@ -119,7 +119,7 @@ Options:
 EOF
 }
 
-CHALLENGES_DIR="challenges"
+CHALLENGES_DIR="."
 TEST_CASES_FLAG=""
 
 main "$@"
