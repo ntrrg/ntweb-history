@@ -14,7 +14,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	hc "github.com/gohugoio/hugo/config"
+	"github.com/gohugoio/hugo/commands"
+	"github.com/gohugoio/hugo/config"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 	ntos "nt.web.ve/go/ntgo/os"
@@ -27,11 +28,12 @@ var (
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
-	cfg hc.Provider
+	cfg config.Provider
 )
 
 func Build() error {
-	return sh.RunV("hugo")
+	resp := commands.Execute([]string{})
+	return resp.Err
 }
 
 type BumpVersion mg.Namespace
@@ -81,8 +83,9 @@ func (BumpVersion) Hugo() error {
 func Clean() error {
 	mg.Deps(Challenges.Clean)
 
-	for _, dst := range []string{gitRepos, "public", "resources"} {
-		if err := sh.Rm(dst); err != nil {
+	targets := []string{gitRepos, ".mage/output", "public", "resources"}
+	for _, dst := range targets {
+		if err := sh.Rm(filepath.Clean(dst)); err != nil {
 			return err
 		}
 	}
@@ -101,11 +104,13 @@ func (Lint) Mage() error {
 }
 
 func Run() error {
-	return sh.RunV(
-		"hugo", "server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
+	resp := commands.Execute([]string{
+		"server", "-D", "-E", "-F", "--noHTTPCache", "--i18n-warnings",
 		"--disableFastRender", "--bind", "0.0.0.0", "--port", hugoPort,
 		"--baseUrl", "/", "--appendPort=false",
-	)
+	})
+
+	return resp.Err
 }
 
 // Helpers
@@ -130,7 +135,7 @@ func cloneRepo(dst, src string) error {
 	return nil
 }
 
-func getHugoConfig(cfgFile string) (hc.Provider, error) {
+func getHugoConfig(cfgFile string) (config.Provider, error) {
 	f, err := os.Open(cfgFile)
 	if err != nil {
 		return nil, err
@@ -143,7 +148,7 @@ func getHugoConfig(cfgFile string) (hc.Provider, error) {
 		return nil, err
 	}
 
-	return hc.FromConfigString(string(cfgData), filepath.Ext(cfgFile))
+	return config.FromConfigString(string(cfgData), filepath.Ext(cfgFile))
 }
 
 func writeMultiLangFile(path string, content map[string][]byte, mode os.FileMode) error {
