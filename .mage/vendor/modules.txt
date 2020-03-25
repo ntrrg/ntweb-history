@@ -11,7 +11,7 @@ github.com/gobwas/glob/syntax/ast
 github.com/gobwas/glob/syntax/lexer
 github.com/gobwas/glob/util/runes
 github.com/gobwas/glob/util/strings
-# github.com/gohugoio/hugo v0.65.2
+# github.com/gohugoio/hugo v0.68.3
 ## explicit
 github.com/gohugoio/hugo/common/collections
 github.com/gohugoio/hugo/common/herrors

@@ -109,6 +109,8 @@ github.com/gohugoio/hugo v0.62.2 h1:96qzKS5KZUv2eQmXLP+uOI4VQWJgRkxl6/imR6KL8qk=
 github.com/gohugoio/hugo v0.62.2/go.mod h1:zzicmo5uNXApHdGrfZ2s8Co7/5hPV7Yfy7lX+0aBHiY=
 github.com/gohugoio/hugo v0.65.2 h1:mOp2zo2e6nI26wB7uewHKdvqpMOf4VcW8cdD3eIROIs=
 github.com/gohugoio/hugo v0.65.2/go.mod h1:rZarNS0aq1kbNrACet6xR1bq+Hso2PQzmYK4aBpp2qE=
+github.com/gohugoio/hugo v0.68.3 h1:dLzfE2XLP3K4zD0muTGAhbhHaI/+pvXR+ZVCc8oKWvs=
+github.com/gohugoio/hugo v0.68.3/go.mod h1:jj7XAfCteXVxl6peDyGGiH60XPfWIvDy05qHFzNRQbo=
 github.com/gohugoio/testmodBuilder/mods v0.0.0-20190520184928-c56af20f2e95/go.mod h1:bOlVlCa1/RajcHpXkrUXPSHB/Re1UnlXxD1Qp8SKOd8=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
 github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef/go.mod h1:cIg4eruTrX1D+g88fzRXU5OdNfaM+9IcxsU14FzY7Hc=
@@ -241,6 +243,7 @@ github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFR
 github.com/rogpeppe/go-internal v1.5.1/go.mod h1:xXDCJY+GAPziupqXw64V24skbSoqbTEfhy4qGm1nDQc=
 github.com/russross/blackfriday v1.5.2/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
 github.com/russross/blackfriday v1.5.3-0.20190124082335-a477dd164691/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
+github.com/russross/blackfriday v1.5.3-0.20200218234912-41c5fccfd6f6/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
 github.com/rwcarlsen/goexif v0.0.0-20190401172101-9e8deecbddbd/go.mod h1:hPqNNc0+uJM6H+SuU8sEs5K5IQeKccPqeSjfgcKGgPk=
 github.com/sanity-io/litter v1.1.0/go.mod h1:CJ0VCw2q4qKU7LaQr3n7UOSHzgEMgcGco7N/SkZQPjw=
 github.com/sanity-io/litter v1.2.0/go.mod h1:JF6pZUFgu2Q0sBZ+HSV35P8TVPI1TTzEwyu9FXAw2W4=
@@ -299,6 +302,7 @@ github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77/go.mod h1:
 github.com/yuin/goldmark v1.1.7/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.18/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.22/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
+github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark-highlighting v0.0.0-20191202084645-78f32c8dd6d5/go.mod h1:4QGn5rJFOASBa2uK4Q2h3BRTyJqRfsAucPFIipSTcaM=
 github.com/yuin/goldmark-highlighting v0.0.0-20200218065240-d1af22c1126f/go.mod h1:9yW2CHuRSORvHgw7YfybB09PqUZTbzERyW3QFvd8+0Q=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=

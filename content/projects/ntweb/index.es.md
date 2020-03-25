@@ -244,7 +244,7 @@ una cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 
 **Requerimientos:**
 
-* Hugo >= 0.65
+* Hugo >= 0.68
 
 Descargar el código fuente
 

@@ -243,7 +243,7 @@ UTF-16.
 
 **Requirements:**
 
-* Hugo >= 0.65
+* Hugo >= 0.68
 
 Get the source code
 
