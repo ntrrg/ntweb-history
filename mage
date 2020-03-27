@@ -2,7 +2,7 @@
 
 set -e
 
-OUTPUT="output/mage-$(go env GOOS)-$(go env GOARCH)"
+OUTPUT="output/mage-$(go env GOOS)-$(go env GOARCH)$(go env GOARM)"
 
 cd ".mage"
 
