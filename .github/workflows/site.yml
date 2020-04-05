@@ -34,6 +34,9 @@ jobs:
       - name: Lint
         run: ./mage -v lint
 
+      - name: Content generation - Projects
+        run: ./mage -v gen:projects
+
       - name: Build
         run: ./mage -v
 

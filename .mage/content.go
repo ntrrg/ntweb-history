@@ -75,8 +75,8 @@ func (Gen) Projects() error {
 publishdate: ` + publishedAt + `
 date: ` + modifiedAt + `
 metadata:
-source-code: ` + repoUrl + `
-license: ` + license + `
+  source-code: ` + repoUrl + `
+  license: ` + license + `
 `)
 
 		indexes, err := filepath.Glob(dst + "/index.*.md")
@@ -174,7 +174,6 @@ func writeMultiLangFile(
 }
 
 func init() {
-	buildFuncs = append(buildFuncs, Gen.Default)
 	cleanFuncs = append(cleanFuncs, Gen.Clean)
 
 	if err := os.MkdirAll(gitRepos, 0755); err != nil {
