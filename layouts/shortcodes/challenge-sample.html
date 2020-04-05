@@ -1,16 +1,23 @@
-<a href="input/input{{ .Get 0 }}.txt" download="">
-  input{{ .Get 0 }}.txt
-</a>
+<details {{ if ne (.Get 1) true }}open{{ end }}>
+  <summary>
+    <a href="input/input{{ .Get 0 }}.txt" download="">
+      input{{ .Get 0 }}.txt
+    </a>
+  </summary>
 
-<pre><code>
-  {{- printf "content/%s/input/input%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
-</code></pre>
+  <pre><code>
+    {{- printf "content/%s/input/input%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+  </code></pre>
+</details>
 
-<a href="output/output{{ .Get 0 }}.txt" download="">
-  output{{ .Get 0 }}.txt
-</a>
+<details {{ if ne (.Get 1) true }}open{{ end }}>
+  <summary>
+    <a href="output/output{{ .Get 0 }}.txt" download="">
+      output{{ .Get 0 }}.txt
+    </a>
+  </summary>
 
-<pre><code>
-  {{- printf "content/%s/output/output%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
-</code></pre>
-
+  <pre><code>
+    {{- printf "content/%s/output/output%s.txt" $.Page.File.Dir (.Get 0) | readFile -}}
+  </code></pre>
+</details>
