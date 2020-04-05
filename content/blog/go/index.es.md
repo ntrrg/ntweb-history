@@ -278,6 +278,7 @@ Existen tres grupos de datos numéricos:
 {{< loi >}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
+* <https://golang.org/pkg/math/#pkg-constants>
 * [Números binarios](./../binary-numbers/)
 * [Números octales](./../octal-numbers/)
 * [Números hexadecimales](./../hex-numbers/)
@@ -420,6 +421,7 @@ uintptr // Permite almacenar direcciones de memoria
 {{< loi >}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
+* <https://golang.org/pkg/math/#pkg-constants>
 * <http://www.oxfordmathcenter.com/drupal7/node/43>
 * [Números binarios](./../binary-numbers/)
 * [Números hexadecimales](./../hex-numbers/)

@@ -75,6 +75,7 @@ Constantes
 
 https://tour.golang.org/basics/15
 https://tour.golang.org/basics/16
+https://blog.golang.org/constants
 
 Variables
 =========
@@ -213,6 +214,7 @@ https://tour.golang.org/methods/13
 https://tour.golang.org/methods/14
 https://tour.golang.org/methods/15
 https://tour.golang.org/methods/16
+https://research.swtch.com/interfaces
 
 Interfaces predefinidas
 -----------------------
