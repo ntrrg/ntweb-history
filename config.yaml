@@ -80,9 +80,8 @@ languages:
       description: I am Miguel Angel, just another developer working hard to not be just another developer.
       menu:
         items:
-          - url: "/challenges/"
           - url: "/projects/"
-          - url: "/gallery/"
+          - url: "/challenges/"
         before: "| "
   es:
     languageName: Español
