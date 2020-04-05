@@ -19,6 +19,7 @@ func main() {
 
 type Difference struct {
 	MaximumDifference int
+
 	elements []int
 }
 
@@ -30,7 +31,7 @@ func NewDifference(a []int) *Difference {
 
 func (d *Difference) ComputeDifference() {
 	for i, l := 0, len(d.elements); i < l-1; i++ {
-		for j := i+1; j < l; j++ {
+		for j := i + 1; j < l; j++ {
 			r := abs(d.elements[i] - d.elements[j])
 			if r > d.MaximumDifference {
 				d.MaximumDifference = r

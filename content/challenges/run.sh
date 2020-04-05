@@ -29,6 +29,7 @@ main() {
     local PREFIX="$(get_prefix "$DIR")"
     local NAME=""
     local LANGUAGE=""
+    local MODE=""
 
     . "$CHALLENGE"
 
@@ -68,7 +69,7 @@ main() {
       fi
 
       printf "%s  * Test case %s: " "$PREFIX" "$TEST_CASE"
-      run "$INPUT" "$OUTPUT" || ERRORS=$?
+      run "$INPUT" "$OUTPUT" "$MODE" || ERRORS=$?
     done
 
     cd "$OLDPWD"
@@ -89,9 +90,17 @@ get_prefix() {
 run() {
   local INPUT="$1"
   local OUTPUT="$2"
-  local GOT="$(cat "$INPUT" | ./solution)"
+  local MODE="$3"
 
+  local GOT="$(cat "$INPUT" | ./solution)"
   local WANT="$(cat "$OUTPUT")"
+
+  case $MODE in
+    unordered )
+      GOT="$(echo "$GOT" | LC_ALL="C" sort)"
+      WANT="$(echo "$WANT" | LC_ALL="C" sort)"
+      ;;
+  esac
 
   if [ "$GOT" != "$WANT" ]; then
     echo "[FAIL]\nGot:\n$GOT\nWant:\n$WANT"
