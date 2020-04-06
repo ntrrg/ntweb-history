@@ -7,10 +7,40 @@ func main() {
 	fmt.Scan(&N)
 
 	numbers := make([]int, N)
-	indexes := make([]int, N)
 
 	for i := 0; i < N; i++ {
 		fmt.Scan(&numbers[i])
+	}
+
+	Permutations(numbers)
+}
+
+func Permutations(numbers []int) {
+	perms := make(chan []int, len(numbers))
+	go permutations(numbers[1:], perms)
+
+	for perm := range perms {
+		for _, prefix := range numbers {
+			fmt.Print(prefix)
+
+			for _, i := range perm {
+				if numbers[i] == prefix {
+					i = len(numbers) - 1
+				}
+
+				fmt.Print(" ", numbers[i])
+			}
+
+			fmt.Println()
+		}
+	}
+}
+
+func permutations(numbers []int, perms chan<- []int) {
+	N := len(numbers)
+
+	indexes := make([]int, N)
+	for i := 0; i < N; i++ {
 		indexes[i] = i
 	}
 
@@ -18,13 +48,13 @@ func main() {
 
 	for pi, max := 0, fact(N); pi < max; pi++ {
 		if pi == 0 {
-			printAt(numbers, indexes)
+			perms <- append([]int{}, indexes...)
 			continue
 		}
 
 		if pi%2 == 1 {
 			swap(indexes, N-2, N-1)
-			printAt(numbers, indexes)
+			perms <- append([]int{}, indexes...)
 			continue
 		}
 
@@ -53,8 +83,10 @@ func main() {
 			break
 		}
 
-		printAt(numbers, indexes)
+		perms <- append([]int{}, indexes...)
 	}
+
+	close(perms)
 }
 
 func fact(n int) int {
@@ -111,18 +143,6 @@ func genFactorials(s []int) []int {
 	}
 
 	return facts
-}
-
-func printAt(s []int, indexes []int) {
-	for i, v := range indexes {
-		if i > 0 {
-			fmt.Print(" ")
-		}
-
-		fmt.Print(s[v])
-	}
-
-	fmt.Println()
 }
 
 func swap(s []int, i, j int) {
