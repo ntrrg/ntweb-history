@@ -85,6 +85,8 @@ input, select, textarea {
 
 p {
   hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 select {
@@ -110,6 +112,9 @@ pre code {
 
   background: var(--code-background);
   color: var(--code-color);
+  hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
 }
 
 /* Classes */
