@@ -41,7 +41,7 @@ El sitio web es creado con [Hugo][] y parte de su contenido es generado con
 [Go][] y [Mage][] (los proyectos y los URLs personalizados de los paquetes Go).
 
 Para mostrar la pagina principal solo se descargan ~30 KB (~12 KB sin los
-favicons), para esta página se descargan ~300 KB (incluyendo sus imágenes). Es
+favicons), para esta página se descargan ~265 KB (incluyendo sus imágenes). Es
 usable sin JavaScript y puede visualizarse en navegadores web TUI.
 
 {{< figure src="images/elinks-home-es.png" class="block" caption="Página principal en TUI" >}}
