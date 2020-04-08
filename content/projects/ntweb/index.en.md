@@ -40,16 +40,15 @@ The website is created by [Hugo][] and some parts of the content are generated
 by [Go][] and [Mage][] (specifically the projects and the Go packages vanity
 URLs).
 
-For been printed in the web browser, the home page downloads ~28 KB (including
-the favicons), a blog article downloads ~215 KB (including its images and the
-favicons). It is functional even without JavaScript and can be visualized on
-TUI web browsers.
+For been printed in the web browser, the home page downloads ~30 KB (~12 KB
+without favicons), this page downloads ~300 KB (including its images). It is
+functional without JavaScript and can be visualized on TUI web browsers.
 
 {{< figure src="images/elinks-home-en.png" class="block" caption="Home page on TUI" >}}
 
-{{< figure src="images/elinks-blog-es.png" class="block" caption="Blog on TUI" >}}
+{{< figure src="images/elinks-projects-en.png" class="block" caption="Projects on TUI" >}}
 
-{{< figure src="images/elinks-article-es.png" class="block" caption="Article on TUI" >}}
+{{< figure src="images/elinks-ntweb-en.png" class="block" caption="This page on TUI" >}}
 
 Its content may be fetched as JSON, so creating new complex frontends is
 trivial without the need for content duplication. Since it is a static API, it

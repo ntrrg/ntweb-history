@@ -40,16 +40,15 @@ intencional (y está escrito con tecnologías web modernas).
 El sitio web es creado con [Hugo][] y parte de su contenido es generado con
 [Go][] y [Mage][] (los proyectos y los URLs personalizados de los paquetes Go).
 
-Para mostrar la pagina principal solo se descargan ~28 KB (incluyendo los
-favicons), para un artículo del blog se descargan ~215 KB (incluyendo sus
-imágenes y los favicons). Es usable incluso sin JavaScript y puede visualizarse
-en navegadores web TUI.
+Para mostrar la pagina principal solo se descargan ~30 KB (~12 KB sin los
+favicons), para esta página se descargan ~300 KB (incluyendo sus imágenes). Es
+usable sin JavaScript y puede visualizarse en navegadores web TUI.
 
 {{< figure src="images/elinks-home-es.png" class="block" caption="Página principal en TUI" >}}
 
-{{< figure src="images/elinks-blog-es.png" class="block" caption="Blog en TUI" >}}
+{{< figure src="images/elinks-projects-es.png" class="block" caption="Proyectos en TUI" >}}
 
-{{< figure src="images/elinks-article-es.png" class="block" caption="Artículo en TUI" >}}
+{{< figure src="images/elinks-ntweb-es.png" class="block" caption="Esta página en TUI" >}}
 
 Todo su contenido también puede obtenerse como JSON, por lo que es posible
 crear nuevos frontends más complejos sin necesidad de tener que repetir el
