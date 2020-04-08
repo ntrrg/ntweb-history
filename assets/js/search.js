@@ -85,7 +85,7 @@ async function search(q) {
   const resultsEl = document.querySelector('#search-results')
   const results = idx.search(q)
 
-  resultsEl.innerHTML = ''
+  resultsEl.innerHTML = i18n.SEARCH_NOT_FOUND
 
   for (const result of results) {
     const page = window.idxData.get(result.ref)

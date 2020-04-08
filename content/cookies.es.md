@@ -4,10 +4,10 @@ _build:
   list: false
 ---
 
-Este sitio web usa cookies cuando:
+Este sitio web usa cookies de rastreo cuando:
 
-* Se cargan los comentarios, si no le gusta, no haga clic en *«{{< i18n
-  "SHOW_COMMENTS" >}}»*.. 😒
+* Se cargan los comentarios, si no las quiere, no haga clic en *«{{< i18n
+  "SHOW_COMMENTS" >}}»*.
 
 Si ud solo usa productos **Open Source**, me disculpo por usar cookies, en el
 futuro remplazaré Disqus como mi plataforma de comentarios.

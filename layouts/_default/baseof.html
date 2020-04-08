@@ -42,9 +42,6 @@
           href="{{ .Permalink | safeURL }}"/>
   {{ end }}
 
-  {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
-  {{ block "scripts" . }}{{ partial "scripts.tmpl" . }}{{ end }}
-
   {{ if eq .Kind "page" }}
     <script>
       const goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
@@ -54,9 +51,14 @@
         GO_PLAYGROUND_OPEN: '{{ i18n "GO_PLAYGROUND_OPEN" }}',
         GO_PLAYGROUND_RUN: '{{ i18n "GO_PLAYGROUND_RUN" }}',
         GO_PLAYGROUND_SENDING: '{{ i18n "GO_PLAYGROUND_SENDING" }}',
+
+        SEARCH_NOT_FOUND: '{{ i18n "SEARCH_NOT_FOUND" }}',
       }
     </script>
   {{ end }}
+
+  {{ block "styles" . }}{{ partial "styles.tmpl" . }}{{ end }}
+  {{ block "scripts" . }}{{ partial "scripts.tmpl" . }}{{ end }}
 </head>
 <body data-theme="black" data-code-theme="monokai">
 {{ if not .Site.IsServer }}

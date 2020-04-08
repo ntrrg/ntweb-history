@@ -49,6 +49,9 @@ other = "Publicado"
 [ROLE]
 other = "Rol"
 
+[SEARCH_NOT_FOUND]
+other = "No se encontraron elementos con para esa busqueda.."
+
 [SETTINGS]
 other = "Ajustes"
 

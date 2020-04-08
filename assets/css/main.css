@@ -190,6 +190,12 @@ body > header .navbar-search form input:focus {
   margin-right: 1ex;
 }
 
+body > header .navbar-search button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 body > header .navbar-search svg {
   color: #427819;
 
