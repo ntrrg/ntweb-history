@@ -1,0 +1,36 @@
+{{ if isset .Params "series" }}
+  <h2 style="text-align: center">{{ i18n "SERIES" }}</h2>
+
+  {{ range .Params.series }}
+    {{ $hidden := slice }}
+
+    {{ if isset $.Params "hiddenseries" }}
+      {{ $hidden = $.Params.hiddenseries }}
+    {{ end }}
+
+    {{ if not (in $hidden .) }}
+      <table class="series-table">
+      <thead>
+        <tr><th>
+          <a href="{{ absLangURL "series" }}/{{ . | urlize }}">{{ . }}</a>
+        </th></tr>
+      </thead>
+
+      <tbody>
+        {{ $serie := $.GetPage (printf "/series/%s" (. | urlize)) }}
+        {{ range $i, $x := sort $serie.Pages "PublishDate" }}
+          {{ $active := "" }}
+
+          {{ if eq $.Permalink .Permalink }}
+            {{ $active = "is-active" }}
+          {{ end }}
+
+          <tr><td class="{{ $active }}">
+            <a href="{{ .Permalink }}">{{ add $i 1 }}. {{ .Title }}</a>
+          </td></td>
+        {{ end }}
+      <tbody>
+      </table>
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -10,7 +10,6 @@ tags:
   - fundamentos
   - programación
 comments: true
-toc: true
 ---
 
 El término informática fue usado académicamente por primera vez en el libro

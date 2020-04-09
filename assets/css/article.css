@@ -49,51 +49,60 @@
   padding-bottom: 0em;
 }
 
+/* Series */
+
+table.series-table {
+  margin: 1em auto;
+}
+
+table.series-table th,
+table.series-table td {
+  border: 0.1em solid;
+  padding: 0.5em 1em;
+}
+
+table.series-table td a {
+  color: inherit;
+}
+
+table.series-table td.is-active {
+  border: 0.2em solid;
+  font-weight: bold;
+}
+
 /* Heading */
 
-.article h1::before,
-.article h2::before,
-.article h3::before,
-.article h4::before,
-.article h5::before,
-.article h6::before {
+.article .markdown h1::before,
+.article .markdown h2::before,
+.article .markdown h3::before,
+.article .markdown h4::before,
+.article .markdown h5::before,
+.article .markdown h6::before {
   opacity: 0.25;
 }
 
-.article h1::before {
+.article .markdown h1::before {
   content: "# ";
 }
 
-.article h2::before {
+.article .markdown h2::before {
   content: "## ";
 }
 
-.article h3::before {
+.article .markdown h3::before {
   content: "### ";
 }
 
-.article h4::before {
+.article .markdown h4::before {
   content: "#### ";
 }
 
-.article h5::before {
+.article .markdown h5::before {
   content: "##### ";
 }
 
-.article h6::before {
+.article .markdown h6::before {
   content: "###### ";
-}
-
-/* Mermaid */
-
-.mermaid-chart .mermaid {
-  text-align: center;
-
-  margin-top: 1em;
-}
-
-.mermaid-chart .mermaid svg {
-  background: #fff;
 }
 
 /* Shortcodes */
@@ -213,5 +222,17 @@ figure.align-right {
   margin-top: 0.5em;
   margin-bottom: 1em;
   padding-bottom: 0.5em;
+}
+
+  /* Mermaid */
+
+.mermaid-chart .mermaid {
+  text-align: center;
+
+  margin-top: 1em;
+}
+
+.mermaid-chart .mermaid svg {
+  background: #fff;
 }
 

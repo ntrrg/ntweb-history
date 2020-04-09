@@ -1,7 +1,7 @@
 ---
 title: Instalar Go 1.14 en Linux
 author: ntrrg
-publushdate: 2020-03-17T14:05:00-04:00
+publishdate: 2020-03-17T14:05:00-04:00
 date: 2020-03-20T04:55:00-04:00
 description: Instalar Go 1.14 es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png

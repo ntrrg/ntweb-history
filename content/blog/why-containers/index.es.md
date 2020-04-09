@@ -6,6 +6,8 @@ date: 2020-02-09T11:00:00-04:00
 description: La forma más fácil de implemetar aplicaciones para programadores y administradores de sistemas.
 tags:
   - tecnología
+  - aprendizaje
+  - fundamentos
   - contenedores
   - sysadmin
   - devops

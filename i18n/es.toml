@@ -52,6 +52,9 @@ other = "Rol"
 [SEARCH_NOT_FOUND]
 other = "No se encontraron elementos con para esa busqueda.."
 
+[SERIES]
+other = "Series"
+
 [SETTINGS]
 other = "Ajustes"
 

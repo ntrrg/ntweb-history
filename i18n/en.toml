@@ -55,6 +55,9 @@ other = "No elements found for that search.."
 [SETTINGS]
 other = "Settings"
 
+[SERIES]
+other = "Series"
+
 [SHOW_COMMENTS]
 other = "Show comments"
 

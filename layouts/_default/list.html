@@ -9,16 +9,27 @@
 
   {{ .Content }}
 
-  {{ if gt (len .Paginator.Pages) 0 }}
-    {{ partial "pagination.tmpl" . }}
+  {{ $pages := slice }}
 
+  {{ if eq .Type "series" }}
+    {{ $pages = sort .Pages "PublishDate" }}
+  {{ else if not (eq .Paginator nil) }}
+    {{ $pages = .Paginator.Pages }}
+    {{ partial "pagination.tmpl" . }}
+  {{ else }}
+    {{ $pages = .Pages }}
+  {{ end }}
+
+  {{ if gt (len $pages) 0 }}
     <ul class="pages-list">
-      {{ range .Paginator.Pages }}
+      {{ range $pages }}
         <li>{{ partial "card.tmpl" . }}</li>
       {{ end }}
     </ul>
 
-    {{ partial "pagination.tmpl" . }}
+    {{ if and (not (eq .Paginator nil)) (ne .Type "series") }}
+      {{ partial "pagination.tmpl" . }}
+    {{ end }}
   {{ else }}
     <p>{{ i18n "NO_CONTENT" }}</p>
   {{ end }}

@@ -1,8 +1,17 @@
 {{ define "data" }}
   {
     "pages": [
-      {{/* range $i, $val := .Paginator.Pages */}}
-      {{ range $i, $val := .Pages }}
+      {{ $pages := slice }}
+
+      {{ if eq .Type "series" }}
+        {{ $pages = sort .Pages "PublishDate" }}
+      {{ else if not (eq .Paginator nil) }}
+        {{ $pages = .Paginator.Pages }}
+      {{ else }}
+        {{ $pages = .Pages }}
+      {{ end }}
+
+      {{ range $i, $val := $pages }}
         {{ if ne $i 0 }},{{ end }}
         {{ if gt (len .Pages) 0 }}
           {
@@ -37,17 +46,18 @@
           }
         {{ end }}
       {{ end }}
-    ],
-    {{ $prefix := printf "%spage/" .Permalink }}
-    "pagination": {
-      "prefix": "{{ $prefix }}"
-      {{/*
-      "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
-      "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
-      "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
-      "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
-      */}}
-    }
+    ]
+    {{ if and (not (eq .Paginator nil)) (ne .Type "series") }}
+      ,
+      {{ $prefix := printf "%spage/" .Permalink }}
+      "pagination": {
+        "prefix": "{{ $prefix }}",
+        "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
+      }
+    {{ end }}
   }
 {{ end }}
 
