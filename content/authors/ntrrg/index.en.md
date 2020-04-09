@@ -2,7 +2,7 @@
 id: ntrrg
 title: Miguel Angel
 name: Miguel Angel Rivera Notararigo
-position: Backend Developer
+position: Software Developer
 image: /images/logo-bg-rounded.png
 social:
   website:
@@ -66,13 +66,14 @@ Before underestimating this website because its simplicity, see [how it works](.
 I am a Software Developer passionate about creating high performance solutions
 that take the most advantage they can from the hardware they use. I always code
 following the best standards, verifying the code quality with analysis tools
-and automated tests. I am a huge fan of maths, AI and distributed computing.
+and automated tests. I am a huge fan of maths, process automation and
+distributed computing.
 
 Since I coded my first lines in Go (July 2018), I knew that its simplicity,
 power and philosophy are the experience that any developer pursuing
 productivity and efficiency needs. I coded with PHP, Python and JavaScript
 (Node.js) in the past. I also finished the 42 C Piscine in Silicon Valley, so I
-have basic knoledge of C.
+have basic knowledge of C.
 
 ### Skills
 
@@ -91,12 +92,12 @@ have basic knoledge of C.
 * **QA:** linting, unit testing, CI (Drone, Travis, GitLab CI, Bitbucket
   Pipelines, GolangCI, GitHub Actions), CD.
 
-* **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
+* **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
 * **Systems administration:** Linux (Debian, Alpine), Shell Scripting,
-  Containers (Docker, systemd-nspawn), Containers orchestration (Docker Swarm).
+  Containers (Docker), Containers orchestration (Docker Swarm).
 
-* **Frameworks and libs:** Badger, Bleve, Hugo.
+* **Frameworks and libs:** Bleve, Hugo.
 
 Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/en/cv.pdf)).
 

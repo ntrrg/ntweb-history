@@ -2,7 +2,7 @@
 id: ntrrg
 title: Miguel Angel
 name: Miguel Angel Rivera Notararigo
-position: Desarrollador Backend
+position: Desarrollador de Software
 image: /images/logo-bg-rounded.png
 social:
   website:
@@ -67,9 +67,13 @@ Soy un Desarrollador de Software apasionado por crear soluciones de alto
 rendimiento que aprovechen al máximo el hardware que utilizan. Siempre programo
 siguiendo los mejores estándares, verificando la calidad del código con
 herramientas de análisis y pruebas automatizadas. Soy fanático de las
-matemáticas, la IA y la computación distribuida.
+matemáticas, la automatización de procesos y la computación distribuida.
 
-Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe que su simplicidad, poder y filosofía son la experiencia que cualquier programador que busque productividad y eficiencia necesita. Programé con PHP, Python y JavaScript (Node.js) en el pasado. También terminé la 42 C Piscine en Silicon Valley, así que tengo conocimiento básico de C.
+Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe que
+su simplicidad, poder y filosofía son la experiencia que cualquier programador
+que busque productividad y eficiencia necesita. Programé con PHP, Python y
+JavaScript (Node.js) en el pasado. También terminé la 42 C Piscine en Silicon
+Valley, así que tengo conocimiento básico de C.
 
 ### Habilidades:
 
@@ -88,13 +92,12 @@ Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe q
 * **QA:** linting, pruebas unitarias, CI (Drone, Travis, GitLab CI, Bitbucket
   Pipelines, GolangCI, GitHub Actions), CD.
 
-* **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
+* **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
 * **Administración de sistemas:** Linux (Debian, Alpine), Shell Scripting,
-  Contenedores (Docker, systemd-nspawn), Orquestación de contenedores (Docker
-  Swarm).
+  Contenedores (Docker), Orquestación de contenedores (Docker Swarm).
 
-* **Frameworks y bibliotecas:** Badger, Bleve, Hugo.
+* **Frameworks y bibliotecas:** Bleve, Hugo.
 
 Dele un vistazo a mi [CV](https://docs.google.com/document/d/1bpNTpgJaeQeQHOCwvgACP91DUgfQ1NUo-ZhFe8EMH3U/edit?usp=sharing) ([PDF](/es/cv.pdf)).
 
