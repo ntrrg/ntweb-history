@@ -34,12 +34,11 @@
 
 /* Share buttons */
 
-.share-buttons {
-  margin-top: 1em;
-}
-
 .share-buttons svg {
   width: 1.5em;
+
+  margin-top: 1em;
+  margin-left: 0.5em;
 }
 
 /* Table of contents */

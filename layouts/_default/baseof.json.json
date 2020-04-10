@@ -7,7 +7,7 @@
   "image": "{{ if isset .Params "image" -}}
     {{ $image := $.Param "image" }}
 
-    {{- if findRE "^https?://" .Params.image 1 }}
+    {{- if strings.HasPrefix .Params.image "http" }}
       {{- $image -}}
     {{- else if hasPrefix $image "/" }}
       {{- absURL $image -}}

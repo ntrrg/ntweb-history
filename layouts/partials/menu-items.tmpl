@@ -1,11 +1,10 @@
 {{ $menu := index .Site.Params (.Scratch.Get "menuItems") }}
+
 {{ range $menu.items }}
-  {{ if findRE "^https?://" .url 1 }}
-    {{ $menu.before -}}
-
+  {{ if strings.HasPrefix .url "http" }}
+    {{ $menu.before | safeHTML -}}
     <a href="{{ .url }}">{{ .text }}</a>
-
-    {{- $menu.after }}
+    {{- $menu.after | safeHTML }}
   {{ else }}
     {{ $page := $.Site.GetPage (strings.TrimRight "/" .url) }}
     {{ $active := "" }}
@@ -16,7 +15,7 @@
       {{ $active = "is-active" }}
     {{ end }}
 
-    {{ $menu.before -}}
+    {{ $menu.before | safeHTML -}}
 
     <a href="{{ $page.Permalink }}"
        class="{{ $active }}">{{ .text | default $page.Title }}</a>
@@ -24,7 +23,7 @@
     {{- $l := len $page.Pages }}
     {{- if gt $l 0 }}<sup>({{ $l }})</sup>{{ end }}
 
-    {{- $menu.after }}
+    {{- $menu.after | safeHTML }}
   {{ end }}
 {{ end }}
 

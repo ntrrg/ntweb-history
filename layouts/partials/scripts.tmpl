@@ -34,7 +34,7 @@
 {{ end }}
 
 {{ range $externals }}
-  {{ if findRE "^https?://" . 1 }}
+  {{ if strings.HasPrefix . "http" }}
     <script defer src="{{ . }}"></script>
   {{ else }}
     {{ $script := resources.Get . | minify | fingerprint }}
@@ -45,7 +45,7 @@
 {{ end }}
 
 {{ range $externalsAsync }}
-  {{ if findRE "^https?://" . 1 }}
+  {{ if strings.HasPrefix . "http" }}
     <script async src="{{ . }}"></script>
   {{ else }}
     {{ $script := resources.Get . | minify | fingerprint }}
