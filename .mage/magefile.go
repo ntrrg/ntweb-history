@@ -32,10 +32,15 @@ var (
 )
 
 func Build() error {
+	resp := commands.Execute([]string{})
+
+	return resp.Err
+}
+
+func BuildAll() error {
 	mg.Deps(buildFuncs...)
 
-	resp := commands.Execute([]string{})
-	return resp.Err
+	return Build()
 }
 
 type BumpVersion mg.Namespace

@@ -174,6 +174,7 @@ func writeMultiLangFile(
 }
 
 func init() {
+	buildFuncs = append(buildFuncs, Gen.Default)
 	cleanFuncs = append(cleanFuncs, Gen.Clean)
 
 	if err := os.MkdirAll(gitRepos, 0755); err != nil {
