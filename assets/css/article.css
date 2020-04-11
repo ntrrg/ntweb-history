@@ -48,27 +48,6 @@
   padding-bottom: 0em;
 }
 
-/* Series */
-
-table.series-table {
-  margin: 1em auto;
-}
-
-table.series-table th,
-table.series-table td {
-  border: 0.1em solid;
-  padding: 0.5em 1em;
-}
-
-table.series-table td a {
-  color: inherit;
-}
-
-table.series-table td.is-active {
-  border: 0.2em solid;
-  font-weight: bold;
-}
-
 /* Heading */
 
 .article .markdown h1::before,
@@ -235,3 +214,23 @@ figure.align-right {
   background: #fff;
 }
 
+/* Series */
+
+table.series-table {
+  margin: 1em auto;
+}
+
+table.series-table th,
+table.series-table td {
+  border: 0.1em solid;
+  padding: 0.5em 1em;
+}
+
+table.series-table td a {
+  color: inherit;
+}
+
+table.series-table td.is-active {
+  border: 0.2em solid;
+  font-weight: bold;
+}

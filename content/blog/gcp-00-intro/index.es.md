@@ -7,7 +7,6 @@ tags:
   - tecnología
   - aprendizaje
   - fundamentos
-  - redes
   - cloud
   - gcp
   - sysadmin
@@ -44,6 +43,38 @@ roles específicos que les permitirán interactuar con los recursos y servicios
 del proyecto.
 
 # Interfaces de Usuario
+
+Consola y gcloud.
+
+```shell-session
+$ gcloud init
+
+$ gcloud components list
+$ gcloud components install beta
+$ gcloud beta GROUP
+$ gcloud components install alpha
+$ gcloud alpha GROUP
+```
+
+IAM
+
+```shell-session
+$ gcloud auth list
+```
+
+CLI configuration
+
+```shell-session
+$ export GCP_PROJECT="..."
+$ export GCP_REGION="us-central1"
+$ export GCP_ZONE="$GCP_REGION-a"
+
+$ gcloud config list [--all] [KEY]
+$ gcloud config set KEY VALUE
+$ gcloud config set project "$GCP_PROJECT"
+$ gcloud config set compute/region "$GCP_REGION"
+$ gcloud config set compute/zone "$GCP_ZONE"
+```
 
 # Control de Indetidades y Acceso (IAM)
 
