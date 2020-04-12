@@ -18,11 +18,3 @@ toc: true
 draft: true
 ---
 
-```shell-session
-$ gsutil mb gs://BUCKET_NAME
-$ gsutil ls PATH
-$ gsutil cp SRC DEST
-$ gsutil acl ch -u AllUsers:R PATH
-$ gsutil acl ch -d AllUsers PATH
-$ gsutil rm PATH
-```
