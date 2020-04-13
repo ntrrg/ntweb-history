@@ -49,7 +49,9 @@ del proyecto.
 ## CLIs (`gcloud`, `gsutil`)
 
 ```shell-session
-$ gcloud init
+$ gcloud init [--console-only]
+
+$ gcloud info
 
 $ gcloud components list
 
@@ -70,8 +72,8 @@ $ export GCP_ZONE="$GCP_REGION-a"
 $ gcloud config list [--all] [KEY]
 $ gcloud config set KEY VALUE
 $ gcloud config set project "$GCP_PROJECT"
-$ gcloud config set compute/region "$GCP_REGION"
-$ gcloud config set compute/zone "$GCP_ZONE"
+$ gcloud config set GROUP/region "$GCP_REGION"
+$ gcloud config set GROUP/zone "$GCP_ZONE"
 ```
 
 ### IAM
@@ -80,7 +82,9 @@ $ gcloud config set compute/zone "$GCP_ZONE"
 $ gcloud auth list
 ```
 
-### Compute Engine (GCE)
+### Compute power
+
+#### Compute Engine (GCE)
 
 ```shell-session
 $ gcloud compute project-info describe --project PROJECT_ID
@@ -92,7 +96,7 @@ Virtual machines
 
 ```shell-session
 $ gcloud compute instances create NAME \
-    [--image-project debian-cloud --image-family debian-9] \
+    [--image-project debian-cloud --image-family debian-(9|10)] \
     [--machine-type TYPE] [--zone ZONE] [--tags TAGS] \
     [--subnet SUBNET_NAME] \
     [--metadata-from-file startup-script=FILE]
@@ -125,7 +129,7 @@ $ gcloud compute instance-groups managed create NAME [--zone ZONE] \
     --size NUMBER_OF_INSTANCES --target-pool POOL_NAME
 ```
 
-### Kubernetes Engine (GKE)
+#### Kubernetes Engine (GKE)
 
 ```shell-session
 $ gcloud container clusters create NAME (--zone ZONE | --region REGION)
@@ -140,6 +144,54 @@ $ kubectl create deployment NAME --image CONTAINER_IMAGE
 $ kubectl expose deployment NAME \
     --protocol (TCP|UDP) --port PORT [--target-port CONTAINER_PORT] \
     [--type ClusterIP|LoadBalancer]
+```
+
+#### App Engine
+
+```shell-session
+$ git clone https://github.com/GoogleCloudPlatform/golang-samples.git
+$ cd golang-samples/appengine/go11x/helloworld
+$ gcloud components install app-engine-go
+
+$ gcloud app deploy [FILE] [--bucket BUCKET_NAME] [--ignore-file FILE]
+
+$ gcloud app browse
+
+$ gcloud app logs read [--service default] [--limit LIMIT] \
+  [--logs stderr,stdout,crash.log,nginx.request,request_log] \
+  [--level critical|error|warning|info|debug|any]
+
+$ gcloud app logs tail [--service default] \
+  [--logs stderr,stdout,crash.log,nginx.request,request_log] \
+  [--level critical|error|warning|info|debug|any]
+```
+
+#### Functions (GCF)
+
+```shell-session
+$ gcloud functions describe NAME
+
+$ gcloud functions event-types list
+
+$ gcloud functions deploy NAME [--region REGION] \
+  [--source DIR] --stage-bucket BUCKET_NAME \
+  --runtime (nodejs8|nodejs10|python37|go111|go113) \
+  [--entry-point FUNCTION_NAME_IN_SOURCE] \
+  [--clear-env-vars | --env-vars-file FILE | --set-env-vars KEY=VALUE] \
+  [--remove-env-vars KEYS] [--update-env-vars KEY=VALUE] \
+  [--memory (128|256|512|1024|2048)MB] [--timeout SECONDS] \
+  [--max-instances INSTANCES | --clear-max-instances] \
+  [--allow-unauthenticated] \
+  [--trigger-bucket BUCKET_NAME | --trigger-topic PUBSUB_TOPIC |
+  (--trigger-event EVENT_NAME --trigger-resource RESOURCE_NAME) |
+  --trigger-http ]
+
+$ gcloud functions call NAME [--region REGION] --data JSON_DATA
+
+$ gcloud functions logs read NAME [--region REGION] \
+  [--start-time START_TIME] [--end-time END_TIME] \
+  [--min-log-level debug|info|error] \
+  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 ```
 
 ### Networking
@@ -260,6 +312,36 @@ Entre lo roles predefinidos se encuentran:
 * *Editor (Editor):*
 
 * *Propietario (Owner):*
+
+### Big Data
+
+#### Pub/Sub
+
+```shell-session
+$ gcloud pubsub topics list \
+  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+
+$ gcloud pubsub topics create NAME
+
+$ gcloud pubsub topics list-subscriptions NAME \
+  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+
+$ gcloud pubsub topics publish NAME --message DATA
+
+$ gcloud pubsub topics delete NAME
+
+$ gcloud pubsub subscriptions list \
+  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+
+$ gcloud pubsub subscriptions create --topic TOPIC_NAME NAME \
+  [--expiration-period EXPIRATION_PERIOD] [--retain-acked-messages] \
+  [--message-retention-duration MESSAGE_RETENTION_DURATION]
+
+$ gcloud pubsub subscriptions pull NAME [--auto-ack] \
+  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+
+$ gcloud pubsub subscriptions delete NAME
+```
 
 # Atribuciones
 
