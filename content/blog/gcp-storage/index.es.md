@@ -1,14 +1,15 @@
 ---
-title: Almacenamiento en Google Cloud Platform
+title: "GCP: Almacenamiento"
 author: ntrrg
 date: 2020-04-09T14:05:00-04:00
-description: Gestión de reden en GCP
+description: Métodos de almacenamiento en Google Cloud Platform.
 tags:
   - tecnología
-  - guías
+  - aprendizaje
   - cloud
   - gcp
   - redes
+  - bases-de-datos
   - sysadmin
   - devops
 series:

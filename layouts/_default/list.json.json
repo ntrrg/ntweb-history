@@ -41,7 +41,15 @@
             {{- end }}",
             "publishdate": {{ jsonify .PublishDate }},
             "date": {{ jsonify .Date }},
-            "description": {{ jsonify .Description }},
+
+            {{ $sectDesc := $.Description }}
+
+            {{ if ne .Description $sectDesc }}
+              "description": {{ jsonify .Description }},
+            {{ else }}
+              "description": "",
+            {{ end }}
+
             "tags": {{ jsonify .Params.tags }}
           }
         {{ end }}

@@ -67,7 +67,8 @@ Soy un Desarrollador de Software apasionado por crear soluciones de alto
 rendimiento que aprovechen al máximo el hardware que utilizan. Siempre programo
 siguiendo los mejores estándares, verificando la calidad del código con
 herramientas de análisis y pruebas automatizadas. Soy fanático de las
-matemáticas, la automatización de procesos y la computación distribuida.
+matemáticas, la automatización de procesos, la computación distribuida y el
+Software Libre.
 
 Desde que escribí mis primeras líneas de código en Go (julio de 2018), supe que
 su simplicidad, poder y filosofía son la experiencia que cualquier programador
@@ -81,21 +82,17 @@ Valley, así que tengo conocimiento básico de C.
 
 * **Interfaces de usuario:** Web (HTML, CSS, JavaScript).
 
-* **Bases de datos SQL:** SQLite, PostgreSQL, MySQL.
-
-* **Bases de datos NoSQL:** Badger.
-
-* **Motores de búsqueda:** Bleve.
+* **Bases de datos:** SQL (SQLite, PostgreSQL, MySQL), K/V Stores (Badger).
 
 * **VCS:** Git.
 
 * **QA:** linting, pruebas unitarias, CI (Drone, Travis, GitLab CI, Bitbucket
   Pipelines, GolangCI, GitHub Actions), CD.
 
-* **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
-
 * **Administración de sistemas:** Linux (Debian, Alpine), Shell Scripting,
   Contenedores (Docker), Orquestación de contenedores (Docker Swarm).
+
+* **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
 * **Frameworks y bibliotecas:** Bleve, Hugo.
 

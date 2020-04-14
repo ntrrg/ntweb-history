@@ -24,7 +24,11 @@
     <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
 
     {{ with .Description }}
-      <p>{{ . }}</p>
+      {{ $sectDesc := ($.Site.GetPage $.Section).Description }}
+
+      {{ if ne . $sectDesc }}
+        <p>{{ . }}</p>
+      {{ end }}
     {{ end }}
 
     {{ partial "metadata-box.tmpl" . }}

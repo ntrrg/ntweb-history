@@ -2,11 +2,10 @@
 title: Introducción a Google Cloud Platform
 author: ntrrg
 date: 2020-04-09T12:30:00-04:00
-description: Computación en la Nube con la ayuda de uno de los gigantes de Internet. Conceptos básicos y una reseña histórica de GCP.
+description: Computación en la Nube con la ayuda de uno de los gigantes de Internet. Conceptos básicos y una reseña histórica de Google Cloud Platform.
 tags:
   - tecnología
   - aprendizaje
-  - fundamentos
   - cloud
   - gcp
   - sysadmin
@@ -239,14 +238,14 @@ $ gcloud compute forwarding-rules create NAME \
     --ports PORTS --target-instance INSTANCE_NAME \
     (--region REGION | --global)
 
-$ # L3 Load Balancer (VMs pool)
+$ # L3 Network Balancer (VMs pool)
 
 $ gcloud compute forwarding-rules create NAME \
     [--address IP_ADDRESS] [--ip-protocol (TCP|UDP)] \
     --ports PORTS --target-pool POOL_NAME \
-    (--region REGION | --global)
+    --region REGION
 
-$ # L7 HTTP/HTTPS/HTTP2 Load Balancer (VMs pool)
+$ # L7 Global HTTP/HTTPS/HTTP2 Load Balancer (VMs pool)
 
 $ gcloud compute instance-groups (managed | unmanaged) \
     set-named-ports GROUP_NAME --named-ports (http|https|http2):PORT \
@@ -269,7 +268,7 @@ $ gcloud compute url-maps add-path-matcher URLMAP_NAME \
   --default-service BACKEND_NAME \
   --path-matcher-name PATHMATCHER_NAME --path-rules="PATH=BACKEND_NAME"
 
-$ # HTTP
+$   # HTTP
 
 $ gcloud compute target-http-proxies create NAME --url-map URLMAP_NAME
 
@@ -278,7 +277,7 @@ $ gcloud compute forwarding-rules create NAME \
     --ports PORTS --target-http-proxy PROXY_NAME \
     --global
 
-$ # HTTPS
+$   # HTTPS
 
 $ gcloud compute ssl-certificates create NAME \
     --private-key FILE --certificate FILE
@@ -341,6 +340,12 @@ $ gcloud pubsub subscriptions pull NAME [--auto-ack] \
   [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 
 $ gcloud pubsub subscriptions delete NAME
+```
+
+#### BigQuery
+
+```shell-session
+$ bq
 ```
 
 # Atribuciones

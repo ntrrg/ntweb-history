@@ -8,16 +8,15 @@ tags:
   - aprendizaje
   - fundamentos
   - cloud
-  - internet
   - sysadmin
   - devops
 series:
-  - Google Cloud Platform
+  - Cloud Engineering (GCP)
 comments: true
 draft: true
 ---
 
 # Atribuciones
 
-**Google Cloud Team.** *Google Cloud Training.* <https://google.qwiklabs.com>
+**Google Cloud Team.** *Bsiness Transformation with Google Cloud.* <https://app.pluralsight.com/library/courses/business-transformation-google-cloud/>
 

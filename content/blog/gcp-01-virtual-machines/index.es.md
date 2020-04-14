@@ -1,12 +1,11 @@
 ---
-title: Máquinas virtuales en Google Cloud Platform
+title: "GCP: Máquinas virtuales"
 author: ntrrg
 date: 2020-04-09T12:35:00-04:00
-description: Máquinas virtuales en GCP.
+description: Máquinas virtuales en Google Cloud Platform.
 tags:
   - tecnología
   - aprendizaje
-  - fundamentos
   - cloud
   - gcp
   - máquinas-virtuales
