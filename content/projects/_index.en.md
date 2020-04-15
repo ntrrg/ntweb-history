@@ -1,6 +1,6 @@
 ---
 title: Projects
 cascade:
-  description: This is my portfolio, from personal to paid projects.
+  description: Toy programs, documentation and automation tools, web sites, etc... A bit of my work and favorite hobby.
 ---
 

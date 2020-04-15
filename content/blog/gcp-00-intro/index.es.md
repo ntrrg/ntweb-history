@@ -35,17 +35,19 @@ artificial para el reconocimiento de voz y procesamiento de imágenes.
 Ya que la Computación en la Nube promueve el alcance global de las
 aplicaciones, es muy común que al momento de solicitar recursos se deba indicar
 la región y la zona en la que se quieren desplegar. Estos atributos no son más
-que la ubicación geográfica de los centros de datos de Google.
+que la ubicación geográfica de los centros de datos de Google donde correrá el
+recurso.
 
 Los participantes del proyecto son usuarios a los que se les pueden asignar
-roles específicos que les permitirán interactuar con los recursos y servicios
-del proyecto.
+roles específicos que les permitirán interactuar con los recursos del proyecto.
+También es posible crear cuentas de servicio, estas pueden ser usadas por
+aplicaciones para acceder y hasta manejar los recursos del proyecto.
 
 # Interfaces de Usuario
 
 ## Consola
 
-## CLIs (`gcloud`, `gsutil`)
+## CLIs (`gcloud`, `gsutil`, `bq`)
 
 ```shell-session
 $ gcloud init [--console-only]
@@ -81,6 +83,16 @@ $ gcloud config set GROUP/zone "$GCP_ZONE"
 $ gcloud auth list
 ```
 
+### Tools
+
+#### Git repositories
+
+```shell-session
+$ gcloud source repos create NAME
+
+$ gcloud source repos clone NAME
+```
+
 ### Compute power
 
 #### Compute Engine (GCE)
@@ -94,11 +106,24 @@ $ gcloud compute instances list
 Virtual machines
 
 ```shell-session
-$ gcloud compute instances create NAME \
-    [--image-project debian-cloud --image-family debian-(9|10)] \
+$ gcloud compute images list [--project IMAGE_PROJECT] [--no-standard-images]
+
+$ gcloud compute instances create NAME [--preemptible] \
+    [--image-project debian-cloud --image debian-(9|10)] \
     [--machine-type TYPE] [--zone ZONE] [--tags TAGS] \
     [--subnet SUBNET_NAME] \
     [--metadata-from-file startup-script=FILE]
+
+$ gcloud compute instances create-with-container NAME [--preemptible] \
+    --image-project cos-cloud --image IMAGE \
+    --container-image CONTAINER_IMAGE \
+    [--machine-type TYPE] [--zone ZONE] [--tags TAGS] \
+    [--container-restart-policy never|on-failure|always] \
+    [--container-env KEY=VALUE] [--container-env-file PATH] \
+    [--container-mount-host-path host-path=PATH,mount-path=PATH[,mode=(rw|ro)] \
+    [--container-mount-tmpfs=mount-path=MOUNTPATH] \
+    [--container-stdin] [--container-tty] [--container-privileged] \
+    [--container-arg ARGS] [--container-command ENTRYPOINT]
 
 $ gcloud compute instances describe NAME
 
@@ -157,12 +182,12 @@ $ gcloud app deploy [FILE] [--bucket BUCKET_NAME] [--ignore-file FILE]
 $ gcloud app browse
 
 $ gcloud app logs read [--service default] [--limit LIMIT] \
-  [--logs stderr,stdout,crash.log,nginx.request,request_log] \
-  [--level critical|error|warning|info|debug|any]
+    [--logs stderr,stdout,crash.log,nginx.request,request_log] \
+    [--level critical|error|warning|info|debug|any]
 
 $ gcloud app logs tail [--service default] \
-  [--logs stderr,stdout,crash.log,nginx.request,request_log] \
-  [--level critical|error|warning|info|debug|any]
+    [--logs stderr,stdout,crash.log,nginx.request,request_log] \
+    [--level critical|error|warning|info|debug|any]
 ```
 
 #### Functions (GCF)
@@ -172,25 +197,24 @@ $ gcloud functions describe NAME
 
 $ gcloud functions event-types list
 
-$ gcloud functions deploy NAME [--region REGION] \
-  [--source DIR] --stage-bucket BUCKET_NAME \
-  --runtime (nodejs8|nodejs10|python37|go111|go113) \
-  [--entry-point FUNCTION_NAME_IN_SOURCE] \
-  [--clear-env-vars | --env-vars-file FILE | --set-env-vars KEY=VALUE] \
-  [--remove-env-vars KEYS] [--update-env-vars KEY=VALUE] \
-  [--memory (128|256|512|1024|2048)MB] [--timeout SECONDS] \
-  [--max-instances INSTANCES | --clear-max-instances] \
-  [--allow-unauthenticated] \
-  [--trigger-bucket BUCKET_NAME | --trigger-topic PUBSUB_TOPIC |
-  (--trigger-event EVENT_NAME --trigger-resource RESOURCE_NAME) |
-  --trigger-http ]
+$ gcloud functions deploy NAME [--region REGION] \ [--source DIR] --stage-bucket BUCKET_NAME \
+    --runtime (nodejs8|nodejs10|python37|go111|go113) \
+    [--entry-point FUNCTION_NAME_IN_SOURCE] \
+    [--clear-env-vars | --env-vars-file FILE | --set-env-vars KEY=VALUE] \
+    [--remove-env-vars KEYS] [--update-env-vars KEY=VALUE] \
+    [--memory (128|256|512|1024|2048)MB] [--timeout SECONDS] \
+    [--max-instances INSTANCES | --clear-max-instances] \
+    [--allow-unauthenticated] \
+    [--trigger-bucket BUCKET_NAME | --trigger-topic PUBSUB_TOPIC |
+    (--trigger-event EVENT_NAME --trigger-resource RESOURCE_NAME) |
+    --trigger-http ]
 
 $ gcloud functions call NAME [--region REGION] --data JSON_DATA
 
 $ gcloud functions logs read NAME [--region REGION] \
-  [--start-time START_TIME] [--end-time END_TIME] \
-  [--min-log-level debug|info|error] \
-  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+    [--start-time START_TIME] [--end-time END_TIME] \
+    [--min-log-level debug|info|error] \
+    [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 ```
 
 ### Networking
@@ -291,7 +315,9 @@ $ gcloud compute forwarding-rules create NAME \
     --global
 ```
 
-### Storage (GCS)
+### Storage
+
+#### Storage (GCS)
 
 ```shell-session
 $ gsutil mb gs://BUCKET_NAME
@@ -301,6 +327,10 @@ $ gsutil acl ch -u AllUsers:R PATH
 $ gsutil acl ch -d AllUsers PATH
 $ gsutil rm PATH
 ```
+
+#### Datastore
+
+#### Cloud SQL
 
 # Control de Indetidades y Acceso (IAM)
 
@@ -318,26 +348,26 @@ Entre lo roles predefinidos se encuentran:
 
 ```shell-session
 $ gcloud pubsub topics list \
-  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+    [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 
 $ gcloud pubsub topics create NAME
 
 $ gcloud pubsub topics list-subscriptions NAME \
-  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+    [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 
 $ gcloud pubsub topics publish NAME --message DATA
 
 $ gcloud pubsub topics delete NAME
 
 $ gcloud pubsub subscriptions list \
-  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+    [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 
 $ gcloud pubsub subscriptions create --topic TOPIC_NAME NAME \
-  [--expiration-period EXPIRATION_PERIOD] [--retain-acked-messages] \
-  [--message-retention-duration MESSAGE_RETENTION_DURATION]
+    [--expiration-period EXPIRATION_PERIOD] [--retain-acked-messages] \
+    [--message-retention-duration MESSAGE_RETENTION_DURATION]
 
 $ gcloud pubsub subscriptions pull NAME [--auto-ack] \
-  [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
+    [--filter EXPRESSION] [--page-size SIZE] [--limit LIMIT] [--sort-by FIELD]
 
 $ gcloud pubsub subscriptions delete NAME
 ```
