@@ -90,7 +90,8 @@ Valley, así que tengo conocimiento básico de C.
   Pipelines, GolangCI, GitHub Actions), CD.
 
 * **Administración de sistemas:** Linux (Debian, Alpine), Shell Scripting,
-  Contenedores (Docker), Orquestación de contenedores (Docker Swarm).
+  Contenedores (Docker), Orquestación de contenedores (Docker Swarm,
+  Kubernetes).
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 

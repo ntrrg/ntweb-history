@@ -89,7 +89,7 @@ have basic knowledge of C.
   Pipelines, GolangCI, GitHub Actions), CD.
 
 * **Systems administration:** Linux (Debian, Alpine), Shell Scripting,
-  Containers (Docker), Containers orchestration (Docker Swarm).
+  Containers (Docker), Containers orchestration (Docker Swarm, Kubernetes).
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 

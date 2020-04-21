@@ -5,22 +5,24 @@ toc: true
 
 # Bolívares
 
-## Banco de Venezuela
+## Banks
+
+### Mercantil
 
 ```
-01020151950000371056
-Corriente
+01050672730672206978
+Ahorro
 20850363
 Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
 04247484276
 ```
 
-## Banco Mercantil
+### Venezuela
 
 ```
-01050672730672206978
-Ahorro
+01020151950000371056
+Corriente
 20850363
 Miguel Angel Rivera Notararigo
 ntrrgx@gmail.com
@@ -38,7 +40,7 @@ ntrrgx@gmail.com
 ## Ether
 
 ```
-0xf79452a3B5DE5717E79d55BfEe2684BB87743Ef7
+0x7E28247A3a20E9E064F8872094194bA29f3AceDB
 ```
 
 # Dollars
@@ -49,7 +51,9 @@ ntrrgx@gmail.com
 ntrrgx@gmail.com
 ```
 
-## Chase
+## Banks
+
+### Chase
 
 ```
 512699585
@@ -66,6 +70,12 @@ ntrrgx@gmail.com
 +15203130363
 ```
 
+## Payoneer
+
+```
+ntrrgx@gmail.com
+```
+
 ## Uphold
 
 ```
@@ -77,6 +87,14 @@ ntrrgx@gmail.com
 
 ```
 Miguel Rivera Notararigo
+ntrrgx@gmail.com
+```
+
+# Euros
+
+## Payoneer
+
+```
 ntrrgx@gmail.com
 ```
 
