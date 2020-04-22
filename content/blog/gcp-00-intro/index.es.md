@@ -43,6 +43,16 @@ roles específicos que les permitirán interactuar con los recursos del proyecto
 También es posible crear cuentas de servicio, estas pueden ser usadas por
 aplicaciones para acceder y hasta manejar los recursos del proyecto.
 
+# Control de Indetidades y Acceso (IAM)
+
+Entre lo roles predefinidos se encuentran:
+
+* *Observador (Viewer):*
+
+* *Editor (Editor):*
+
+* *Propietario (Owner):*
+
 # Interfaces de Usuario
 
 ## Consola
@@ -71,6 +81,7 @@ $ export GCP_REGION="us-central1"
 $ export GCP_ZONE="$GCP_REGION-a"
 
 $ gcloud config list [--all] [KEY]
+$ gcloud config get-value KEY
 $ gcloud config set KEY VALUE
 $ gcloud config set project "$GCP_PROJECT"
 $ gcloud config set GROUP/region "$GCP_REGION"
@@ -117,7 +128,7 @@ $ gcloud source repos create NAME
 $ gcloud source repos clone NAME
 ```
 
-### Compute power
+### Computing
 
 #### Compute Engine (GCE)
 
@@ -319,7 +330,7 @@ $ gcloud functions logs read NAME [--region REGION] \
 
 ### Networking
 
-IP addresses
+#### IP addresses
 
 ```shell-session
 $ gcloud compute addresses create NAME \
@@ -329,7 +340,7 @@ $ gcloud compute addresses create NAME \
     (--region REGION | --global)
 ```
 
-Subnets
+#### Subnets
 
 ```shell-session
 $ gcloud compute networks create NAME --subnet-mode custom
@@ -338,7 +349,7 @@ $ gcloud compute networks subnets create NAME \
   --network NETWORK --range IP_RANGE --region REGION
 ```
 
-Firewall rules
+#### Firewall rules
 
 ```shell-session
 $ gcloud compute firewall-rules list
@@ -350,27 +361,33 @@ $ gcloud compute firewall-rules create NAME \
     --action ALLOW|DENY --rules (tcp|udp)[:PORT[-PORT]])
 ```
 
-Forwarding rules
+#### Forwarding rules
 
 ```shell-session
 $ gcloud compute forwarding-rules list
+```
 
-$ # Protocol Forwarding (single VM)
+Protocol Forwarding (single VM)
 
+```shell-session
 $ gcloud compute forwarding-rules create NAME \
     [--address IP_ADDRESS] [--ip-protocol (TCP|UDP)] \
     --ports PORTS --target-instance INSTANCE \
     (--region REGION | --global)
+```
 
-$ # L3 Network Balancer (VMs pool)
+L3 Network Balancer (VMs pool)
 
+```shell-session
 $ gcloud compute forwarding-rules create NAME \
     [--address IP_ADDRESS] [--ip-protocol (TCP|UDP)] \
     --ports PORTS --target-pool POOL \
     --region REGION
+```
 
-$ # L7 Global HTTP/HTTPS/HTTP2 Load Balancer (VMs pool)
+L7 Global HTTP/HTTPS/HTTP2 Load Balancer (VMs pool)
 
+```shell-session
 $ gcloud compute instance-groups (managed | unmanaged) \
     set-named-ports GROUP --named-ports (http|https|http2):PORT \
     [--zone ZONE | --region REGION]
@@ -392,7 +409,7 @@ $ gcloud compute url-maps add-path-matcher URLMAP \
   --default-service BACKEND \
   --path-matcher-name PATHMATCHER --path-rules="PATH=BACKEND"
 
-$   # HTTP
+$ # HTTP
 
 $ gcloud compute target-http-proxies create NAME --url-map URLMAP
 
@@ -401,7 +418,7 @@ $ gcloud compute forwarding-rules create NAME \
     --ports PORTS --target-http-proxy PROXY \
     --global
 
-$   # HTTPS
+$ # HTTPS
 
 $ gcloud compute ssl-certificates create NAME \
     --private-key FILE --certificate FILE
@@ -413,6 +430,13 @@ $ gcloud compute forwarding-rules create NAME \
     [--address IP_ADDRESS] \
     --ports PORTS --target-https-proxy PROXY \
     --global
+```
+
+#### VPC Network Peering
+
+```shell-session
+$ gcloud compute networks peerings create NAME --auto-create-routes \
+    --network NETWORK --peer-network PEER_NETWORK [--peer-project PROJECT]
 ```
 
 ### Storage
@@ -463,16 +487,6 @@ $ gcloud sql backups restore ID --restore-instance INSTANCE
 $ gcloud sql connect INSTANCE [--user USER] [--database DATABASE]
 ```
 
-# Control de Indetidades y Acceso (IAM)
-
-Entre lo roles predefinidos se encuentran:
-
-* *Observador (Viewer):*
-
-* *Editor (Editor):*
-
-* *Propietario (Owner):*
-
 ### Big Data
 
 #### Pub/Sub
@@ -507,6 +521,32 @@ $ gcloud pubsub subscriptions delete NAME
 
 ```shell-session
 $ bq
+```
+
+### Security
+
+### CFT Scorecard
+
+```shell-session
+$ gcloud services enable cloudasset.googleapis.com
+
+$ gcloud asset export {--organization | --folder | --project} VALUE \
+    --output-path=PATH/resource_inventory.json --content-type=resource
+
+$ gcloud asset export {--organization | --folder | --project} VALUE \
+    --output-path=PATH/iam_inventory.json --content-type=iam-policy
+
+$ git clone https://github.com/forseti-security/policy-library.git
+
+$ cp policy-library/samples/storage_blacklist_public.yaml \
+    policy-library/policies/constraints/
+
+$ wget -O cft 'https://storage.googleapis.com/cft-cli/latest/cft-linux-amd64'
+
+$ chmod +x cft
+
+$ ./cft scorecard --policy-path=policy-library/ \
+    {--bucket | --dir-path} VALUE
 ```
 
 # Atribuciones
