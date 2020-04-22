@@ -1,4 +1,4 @@
-hugo_version := 0.68.3
+hugo_version := 0.69.0
 hugo_port := 1313
 
 .PHONY: all

@@ -96,7 +96,7 @@ github.com/aws/aws-sdk-go/service/sts
 github.com/aws/aws-sdk-go/service/sts/stsiface
 # github.com/bep/debounce v1.2.0
 github.com/bep/debounce
-# github.com/bep/gitmap v1.1.1
+# github.com/bep/gitmap v1.1.2
 github.com/bep/gitmap
 # github.com/bep/golibsass v0.5.0
 github.com/bep/golibsass/internal/libsass
@@ -128,7 +128,7 @@ github.com/gobwas/glob/syntax/ast
 github.com/gobwas/glob/syntax/lexer
 github.com/gobwas/glob/util/runes
 github.com/gobwas/glob/util/strings
-# github.com/gohugoio/hugo v0.68.3
+# github.com/gohugoio/hugo v0.69.0
 ## explicit
 github.com/gohugoio/hugo/bufferpool
 github.com/gohugoio/hugo/cache/filecache
@@ -201,6 +201,7 @@ github.com/gohugoio/hugo/resources/images/exif
 github.com/gohugoio/hugo/resources/internal
 github.com/gohugoio/hugo/resources/page
 github.com/gohugoio/hugo/resources/page/pagemeta
+github.com/gohugoio/hugo/resources/postpub
 github.com/gohugoio/hugo/resources/resource
 github.com/gohugoio/hugo/resources/resource_factories/bundler
 github.com/gohugoio/hugo/resources/resource_factories/create
@@ -286,7 +287,7 @@ github.com/jdkato/prose/transform
 github.com/jmespath/go-jmespath
 # github.com/joho/godotenv v1.3.0
 github.com/joho/godotenv
-# github.com/kyokomi/emoji v2.1.0+incompatible
+# github.com/kyokomi/emoji v2.2.1+incompatible
 github.com/kyokomi/emoji
 # github.com/magefile/mage v1.9.0
 ## explicit
