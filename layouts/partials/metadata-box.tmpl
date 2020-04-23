@@ -31,7 +31,7 @@
   {{ range $key, $value := .Params.metadata }}
     <div>
       <strong>{{ replace $key "-" "_" | upper | i18n }}:</strong>
-      {{ markdownify $value }}
+      <span>{{ markdownify $value }}</span>
     </div>
   {{ end }}
 
@@ -39,10 +39,25 @@
     <div>
       <strong>{{ i18n "TAGS" }}:</strong>
 
-      {{ range .Params.tags }}
-        <a href="{{ absLangURL "tags" }}/{{ . | urlize }}">
-          #{{ . }}</a>
-      {{ end }}
+      <span>
+        {{ range $i, $x := .Params.tags -}}
+          {{- if gt $i 0 }}&nbsp;{{ end -}}
+          <a href="{{ absLangURL "tags" }}/{{ . | urlize }}">#{{ . }}</a>
+        {{- end }}
+      </span>
+    </div>
+  {{ end }}
+
+  {{ if isset .Params "series" }}
+    <div>
+      <strong>{{ i18n "SERIES" }}:</strong>
+
+      <span>
+        {{ range $i, $x := .Params.series -}}
+          {{- if gt $i 0 }},&nbsp;{{ end -}}
+          <a href="{{ absLangURL "series" }}/{{ . | urlize }}">{{ . }}</a>
+        {{- end }}
+      </span>
     </div>
   {{ end }}
 </div>

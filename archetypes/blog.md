@@ -10,6 +10,11 @@ content:
   api: github
 tags:
   - tag1
+series:
+  - Serie 1
+  - Serie 2
+hiddenseries:
+  - Serie 2
 math: false
 mermaid: false
 comments: true
