@@ -1,7 +1,0 @@
-{
-  "url": "https://www.flickr.com/services/oembed/?format=json&url=%s",
-  "patterns": [
-    "^https://(www\\.)?flickr\\.com/"
-  ]
-}
-

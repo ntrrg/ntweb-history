@@ -1,5 +1,0 @@
-<details {{ with eq (.Get "open") true }}open="open"{{ end }}>
-  {{ with .Get "summary" }}<summary>{{ . }}</summary>{{ end }}
-  {{ .Inner | $.Page.RenderString }}
-</details>
-
