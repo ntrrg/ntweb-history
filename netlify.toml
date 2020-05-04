@@ -23,11 +23,11 @@
 [[redirects]]
   from = "https://nt.web.ve/go/*"
   to = "https://go.ntrrg.dev/:splat"
-  status = 303
+  status = 301
   force = true
 
 [[redirects]]
   from = "https://nt.web.ve/*"
-  to = "https://ntrrg.dev/:splat"
-  status = 303
+  to = "https://www.ntrrg.dev/:splat"
+  status = 301
   force = true
